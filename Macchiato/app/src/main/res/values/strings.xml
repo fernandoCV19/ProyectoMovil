@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Macchiato</string>
+    <string name="textEmail">Email</string>
+    <string name="textContrasenia">Contraseña</string>
+    <string name="textIniciar_sesion">INICIAR SESIÓN</string>
+    <string name="textRegistrarse">Registrarse</string>
+    <string name="textEl_nombre_app">Macchiato</string>
+    <string name="todo">TODO</string>
 </resources>
