@@ -7,4 +7,9 @@
     <string name="textEl_nombre_app">Macchiato</string>
     <string name="todo">TODO</string>
     <string name="textRegistro">Registro</string>
+    <string name="textUsuario">Usuario:</string>
+    <string name="textContraseña">Contraseña:</string>
+    <string name="textRepetir_contrase_a">Repetir Contraseña:</string>
+    <string name="textEmailregister">Email:</string>
+    <string name="textListo">LISTO</string>
 </resources>
