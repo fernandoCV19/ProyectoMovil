@@ -19,4 +19,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(register);
     }
 
+    public void session(View view){
+        Intent session=new Intent(this,Navigation_bottom.class);
+        startActivity(session);
+    }
+
 }

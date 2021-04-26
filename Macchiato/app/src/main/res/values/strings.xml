@@ -12,4 +12,11 @@
     <string name="textRepetir_contrase_a">Repetir Contraseña:</string>
     <string name="textEmailregister">Email:</string>
     <string name="textListo">LISTO</string>
+    <string name="title_activity_navigation">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_navigatorapp">MainActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
