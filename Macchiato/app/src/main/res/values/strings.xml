@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Macchiato</string>
+    <string name="textEmail">Email</string>
+    <string name="textContrasenia">Contraseña</string>
+    <string name="textIniciar_sesion">INICIAR SESIÓN</string>
+    <string name="textRegistrarse">Registrarse</string>
+    <string name="textEl_nombre_app">Macchiato</string>
+    <string name="todo">TODO</string>
+    <string name="textRegistro">Registro</string>
+    <string name="textUsuario">Usuario:</string>
+    <string name="textContraseña">Contraseña:</string>
+    <string name="textRepetir_contrase_a">Repetir Contraseña:</string>
+    <string name="textEmailregister">Email:</string>
+    <string name="textListo">LISTO</string>
+    <string name="title_activity_navigation">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_navigatorapp">MainActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

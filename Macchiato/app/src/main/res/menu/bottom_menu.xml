@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_horario"
+        android:title="Horarios"
+        android:icon="@drawable/ic_baseline_calendar_today_24">
+
+    </item>
+
+   <item android:id="@+id/nav_perfil"
+       android:title="Perfil"
+       android:icon="@drawable/ic_baseline_account_circle_24">
+   </item>
+
+
+    <item android:id="@+id/nav_materias"
+        android:title="Materias"
+        android:icon="@drawable/ic_baseline_menu_book_24">
+     </item>
+
+</menu>
