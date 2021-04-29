@@ -38,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         register=(Button)findViewById(R.id.register_btn);
 
         inicializarFirebase();
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
     }
@@ -82,6 +83,6 @@ public class RegisterActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
-        firebaseAuth = FirebaseAuth.getInstance();
+
     }
 }
