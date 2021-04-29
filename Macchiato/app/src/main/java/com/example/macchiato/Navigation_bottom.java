@@ -5,8 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -17,7 +22,6 @@ public class Navigation_bottom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_naivigation_bottom);
-
         showSelectedFragment(new HorarioFragment());
 
         mBottomNavigation =(BottomNavigationView) findViewById(R.id.bottomNavigationView);
@@ -34,6 +38,9 @@ public class Navigation_bottom extends AppCompatActivity {
                 if(item.getItemId()==R.id.nav_materias){
                     showSelectedFragment(new MateriaFragment());
                 }
+                if(item.getItemId()==R.id.nav_ajustes){
+                    showSelectedFragment(new AjustesFragment());
+                }
                 return true;
             }
         });
@@ -45,4 +52,6 @@ public class Navigation_bottom extends AppCompatActivity {
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
+
+
 }
