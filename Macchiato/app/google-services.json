@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "393815274188",
+    "project_id": "macchiato-movil",
+    "storage_bucket": "macchiato-movil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393815274188:android:cbc2c67535f2282f03c869",
+        "android_client_info": {
+          "package_name": "com.example.macchiato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393815274188-v03phtsjei1li8rhr7vh41ukd6l29v3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAy_xKfIAI2HsB_gOsPKGSlDRH3C9zl8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393815274188-v03phtsjei1li8rhr7vh41ukd6l29v3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
