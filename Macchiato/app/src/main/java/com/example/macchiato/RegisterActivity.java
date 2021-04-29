@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +50,47 @@ public class RegisterActivity extends AppCompatActivity {
         String u = user_R.getText().toString().trim();
         String e = email_R.getText().toString().trim();
         String p = password_R.getText().toString().trim();
+        String pp =confirm_R.getText().toString().trim();
+
+        if(u.isEmpty()){
+            user_R.setError("ingrese su usuario");
+            user_R.requestFocus();
+            return;
+        }
+
+        if(e.isEmpty()){
+            email_R.setError("ingrese su correo");
+            email_R.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(e).matches()){
+            email_R.setError("correo invalido");
+            email_R.requestFocus();
+            return;
+        }
+        if(p.isEmpty()){
+            password_R.setError("ingrese su contrasena");
+            password_R.requestFocus();
+            return;
+        }
+        if(p.length()<6){
+            password_R.setError("la contrasena es muy corta");
+            password_R.requestFocus();
+            return;
+        }
+
+        if(pp.isEmpty()){
+            confirm_R.setError("ingrese la contrasena de nuevo");
+            confirm_R.requestFocus();
+            return;
+        }
+
+        if (!pp.equals(p)){
+            confirm_R.setError("la contrasena no coincide con la anterior");
+            confirm_R.requestFocus();
+            return;
+        }
+
         user.setUserName(u);
         user.setEmail(e);
         user.setPassword(p);
@@ -58,7 +100,6 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
-                            //Toast.makeText(getApplicationContext(), "lo lograste", Toast.LENGTH_SHORT).show();
                             FirebaseUser us= FirebaseAuth.getInstance().getCurrentUser();
                             user.setUid(us.getUid());
                             databaseReference.child("User").child(us.getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
