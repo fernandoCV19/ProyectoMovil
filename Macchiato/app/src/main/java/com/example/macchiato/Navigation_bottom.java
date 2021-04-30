@@ -46,10 +46,11 @@ public class Navigation_bottom extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()== R.id.nav_perfil){
                     if(firebaseUser==null){
-                        Toast.makeText(Navigation_bottom.this, "ok", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Navigation_bottom.this, "ok", Toast.LENGTH_SHORT).show();
                         showSelectedFragment(new PerfilFragment());
                     }else{
-                        Toast.makeText(Navigation_bottom.this, "ya esta loggeado", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Navigation_bottom.this, "ya esta loggeado", Toast.LENGTH_SHORT).show();
+                        showSelectedFragment(new PerfilSesionFragment());
                     }
 
                 }
