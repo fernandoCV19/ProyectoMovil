@@ -19,6 +19,9 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        correo_L= findViewById(R.id.editTextTextEmailAddress);
+        contrasena_L= findViewById(R.id.editTextTextPassword);
+        mAuth = FirebaseAuth.getInstance();
     }
 
     public void register(View view){
