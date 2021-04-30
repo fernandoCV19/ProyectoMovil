@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 
@@ -30,6 +31,31 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void session(View view){
+        String email_txt= correo_L.getText().toString();
+        String password_txt =contrasena_L.getText().toString();
+        if(email_txt.isEmpty()){
+            correo_L.setError("ingrese su correo");
+            correo_L.requestFocus();
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email_txt).matches()){
+            correo_L.setError("correo invalido");
+            correo_L.requestFocus();
+            return;
+        }
+        if(password_txt.isEmpty()){
+            contrasena_L.setError("ingrese su contrasena");
+            contrasena_L.requestFocus();
+            return;
+        }
+        if(password_txt.length()<6){
+            contrasena_L.setError("la contrasena es muy corta");
+            contrasena_L.requestFocus();
+            return;
+        }
+
+
+
         Intent session=new Intent(this,Navigation_bottom.class);
 
         startActivity(session);
