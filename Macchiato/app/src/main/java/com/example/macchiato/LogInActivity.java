@@ -1,5 +1,6 @@
 package com.example.macchiato;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,7 +8,11 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LogInActivity extends AppCompatActivity {
@@ -54,11 +59,26 @@ public class LogInActivity extends AppCompatActivity {
             return;
         }
 
+        mAuth.signInWithEmailAndPassword(email_txt,password_txt)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            //Toast.makeText(MainActivity.this, "Exito",Toast.LENGTH_SHORT).show();
 
+                            //FirebaseUser user = mAuth.getCurrentUser();
+                            startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            //Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LogInActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            //updateUI(null);
+                        }
+                    }
+                });
 
-        Intent session=new Intent(this,Navigation_bottom.class);
-
-        startActivity(session);
     }
 
 }
