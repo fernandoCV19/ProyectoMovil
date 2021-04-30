@@ -14,10 +14,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class PerfilSesionFragment extends Fragment {
 
     private FirebaseAuth auth;
+    private FirebaseUser user;
+    private DatabaseReference reference;
+    private String thisUserId;
     TextView usuarioShow,correoShow;
     public PerfilSesionFragment() {
         // Required empty public constructor
@@ -32,6 +38,10 @@ public class PerfilSesionFragment extends Fragment {
         auth=FirebaseAuth.getInstance();
         usuarioShow= (TextView) view.findViewById(R.id.usuarioActual_id);
         correoShow= (TextView) view.findViewById(R.id.correoActual_id);
+        user= FirebaseAuth.getInstance().getCurrentUser();
+
+        reference= FirebaseDatabase.getInstance().getReference("User");
+        thisUserId=user.getUid();
 
         Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonCerrarSesion);
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
