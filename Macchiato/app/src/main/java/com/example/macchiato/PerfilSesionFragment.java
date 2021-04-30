@@ -3,6 +3,7 @@ package com.example.macchiato;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,8 +16,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class PerfilSesionFragment extends Fragment {
 
@@ -42,6 +46,33 @@ public class PerfilSesionFragment extends Fragment {
 
         reference= FirebaseDatabase.getInstance().getReference("User");
         thisUserId=user.getUid();
+        reference.child(thisUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+                
+                if(userProfile != null){
+                    //Toast.makeText(InicioActivity2.this, "log in", Toast.LENGTH_SHORT).show();
+                    String userUser= userProfile.getUserName();
+                    String userEmail= userProfile.getEmail();
+                    String userName= userProfile.getFullName();
+
+                    usuarioShow.setText(userUser);
+                    correoShow.setText(userEmail);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //Toast.makeText(InicioActivity2.this, "error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
 
         Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonCerrarSesion);
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
