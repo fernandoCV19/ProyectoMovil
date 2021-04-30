@@ -50,7 +50,7 @@ public class PerfilSesionFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
-                
+
                 if(userProfile != null){
                     //Toast.makeText(InicioActivity2.this, "log in", Toast.LENGTH_SHORT).show();
                     String userUser= userProfile.getUserName();
@@ -86,6 +86,14 @@ public class PerfilSesionFragment extends Fragment {
                     //Toast.makeText(PerfilSesionFragment.this, "error", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+        Button btnEdit= (Button) view.findViewById(R.id.buttonEditar);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),CambiarPerfilActivity.class);
+                startActivity(intent);
             }
         });
         return view;
