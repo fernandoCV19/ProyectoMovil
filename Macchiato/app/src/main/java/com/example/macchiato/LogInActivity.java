@@ -67,6 +67,8 @@ public class LogInActivity extends AppCompatActivity {
                             //Toast.makeText(MainActivity.this, "Exito",Toast.LENGTH_SHORT).show();
 
                             //FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
+                                    Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
                             //updateUI(user);
                         } else {

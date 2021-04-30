@@ -3,6 +3,7 @@ package com.example.macchiato;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -107,6 +108,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(RegisterActivity.this, "exito", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(RegisterActivity.this,Navigation_bottom.class));
+
                                     }
                                     else{
                                         Toast.makeText(RegisterActivity.this, "fail", Toast.LENGTH_SHORT).show();
