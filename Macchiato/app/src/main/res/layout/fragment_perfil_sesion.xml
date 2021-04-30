@@ -38,7 +38,7 @@
             app:layout_constraintVertical_bias="0.37">
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/usuarioActual_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -46,7 +46,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/nombreActual_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
@@ -62,7 +62,7 @@
                 android:text="Correo Ejemplo" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/correoActual_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
