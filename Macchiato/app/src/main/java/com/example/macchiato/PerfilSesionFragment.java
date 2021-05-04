@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +28,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.net.URI;
 
@@ -35,6 +40,7 @@ public class PerfilSesionFragment extends Fragment {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String thisUserId;
+    StorageReference storageReference;
     TextView usuarioShow,correoShow;
     Button cambFoto;
     ImageView profileImage;
@@ -54,6 +60,7 @@ public class PerfilSesionFragment extends Fragment {
         profileImage= (ImageView) view.findViewById(R.id.foto_perfil_id);
         cambFoto= (Button)  view.findViewById(R.id.editPic_btn);
         user= FirebaseAuth.getInstance().getCurrentUser();
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         reference= FirebaseDatabase.getInstance().getReference("User");
         thisUserId=user.getUid();
@@ -125,7 +132,22 @@ public class PerfilSesionFragment extends Fragment {
             if(resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
                 profileImage.setImageURI(imageUri);
+                uploadImagesToFirebase(imageUri);
             }
         }
+    }
+    private  void uploadImagesToFirebase(Uri imUri){
+        StorageReference fileReference = storageReference.child("profile.jpg");
+        fileReference.putFile(imUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(getActivity(), "imagen subida", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "error al subir", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
