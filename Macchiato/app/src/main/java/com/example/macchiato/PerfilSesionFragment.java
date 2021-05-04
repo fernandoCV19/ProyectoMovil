@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.net.URI;
 
@@ -61,7 +62,13 @@ public class PerfilSesionFragment extends Fragment {
         cambFoto= (Button)  view.findViewById(R.id.editPic_btn);
         user= FirebaseAuth.getInstance().getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference();
-
+        StorageReference profileRef = storageReference.child("profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(profileImage);
+            }
+        });
         reference= FirebaseDatabase.getInstance().getReference("User");
         thisUserId=user.getUid();
         reference.child(thisUserId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -131,7 +138,7 @@ public class PerfilSesionFragment extends Fragment {
         if(requestCode == 1000){
             if(resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
-                profileImage.setImageURI(imageUri);
+                //profileImage.setImageURI(imageUri);
                 uploadImagesToFirebase(imageUri);
             }
         }
@@ -141,7 +148,13 @@ public class PerfilSesionFragment extends Fragment {
         fileReference.putFile(imUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(getActivity(), "imagen subida", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "imagen guardada", Toast.LENGTH_SHORT).show();
+                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(profileImage);
+                    }
+                });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
