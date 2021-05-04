@@ -62,7 +62,7 @@ public class PerfilSesionFragment extends Fragment {
         cambFoto= (Button)  view.findViewById(R.id.editPic_btn);
         user= FirebaseAuth.getInstance().getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference profileRef = storageReference.child("profile.jpg");
+        StorageReference profileRef = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -144,7 +144,7 @@ public class PerfilSesionFragment extends Fragment {
         }
     }
     private  void uploadImagesToFirebase(Uri imUri){
-        StorageReference fileReference = storageReference.child("profile.jpg");
+        StorageReference fileReference = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
         fileReference.putFile(imUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
