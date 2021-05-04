@@ -1,16 +1,21 @@
 package com.example.macchiato;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.URI;
+
 public class PerfilSesionFragment extends Fragment {
 
     private FirebaseAuth auth;
@@ -29,6 +36,8 @@ public class PerfilSesionFragment extends Fragment {
     private DatabaseReference reference;
     private String thisUserId;
     TextView usuarioShow,correoShow;
+    Button cambFoto;
+    ImageView profileImage;
     public PerfilSesionFragment() {
         // Required empty public constructor
     }
@@ -42,6 +51,8 @@ public class PerfilSesionFragment extends Fragment {
         auth=FirebaseAuth.getInstance();
         usuarioShow= (TextView) view.findViewById(R.id.usuarioActual_id);
         correoShow= (TextView) view.findViewById(R.id.correoActual_id);
+        profileImage= (ImageView) view.findViewById(R.id.foto_perfil_id);
+        cambFoto= (Button)  view.findViewById(R.id.editPic_btn);
         user= FirebaseAuth.getInstance().getCurrentUser();
 
         reference= FirebaseDatabase.getInstance().getReference("User");
@@ -66,6 +77,14 @@ public class PerfilSesionFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 //Toast.makeText(InicioActivity2.this, "error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        cambFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(openGallery,1000);
             }
         });
 
@@ -99,4 +118,14 @@ public class PerfilSesionFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1000){
+            if(resultCode == Activity.RESULT_OK){
+                Uri imageUri = data.getData();
+                profileImage.setImageURI(imageUri);
+            }
+        }
+    }
 }
