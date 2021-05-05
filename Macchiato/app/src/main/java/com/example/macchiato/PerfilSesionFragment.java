@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,8 +31,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
-
-import java.net.URI;
 
 public class PerfilSesionFragment extends Fragment {
 
@@ -107,7 +104,7 @@ public class PerfilSesionFragment extends Fragment {
 
 
 
-        Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonCerrarSesion);
+        Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonIniciarSesion);
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +112,7 @@ public class PerfilSesionFragment extends Fragment {
                     auth.signOut();
                     Intent intent = new Intent(getActivity(),Navigation_bottom.class);
                     startActivity(intent);
+                    getActivity().finish();
                 }else{
                     //Toast.makeText(PerfilSesionFragment.this, "error", Toast.LENGTH_SHORT).show();
                 }
