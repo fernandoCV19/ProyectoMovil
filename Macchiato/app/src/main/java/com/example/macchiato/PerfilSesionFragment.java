@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +41,7 @@ public class PerfilSesionFragment extends Fragment {
     private String thisUserId;
     StorageReference storageReference;
     TextView usuarioShow,correoShow;
-    Button cambFoto;
+    ImageButton  cambFoto;
     ImageView profileImage;
     public PerfilSesionFragment() {
         // Required empty public constructor
@@ -56,7 +57,7 @@ public class PerfilSesionFragment extends Fragment {
         usuarioShow= (TextView) view.findViewById(R.id.usuarioActual_id);
         correoShow= (TextView) view.findViewById(R.id.correoActual_id);
         profileImage= (ImageView) view.findViewById(R.id.foto_perfil_id);
-        cambFoto= (Button)  view.findViewById(R.id.editPic_btn);
+        cambFoto= (ImageButton) view.findViewById(R.id.editPic_btn);
         user= FirebaseAuth.getInstance().getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference profileRef = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
