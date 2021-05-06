@@ -23,12 +23,13 @@ public class PerfilFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
-        Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonCerrarSesion);
+        Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonIniciarSesion);
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),LogInActivity.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
         return view;
