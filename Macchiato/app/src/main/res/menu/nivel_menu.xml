@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_nivelA"
+        android:title="Nivel A"
+        android:icon="@drawable/ic_baseline_calendar_today_24">
+
+    </item>
+
+    <item android:id="@+id/menu_nivelB"
+        android:title="Nivel B"
+        android:icon="@drawable/ic_baseline_menu_book_24">
+    </item>
+
+    <item android:id="@+id/menu_nivelC"
+        android:title="Nivel C"
+        android:icon="@drawable/ic_baseline_account_circle_24">
+    </item>
+
+    <item android:id="@+id/menu_nivelD"
+        android:title="Nivel D"
+        android:icon="@drawable/ic_baseline_account_circle_24">
+    </item>
+
+    <item android:id="@+id/menu_nivelE"
+        android:title="Nivel E"
+        android:icon="@drawable/ic_baseline_account_circle_24">
+    </item>
+
+    <item android:id="@+id/menu_nivelF"
+        android:title="Nivel F"
+        android:icon="@drawable/ic_baseline_account_circle_24">
+    </item>
+
+    <item android:id="@+id/menu_nivelG"
+        android:title="Nivel G"
+        android:icon="@drawable/ic_baseline_account_circle_24">
+    </item>
+
+    <item android:id="@+id/menu_nivelH"
+        android:title="Nivel H"
+        android:icon="@drawable/ic_baseline_account_circle_24">
+    </item>
+
+    <item android:id="@+id/menu_nivelI"
+        android:title="Nivel I"
+        android:icon="@drawable/ic_baseline_account_circle_24">
+    </item>
+
+</menu>

@@ -21,50 +21,31 @@
             android:orientation="horizontal"
             android:padding="6dp">
 
-            <ImageView
-                android:id="@+id/icono"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_gravity="center"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp"
-                app:srcCompat="@drawable/ic_libros" />
-
             <LinearLayout
                 android:id="@+id/linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="2dp"
-                android:layout_toEndOf="@id/icono"
-                android:layout_toRightOf="@id/icono"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/nomMateriaHorario"
+                    android:id="@+id/nomMateria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Materia"
-                    android:textSize="18dp">
+                    android:textSize="20sp">
 
                 </TextView>
 
                 <TextView
-                    android:id="@+id/horas"
+                    android:id="@+id/codMateria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="8:15-9:45" />
+                    android:text="Codigo de materia" />
 
-                <TextView
-                    android:id="@+id/nomDocenteHorario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="tatiana xd" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

@@ -1,47 +1,41 @@
 package com.example.macchiato;
 
 public class ListElement {
-    public String color;
-    public String name;
-    public String city;
-    public String status;
+    public String nomMateriaHorario;
+    public String nomDocente;
+    public String horario;
 
-    public ListElement(String color, String name, String city, String status) {
-        this.color = color;
-        this.name = name;
-        this.city = city;
-        this.status = status;
+
+    public ListElement(String nomMateriaHorario, String nomDocente, String horario) {
+        this.nomMateriaHorario = nomMateriaHorario;
+        this.nomDocente = nomDocente;
+        this.horario = horario;
+
     }
 
-    public String getColor() {
-        return color;
+    public String getNomMateriaHorario() {
+        return nomMateriaHorario;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setNomMateriaHorario(String nomMateriaHorario) {
+        this.nomMateriaHorario = nomMateriaHorario;
     }
 
-    public String getName() {
-        return name;
+    public String getNomDocente() {
+        return nomDocente;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNomDocente(String nomDocente) {
+        this.nomDocente = nomDocente;
     }
 
-    public String getCity() {
-        return city;
+    public String getHorario() {
+        return horario;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }

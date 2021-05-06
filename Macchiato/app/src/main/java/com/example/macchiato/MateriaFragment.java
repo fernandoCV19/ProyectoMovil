@@ -2,11 +2,17 @@ package com.example.macchiato;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,7 +21,10 @@ import java.util.List;
 
 
 public class MateriaFragment extends Fragment {
+    private Toolbar toolbar;
+    private static final String TAG = MateriaFragment.class.getSimpleName();
     List<ListElement> elementList;
+    List<MateriaElement> materiaList;
     public MateriaFragment() {
         // Required empty public constructor
     }
@@ -24,23 +33,51 @@ public class MateriaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        elementList=new ArrayList<>();
-        elementList.add(new ListElement("#000000","boris","8:15-9:45","xd"));
-        elementList.add(new ListElement("#000000","boris","8:15-9:45","xd"));
-        elementList.add(new ListElement("#000000","boris","8:15-9:45","xd"));
-        elementList.add(new ListElement("#000000","boris","8:15-9:45","xd"));
-        elementList.add(new ListElement("#000000","boris","8:15-9:45","xd"));
+
+        materiaList= new ArrayList<>();
+        materiaList.add(new MateriaElement("Base de Datos","651132154"));
+        materiaList.add(new MateriaElement("Base de Datos","651132154"));
+        materiaList.add(new MateriaElement("Base de Datos","651132154"));
+        materiaList.add(new MateriaElement("Base de Datos","651132154"));
+        materiaList.add(new MateriaElement("Base de Datos","651132154"));
 
         View rootView=inflater.inflate(R.layout.fragment_materia,container,false);
-        ListAdapter listAdapter = new ListAdapter(elementList,this.getContext());
+
+        MateriaAdapter materiaAdapter= new MateriaAdapter(materiaList,this.getContext());
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.listRecyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(listAdapter);
+        recyclerView.setAdapter(materiaAdapter);
+
+
 
 
 
         return rootView;
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.nivel_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.menu_nivelA){
+
+            //El código que se ejecutara al hacer click en esa opción
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
 
 }

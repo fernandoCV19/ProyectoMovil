@@ -1,12 +1,9 @@
 package com.example.macchiato;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.view.*;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,22 +47,21 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView iconImage;
-        TextView name,city,status;
+
+        TextView nomMateria,nomDocente,horario;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.iconImage = itemView.findViewById(R.id.icono);
-            this.name = itemView.findViewById(R.id.nomMateria);
-            this.city = itemView.findViewById(R.id.nomDocente);
-            this.status = itemView.findViewById(R.id.horas);
+
+            this.nomMateria = itemView.findViewById(R.id.nomMateriaHorario);
+            this.nomDocente = itemView.findViewById(R.id.nomDocenteHorario);
+            this.horario= itemView.findViewById(R.id.horas);
         }
 
         public void bindData(final ListElement item){
-            iconImage.setColorFilter(Color.parseColor(item.getColor()), PorterDuff.Mode.SRC_IN);
-            name.setText(item.getName());
-            city.setText(item.getCity());
-            status.setText(item.getStatus());
+            nomDocente.setText(item.getNomDocente());
+            nomMateria.setText(item.getNomMateriaHorario());
+            horario.setText(item.getHorario());
         }
     }
 }
