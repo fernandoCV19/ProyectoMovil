@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
+    app:cardBackgroundColor="@color/teal_200"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
-    app:cardUseCompatPadding="true"
-    android:id="@+id/cv" >
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="6dp">
 
@@ -26,19 +26,18 @@
                 android:id="@+id/icono"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_gravity="center"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                app:srcCompat="@drawable/ic_baseline_menu_book_24"
-                android:layout_alignParentLeft="true" />
+                app:srcCompat="@drawable/ic_baseline_menu_book_24" />
 
             <LinearLayout
                 android:id="@+id/linear"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
                 android:layout_toEndOf="@id/icono"
                 android:layout_toRightOf="@id/icono"
@@ -47,7 +46,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="80dp"
                     android:gravity="center"
                     android:text="Materia"
                     android:textSize="18dp">
