@@ -3,7 +3,7 @@ package com.example.macchiato;
 public class MateriaElement {
     private String nombreMateria;
     private String codCarrera;
-
+    
     public MateriaElement(String nombreMateria, String codCarrera) {
         this.nombreMateria = nombreMateria;
         this.codCarrera = codCarrera;
