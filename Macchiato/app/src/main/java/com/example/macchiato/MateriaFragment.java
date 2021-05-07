@@ -42,18 +42,21 @@ public class MateriaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        readJSONFromAsset();
+        String materias=readJSONFromAsset();
+        GrupoParser grupoParser=new GrupoParser();
+        ArrayList<GrupoParser> gp=new ArrayList<>();
         materiaList= new ArrayList<>();
-        materiaList.add(new MateriaElement("Base de Datos","651132154","#00aae4"));
-        materiaList.add(new MateriaElement("Base de Datos","651132154","#1f3438"));
-        materiaList.add(new MateriaElement("Base de Datos","651132154","#bf2548"));
-        materiaList.add(new MateriaElement("Base de Datos","651132154","#6839ab"));
-        materiaList.add(new MateriaElement("Base de Datos","651132154","#a6d4f2"));
+        try {
+           gp = grupoParser.main(materias);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-
-
-
+        for(GrupoParser g : gp){
+           MateriaElement materiaElement;
+           materiaElement=new MateriaElement(g.getNombre(),Integer.toString(g.getID()),"#00aae4");
+           materiaList.add(materiaElement);
+        }
 
         View rootView=inflater.inflate(R.layout.fragment_materia,container,false);
 
@@ -90,7 +93,7 @@ public class MateriaFragment extends Fragment {
     }
 
     public String readJSONFromAsset() {
-        String json;
+        String json = null;
         try {
             InputStream is = getActivity().getAssets().open("materias-grupos.json");
             int size = is.available();
@@ -102,8 +105,8 @@ public class MateriaFragment extends Fragment {
             ex.printStackTrace();
             return null;
         }
-
         return json;
     }
+
 
 }
