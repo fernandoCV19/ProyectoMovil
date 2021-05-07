@@ -9,9 +9,12 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHolder> {
@@ -69,4 +72,5 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
             color.setCardBackgroundColor(Color.parseColor(item.getColor()));
         }
     }
+
 }

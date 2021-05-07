@@ -18,6 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.json.JSONException;
+
 public class Navigation_bottom extends AppCompatActivity {
 
 
@@ -58,7 +60,11 @@ public class Navigation_bottom extends AppCompatActivity {
                     showSelectedFragment(new HorarioFragment());
                 }
                 if(item.getItemId()==R.id.nav_materias){
-                    showSelectedFragment(new MateriaFragment());
+                    try {
+                        showSelectedFragment(new MateriaFragment());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 if(item.getItemId()==R.id.nav_ajustes){
                     showSelectedFragment(new AjustesFragment());

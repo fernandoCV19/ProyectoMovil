@@ -1,0 +1,68 @@
+{
+  "MATERIAS":
+  [
+    {
+      "id":"1",
+      "nombreMateria":"INGLES I",
+      "docente":"CESPEDES GUIZADA MARIA BENITA",
+      "nivel":"A",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"693B"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"691D"
+        }
+      ]
+    },
+    {
+      "id":"2",
+      "nombreMateria":"INGLES II",
+      "docente":"CESPEDES GUIZADA MARIA BENITA",
+      "nivel":"A",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"690D"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"690D"
+        }
+      ]
+    },
+    {
+      "id":"3",
+      "nombreMateria":"INGLES III",
+      "docente":"PEETERS ILONAA MAGDA LENA",
+      "nivel":"A",
+      "grupo":"3",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"655"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691A"
+        }
+      ]
+    }
+  ]
+}

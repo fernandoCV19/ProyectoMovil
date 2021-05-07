@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,7 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -26,15 +34,16 @@ public class MateriaFragment extends Fragment {
     private static final String TAG = MateriaFragment.class.getSimpleName();
     List<ListElement> elementList;
     List<MateriaElement> materiaList;
-    public MateriaFragment() {
-        // Required empty public constructor
+
+    public MateriaFragment() throws JSONException {
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+        readJSONFromAsset();
         materiaList= new ArrayList<>();
         materiaList.add(new MateriaElement("Base de Datos","651132154","#00aae4"));
         materiaList.add(new MateriaElement("Base de Datos","651132154","#1f3438"));
@@ -80,5 +89,21 @@ public class MateriaFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+    public String readJSONFromAsset() {
+        String json;
+        try {
+            InputStream is = getActivity().getAssets().open("materias-grupos.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+        return json;
+    }
 
 }
