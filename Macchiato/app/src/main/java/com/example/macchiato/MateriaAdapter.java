@@ -1,11 +1,13 @@
 package com.example.macchiato;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -51,17 +53,20 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView nomMateria,codMateria;
+        CardView color;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             this.nomMateria = itemView.findViewById(R.id.nomMateria);
             this.codMateria = itemView.findViewById(R.id.codMateria);
+            this.color= itemView.findViewById(R.id.cardViewMateria);
         }
 
         public void bindData(final MateriaElement item){
             nomMateria.setText(item.getNombreMateria());
             codMateria.setText(item.getCodCarrera());
+            color.setCardBackgroundColor(Color.parseColor(item.getColor()));
         }
     }
 }

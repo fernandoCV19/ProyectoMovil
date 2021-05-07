@@ -1,5 +1,6 @@
 package com.example.macchiato;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,11 +36,15 @@ public class MateriaFragment extends Fragment {
 
 
         materiaList= new ArrayList<>();
-        materiaList.add(new MateriaElement("Base de Datos","651132154"));
-        materiaList.add(new MateriaElement("Base de Datos","651132154"));
-        materiaList.add(new MateriaElement("Base de Datos","651132154"));
-        materiaList.add(new MateriaElement("Base de Datos","651132154"));
-        materiaList.add(new MateriaElement("Base de Datos","651132154"));
+        materiaList.add(new MateriaElement("Base de Datos","651132154","#00aae4"));
+        materiaList.add(new MateriaElement("Base de Datos","651132154","#1f3438"));
+        materiaList.add(new MateriaElement("Base de Datos","651132154","#bf2548"));
+        materiaList.add(new MateriaElement("Base de Datos","651132154","#6839ab"));
+        materiaList.add(new MateriaElement("Base de Datos","651132154","#a6d4f2"));
+
+
+
+
 
         View rootView=inflater.inflate(R.layout.fragment_materia,container,false);
 
@@ -48,10 +53,6 @@ public class MateriaFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaAdapter);
-
-
-
-
 
         return rootView;
     }
