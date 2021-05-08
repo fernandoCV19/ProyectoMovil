@@ -29,7 +29,7 @@ public class PerfilFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),LogInActivity.class);
                 startActivity(intent);
-                getActivity().finish();
+                //getActivity().finish();
             }
         });
         return view;

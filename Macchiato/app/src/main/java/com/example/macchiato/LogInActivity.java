@@ -33,7 +33,7 @@ public class LogInActivity extends AppCompatActivity {
     public void register(View view){
         Intent register=new Intent(this,RegisterActivity.class);
         startActivity(register);
-        finish();
+        //finish();
     }
 
     public void session(View view){
@@ -71,7 +71,7 @@ public class LogInActivity extends AppCompatActivity {
                             Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
                                     Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
-                            finish();
+                            finishAffinity();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

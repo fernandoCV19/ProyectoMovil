@@ -59,6 +59,7 @@ public class CambiarPerfilActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void aVoid) {
                 startActivity(new Intent(CambiarPerfilActivity.this, Navigation_bottom.class));
+                finishAffinity();
             }
 
         }).addOnFailureListener(new OnFailureListener() {

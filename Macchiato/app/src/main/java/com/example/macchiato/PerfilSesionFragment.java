@@ -113,7 +113,7 @@ public class PerfilSesionFragment extends Fragment {
                     auth.signOut();
                     Intent intent = new Intent(getActivity(),Navigation_bottom.class);
                     startActivity(intent);
-                    getActivity().finish();
+                    getActivity().finishAffinity();
                 }else{
                     //Toast.makeText(PerfilSesionFragment.this, "error", Toast.LENGTH_SHORT).show();
                 }
