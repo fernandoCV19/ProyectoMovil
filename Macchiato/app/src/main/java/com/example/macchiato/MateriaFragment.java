@@ -1,11 +1,14 @@
 package com.example.macchiato;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,38 +33,46 @@ import java.util.List;
 
 
 public class MateriaFragment extends Fragment {
-    private Toolbar toolbar;
+    ArrayList<MateriaNivel> mv;
+    ArrayList<MateriaNivel> mostrar;
+    RecyclerView recyclerView;
+    String materias;
+    char nivel;
+    String color;
     private static final String TAG = MateriaFragment.class.getSimpleName();
-    List<ListElement> elementList;
-    List<MateriaElement> materiaList;
 
     public MateriaFragment() throws JSONException {
+        nivel='A';
+        color="#00e25f";
+        mv=new ArrayList<>();
+        mostrar= new ArrayList<>();
+    }
 
+    public void setNivel(char nivel) {
+        this.nivel = nivel;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String materias=readJSONFromAsset();
-        GrupoParser grupoParser=new GrupoParser();
-        ArrayList<GrupoParser> gp=new ArrayList<>();
-        materiaList= new ArrayList<>();
+        mv=new ArrayList<>();
+        materias=readJSONFromAsset();
+        MateriaNivel materiaNivel=new MateriaNivel();
+        mostrar= new ArrayList<>();
         try {
-           gp = grupoParser.main(materias);
+           mv = materiaNivel.parser(materias);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        for(GrupoParser g : gp){
-           MateriaElement materiaElement;
-           materiaElement=new MateriaElement(g.getNombre(),Integer.toString(g.getID()),"#00aae4");
-           materiaList.add(materiaElement);
-        }
-
+        mostrarPorNivel(color,nivel);
         View rootView=inflater.inflate(R.layout.fragment_materia,container,false);
 
-        MateriaAdapter materiaAdapter= new MateriaAdapter(materiaList,this.getContext());
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.listRecyclerview);
+        MateriaAdapter materiaAdapter= new MateriaAdapter(mostrar,this.getContext());
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.listRecyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaAdapter);
@@ -74,15 +85,39 @@ public class MateriaFragment extends Fragment {
         inflater.inflate(R.menu.nivel_menu, menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.menu_nivelA){
-
-            //El código que se ejecutara al hacer click en esa opción
-
+        switch(id) {
+            case R.id.menu_nivelB:
+                moverFragment("#48a259",'B');
+                break;
+            case R.id.menu_nivelA:
+                moverFragment("#00e25f",'A');
+                break;
+            case R.id.menu_nivelC:
+                moverFragment("#99e801",'C');
+                break;
+            case R.id.menu_nivelD:
+                moverFragment("#48a259",'D');
+                break;
+            case R.id.menu_nivelE:
+                moverFragment("#48a259",'E');
+                break;
+            case R.id.menu_nivelF:
+                moverFragment("#48a259",'F');
+                break;
+            case R.id.menu_nivelG:
+                moverFragment("#48a259",'G');
+                break;
+            case R.id.menu_nivelH:
+                moverFragment("#48a259",'H');
+                break;
+            case R.id.menu_nivelI:
+                moverFragment("#48a259",'I');
+                break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -95,7 +130,7 @@ public class MateriaFragment extends Fragment {
     public String readJSONFromAsset() {
         String json = null;
         try {
-            InputStream is = getActivity().getAssets().open("materias-grupos.json");
+            InputStream is = getActivity().getAssets().open("materiasNivel.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -108,5 +143,33 @@ public class MateriaFragment extends Fragment {
         return json;
     }
 
+    private void mostrarPorNivel(String color,char nivel){
+        for(MateriaNivel mave : mv){
+            if (mave.getNivel()==nivel){
+                mave.setColor(color);
+                mostrar.add(mave);
+            }
+        }
+    }
 
+    private void moverFragment(String color,char nivel){
+        MateriaFragment mt=null;
+        try {
+            mt = new MateriaFragment();
+            mt.setColor(color);
+            mt.setNivel(nivel);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container,mt);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.commit();
+    }
+
+    public void onClick(){
+
+    }
 }

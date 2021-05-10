@@ -19,11 +19,11 @@ import java.util.List;
 
 public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHolder> {
 
-    private List<MateriaElement> mData;
+    private List<MateriaNivel> mData;
     private LayoutInflater mInflater;
     private Context context;
 
-    public MateriaAdapter(List<MateriaElement> mData, Context context) {
+    public MateriaAdapter(List<MateriaNivel> mData, Context context) {
         this.mData = mData;
         this.context = context;
     }
@@ -50,7 +50,7 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
         holder.bindData(mData.get(position));
     }
 
-    public void setItems(List<MateriaElement> items){mData=items;}
+    public void setItems(List<MateriaNivel> items){mData=items;}
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -66,9 +66,9 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
             this.color= itemView.findViewById(R.id.cardViewMateria);
         }
 
-        public void bindData(final MateriaElement item){
+        public void bindData(final MateriaNivel item){
             nomMateria.setText(item.getNombreMateria());
-            codMateria.setText(item.getCodCarrera());
+            codMateria.setText(item.getCodMateria()+"");
             color.setCardBackgroundColor(Color.parseColor(item.getColor()));
         }
     }

@@ -42,7 +42,7 @@ public class GrupoParser {
 
     public ArrayList<Clase> getClases(){return clases;}
 
-    public ArrayList<GrupoParser> main(String json) throws Exception
+    public ArrayList<GrupoParser> parser(String json) throws Exception
     {
         JSONParser parser = new JSONParser();
         JSONObject jo =(JSONObject) parser.parse(json);;
