@@ -56,8 +56,7 @@ public class MateriaNivel {
         this.color = color;
     }
 
-    public ArrayList<MateriaNivel> parser(String json) throws Exception
-    {
+    public ArrayList<MateriaNivel> parser(String json) throws Exception{
         Object obj = new JSONParser().parse(json);
         //Object obj = new JSONParser().parse(new FileReader("materias.json"));
         JSONObject jo = (JSONObject) obj;
@@ -82,7 +81,4 @@ public class MateriaNivel {
         return materiasList;
     }
 
-    public MateriaNivel onClick(){
-        return new MateriaNivel(codMateria,nivel,nombreMateria);
-    }
 }

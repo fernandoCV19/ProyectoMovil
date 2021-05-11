@@ -169,7 +169,4 @@ public class MateriaFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
-    public void onClick(){
-
-    }
 }
