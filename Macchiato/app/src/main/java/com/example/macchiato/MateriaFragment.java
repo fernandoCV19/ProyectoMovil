@@ -164,7 +164,7 @@ public class MateriaFragment extends Fragment {
         FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container,mt);
-        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.disallowAddToBackStack();
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commit();
     }
