@@ -1,4 +1,4 @@
-package com.example.macchiato;
+package com.example.macchiato.Models;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

@@ -1,6 +1,6 @@
-package com.example.macchiato;
+package com.example.macchiato.Enums;
 
-enum Dia{
+public enum Dia {
     LUNES,
     MARTES,
     MIERCOLES,

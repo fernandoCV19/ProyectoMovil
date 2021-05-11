@@ -1,46 +1,17 @@
-package com.example.macchiato;
+package com.example.macchiato.Parser;
 
-import java.util.ArrayList;
+import com.example.macchiato.Enums.Dia;
+import com.example.macchiato.Models.Clase;
+import com.example.macchiato.Models.GrupoParser;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
-import java.io.FileReader;
+import org.json.simple.parser.JSONParser;
+
+import java.util.ArrayList;
 import java.util.Iterator;
 
-public class GrupoParser {
-    private int id;
-    private String nombre;
-    private String docente;
-    private char nivel;
-    private int grupo;
-    private ArrayList<Clase> clases;
-
-    public GrupoParser(int id, String nombre, String docente,
-                       char nivel, int grupo, ArrayList<Clase> clases){
-        this.id = id;
-        this.nombre = nombre;
-        this.docente = docente;
-        this.nivel = nivel;
-        this.grupo = grupo;
-        this.clases = clases;
-    }
-
-    public GrupoParser() {
-
-    }
-
-    public int getID(){return id;}
-
-    public int getGrupo(){return grupo;}
-
-    public String getNombre(){return nombre;}
-
-    public String getDocente(){return docente;}
-
-    public char getNivel(){return nivel;}
-
-    public ArrayList<Clase> getClases(){return clases;}
+public class Parser {
 
     public ArrayList<GrupoParser> parser(String json) throws Exception
     {
@@ -85,5 +56,24 @@ public class GrupoParser {
             materias.add(new GrupoParser(id,nombre,docente,nivel,grupo,clases));
         }
         return materias;
+    }
+
+    public int getID(String nombreMat) throws Exception {
+        /*int id = 0;
+        Object obj = new JSONParser().parse(new FileReader("materiasID.json"));
+        JSONArray materias = (JSONArray) obj;
+        JSONObject jo;
+        Iterator it = materias.iterator();
+        boolean encontrado = false;
+        while(!encontrado && it.hasNext()){
+            jo = (JSONObject)it.next();
+            String nombre = (String) jo.get("nombreMateria");
+            if(nombreMat.equals(nombre)) {
+                id = Integer.parseInt((String)jo.get("id"));
+                encontrado = true;
+            }
+        }
+        return id;*/
+        return 0;
     }
 }
