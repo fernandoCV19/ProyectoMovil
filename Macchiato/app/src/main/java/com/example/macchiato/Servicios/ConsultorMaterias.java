@@ -1,7 +1,7 @@
 package com.example.macchiato.Servicios;
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
-import com.example.macchiato.Models.GrupoParser;
+import com.example.macchiato.Models.GrupoModelParser;
 import com.example.macchiato.Parser.Parser;
 
 import java.util.HashMap;
@@ -28,14 +28,14 @@ public class ConsultorMaterias {
         return res;
     }
 
-    public  void clasificarMaterias (ArrayList<GrupoParser>listaGrupos){
+    public  void clasificarMaterias (ArrayList<GrupoModelParser>listaGrupos){
 
         iniciarHashMap();
         String materiaActual = "";
         Materia actual = new Materia(0, "", '1', null);
         boolean primero = true;
 
-        for(GrupoParser grupoActual: listaGrupos){
+        for(GrupoModelParser grupoActual: listaGrupos){
             if(grupoActual.getNombre().equals(materiaActual)){
                 Grupo grupo = new Grupo(grupoActual.getID(),grupoActual.getGrupo(), grupoActual.getDocente(), grupoActual.getClases());
                 actual.getGrupos().add(grupo);

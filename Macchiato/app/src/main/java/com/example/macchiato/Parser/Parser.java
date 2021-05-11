@@ -2,7 +2,7 @@ package com.example.macchiato.Parser;
 
 import com.example.macchiato.Enums.Dia;
 import com.example.macchiato.Models.Clase;
-import com.example.macchiato.Models.GrupoParser;
+import com.example.macchiato.Models.GrupoModelParser;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,7 +13,7 @@ import java.util.Iterator;
 
 public class Parser {
 
-    public ArrayList<GrupoParser> parser(String json) throws Exception
+    public ArrayList<GrupoModelParser> parser(String json) throws Exception
     {
         JSONParser parser = new JSONParser();
         JSONObject jo =(JSONObject) parser.parse(json);;
@@ -23,7 +23,7 @@ public class Parser {
         JSONArray clas;
         Iterator itr = mats.iterator();
         Iterator itr2;
-        ArrayList<GrupoParser> materias = new ArrayList<GrupoParser>();
+        ArrayList<GrupoModelParser> materias = new ArrayList<GrupoModelParser>();
         int id,grupo;
         String docente, horaInicio, horaFinal, aula;
         String nombre;
@@ -53,7 +53,7 @@ public class Parser {
 
                 clases.add(new Clase(dia, horaInicio, horaFinal, aula));
             }
-            materias.add(new GrupoParser(id,nombre,docente,nivel,grupo,clases));
+            materias.add(new GrupoModelParser(id,nombre,docente,nivel,grupo,clases));
         }
         return materias;
     }

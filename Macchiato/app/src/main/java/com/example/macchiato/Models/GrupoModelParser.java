@@ -1,17 +1,8 @@
 package com.example.macchiato.Models;
 
-import com.example.macchiato.Enums.Dia;
-import com.example.macchiato.Models.Clase;
-
 import java.util.ArrayList;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
-
-import java.util.Iterator;
-
-public class GrupoParser {
+public class GrupoModelParser {
     private int id;
     private String nombre;
     private String docente;
@@ -19,8 +10,8 @@ public class GrupoParser {
     private int grupo;
     private ArrayList<Clase> clases;
 
-    public GrupoParser(int id, String nombre, String docente,
-                       char nivel, int grupo, ArrayList<Clase> clases){
+    public GrupoModelParser(int id, String nombre, String docente,
+                            char nivel, int grupo, ArrayList<Clase> clases){
         this.id = id;
         this.nombre = nombre;
         this.docente = docente;
@@ -29,7 +20,7 @@ public class GrupoParser {
         this.clases = clases;
     }
 
-    public GrupoParser() {
+    public GrupoModelParser() {
 
     }
 
