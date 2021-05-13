@@ -82,6 +82,12 @@
                 android:text="CERRAR SESIÓN" />
 
             <Button
+                android:id="@+id/id_descargas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="desc" />
+
+            <Button
                 android:id="@+id/buttonEditar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

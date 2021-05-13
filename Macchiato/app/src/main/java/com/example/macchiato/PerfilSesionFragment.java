@@ -100,8 +100,13 @@ public class PerfilSesionFragment extends Fragment {
             }
         });
 
-
-
+        Button btnDes = (Button) view.findViewById(R.id.id_descargas);
+        btnDes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),Descargas_Externas.class));
+            }
+        });
 
 
 

@@ -32,6 +32,7 @@ public class PerfilFragment extends Fragment {
                 //getActivity().finish();
             }
         });
+
         return view;
     }
 
