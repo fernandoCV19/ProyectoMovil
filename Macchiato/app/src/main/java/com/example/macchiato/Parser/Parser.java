@@ -1,32 +1,56 @@
 package com.example.macchiato.Parser;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.macchiato.Enums.Dia;
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.GrupoModelParser;
+import com.example.macchiato.Models.MyApp;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Parser extends AppCompatActivity {
+public class Parser  {
 
     private Context context;
 
-    public Parser(Context context){
-        this.context = context;
-    }
     public ArrayList<GrupoModelParser> parser() throws Exception
     {
+        AssetManager assetManager = Resources.getSystem().getAssets();
+
+        //Object obj2 = new JSONParser().parse(new FileReader("D:\\Documents\\UMSS\\programacion movil\\ProyectoMovil\\Macchiato\\app\\src\\main\\assets\\materias.json"));
+
+
+        String json = null;
+        try {
+            MyApp myApp = new MyApp();
+            InputStream is = myApp.getContext().getAssets().open("materias.json");//assetManager.open("D:\\Documents\\UMSS\\programacion movil\\ProyectoMovil\\Macchiato\\app\\src\\main\\assets\\materias.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        System.out.println(json);
+
         LectorJson lectorJson = new LectorJson();
-        String json = lectorJson.loadJSONFromAsset(context, "materias.json");
+        //String json = lectorJson.loadJSONFromAsset(context, "materias.json");
         Object obj = new JSONParser().parse(json);
 
         JSONObject jo =(JSONObject) obj;

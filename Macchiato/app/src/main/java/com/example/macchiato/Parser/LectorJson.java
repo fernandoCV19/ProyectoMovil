@@ -1,5 +1,6 @@
 package com.example.macchiato.Parser;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +12,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class LectorJson extends AppCompatActivity {
+public class LectorJson extends Application {
+    private Context context;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        context = getApplicationContext();
+    }
     public LectorJson() throws IOException, ParseException {
-
+        onCreate();
     }
     public String loadJSONFromAsset(Context context, String archivo) {
         String json = null;

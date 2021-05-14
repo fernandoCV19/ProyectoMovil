@@ -55,7 +55,7 @@ public class MateriaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Parser p = new Parser(getActivity());
+        Parser p = new Parser();
         try {
             p.parser();
         } catch (Exception e) {
