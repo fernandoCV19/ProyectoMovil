@@ -1,14 +1,20 @@
 package com.example.macchiato;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,9 +110,30 @@ public class PerfilSesionFragment extends Fragment {
         btnDes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),Descargas_Externas.class));
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(getActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+                            PackageManager.PERMISSION_DENIED){
+                        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+                        requestPermissions(permissions,1000);
+
+                    }else {
+                        startDownloading();
+                    }
+                }
+                else {
+                    startDownloading();
+                }       
             }
         });
+
+
+
+
+
+
+
+
 
 
 
@@ -166,5 +193,20 @@ public class PerfilSesionFragment extends Fragment {
                 Toast.makeText(getActivity(), "error al subir", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private  void  startDownloading(){
+        String url ="http://imagenes.fcyt.umss.edu.bo/Cronograma%20Gestion%201-2021v6.pdf";
+
+        DownloadManager.Request request= new DownloadManager.Request(Uri.parse(url));
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+        request.setTitle("Download");
+        request.setDescription("Descargando archivo");
+
+        request.allowScanningByMediaScanner();
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+System.currentTimeMillis());
+        DownloadManager downloadManager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+        downloadManager.enqueue(request);
     }
 }
