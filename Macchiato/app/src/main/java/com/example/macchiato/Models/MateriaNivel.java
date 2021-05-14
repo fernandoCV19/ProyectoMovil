@@ -56,29 +56,6 @@ public class MateriaNivel {
         this.color = color;
     }
 
-    public ArrayList<MateriaNivel> parser(String json) throws Exception{
-        Object obj = new JSONParser().parse(json);
-        //Object obj = new JSONParser().parse(new FileReader("materias.json"));
-        JSONObject jo = (JSONObject) obj;
-        JSONObject joc;
 
-        JSONArray materias = (JSONArray) jo.get("MATERIAS");
-        Iterator itr = materias.iterator();
-
-        ArrayList<MateriaNivel> materiasList = new ArrayList<MateriaNivel>();
-        int id;
-        char niv;
-        String nombre;
-        while (itr.hasNext())
-        {
-            jo = (JSONObject)itr.next();
-
-            id = Integer.parseInt((String)jo.get("codigo"));
-            niv = ((String)jo.get("nivel")).charAt(0);
-            nombre = (String) jo.get("nombreMateria");
-            materiasList.add(new MateriaNivel(id, niv, nombre));
-        }
-        return materiasList;
-    }
 
 }

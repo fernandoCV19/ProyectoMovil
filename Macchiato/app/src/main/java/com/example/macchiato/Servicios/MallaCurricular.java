@@ -13,13 +13,72 @@ public class MallaCurricular {
     private int requisitos_ia1;
     private int requisitos_TG2;
     public MallaCurricular(){
-        cola1 = new ArrayList<>();
-        cola2 = new ArrayList<>();
-        cola3 = new ArrayList<>();
-        cola4 = new ArrayList<>();
-        cola5 = new ArrayList<>();
-        cola6 = new ArrayList<>();
-        cola7 = new ArrayList<>();
+
+        cola1=new ArrayList<>();
+        cola1.add(1);
+        cola1.add(6);
+        cola1.add(16);
+        cola1.add(20);
+        cola1.add(24);
+        cola1.add(33);
+        cola1.add(37);
+        cola1.add(44);
+        cola1.add(53);
+        cola2=new ArrayList<>();
+        cola2.add(3);
+        cola2.add(7);
+        cola2.add(13);
+        cola2.add(22);
+        cola2.add(29);
+        cola2.add(34);
+        cola2.add(40);
+        cola3=new ArrayList<>();
+        cola3.add(4);
+        cola3.add(8);
+        cola3.add(12);
+        cola3.add(18);
+        cola3.add(29);
+        cola3.add(34);
+        cola3.add(40);
+
+        cola4=new ArrayList<>();
+        cola4.add(5);
+        cola4.add(9);
+        cola4.add(17);
+        cola4.add(21);
+        cola4.add(26);
+        cola4.add(30);
+        cola4.add(37);
+        cola4.add(44);
+        cola4.add(53);
+
+        cola5=new ArrayList<>();
+        cola5.add(5);
+        cola5.add(11);
+        cola5.add(15);
+        cola5.add(23);
+        cola5.add(28);
+        cola5.add(35);
+        cola5.add(38);
+        cola5.add(53);
+
+        cola6=new ArrayList<>();
+        cola6.add(2);
+        cola6.add(10);
+        cola6.add(14);
+        cola6.add(19);
+        cola6.add(25);
+        cola6.add(31);
+        cola6.add(41);
+
+        cola7=new  ArrayList<>();
+        cola7.add(2);
+        cola7.add(10);
+        cola7.add(14);
+        cola7.add(19);
+        cola7.add(27);
+        cola7.add(32);
+
         requisitos_ia1 = requisitos_TG2 = 2;
     }
     public ArrayList<Integer> getSiguientes(){
@@ -49,6 +108,9 @@ public class MallaCurricular {
         else if(b == 53 && requisitos_TG2 == 0) sig.add(b);
     }
     public void quitar(ArrayList<Integer> q){
+        if(q.contains(22) || q.contains(18)) requisitos_ia1--;
+        if(q.contains(44) || q.contains(43)) requisitos_TG2--;
+
         if(q.contains(cola1.get(0))) cola1.remove(0);
         if(q.contains(cola2.get(0))) cola2.remove(0);
         if(q.contains(cola3.get(0))) cola3.remove(0);

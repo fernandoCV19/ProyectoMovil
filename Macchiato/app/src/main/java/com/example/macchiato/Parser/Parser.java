@@ -1,5 +1,10 @@
 package com.example.macchiato.Parser;
 
+import android.app.Activity;
+import android.content.Context;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.macchiato.Enums.Dia;
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.GrupoModelParser;
@@ -11,12 +16,20 @@ import org.json.simple.parser.JSONParser;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Parser {
+public class Parser extends AppCompatActivity {
 
-    public ArrayList<GrupoModelParser> parser(String json) throws Exception
+    private Context context;
+
+    public Parser(Context context){
+        this.context = context;
+    }
+    public ArrayList<GrupoModelParser> parser() throws Exception
     {
-        JSONParser parser = new JSONParser();
-        JSONObject jo =(JSONObject) parser.parse(json);;
+        LectorJson lectorJson = new LectorJson();
+        String json = lectorJson.loadJSONFromAsset(context, "materias.json");
+        Object obj = new JSONParser().parse(json);
+
+        JSONObject jo =(JSONObject) obj;
         JSONObject joc;
 
         JSONArray mats = (JSONArray) jo.get("MATERIAS");
@@ -59,8 +72,9 @@ public class Parser {
     }
 
     public int getID(String nombreMat) throws Exception {
-        /*int id = 0;
-        Object obj = new JSONParser().parse(new FileReader("materiasID.json"));
+        LectorJson lectorJson = new LectorJson();
+        int id = 0;
+        Object obj = new JSONParser().parse(lectorJson.loadJSONFromAsset(context, "materiasID.json"));
         JSONArray materias = (JSONArray) obj;
         JSONObject jo;
         Iterator it = materias.iterator();
@@ -73,7 +87,6 @@ public class Parser {
                 encontrado = true;
             }
         }
-        return id;*/
-        return 0;
+        return id;
     }
 }

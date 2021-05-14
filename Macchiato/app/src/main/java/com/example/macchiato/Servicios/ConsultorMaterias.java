@@ -49,7 +49,7 @@ public class ConsultorMaterias {
                 }
                 //Actuali actual
                 try{
-                    actual = new Materia((new Parser()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>());
+                    //actual = new Materia((new Parser()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>());
                 }catch(Exception e){}
                 Grupo grupo = new Grupo(grupoActual.getID(),grupoActual.getGrupo(), grupoActual.getDocente(), grupoActual.getClases());
                 actual.getGrupos().add(grupo);
