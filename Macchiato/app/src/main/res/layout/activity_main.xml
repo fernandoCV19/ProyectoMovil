@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/logo_nuevo"
     tools:context=".LogInActivity">
 
     <LinearLayout
@@ -19,21 +20,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            app:srcCompat="@drawable/logo" />
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="Macchiato"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/textUsuario" />
+            android:layout_marginTop="24dp"
+            android:fontFamily="casual"
+            android:text="@string/textUsuario"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
@@ -41,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
+            android:fontFamily="casual"
             android:inputType="textEmailAddress" />
 
         <TextView
@@ -48,7 +54,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/textContraseña" />
+            android:fontFamily="casual"
+            android:text="@string/textContraseña"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
@@ -56,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:ems="10"
+            android:fontFamily="casual"
             android:inputType="textPassword" />
 
         <LinearLayout
@@ -67,19 +76,24 @@
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
+                android:layout_marginTop="50dp"
+                android:layout_weight="0.5"
+                android:fontFamily="casual"
                 android:onClick="session"
-                android:text="@string/textIniciar_sesion" />
+                android:text="@string/textIniciar_sesion"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_weight="0.5"
+                android:fontFamily="casual"
                 android:onClick="register"
-                android:text="@string/textRegistrarse" />
+                android:text="@string/textRegistrarse"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 

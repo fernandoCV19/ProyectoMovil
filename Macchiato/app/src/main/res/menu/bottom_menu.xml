@@ -2,24 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/nav_horario"
+        
         android:title="Horarios"
-        android:icon="@drawable/ic_baseline_calendar_today_24">
+        android:icon="@drawable/ic_calendario">
 
     </item>
 
     <item android:id="@+id/nav_materias"
         android:title="Materias"
-        android:icon="@drawable/ic_baseline_menu_book_24">
+        android:icon="@drawable/ic_libro_abierto">
      </item>
 
     <item android:id="@+id/nav_ajustes"
         android:title="Ajustes"
-        android:icon="@drawable/ic_baseline_miscellaneous_services_24">
+        android:icon="@drawable/ic_configuraciones">
     </item>
 
     <item android:id="@+id/nav_perfil"
         android:title="Perfil"
-        android:icon="@drawable/ic_baseline_account_circle_24">
+        android:icon="@drawable/ic_usuario">
     </item>
 
 
