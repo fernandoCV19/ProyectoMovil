@@ -19,7 +19,7 @@ public class LectorJson extends Application {
         super.onCreate();
         context = getApplicationContext();
     }
-    public LectorJson() throws IOException, ParseException {
+    public LectorJson(){
         onCreate();
     }
     public String loadJSONFromAsset(String archivo) {

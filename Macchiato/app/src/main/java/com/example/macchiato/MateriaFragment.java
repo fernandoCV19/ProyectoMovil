@@ -1,6 +1,7 @@
 package com.example.macchiato;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 
 import com.example.macchiato.Models.MateriaNivel;
 import com.example.macchiato.Parser.MateriaNivelParser;
+import com.example.macchiato.Parser.MyApp;
 import com.example.macchiato.Parser.ParserMateriaGrupo;
 
 import org.json.JSONException;
@@ -54,10 +56,13 @@ public class MateriaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        String algo = null;
 
-        ParserMateriaGrupo p = new ParserMateriaGrupo();
         try {
-            p.parser();
+            Context c = new MyApp().getContext();
+
+            ParserMateriaGrupo p = new ParserMateriaGrupo();
+            p.parserMateriaGrupo();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +72,7 @@ public class MateriaFragment extends Fragment {
         MateriaNivelParser materiaNivel=new MateriaNivelParser();
         mostrar= new ArrayList<>();
         try {
-           mv = materiaNivel.parser(materias);
+           //mv = materiaNivel.parser(materias);
         } catch (Exception e) {
             e.printStackTrace();
         }

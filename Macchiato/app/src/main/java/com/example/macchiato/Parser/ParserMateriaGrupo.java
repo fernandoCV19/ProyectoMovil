@@ -1,5 +1,6 @@
 package com.example.macchiato.Parser;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.example.macchiato.Enums.Dia;
@@ -10,15 +11,39 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ParserMateriaGrupo {
+public class ParserMateriaGrupo extends Application {
 
     private Context context;
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        context = getApplicationContext();
+    }
+    public ParserMateriaGrupo(){
+        onCreate();
+    }
     public ArrayList<GrupoModelParser> parserMateriaGrupo() throws Exception
     {
+        String json2 = "";
+        try {
+            InputStream is = context.getAssets().open("materias.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json2 = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+        ////
         LectorJson lectorJson = new LectorJson();
         String json = lectorJson.loadJSONFromAsset("materias.json");
         Object obj = new JSONParser().parse(json);
