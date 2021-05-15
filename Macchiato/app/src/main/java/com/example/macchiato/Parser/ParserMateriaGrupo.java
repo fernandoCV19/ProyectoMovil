@@ -33,8 +33,8 @@ public class ParserMateriaGrupo {
         Iterator itr = mats.iterator();
         Iterator itr2;
         ArrayList<GrupoModelParser> materias = new ArrayList<GrupoModelParser>();
-        int id,grupo;
-        String docente, horaInicio, horaFinal, aula;
+        int id;
+        String docente, horaInicio, horaFinal, aula, grupo;
         String nombre;
         char nivel;
         Dia dia;
@@ -44,7 +44,7 @@ public class ParserMateriaGrupo {
             jo = (JSONObject)itr.next();
 
             id = Integer.parseInt((String)jo.get("id"));
-            grupo = Integer.parseInt((String)jo.get("grupo"));
+            grupo = ((String)jo.get("grupo"));
             nombre = (String) jo.get("nombreMateria");
             docente = (String) jo.get("docente");
             nivel = ((String) jo.get("nivel")).charAt(0);

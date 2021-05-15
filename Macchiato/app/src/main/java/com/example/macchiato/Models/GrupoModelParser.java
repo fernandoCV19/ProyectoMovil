@@ -7,11 +7,11 @@ public class GrupoModelParser {
     private String nombre;
     private String docente;
     private char nivel;
-    private int grupo;
+    private String grupo;
     private ArrayList<Clase> clases;
 
     public GrupoModelParser(int id, String nombre, String docente,
-                            char nivel, int grupo, ArrayList<Clase> clases){
+                            char nivel, String grupo, ArrayList<Clase> clases){
         this.id = id;
         this.nombre = nombre;
         this.docente = docente;
@@ -26,7 +26,7 @@ public class GrupoModelParser {
 
     public int getID(){return id;}
 
-    public int getGrupo(){return grupo;}
+    public String getGrupo(){return grupo;}
 
     public String getNombre(){return nombre;}
 

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class Grupo {
     private int id;
-    private int grupo;
+    private String grupo;
     private String docente;
     private ArrayList<Clase> clases;
 
-    public Grupo(int id, int grupo, String docente, ArrayList<Clase> clases){
+    public Grupo(int id, String grupo, String docente, ArrayList<Clase> clases){
         this.id = id;
         this.grupo = grupo;
         this.docente = docente;
@@ -24,7 +24,7 @@ public class Grupo {
         return clases;
     }
 
-    public int getGrupo(){
+    public String getGrupo(){
         return grupo;
     }
 
