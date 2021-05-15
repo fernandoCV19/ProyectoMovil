@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Models.MateriaNivel;
 import com.example.macchiato.Parser.MateriaNivelParser;
 import com.example.macchiato.Parser.MyApp;
@@ -56,12 +57,9 @@ public class MateriaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String algo = null;
 
+        ParserMateriaGrupo p = new ParserMateriaGrupo();
         try {
-            Context c = new MyApp().getContext();
-
-            ParserMateriaGrupo p = new ParserMateriaGrupo();
             p.parserMateriaGrupo();
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,7 +67,7 @@ public class MateriaFragment extends Fragment {
 
         mv=new ArrayList<>();
         materias=readJSONFromAsset();
-        MateriaNivelParser materiaNivel=new MateriaNivelParser();
+        MateriaNivelParser materiaNivel = new MateriaNivelParser();
         mostrar= new ArrayList<>();
         try {
            //mv = materiaNivel.parser(materias);
