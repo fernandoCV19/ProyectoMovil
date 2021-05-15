@@ -8,9 +8,10 @@ import java.util.HashMap;
 import java.util.ArrayList;
 public class ConsultorMaterias {
 
-    private HashMap <Character, ArrayList<Materia>> lisClasificada = new HashMap();
+    private static HashMap <Character, ArrayList<Materia>> lisClasificada;
 
-    private ArrayList<Materia> materias = new ArrayList<>();
+    private static ArrayList<Materia> materias;
+
 
     public   ArrayList<Grupo> devolverGrupos(ArrayList<Grupo>listaGrupos, ArrayList<Integer>ides ){
         ArrayList<Grupo>res=new ArrayList();
@@ -29,6 +30,8 @@ public class ConsultorMaterias {
     }
 
     public  void clasificarMaterias (ArrayList<GrupoModelParser>listaGrupos){
+        lisClasificada = new HashMap();
+        materias = new ArrayList<>();
 
         iniciarHashMap();
         String materiaActual = "";
@@ -77,5 +80,14 @@ public class ConsultorMaterias {
         }
 
         return materiasElegidas;
+    }
+
+
+    public static HashMap <Character, ArrayList<Materia>> getLisClasificada(){
+        return lisClasificada;
+    }
+
+    public static ArrayList<Materia> getMaterias(){
+        return materias;
     }
 }

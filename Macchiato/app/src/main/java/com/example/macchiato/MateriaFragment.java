@@ -1,7 +1,6 @@
 package com.example.macchiato;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,11 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Models.MateriaNivel;
 import com.example.macchiato.Parser.MateriaNivelParser;
-import com.example.macchiato.Parser.MyApp;
 import com.example.macchiato.Parser.ParserMateriaGrupo;
+import com.example.macchiato.Servicios.Iniciador;
 
 import org.json.JSONException;
 
@@ -58,9 +56,17 @@ public class MateriaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        /*
         ParserMateriaGrupo p = new ParserMateriaGrupo();
         try {
             p.parserMateriaGrupo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        Iniciador iniciador = new Iniciador();
+        try {
+            iniciador.iniciar();
         } catch (Exception e) {
             e.printStackTrace();
         }
