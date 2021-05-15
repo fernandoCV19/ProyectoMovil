@@ -19,7 +19,7 @@ public class ParserMateriaID {
         while(!encontrado && it.hasNext()){
             jo = (JSONObject)it.next();
             String nombre = (String) jo.get("nombreMateria");
-            if(nombreMat.equals(nombre)) {
+            if(nombreMat.contains(nombre)) {
                 id = Integer.parseInt((String)jo.get("id"));
                 encontrado = true;
             }

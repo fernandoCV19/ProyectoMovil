@@ -50,9 +50,10 @@ public class ConsultorMaterias {
                 }else{
                     primero = false;
                 }
-                //Actuali actual
+                //Actualiza actual
                 try{
                     actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>());
+                    materiaActual = actual.getNombre();
                 }catch(Exception e){
                     e.printStackTrace();
                 }
@@ -60,6 +61,8 @@ public class ConsultorMaterias {
                 actual.getGrupos().add(grupo);
             }
         }
+        System.out.println(lisClasificada);
+        System.out.println(materias);
     }
 
     private void iniciarHashMap (){
