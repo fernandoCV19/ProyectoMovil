@@ -22,7 +22,7 @@ public class LectorJson extends Application {
     public LectorJson() throws IOException, ParseException {
         onCreate();
     }
-    public String loadJSONFromAsset(Context context, String archivo) {
+    public String loadJSONFromAsset(String archivo) {
         String json = null;
         try {
             InputStream is = context.getAssets().open(archivo);

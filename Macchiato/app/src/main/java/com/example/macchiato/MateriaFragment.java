@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 
 import com.example.macchiato.Models.MateriaNivel;
 import com.example.macchiato.Parser.MateriaNivelParser;
-import com.example.macchiato.Parser.Parser;
+import com.example.macchiato.Parser.ParserMateriaGrupo;
 
 import org.json.JSONException;
 
@@ -55,7 +55,7 @@ public class MateriaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Parser p = new Parser();
+        ParserMateriaGrupo p = new ParserMateriaGrupo();
         try {
             p.parser();
         } catch (Exception e) {

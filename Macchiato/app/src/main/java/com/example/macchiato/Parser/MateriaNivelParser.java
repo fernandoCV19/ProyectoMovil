@@ -1,7 +1,5 @@
 package com.example.macchiato.Parser;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.macchiato.Models.MateriaNivel;
 
 import org.json.simple.JSONArray;
@@ -11,14 +9,14 @@ import org.json.simple.parser.JSONParser;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class MateriaNivelParser extends AppCompatActivity {
+public class MateriaNivelParser {
     public MateriaNivelParser(){
 
     }
-    public ArrayList<MateriaNivel> parser(String json) throws Exception{
+    public ArrayList<MateriaNivel> parserMateriaNivel() throws Exception{
 
         LectorJson lectorJson = new LectorJson();
-        Object obj = new JSONParser().parse(lectorJson.loadJSONFromAsset(this, "materiasNivel.json"));
+        Object obj = new JSONParser().parse(lectorJson.loadJSONFromAsset("materiasNivel.json"));
         JSONObject jo = (JSONObject) obj;
 
         JSONArray materias = (JSONArray) jo.get("MATERIAS");

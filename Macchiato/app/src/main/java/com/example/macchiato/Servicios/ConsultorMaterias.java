@@ -2,7 +2,7 @@ package com.example.macchiato.Servicios;
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.GrupoModelParser;
-import com.example.macchiato.Parser.Parser;
+import com.example.macchiato.Parser.ParserMateriaID;
 
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ public class ConsultorMaterias {
                 }
                 //Actuali actual
                 try{
-                    //actual = new Materia((new Parser()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>());
+                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>());
                 }catch(Exception e){}
                 Grupo grupo = new Grupo(grupoActual.getID(),grupoActual.getGrupo(), grupoActual.getDocente(), grupoActual.getClases());
                 actual.getGrupos().add(grupo);
