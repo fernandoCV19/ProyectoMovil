@@ -11,7 +11,8 @@ public class ParserMateriaID {
         LectorJson lectorJson = new LectorJson();
         int id = 0;
         Object obj = new JSONParser().parse(lectorJson.loadJSONFromAsset("materiasID.json"));
-        JSONArray materias = (JSONArray) obj;
+        JSONObject joMaterias = (JSONObject) obj;
+        JSONArray materias = (JSONArray) joMaterias.get("MATERIAS");
         JSONObject jo;
         Iterator it = materias.iterator();
         boolean encontrado = false;
