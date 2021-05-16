@@ -56,8 +56,6 @@ public class PerfilSesionFragment extends Fragment {
         auth=FirebaseAuth.getInstance();
         usuarioShow= (TextView) view.findViewById(R.id.usuarioActual_id);
         correoShow= (TextView) view.findViewById(R.id.correoActual_id);
-        profileImage= (ImageView) view.findViewById(R.id.foto_perfil_id);
-        cambFoto= (ImageButton) view.findViewById(R.id.editPic_btn);
         user= FirebaseAuth.getInstance().getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference profileRef = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");

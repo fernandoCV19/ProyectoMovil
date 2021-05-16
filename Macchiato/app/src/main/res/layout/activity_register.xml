@@ -22,11 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="92dp"
             android:layout_marginEnd="64dp"
             android:fontFamily="casual"
             android:text="@string/textUsuario"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName"
@@ -37,18 +38,20 @@
             android:ems="10"
             android:fontFamily="casual"
             android:inputType="textPersonName"
-            android:text="" />
+            android:text=""
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="64dp"
             android:fontFamily="casual"
             android:text="@string/textContraseña"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/editTextTextPassword2"
@@ -58,18 +61,20 @@
             android:layout_marginEnd="64dp"
             android:ems="10"
             android:fontFamily="casual"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="64dp"
             android:fontFamily="casual"
             android:text="@string/textRepetir_contrase_a"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/editTextTextPassword3"
@@ -79,18 +84,20 @@
             android:layout_marginEnd="64dp"
             android:ems="10"
             android:fontFamily="casual"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="64dp"
             android:fontFamily="casual"
             android:text="@string/textEmailregister"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress2"
@@ -100,7 +107,8 @@
             android:layout_marginEnd="64dp"
             android:ems="10"
             android:fontFamily="casual"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/register_btn"
@@ -112,7 +120,9 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="casual"
             android:onClick="registrar"
-            android:text="@string/textListo" />
+            android:text="@string/textListo"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

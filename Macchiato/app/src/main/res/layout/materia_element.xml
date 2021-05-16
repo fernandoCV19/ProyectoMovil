@@ -35,9 +35,11 @@
                     android:id="@+id/nomMateria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Materia"
-                    android:textSize="20sp">
+                    android:textSize="20sp"
+                    android:textStyle="bold">
 
                 </TextView>
 
@@ -45,8 +47,10 @@
                     android:id="@+id/codMateria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="casual"
                     android:gravity="center"
-                    android:text="Codigo de materia" />
+                    android:text="Codigo de materia"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </RelativeLayout>
