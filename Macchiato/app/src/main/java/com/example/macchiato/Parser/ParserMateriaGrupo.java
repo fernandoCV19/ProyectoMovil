@@ -39,6 +39,7 @@ public class ParserMateriaGrupo {
         char nivel;
         Dia dia;
         ArrayList<Clase> clases;
+        String codigo;
         while (itr.hasNext())
         {
             jo = (JSONObject)itr.next();
@@ -48,6 +49,7 @@ public class ParserMateriaGrupo {
             nombre = (String) jo.get("nombreMateria");
             docente = (String) jo.get("docente");
             nivel = ((String) jo.get("nivel")).charAt(0);
+            codigo = ((String) jo.get("codigo"));
 
             clas = (JSONArray) jo.get("clases");
             itr2 = clas.iterator();
@@ -62,7 +64,7 @@ public class ParserMateriaGrupo {
 
                 clases.add(new Clase(dia, horaInicio, horaFinal, aula));
             }
-            materias.add(new GrupoModelParser(id,nombre,docente,nivel,grupo,clases));
+            materias.add(new GrupoModelParser(id,nombre,docente,nivel,grupo,clases, codigo));
         }
         return materias;
     }

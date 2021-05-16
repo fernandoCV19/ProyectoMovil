@@ -55,7 +55,7 @@ public class ConsultorMaterias {
                 }
                 //Actualiza actual
                 try{
-                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),getColorNivel(grupoActual.getNivel()), "A");
+                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),getColorNivel(grupoActual.getNivel()), grupoActual.getCodigo());
                     materiaActual = actual.getNombre();
                 }catch(Exception e){
                     e.printStackTrace();
