@@ -2,15 +2,16 @@ package com.example.macchiato.Servicios;
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.GrupoModelParser;
-import com.example.macchiato.Parser.Parser;
+import com.example.macchiato.Parser.ParserMateriaID;
 
 import java.util.HashMap;
 import java.util.ArrayList;
 public class ConsultorMaterias {
 
-    private HashMap <Character, ArrayList<Materia>> lisClasificada = new HashMap();
+    private static HashMap <Character, ArrayList<Materia>> lisClasificada;
 
-    private ArrayList<Materia> materias = new ArrayList<>();
+    private static ArrayList<Materia> materias;
+
 
     public   ArrayList<Grupo> devolverGrupos(ArrayList<Grupo>listaGrupos, ArrayList<Integer>ides ){
         ArrayList<Grupo>res=new ArrayList();
@@ -29,6 +30,8 @@ public class ConsultorMaterias {
     }
 
     public  void clasificarMaterias (ArrayList<GrupoModelParser>listaGrupos){
+        lisClasificada = new HashMap();
+        materias = new ArrayList<>();
 
         iniciarHashMap();
         String materiaActual = "";
@@ -47,14 +50,19 @@ public class ConsultorMaterias {
                 }else{
                     primero = false;
                 }
-                //Actuali actual
+                //Actualiza actual
                 try{
-                    actual = new Materia((new Parser()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>());
-                }catch(Exception e){}
+                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>());
+                    materiaActual = actual.getNombre();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
                 Grupo grupo = new Grupo(grupoActual.getID(),grupoActual.getGrupo(), grupoActual.getDocente(), grupoActual.getClases());
                 actual.getGrupos().add(grupo);
             }
         }
+        System.out.println(lisClasificada);
+        System.out.println(materias);
     }
 
     private void iniciarHashMap (){
@@ -77,5 +85,14 @@ public class ConsultorMaterias {
         }
 
         return materiasElegidas;
+    }
+
+
+    public static HashMap <Character, ArrayList<Materia>> getLisClasificada(){
+        return lisClasificada;
+    }
+
+    public static ArrayList<Materia> getMaterias(){
+        return materias;
     }
 }

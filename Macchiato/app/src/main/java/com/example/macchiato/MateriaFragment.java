@@ -17,6 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.macchiato.Models.MateriaNivel;
+import com.example.macchiato.Parser.MateriaNivelParser;
+import com.example.macchiato.Parser.ParserMateriaGrupo;
+import com.example.macchiato.Servicios.Iniciador;
 
 import org.json.JSONException;
 
@@ -52,12 +55,28 @@ public class MateriaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        /*
+        ParserMateriaGrupo p = new ParserMateriaGrupo();
+        try {
+            p.parserMateriaGrupo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        Iniciador iniciador = new Iniciador();
+        try {
+            iniciador.iniciar();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         mv=new ArrayList<>();
         materias=readJSONFromAsset();
-        MateriaNivel materiaNivel=new MateriaNivel();
+        MateriaNivelParser materiaNivel = new MateriaNivelParser();
         mostrar= new ArrayList<>();
         try {
-           mv = materiaNivel.parser(materias);
+           //mv = materiaNivel.parser(materias);
         } catch (Exception e) {
             e.printStackTrace();
         }
