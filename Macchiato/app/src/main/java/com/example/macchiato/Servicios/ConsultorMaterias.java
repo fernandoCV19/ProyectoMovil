@@ -1,8 +1,11 @@
 package com.example.macchiato.Servicios;
+import android.view.MenuItem;
+
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.GrupoModelParser;
 import com.example.macchiato.Parser.ParserMateriaID;
+import com.example.macchiato.R;
 
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -35,7 +38,7 @@ public class ConsultorMaterias {
 
         iniciarHashMap();
         String materiaActual = "";
-        Materia actual = new Materia(0, "", '1', null,"");
+        Materia actual = new Materia(0, "", '1', null,"", "A");
         boolean primero = true;
 
         for(GrupoModelParser grupoActual: listaGrupos){
@@ -52,7 +55,7 @@ public class ConsultorMaterias {
                 }
                 //Actualiza actual
                 try{
-                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),"");
+                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),getColorNivel(grupoActual.getNivel()), "A");
                     materiaActual = actual.getNombre();
                 }catch(Exception e){
                     e.printStackTrace();
@@ -94,5 +97,39 @@ public class ConsultorMaterias {
 
     public static ArrayList<Materia> getMaterias(){
         return materias;
+    }
+
+    public String getColorNivel(char nivel) {
+        String respuesta = "";
+        switch(nivel) {
+            case 'B':
+                respuesta = "#48a259";
+                break;
+            case 'A':
+                respuesta = "#00e25f";
+                break;
+            case 'C':
+                respuesta = "#99e801";
+                break;
+            case 'D':
+                respuesta = "#48a259";
+                break;
+            case 'E':
+                respuesta = "#48a259";
+                break;
+            case 'F':
+                respuesta = "#48a259";
+                break;
+            case 'G':
+                respuesta = "#48a259";
+                break;
+            case 'H':
+                respuesta = "#48a259";
+                break;
+            case 'I':
+                respuesta = "#48a259";
+                break;
+        }
+        return respuesta;
     }
 }

@@ -10,13 +10,17 @@ public class Materia {
     private char nivel;
     private ArrayList<Grupo> grupos;
     private String color;
+    private String codigo;
 
-    public Materia(int id, String nombre, char nivel, ArrayList<Grupo> grupos, String color) {
+
+
+    public Materia(int id, String nombre, char nivel, ArrayList<Grupo> grupos, String color, String codigo) {
         this.id = id;
         this.nombre = nombre;
         this.nivel = nivel;
         this.grupos = grupos;
         this.color = color;
+        this.codigo = codigo;
     }
 
     public int getId() {
@@ -57,5 +61,13 @@ public class Materia {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 }
