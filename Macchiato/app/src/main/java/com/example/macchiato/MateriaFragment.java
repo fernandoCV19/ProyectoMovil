@@ -16,18 +16,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNivel;
+import com.example.macchiato.Parser.MateriaNivelParser;
+import com.example.macchiato.Parser.ParserMateriaGrupo;
+import com.example.macchiato.Servicios.ConsultorMaterias;
+import com.example.macchiato.Servicios.Iniciador;
 
 import org.json.JSONException;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class MateriaFragment extends Fragment {
-    ArrayList<MateriaNivel> mv;
-    ArrayList<MateriaNivel> mostrar;
+    ArrayList<Materia> mv;
+    ArrayList<Materia> mostrar;
     RecyclerView recyclerView;
     String materias;
     char nivel;
@@ -52,15 +58,30 @@ public class MateriaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mv=new ArrayList<>();
-        materias=readJSONFromAsset();
-        MateriaNivel materiaNivel=new MateriaNivel();
-        mostrar= new ArrayList<>();
+
+        /*
+        ParserMateriaGrupo p = new ParserMateriaGrupo();
         try {
-           mv = materiaNivel.parser(materias);
+            p.parserMateriaGrupo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        Iniciador iniciador = new Iniciador();
+        try {
+            iniciador.iniciar();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        HashMap<Character, ArrayList<Materia>> materias= ConsultorMaterias.getLisClasificada();
+        mv=new ArrayList<>();
+        mv = materias.get('A');
+
+        MateriaNivelParser materiaNivelParser = new MateriaNivelParser();
+        mostrar= new ArrayList<>();
+
+
         mostrarPorNivel(color,nivel);
         View rootView=inflater.inflate(R.layout.fragment_materia,container,false);
 
@@ -120,24 +141,8 @@ public class MateriaFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    public String readJSONFromAsset() {
-        String json = null;
-        try {
-            InputStream is = getActivity().getAssets().open("materiasNivel.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
-    }
-
     private void mostrarPorNivel(String color,char nivel){
-        for(MateriaNivel mave : mv){
+        for(Materia mave : mv){
             if (mave.getNivel()==nivel){
                 mave.setColor(color);
                 mostrar.add(mave);

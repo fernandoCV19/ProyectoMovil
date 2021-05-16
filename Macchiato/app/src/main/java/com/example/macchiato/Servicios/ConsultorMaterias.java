@@ -1,16 +1,20 @@
 package com.example.macchiato.Servicios;
+import android.view.MenuItem;
+
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.GrupoModelParser;
-import com.example.macchiato.Parser.Parser;
+import com.example.macchiato.Parser.ParserMateriaID;
+import com.example.macchiato.R;
 
 import java.util.HashMap;
 import java.util.ArrayList;
 public class ConsultorMaterias {
 
-    private HashMap <Character, ArrayList<Materia>> lisClasificada = new HashMap();
+    private static HashMap <Character, ArrayList<Materia>> lisClasificada;
 
-    private ArrayList<Materia> materias = new ArrayList<>();
+    private static ArrayList<Materia> materias;
+
 
     public   ArrayList<Grupo> devolverGrupos(ArrayList<Grupo>listaGrupos, ArrayList<Integer>ides ){
         ArrayList<Grupo>res=new ArrayList();
@@ -29,10 +33,12 @@ public class ConsultorMaterias {
     }
 
     public  void clasificarMaterias (ArrayList<GrupoModelParser>listaGrupos){
+        lisClasificada = new HashMap();
+        materias = new ArrayList<>();
 
         iniciarHashMap();
         String materiaActual = "";
-        Materia actual = new Materia(0, "", '1', null);
+        Materia actual = new Materia(0, "", '1', null,"", "A");
         boolean primero = true;
 
         for(GrupoModelParser grupoActual: listaGrupos){
@@ -47,14 +53,19 @@ public class ConsultorMaterias {
                 }else{
                     primero = false;
                 }
-                //Actuali actual
+                //Actualiza actual
                 try{
-                    actual = new Materia((new Parser()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>());
-                }catch(Exception e){}
+                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),getColorNivel(grupoActual.getNivel()), "A");
+                    materiaActual = actual.getNombre();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
                 Grupo grupo = new Grupo(grupoActual.getID(),grupoActual.getGrupo(), grupoActual.getDocente(), grupoActual.getClases());
                 actual.getGrupos().add(grupo);
             }
         }
+        System.out.println(lisClasificada);
+        System.out.println(materias);
     }
 
     private void iniciarHashMap (){
@@ -77,5 +88,48 @@ public class ConsultorMaterias {
         }
 
         return materiasElegidas;
+    }
+
+
+    public static HashMap <Character, ArrayList<Materia>> getLisClasificada(){
+        return lisClasificada;
+    }
+
+    public static ArrayList<Materia> getMaterias(){
+        return materias;
+    }
+
+    public String getColorNivel(char nivel) {
+        String respuesta = "";
+        switch(nivel) {
+            case 'B':
+                respuesta = "#48a259";
+                break;
+            case 'A':
+                respuesta = "#00e25f";
+                break;
+            case 'C':
+                respuesta = "#99e801";
+                break;
+            case 'D':
+                respuesta = "#48a259";
+                break;
+            case 'E':
+                respuesta = "#48a259";
+                break;
+            case 'F':
+                respuesta = "#48a259";
+                break;
+            case 'G':
+                respuesta = "#48a259";
+                break;
+            case 'H':
+                respuesta = "#48a259";
+                break;
+            case 'I':
+                respuesta = "#48a259";
+                break;
+        }
+        return respuesta;
     }
 }

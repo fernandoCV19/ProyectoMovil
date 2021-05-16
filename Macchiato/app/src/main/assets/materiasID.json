@@ -1,0 +1,285 @@
+{
+  "MATERIAS":[
+    {
+      "id":"1",
+      "nombreMateria":"INGLES I"
+
+    },
+    {
+      "id":"2",
+      "nombreMateria":"FISICA GENERAL"
+
+    },
+    {
+      "id":"3",
+      "nombreMateria":"ALGEBRA I"
+
+    },
+    {
+      "id":"4",
+      "nombreMateria":"CALCULO I"
+
+    },
+    {
+      "id":"5",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION"
+
+    },
+    {
+      "id":"6",
+      "nombreMateria":"INGLES II"
+
+    },
+    {
+      "id":"7",
+      "nombreMateria":"ALGEBRA II"
+
+    },
+    {
+      "id":"8",
+      "nombreMateria":"CALCULO II"
+
+    },
+    {
+      "id":"9",
+      "nombreMateria":" ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS"
+
+    },
+    {
+      "id":"10",
+      "nombreMateria":" ARQUITECTURA DE COMPUTADORAS I"
+
+    },
+    {
+      "id":"11",
+      "nombreMateria":" PROGRAMACION"
+
+    },
+    {
+      "id":"12",
+      "nombreMateria":" CALCULO NUMERICO"
+
+    },
+    {
+      "id":"13",
+      "nombreMateria":"LOGICA"
+
+    },
+    {
+      "id":"14",
+      "nombreMateria":"ARQUITECTURA DE COMPUTADORAS II"
+
+    },
+    {
+      "id":"15",
+      "nombreMateria":"TEORIA DE GRAFOS"
+
+    },
+    {
+      "id":"16",
+      "nombreMateria":"ORGANIZACION Y METODOS"
+
+    },
+    {
+      "id":"17",
+      "nombreMateria":"METODOS Y TECNICAS DE PROGRAMACION"
+
+    },
+    {
+      "id":"18",
+      "nombreMateria":"PROBABILIDAD Y ESTADISTICA"
+
+    },
+    {
+      "id":"19",
+      "nombreMateria":" TALLER DE PROGRAMACION EN BAJO NIVEL"
+
+    },
+    {
+      "id":"20",
+      "nombreMateria":"BASE DE DATOS I"
+
+    },
+    {
+      "id":"21",
+      "nombreMateria":"SISTEMAS DE INFORMACION I"
+
+    },
+
+    {
+      "id":"22",
+      "nombreMateria":"PROGRAMACION FUNCIONAL"
+
+    },
+
+    {
+      "id":"23",
+      "nombreMateria":"ALGORITMOS AVANZADOS"
+
+    },
+
+    {
+      "id":"24",
+      "nombreMateria":"BASE DE DATOS II"
+
+    },
+
+    {
+      "id":"25",
+      "nombreMateria":"TALLER DE SISTEMAS OPERATIVOS"
+
+    },
+
+    {
+      "id":"26",
+      "nombreMateria":" SISTEMAS DE INFORMACION II"
+
+    },
+
+    {
+      "id":"27",
+      "nombreMateria":"TEORIA DE AUTOMATAS Y LENG. FORMALES"
+
+    },
+
+    {
+      "id":"28",
+      "nombreMateria":"GRAFICACION POR COMPUTADORA"
+
+    },
+
+    {
+      "id":"29",
+      "nombreMateria":" INTELIGENCIA ARTIFICIAL I"
+
+    },
+
+    {
+      "id":"30",
+      "nombreMateria":"INGENIERIA DE SOFTWARE"
+
+    },
+
+
+    {
+      "id":"31",
+      "nombreMateria":"REDES DE COMPUTADORAS"
+
+    },
+    {
+      "id":"32",
+      "nombreMateria":"ESTRUCTURA Y SEMANTICA DE LENGUAJES DE"
+
+    },
+    {
+      "id":"33",
+      "nombreMateria":"TALLER DE BASE DE DATOS"
+
+    },
+    {
+      "id":"34",
+      "nombreMateria":"INTELIGENCIA ARTIFICIAL II"
+
+    },
+    {
+      "id":"35",
+      "nombreMateria":"PROGRAMACION WEB"
+
+    },
+    {
+      "id":"36",
+      "nombreMateria":"SIMULACION DE SISTEMAS"
+
+    },
+    {
+      "id":"37",
+      "nombreMateria":"TALLER DE INGENIERIA DE SOFTWARE"
+
+    },
+    {
+      "id":"38",
+      "nombreMateria":"ARQUITECTURA DE SOFTWARE"
+
+    },
+    {
+      "id":"39",
+      "nombreMateria":"TELEFONIA IP"
+
+    },
+    {
+      "id":"40",
+      "nombreMateria":"INTERACCION HUMANO COMPUTADOR"
+
+    },
+    {
+      "id":"41",
+      "nombreMateria":"TECNOLOGIA REDES AVANZADAS"
+
+    },
+    {
+      "id":"42",
+      "nombreMateria":"APLICACION DE SISTEMAS OPERATIVOS"
+
+    },
+    {
+      "id":"43",
+      "nombreMateria":"EVALUACION Y AUDITORIA DE SISTEMAS"
+
+    },
+
+    {
+      "id":"44",
+      "nombreMateria":"TALLER DE GRADO I"
+
+    },
+    {
+      "id":"45",
+      "nombreMateria":"DATA WAREHOUSE"
+
+    },
+    {
+      "id":"46",
+      "nombreMateria":"DISE¥O DE COMPILADORES"
+
+    },
+
+    {
+      "id":"47",
+      "nombreMateria":"WEB SEMANTICAS"
+
+    },
+
+    {
+      "id":"48",
+      "nombreMateria":"ROBOTICA"
+
+    },
+    {
+      "id":"49",
+      "nombreMateria":"PROGRAMACION MOVIL"
+
+    },
+    {
+      "id":"50",
+      "nombreMateria":"AGENTES INTELIGENTES"
+
+    },
+    {
+      "id":"51",
+      "nombreMateria":"APLICACIONES WEB AVANZADAS"
+
+    },
+    {
+      "id":"52",
+      "nombreMateria":"SEGURIDAD DE SISTEMAS"
+
+    },
+    {
+      "id":"53",
+      "nombreMateria":"TALLER DE GRADO II"
+
+    }
+  ]
+}
+
+

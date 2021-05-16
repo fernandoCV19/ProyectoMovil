@@ -28,9 +28,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="64dp"
+                android:fontFamily="casual"
                 android:gravity="center"
                 android:text="Para guardar sus datos, inicie sesion"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -44,8 +46,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
+                android:fontFamily="casual"
                 android:gravity="center"
-                android:text="@string/textIniciar_sesion" />
+                android:text="@string/textIniciar_sesion"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

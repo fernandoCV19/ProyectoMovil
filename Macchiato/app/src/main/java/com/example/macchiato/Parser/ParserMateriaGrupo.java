@@ -1,22 +1,31 @@
 package com.example.macchiato.Parser;
 
+import android.app.Application;
+import android.content.Context;
+
 import com.example.macchiato.Enums.Dia;
 import com.example.macchiato.Models.Clase;
+import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Models.GrupoModelParser;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Parser {
+public class ParserMateriaGrupo {
 
-    public ArrayList<GrupoModelParser> parser(String json) throws Exception
+    public ArrayList<GrupoModelParser> parserMateriaGrupo() throws Exception
     {
-        JSONParser parser = new JSONParser();
-        JSONObject jo =(JSONObject) parser.parse(json);;
+        LectorJson lectorJson = new LectorJson();
+        String json = lectorJson.loadJSONFromAsset("materias.json");
+        Object obj = new JSONParser().parse(json);
+
+        JSONObject jo =(JSONObject) obj;
         JSONObject joc;
 
         JSONArray mats = (JSONArray) jo.get("MATERIAS");
@@ -24,8 +33,8 @@ public class Parser {
         Iterator itr = mats.iterator();
         Iterator itr2;
         ArrayList<GrupoModelParser> materias = new ArrayList<GrupoModelParser>();
-        int id,grupo;
-        String docente, horaInicio, horaFinal, aula;
+        int id;
+        String docente, horaInicio, horaFinal, aula, grupo;
         String nombre;
         char nivel;
         Dia dia;
@@ -35,7 +44,7 @@ public class Parser {
             jo = (JSONObject)itr.next();
 
             id = Integer.parseInt((String)jo.get("id"));
-            grupo = Integer.parseInt((String)jo.get("grupo"));
+            grupo = ((String)jo.get("grupo"));
             nombre = (String) jo.get("nombreMateria");
             docente = (String) jo.get("docente");
             nivel = ((String) jo.get("nivel")).charAt(0);
@@ -56,24 +65,5 @@ public class Parser {
             materias.add(new GrupoModelParser(id,nombre,docente,nivel,grupo,clases));
         }
         return materias;
-    }
-
-    public int getID(String nombreMat) throws Exception {
-        /*int id = 0;
-        Object obj = new JSONParser().parse(new FileReader("materiasID.json"));
-        JSONArray materias = (JSONArray) obj;
-        JSONObject jo;
-        Iterator it = materias.iterator();
-        boolean encontrado = false;
-        while(!encontrado && it.hasNext()){
-            jo = (JSONObject)it.next();
-            String nombre = (String) jo.get("nombreMateria");
-            if(nombreMat.equals(nombre)) {
-                id = Integer.parseInt((String)jo.get("id"));
-                encontrado = true;
-            }
-        }
-        return id;*/
-        return 0;
     }
 }
