@@ -18,8 +18,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
     }
     public void openDialog (View view){
-        DialogMaterias dialogMaterias =new D
-
+        DialogMateria dialogMaterias =new DialogMateria();
+         //DialogMateria.show(getSupportFragmentManager(),"añdir materia");
     }
 
 }
