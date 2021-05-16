@@ -35,7 +35,7 @@ public class ConsultorMaterias {
 
         iniciarHashMap();
         String materiaActual = "";
-        Materia actual = new Materia(0, "", '1', null);
+        Materia actual = new Materia(0, "", '1', null,"");
         boolean primero = true;
 
         for(GrupoModelParser grupoActual: listaGrupos){
@@ -52,7 +52,7 @@ public class ConsultorMaterias {
                 }
                 //Actualiza actual
                 try{
-                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>());
+                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),"");
                     materiaActual = actual.getNombre();
                 }catch(Exception e){
                     e.printStackTrace();

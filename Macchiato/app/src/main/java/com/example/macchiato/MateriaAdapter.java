@@ -10,7 +10,8 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.macchiato.Models.MateriaNivel;
+import com.example.macchiato.Models.Materia;
+import com.example.macchiato.Models.Materia;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,11 +19,11 @@ import java.util.List;
 
 public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHolder> {
 
-    private List<MateriaNivel> mData;
+    private List<Materia> mData;
     private LayoutInflater mInflater;
     private Context context;
 
-    public MateriaAdapter(List<MateriaNivel> mData, Context context) {
+    public MateriaAdapter(List<Materia> mData, Context context) {
         this.mData = mData;
         this.context = context;
     }
@@ -49,7 +50,7 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
         holder.bindData(mData.get(position));
     }
 
-    public void setItems(List<MateriaNivel> items){mData=items;}
+    public void setItems(List<Materia> items){mData=items;}
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -65,9 +66,9 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
             this.color= itemView.findViewById(R.id.cardViewMateria);
         }
 
-        public void bindData(final MateriaNivel item){
-            nomMateria.setText(item.getNombreMateria());
-            codMateria.setText(item.getCodMateria()+"");
+        public void bindData(final Materia item){
+            nomMateria.setText(item.getNombre());
+            //codMateria.setText(item.get()+"");
             color.setCardBackgroundColor(Color.parseColor(item.getColor()));
         }
     }
