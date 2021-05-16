@@ -59,12 +59,7 @@ public class PerfilSesionFragment extends Fragment {
         user= FirebaseAuth.getInstance().getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference profileRef = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImage);
-            }
-        });
+
         reference= FirebaseDatabase.getInstance().getReference("User");
         thisUserId=user.getUid();
         reference.child(thisUserId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -90,20 +85,7 @@ public class PerfilSesionFragment extends Fragment {
             }
         });
 
-        cambFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGallery,1000);
-            }
-        });
-
-
-
-
-
-
-        Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonIniciarSesion);
+     Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonIniciarSesion);
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +100,7 @@ public class PerfilSesionFragment extends Fragment {
 
             }
         });
+
         Button btnEdit= (Button) view.findViewById(R.id.buttonEditar);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
