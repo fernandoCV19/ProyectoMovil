@@ -2061,7 +2061,7 @@
       "id":"82",
       "nombreMateria":" APLICACION DE SISTEMAS OPERATIVOS",
       "docente":"CUSSI NICOLAS GROVER HUMBERTO",
-      "nivel":"G",
+      "nivel":"H",
       "grupo":"2",
       "clases":[
         {
@@ -2106,59 +2106,33 @@
       ]
     },
     {
-      "id":"83",
-      "nombreMateria":"EVALUACION Y AUDITORIA DE SISTEMAS",
-      "docente":"VILLARROEL NOVILLO JIMMY",
-      "nivel":"H",
-      "grupo":"1",
-      "clases":[
+      "id": "84",
+      "nombreMateria": "EVALUACION Y AUDITORIA DE SISTEMAS",
+      "docente": "VILLARROEL NOVILLO JIMMY",
+      "nivel": "H",
+      "grupo": "2",
+      "clases": [
         {
-          "dia":"LUNES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"692C"
+          "dia": "LUNES",
+          "horaInicio": " 17:15",
+          "horaFinal": "18:45",
+          "aula": "692C"
         },
         {
-          "dia":"MARTES",
-          "horaInicio":" 8:15",
-          "horaFinal":"9:45",
-          "aula":"691D"
+          "dia": "MARTES",
+          "horaInicio": " 8:15",
+          "horaFinal": "9:45",
+          "aula": "691D"
         },
         {
-          "dia":"MIERCOLES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"692A"
+          "dia": "MIERCOLES",
+          "horaInicio": " 17:15",
+          "horaFinal": "18:45",
+          "aula": "692A"
         }
       ]
     },
-    {
-      "id":"84",
-      "nombreMateria":"EVALUACION Y AUDITORIA DE SISTEMAS",
-      "docente":"VILLARROEL NOVILLO JIMMY",
-      "nivel":"H",
-      "grupo":"1",
-      "clases":[
-        {
-          "dia":"LUNES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"692C"
-        },
-        {
-          "dia":"MARTES",
-          "horaInicio":" 8:15",
-          "horaFinal":"9:45",
-          "aula":"691D"
-        },
-        {
-          "dia":"MIERCOLES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"692A"
-        }
-      ]
-    },
+
     {
       "id":"85",
       "nombreMateria":"TALLER DE GRADO I",
@@ -2217,7 +2191,7 @@
       "id":"87",
       "nombreMateria":"DATA WAREHOUSE",
       "docente":"CALANCHA NAVIA BORIS",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2239,7 +2213,7 @@
       "id":"88",
       "nombreMateria":"DISE¥O DE COMPILADORES",
       "docente":"AZERO ALCOCER PABLO",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2261,7 +2235,7 @@
       "id":"89",
       "nombreMateria":"WEB SEMANTICAS",
       "docente":"RODRIGUEZ BILBAO ERIKA PATRICIA",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2278,32 +2252,13 @@
         }
       ]
     },
+
+
     {
       "id":"90",
-      "nombreMateria":"WEB SEMANTICAS",
-      "docente":"RODRIGUEZ BILBAO ERIKA PATRICIA",
-      "nivel":"H",
-      "grupo":"1",
-      "clases":[
-        {
-          "dia":"LUNES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"693D"
-        },
-        {
-          "dia":"VIERNES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"655"
-        }
-      ]
-    },
-    {
-      "id":"91",
       "nombreMateria":"ROBOTICA",
       "docente":"GARCIA PEREZ CARMEN ROSA",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2321,10 +2276,10 @@
       ]
     },
     {
-      "id":"92",
+      "id":"91",
       "nombreMateria":"PROGRAMACION MOVIL",
       "docente":"FIORILO LOZADA AMERICO",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2342,10 +2297,10 @@
       ]
     },
     {
-      "id":"93",
+      "id":"92",
       "nombreMateria":" AGENTES INTELIGENTES",
       "docente":"MONTOYA BURGOS YONY RICHARD",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2363,10 +2318,10 @@
       ]
     },
     {
-      "id":"94",
+      "id":"93",
       "nombreMateria":" APLICACIONES WEB AVANZADAS",
       "docente":"COSTAS JAUREGUI VLADIMIR ABEL",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2384,10 +2339,10 @@
       ]
     },
     {
-      "id":"95",
+      "id":"94",
       "nombreMateria":"SEGURIDAD DE SISTEMAS",
       "docente":"ANTEZANA CAMACHO MARCELO",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2405,10 +2360,10 @@
       ]
     },
     {
-      "id":"96",
+      "id":"95",
       "nombreMateria":" TALLER DE GRADO II",
       "docente":"MONTANO QUIROGA VICTOR HUGO",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"2",
       "clases":[
         {
@@ -2426,10 +2381,10 @@
       ]
     },
     {
-      "id":"97",
+      "id":"96",
       "nombreMateria":"TALLER DE GRADO II",
       "docente":"GARCIA PEREZ CARMEN ROSA",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"3",
       "clases":[
         {
@@ -2447,11 +2402,11 @@
       ]
     },
     {
-      "id":"98",
+      "id":"97",
       "nombreMateria":"TALLER DE GRADO II",
       "docente":"ROMERO RODRIGUEZ PATRICIA",
-      "nivel":"H",
-      "grupo":"1",
+      "nivel":"I",
+      "grupo":"4",
       "clases":[
 
         {
