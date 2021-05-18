@@ -74,6 +74,7 @@ public class PerfilSesionFragment extends Fragment {
                     usuarioShow.setText(userUser);
                     correoShow.setText(userEmail);
 
+
                 }
             }
 
