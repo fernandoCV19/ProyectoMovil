@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/fondo_fragments">
+        android:background="@drawable/fondos_fragments">
 
         <TextView
             android:id="@+id/textView6"
@@ -23,6 +23,7 @@
             android:fontFamily="casual"
             android:text="Modo oscuro"
             android:textSize="18dp"
+            android:textStyle="normal"
             app:layout_constraintEnd_toStartOf="@+id/switch1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

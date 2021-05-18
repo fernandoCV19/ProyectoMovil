@@ -59,7 +59,6 @@ public class PerfilSesionFragment extends Fragment {
         user= FirebaseAuth.getInstance().getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference profileRef = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
-
         reference= FirebaseDatabase.getInstance().getReference("User");
         thisUserId=user.getUid();
         reference.child(thisUserId).addListenerForSingleValueEvent(new ValueEventListener() {

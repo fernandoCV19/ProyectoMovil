@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Macchiato">
+        <activity android:name=".HistorialAcademicoActivity">
+        </activity>
         <activity android:name=".CambiarPerfilActivity">
         </activity>
         <activity android:name=".RegisterActivity" />

@@ -38,7 +38,7 @@
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Materia"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold">
 
                 </TextView>

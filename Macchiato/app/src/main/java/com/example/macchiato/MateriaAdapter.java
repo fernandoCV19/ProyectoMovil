@@ -68,7 +68,7 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
 
         public void bindData(final Materia item){
             nomMateria.setText(item.getNombre());
-            //codMateria.setText(item.get()+"");
+            codMateria.setText(item.getColor());
             color.setCardBackgroundColor(Color.parseColor(item.getColor()));
         }
     }

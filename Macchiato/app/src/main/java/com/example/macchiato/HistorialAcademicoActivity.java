@@ -13,7 +13,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_academico) ;
-        sp=(Spinner)findViewById(R.id.materias);
         String [] opciones={"ingles","algebra","calculo"};
         ArrayAdapter<String> adapter =new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,opciones);
         sp.setAdapter(adapter);
