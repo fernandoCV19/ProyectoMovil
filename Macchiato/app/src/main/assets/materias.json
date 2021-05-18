@@ -3,6 +3,7 @@
     {
       "id":"1",
       "nombreMateria":"INGLES I",
+      "codigo":"1803001",
       "docente":"CESPEDES GUIZADA MARIA BENITA",
       "nivel":"A",
       "grupo":"1",
@@ -24,6 +25,7 @@
     {
       "id":"2",
       "nombreMateria":"INGLES I",
+      "codigo":"1803001",
       "docente":"CESPEDES GUIZADA MARIA BENITA",
       "nivel":"A",
       "grupo":"2",
@@ -45,6 +47,7 @@
     {
       "id":"3",
       "nombreMateria":"INGLES I",
+      "codigo":"1803001",
       "docente":"PEETERS ILONAA MAGDA LENA",
       "nivel":"A",
       "grupo":"3",
@@ -66,6 +69,7 @@
     {
       "id":"4",
       "nombreMateria":"INGLES I",
+      "codigo":"1803001",
       "docente":"GRILO SALVATIERRA MARIA ESTELA",
       "nivel":"A",
       "grupo":"4",
@@ -87,6 +91,7 @@
     {
       "id":"5",
       "nombreMateria":"INGLES I",
+      "codigo":"1803001",
       "docente":"CESPEDES GUIZADA MARIA BENITA",
       "nivel":"A",
       "grupo":"5",
@@ -108,6 +113,7 @@
     {
       "id":"6",
       "nombreMateria":"FISICA GENERAL",
+      "codigo":"2006063",
       "docente":"VALENZUELA MIRANDA ROBERTO",
       "nivel":"A",
       "grupo":"B",
@@ -129,6 +135,7 @@
     {
       "id":"7",
       "nombreMateria":"ALGEBRA I",
+      "codigo":"2008019",
       "docente":"RODRIGUEZ SEJAS JUAN ANTONIO",
       "nivel":"A",
       "grupo":"10",
@@ -156,6 +163,7 @@
     {
       "id":"8",
       "nombreMateria":"ALGEBRA I",
+      "codigo":"2008019",
       "docente":"CARRASCO CALVO ALVARO HERNANDO",
       "nivel":"A",
       "grupo":"15",
@@ -183,6 +191,7 @@
     {
       "id":"9",
       "nombreMateria":"ALGEBRA I",
+      "codigo":"2008019",
       "docente":"LEON ROMERO GUALBERTO",
       "nivel":"A",
       "grupo":"8",
@@ -210,6 +219,7 @@
     {
       "id":"10",
       "nombreMateria":"CALCULO I",
+      "codigo":"2008054",
       "docente":"GONZALES CARTAGENA LUCIO",
       "nivel":"A",
       "grupo":"10",
@@ -237,6 +247,7 @@
     {
       "id":"11",
       "nombreMateria":"CALCULO I",
+      "codigo":"2008054",
       "docente":"ROJAS ZURITA RAMIRO",
       "nivel":"A",
       "grupo":"11",
@@ -264,6 +275,7 @@
     {
       "id":"12",
       "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
       "docente":"SALAZAR SERRUDO CARLA",
       "nivel":"A",
       "grupo":"1",
@@ -291,6 +303,7 @@
     {
       "id":"13",
       "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
       "docente":"COSTAS JAUREGUI VLADIMIR ABEL",
       "nivel":"A",
       "grupo":"10",
@@ -318,6 +331,7 @@
     {
       "id":"14",
       "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
       "docente":"BLANCO COCA LETICIA",
       "nivel":"A",
       "grupo":"2",
@@ -345,6 +359,7 @@
     {
       "id":"15",
       "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
       "docente":"USTARIZ VARGAS HERNAN",
       "nivel":"A",
       "grupo":"3",
@@ -372,6 +387,7 @@
     {
       "id":"16",
       "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
       "docente":"VILLARROEL TAPIA HENRY FRANK",
       "nivel":"A",
       "grupo":"4",
@@ -399,6 +415,7 @@
     {
       "id":"17",
       "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
       "docente":"MONTANO QUIROGA VICTOR HUGO",
       "nivel":"A",
       "grupo":"5",
@@ -426,6 +443,7 @@
     {
       "id":"18",
       "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
       "docente":"SALAZAR SERRUDO CARLA",
       "nivel":"A",
       "grupo":"6",
@@ -453,6 +471,7 @@
     {
       "id":"19",
       "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
       "docente":"FLORES VILLARROEL CORINA",
       "nivel":"A",
       "grupo":"7",
@@ -480,6 +499,7 @@
     {
       "id":"20",
       "nombreMateria":"INGLES II",
+      "codigo":"1803002",
       "docente":"PEETERS ILONAA MAGNA LENA",
       "nivel":"B",
       "grupo":"1",
@@ -501,6 +521,7 @@
     {
       "id":"21",
       "nombreMateria":"INGLES II",
+      "codigo":"1803002",
       "docente":"PEETERS ILONAA MAGNA LENA",
       "nivel":"B",
       "grupo":"2",
@@ -522,6 +543,7 @@
     {
       "id":"22",
       "nombreMateria":"INGLES II",
+      "codigo":"1803002",
       "docente":"PEETERS ILONAA MAGNA LENA",
       "nivel":"B",
       "grupo":"3",
@@ -544,6 +566,7 @@
 
       "id":"23",
       "nombreMateria":"ALGEBRA II",
+      "codigo":"2008022",
       "docente":"SALINAS PERICON WALTER OSCAR",
       "nivel":"B",
       "grupo":"5A",
@@ -571,6 +594,7 @@
     {
       "id":"24",
       "nombreMateria":"ALGEBRA II",
+      "codigo":"2008022",
       "docente":"MEDINA GAMBOA JULIO",
       "nivel":"B",
       "grupo":"6",
@@ -599,6 +623,7 @@
     {
       "id":"25",
       "nombreMateria":"ALGEBRA II",
+      "codigo":"2008022",
       "docente":"OMONTE OJALVO JOSE ROBERTO",
       "nivel":"B",
       "grupo":"8",
@@ -626,6 +651,7 @@
     {
       "id":"26",
       "nombreMateria":"CALCULO II",
+      "codigo":"2008056",
       "docente":"MARTINEZ MAIDA AMILCAR SAUL",
       "nivel":"B",
       "grupo":"12",
@@ -653,6 +679,7 @@
     {
       "id":"27",
       "nombreMateria":"CALCULO II",
+      "codigo":"2008056",
       "docente":"TERRAZAS LOBO JUAN",
       "nivel":"B",
       "grupo":"6",
@@ -680,6 +707,7 @@
     {
       "id":"28",
       "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+      "codigo":"2010003",
       "docente":"TORRICO BASCOPE ROSEMARY",
       "nivel":"B",
       "grupo":"1",
@@ -707,6 +735,7 @@
     {
       "id":"29",
       "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+      "codigo":"2010003",
       "docente":"BLANCO COCA LETICIA",
       "nivel":"B",
       "grupo":"2",
@@ -734,6 +763,7 @@
     {
       "id":"30",
       "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+      "codigo":"2010003",
       "docente":"BLANCO COCA LETICIA",
       "nivel":"B",
       "grupo":"3",
@@ -761,6 +791,7 @@
     {
       "id":"31",
       "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+      "codigo":"2010003",
       "docente":"TORRICO BASCOPE ROSEMARY",
       "nivel":"B",
       "grupo":"5",
@@ -788,6 +819,7 @@
     {
       "id":"32",
       "nombreMateria":"ARQUITECTURA DE COMPUTADORAS I",
+      "codigo":"2010013",
       "docente":" ACHA PEREZ SAMUEL",
       "nivel":"B",
       "grupo":"1",
@@ -810,6 +842,7 @@
     {
       "id":"33",
       "nombreMateria":"ARQUITECTURA DE COMPUTADORAS I",
+      "codigo":"2010013",
       "docente":"BLANCO COCA LETICIA",
       "nivel":"B",
       "grupo":"2",
@@ -832,6 +865,7 @@
     {
       "id":"34",
       "nombreMateria":"PROGRAMACION",
+      "codigo":"2010200",
       "docente":"TORRICO BASCOPE ROSEMARY",
       "nivel":"B",
       "grupo":"1",
@@ -859,6 +893,7 @@
     {
       "id":"35",
       "nombreMateria":"CALCULO NUMERICO",
+      "codigo":"2008060",
       "docente":"JUCHANI BAZUALDO DEMETRIO",
       "nivel":"C",
       "grupo":"2",
@@ -887,6 +922,7 @@
 
       "id":"36",
       "nombreMateria":"CALCULO NUMERICO",
+      "codigo":"2008060",
       "docente":"ZABALAGA MONTANO OSCAR A.",
       "nivel":"C",
       "grupo":"2",
@@ -914,6 +950,7 @@
     {
       "id":"37",
       "nombreMateria":"LOGICA",
+      "codigo":"2008140",
       "docente":"HOEPFNER REYNOLDS MAURICIO",
       "nivel":"C",
       "grupo":"1",
@@ -941,6 +978,7 @@
     {
       "id":"38",
       "nombreMateria":"ARQUITECTURA DE COMPUTADORAS II",
+      "codigo":"2010014",
       "docente":"AGREDA CORRALES LUIS ROBERTO",
       "nivel":"C",
       "grupo":"2",
@@ -963,6 +1001,7 @@
     {
       "id":"39",
       "nombreMateria":"TEORIA DE GRAFOS",
+      "codigo":"2010037",
       "docente":"MONTOYA BURGOS YONY RICHARD",
       "nivel":"C",
       "grupo":"2",
@@ -985,6 +1024,7 @@
 
       "id":"40",
       "nombreMateria":" ORGANIZACION Y METODOS",
+      "codigo":"2010041",
       "docente":" CAMACHO DEL CASTILLO INDIRA",
       "nivel":"C",
       "grupo":"1",
@@ -1006,6 +1046,7 @@
     {
       "id":"41",
       "nombreMateria":"METODOS Y TECNICAS DE PROGRAMACION",
+      "codigo":"2010206",
       "docente":"FLORES VILLARROEL CORINA",
       "nivel":"C",
       "grupo":"1",
@@ -1033,6 +1074,7 @@
     {
       "id":"42",
       "nombreMateria":"METODOS Y TECNICAS DE PROGRAMACION",
+      "codigo":"2010206",
       "docente":"MANZUR SORIA CARLOS B.",
       "nivel":"C",
       "grupo":"2",
@@ -1060,6 +1102,7 @@
     {
       "id":"43",
       "nombreMateria":"METODOS Y TECNICAS DE PROGRAMACION",
+      "codigo":"2010206",
       "docente":"MONTOYA BURGOS YONY RICHARD",
       "nivel":"C",
       "grupo":"5",
@@ -1087,6 +1130,7 @@
     {
       "id":"44",
       "nombreMateria":"PROBABILIDAD Y ESTADISTICA",
+      "codigo":"2008029",
       "docente":"DELGADILLO COSSIO DAVID ALFREDO",
       "nivel":"D",
       "grupo":"3",
@@ -1114,6 +1158,7 @@
     {
       "id":"45",
       "nombreMateria":"PROBABILIDAD Y ESTADISTICA",
+      "codigo":"2008029",
       "docente":"OMONTE OJALVO JOSE ROBERTO",
       "nivel":"D",
       "grupo":"4",
@@ -1141,6 +1186,7 @@
     {
       "id":"46",
       "nombreMateria":"TALLER DE PROGRAMACION EN BAJO NIVEL",
+      "codigo":"2010005",
       "docente":"MONTECINOS CHOQUE MARCON ANTONIO",
       "nivel":"D",
       "grupo":"1",
@@ -1168,6 +1214,7 @@
     {
       "id":"47",
       "nombreMateria":"BASE DE DATOS I",
+      "codigo":"2010015",
       "docente":"SALAZAR ANAYA ROSEMARY",
       "nivel":"D",
       "grupo":"1",
@@ -1195,6 +1242,7 @@
     {
       "id":"48",
       "nombreMateria":"BASE DE DATOS I",
+      "codigo":"2010015",
       "docente":"CALANCHA NAVIA BORIS",
       "nivel":"D",
       "grupo":"2",
@@ -1222,6 +1270,7 @@
     {
       "id":"49",
       "nombreMateria":"SISTEMAS DE INFORMACION I",
+      "codigo":"2010018",
       "docente":"SALAZAR SERRUNO CARLA",
       "nivel":"D",
       "grupo":"1",
@@ -1249,6 +1298,7 @@
     {
       "id":"50",
       "nombreMateria":"SISTEMAS DE INFORMACION I",
+      "codigo":"2010018",
       "docente":"SALAZAR SERRUDO CARLA",
       "nivel":"D",
       "grupo":"2",
@@ -1276,6 +1326,7 @@
     {
       "id":"51",
       "nombreMateria":"PROGRAMACION FUNCIONAL",
+      "codigo":"2010038",
       "docente":"APARICIO YUJA TATIANA",
       "nivel":"D",
       "grupo":"1",
@@ -1303,6 +1354,7 @@
     {
       "id":"52",
       "nombreMateria":"ALGORITMOS AVANZADOS",
+      "codigo":"2010197",
       "docente":"BLANCO COCA LETICIA",
       "nivel":"D",
       "grupo":"1",
@@ -1330,6 +1382,7 @@
     {
       "id":"53",
       "nombreMateria":"BASE DE DATOS II",
+      "codigo":"2010016",
       "docente":"APARICIO YUJA TATIANA",
       "nivel":"E",
       "grupo":"1",
@@ -1357,6 +1410,7 @@
     {
       "id":"54",
       "nombreMateria":"BASE DE DATOS II",
+      "codigo":"2010016",
       "docente":"APARICIO YUJA TATIANA",
       "nivel":"E",
       "grupo":"2",
@@ -1384,6 +1438,7 @@
     {
       "id":"55",
       "nombreMateria":"TALLER DE SISTEMAS OPERATIVOS",
+      "codigo":"2010017",
       "docente":"ORELLANA ARAOZ JORGE WALTER",
       "nivel":"E",
       "grupo":"1",
@@ -1411,6 +1466,7 @@
     {
       "id":"56",
       "nombreMateria":"TALLER DE SISTEMAS OPERATIVOS",
+      "codigo":"2010017",
       "docente":"ORELLANA ARAOZ JORGE WALTER",
       "nivel":"E",
       "grupo":"2",
@@ -1438,6 +1494,7 @@
     {
       "id":"57",
       "nombreMateria":"TALLER DE SISTEMAS OPERATIVOS",
+      "codigo":"2010017",
       "docente":"CUSSI NICOLAS GROVER HUMBERT",
       "nivel":"E",
       "grupo":"3",
@@ -1465,6 +1522,7 @@
     {
       "id":"58",
       "nombreMateria":"SISTEMAS DE INFORMACION II",
+      "codigo":"2010022",
       "docente":"FLORES SOLIZ JUAN MARCELO",
       "nivel":"E",
       "grupo":"1",
@@ -1492,6 +1550,7 @@
     {
       "id":"59",
       "nombreMateria":"SISTEMAS DE INFORMACION II",
+      "codigo":"2010022",
       "docente":"JALDIN ROSALES K. ROLANDO",
       "nivel":"E",
       "grupo":"2",
@@ -1519,6 +1578,7 @@
     {
       "id":"60",
       "nombreMateria":"TEORIA DE AUTOMATAS Y LENG. FORMALES",
+      "codigo":"2010040",
       "docente":"MONTANO QUIROGA VICTOR HUGO",
       "nivel":"E",
       "grupo":"1",
@@ -1546,6 +1606,7 @@
     {
       "id":"61",
       "nombreMateria":"GRAFICACION POR COMPUTADORA",
+      "codigo":"2010042",
       "docente":"CALANCHA NAVIA BORIS",
       "nivel":"E",
       "grupo":"1",
@@ -1573,6 +1634,7 @@
     {
       "id":"62",
       "nombreMateria":"INTELIGENCIA ARTIFICIAL I",
+      "codigo":"2010201",
       "docente":"GARCIA PEREZ CARMEN ROSA",
       "nivel":"E",
       "grupo":"1",
@@ -1600,6 +1662,7 @@
     {
       "id":"63",
       "nombreMateria":"INTELIGENCIA ARTIFICIAL I",
+      "codigo":"2010201",
       "docente":"RODRIGUEZ BILBAO ERIKA PATRICIA",
       "nivel":"E",
       "grupo":"2",
@@ -1627,6 +1690,7 @@
     {
       "id":"64",
       "nombreMateria":"INGENIERIA DE SOFTWARE",
+      "codigo":"2010020",
       "docente":"CAMACHO DEL CASTILLO INDIRA",
       "nivel":"F",
       "grupo":"1",
@@ -1654,6 +1718,7 @@
     {
       "id":"65",
       "nombreMateria":"INGENIERIA DE SOFTWARE",
+      "codigo":"2010020",
       "docente":"TORRICO BASCOPE ROSEMARY",
       "nivel":"F",
       "grupo":"2",
@@ -1681,6 +1746,7 @@
     {
       "id":"66",
       "nombreMateria":"REDES DE COMPUTADORAS",
+      "codigo":"2010047",
       "docente":"ORELLANA ARAOZ JORGE WALTER",
       "nivel":"F",
       "grupo":"1",
@@ -1708,6 +1774,7 @@
     {
       "id":"67",
       "nombreMateria":"REDES DE COMPUTADORAS",
+      "codigo":"2010047",
       "docente":"ORELLANA ARAOZ JORGE WALTER",
       "nivel":"F",
       "grupo":"2",
@@ -1735,6 +1802,7 @@
     {
       "id":"68",
       "nombreMateria":"ESTRUCTURA Y SEMANTICA DE LENGUAJES DE PROGRAMACION",
+      "codigo":"2010049",
       "docente":"ROMERO RODRIGUEZ PATRICIA",
       "nivel":"F",
       "grupo":"1",
@@ -1762,6 +1830,7 @@
     {
       "id":"69",
       "nombreMateria":"TALLER DE BASE DE DATOS",
+      "codigo":"2010053",
       "docente":"CALANCHA NAVIA BORIS",
       "nivel":"F",
       "grupo":"1",
@@ -1783,6 +1852,7 @@
     {
       "id":"70",
       "nombreMateria":"TALLER DE BASE DE DATOS",
+      "codigo":"2010053",
       "docente":"CALANCHA NAVIA BORIS",
       "nivel":"F",
       "grupo":"2",
@@ -1804,6 +1874,7 @@
     {
       "id":"71",
       "nombreMateria":"TALLER DE BASE DE DATOS",
+      "codigo":"2010053",
       "docente":"FLORES SOLIZ JUAN MARCELO",
       "nivel":"F",
       "grupo":"3",
@@ -1825,6 +1896,7 @@
     {
       "id":"72",
       "nombreMateria":"INTELIGENCIA ARTIFICIAL II",
+      "codigo":"2010202",
       "docente":"GARCIA PEREZ CARMEN ROSA",
       "nivel":"F",
       "grupo":"2",
@@ -1852,6 +1924,7 @@
     {
       "id":"73",
       "nombreMateria":"PROGRAMACION WEB",
+      "codigo":"2010203",
       "docente":"COSTAS JAUREGUI VLADIMIR ABEL",
       "nivel":"F",
       "grupo":"1",
@@ -1879,6 +1952,7 @@
     {
       "id":"74",
       "nombreMateria":"SIMULACION DE SISTEMAS",
+      "codigo":"2010019",
       "docente":"VILLARROEL TAPIA HENRY FRANK",
       "nivel":"G",
       "grupo":"1",
@@ -1900,6 +1974,7 @@
     {
       "id":"75",
       "nombreMateria":"TALLER DE INGENIERIA DE SOFTWARE",
+      "codigo":"2010024",
       "docente":"FLORES VILLARROEL CORINA",
       "nivel":"G",
       "grupo":"1",
@@ -1921,6 +1996,7 @@
     {
       "id":"76",
       "nombreMateria":" TALLER DE INGENIERIA DE SOFTWARE",
+      "codigo":"2010024",
       "docente":" BLANCO COCA LETICIA",
       "nivel":"G",
       "grupo":"2",
@@ -1942,6 +2018,7 @@
     {
       "id":"77",
       "nombreMateria":" ARQUITECTURA DE SOFTWARE",
+      "codigo":"2010100",
       "docente":"AZERO ALCOCER PABLO",
       "nivel":"G",
       "grupo":"1",
@@ -1970,6 +2047,7 @@
 
       "id":"78",
       "nombreMateria":" TELEFONIA IP",
+      "codigo":"2010182",
       "docente":"MONTOYA BURGOS YONY RICHARD",
       "nivel":"G",
       "grupo":"1",
@@ -1991,6 +2069,7 @@
     {
       "id":"79",
       "nombreMateria":"INTERACCION HUMANO COMPUTADOR",
+      "codigo":"2010204",
       "docente":"FLORES VILLARROEL CORINA",
       "nivel":"G",
       "grupo":"1",
@@ -2012,6 +2091,7 @@
     {
       "id":"80",
       "nombreMateria":" TECNOLOGIA REDES AVANZADAS",
+      "codigo":"2010205",
       "docente":"MONTECINOS CHOQUE MARCO ANTONIO",
       "nivel":"G",
       "grupo":"1",
@@ -2039,6 +2119,7 @@
     {
       "id":"81",
       "nombreMateria":"APLICACION DE SISTEMAS OPERATIVOS",
+      "codigo":"2010035",
       "docente":"CUSSI NICOLAS GROVER HUMBERTO",
       "nivel":"H",
       "grupo":"1",
@@ -2060,8 +2141,9 @@
     {
       "id":"82",
       "nombreMateria":" APLICACION DE SISTEMAS OPERATIVOS",
+      "codigo":"2010035",
       "docente":"CUSSI NICOLAS GROVER HUMBERTO",
-      "nivel":"G",
+      "nivel":"H",
       "grupo":"2",
       "clases":[
         {
@@ -2081,6 +2163,7 @@
     {
       "id":"83",
       "nombreMateria":"EVALUACION Y AUDITORIA DE SISTEMAS",
+      "codigo":"2010102",
       "docente":"ROMERO RODRIGUEZ PATRICIA",
       "nivel":"H",
       "grupo":"1",
@@ -2106,62 +2189,38 @@
       ]
     },
     {
-      "id":"83",
-      "nombreMateria":"EVALUACION Y AUDITORIA DE SISTEMAS",
-      "docente":"VILLARROEL NOVILLO JIMMY",
-      "nivel":"H",
-      "grupo":"1",
-      "clases":[
+      "id": "84",
+      "nombreMateria": "EVALUACION Y AUDITORIA DE SISTEMAS",
+      "codigo":"2010102",
+      "docente": "VILLARROEL NOVILLO JIMMY",
+      "nivel": "H",
+      "grupo": "2",
+      "clases": [
         {
-          "dia":"LUNES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"692C"
+          "dia": "LUNES",
+          "horaInicio": " 17:15",
+          "horaFinal": "18:45",
+          "aula": "692C"
         },
         {
-          "dia":"MARTES",
-          "horaInicio":" 8:15",
-          "horaFinal":"9:45",
-          "aula":"691D"
+          "dia": "MARTES",
+          "horaInicio": " 8:15",
+          "horaFinal": "9:45",
+          "aula": "691D"
         },
         {
-          "dia":"MIERCOLES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"692A"
+          "dia": "MIERCOLES",
+          "horaInicio": " 17:15",
+          "horaFinal": "18:45",
+          "aula": "692A"
         }
       ]
     },
-    {
-      "id":"84",
-      "nombreMateria":"EVALUACION Y AUDITORIA DE SISTEMAS",
-      "docente":"VILLARROEL NOVILLO JIMMY",
-      "nivel":"H",
-      "grupo":"1",
-      "clases":[
-        {
-          "dia":"LUNES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"692C"
-        },
-        {
-          "dia":"MARTES",
-          "horaInicio":" 8:15",
-          "horaFinal":"9:45",
-          "aula":"691D"
-        },
-        {
-          "dia":"MIERCOLES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"692A"
-        }
-      ]
-    },
+
     {
       "id":"85",
       "nombreMateria":"TALLER DE GRADO I",
+      "codigo":"2010214",
       "docente":"FLORES VILLARROEL CORINA",
       "nivel":"H",
       "grupo":"6",
@@ -2189,6 +2248,7 @@
     {
       "id":"86",
       "nombreMateria":"TALLER DE GRADO I",
+      "codigo":"2010214",
       "docente":"ROMERO RODRIGUEZ PATRICIA",
       "nivel":"H",
       "grupo":"7",
@@ -2216,8 +2276,9 @@
     {
       "id":"87",
       "nombreMateria":"DATA WAREHOUSE",
+      "codigo":"2010032",
       "docente":"CALANCHA NAVIA BORIS",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2238,8 +2299,9 @@
 
       "id":"88",
       "nombreMateria":"DISE¥O DE COMPILADORES",
+      "codigo":"2010044",
       "docente":"AZERO ALCOCER PABLO",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2260,8 +2322,9 @@
 
       "id":"89",
       "nombreMateria":"WEB SEMANTICAS",
+      "codigo":"2010079",
       "docente":"RODRIGUEZ BILBAO ERIKA PATRICIA",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2278,32 +2341,14 @@
         }
       ]
     },
+
+
     {
       "id":"90",
-      "nombreMateria":"WEB SEMANTICAS",
-      "docente":"RODRIGUEZ BILBAO ERIKA PATRICIA",
-      "nivel":"H",
-      "grupo":"1",
-      "clases":[
-        {
-          "dia":"LUNES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"693D"
-        },
-        {
-          "dia":"VIERNES",
-          "horaInicio":" 17:15",
-          "horaFinal":"18:45",
-          "aula":"655"
-        }
-      ]
-    },
-    {
-      "id":"91",
       "nombreMateria":"ROBOTICA",
+      "codigo":"2010103",
       "docente":"GARCIA PEREZ CARMEN ROSA",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2321,10 +2366,11 @@
       ]
     },
     {
-      "id":"92",
+      "id":"91",
       "nombreMateria":"PROGRAMACION MOVIL",
+      "codigo":"2010174",
       "docente":"FIORILO LOZADA AMERICO",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2342,10 +2388,11 @@
       ]
     },
     {
-      "id":"93",
+      "id":"92",
       "nombreMateria":" AGENTES INTELIGENTES",
+      "codigo":"2010175",
       "docente":"MONTOYA BURGOS YONY RICHARD",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2363,10 +2410,11 @@
       ]
     },
     {
-      "id":"94",
+      "id":"93",
       "nombreMateria":" APLICACIONES WEB AVANZADAS",
+      "codigo":"2010198",
       "docente":"COSTAS JAUREGUI VLADIMIR ABEL",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2384,10 +2432,11 @@
       ]
     },
     {
-      "id":"95",
+      "id":"94",
       "nombreMateria":"SEGURIDAD DE SISTEMAS",
+      "codigo":"2010209",
       "docente":"ANTEZANA CAMACHO MARCELO",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"1",
       "clases":[
         {
@@ -2405,10 +2454,11 @@
       ]
     },
     {
-      "id":"96",
+      "id":"95",
       "nombreMateria":" TALLER DE GRADO II",
+      "codigo":"2010215",
       "docente":"MONTANO QUIROGA VICTOR HUGO",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"2",
       "clases":[
         {
@@ -2426,10 +2476,11 @@
       ]
     },
     {
-      "id":"97",
+      "id":"96",
       "nombreMateria":"TALLER DE GRADO II",
+      "codigo":"2010215",
       "docente":"GARCIA PEREZ CARMEN ROSA",
-      "nivel":"H",
+      "nivel":"I",
       "grupo":"3",
       "clases":[
         {
@@ -2447,11 +2498,12 @@
       ]
     },
     {
-      "id":"98",
+      "id":"97",
       "nombreMateria":"TALLER DE GRADO II",
+      "codigo":"2010215",
       "docente":"ROMERO RODRIGUEZ PATRICIA",
-      "nivel":"H",
-      "grupo":"1",
+      "nivel":"I",
+      "grupo":"4",
       "clases":[
 
         {

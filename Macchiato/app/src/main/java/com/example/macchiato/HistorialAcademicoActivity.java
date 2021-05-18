@@ -3,19 +3,23 @@ package com.example.macchiato;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 public class HistorialAcademicoActivity extends AppCompatActivity {
-   private Spinner sp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_academico) ;
-        String [] opciones={"ingles","algebra","calculo"};
-        ArrayAdapter<String> adapter =new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,opciones);
-        sp.setAdapter(adapter);
+
+    }
+    public void openDialog (View view){
+        DialogMateria dialogMaterias =new DialogMateria();
+         //DialogMateria.show(getSupportFragmentManager(),"añdir materia");
     }
 
 }
