@@ -39,6 +39,7 @@ public class PerfilSesionFragment extends Fragment {
     private FirebaseUser user;
     private DatabaseReference reference;
     private String thisUserId;
+    private User userProfile;
     StorageReference storageReference;
     TextView usuarioShow,correoShow;
     public PerfilSesionFragment() {
@@ -63,7 +64,7 @@ public class PerfilSesionFragment extends Fragment {
         reference.child(thisUserId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
+                userProfile = snapshot.getValue(User.class);
 
                 if(userProfile != null){
                     //Toast.makeText(InicioActivity2.this, "log in", Toast.LENGTH_SHORT).show();

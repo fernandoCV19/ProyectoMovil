@@ -65,17 +65,14 @@ public class LogInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //Toast.makeText(MainActivity.this, "Exito",Toast.LENGTH_SHORT).show();
 
-                            //FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
                                     Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
                             finishAffinity();
                             //updateUI(user);
                         } else {
-                            // If sign in fails, display a message to the user.
-                            //Log.w(TAG, "signInWithEmail:failure", task.getException());
+
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
