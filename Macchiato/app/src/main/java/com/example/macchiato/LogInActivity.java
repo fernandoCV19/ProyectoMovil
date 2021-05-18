@@ -29,7 +29,8 @@ public class LogInActivity extends AppCompatActivity {
         correo_L= findViewById(R.id.editTextTextEmailAddress);
         contrasena_L= findViewById(R.id.editTextTextPassword);
         mAuth = FirebaseAuth.getInstance();
-
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
     }
 
     public void register(View view){

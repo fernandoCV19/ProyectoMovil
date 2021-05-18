@@ -35,22 +35,12 @@ public class MateriaFragment extends Fragment {
     ArrayList<Materia> mv;
     ArrayList<Materia> mostrar;
     RecyclerView recyclerView;
-    char nivel;
-    String color;
     HashMap<Character, ArrayList<Materia>> materias;
     MateriaAdapter materiaAdapter;
     private static final String TAG = MateriaFragment.class.getSimpleName();
 
     public MateriaFragment() throws JSONException {
 
-    }
-
-    public void setNivel(char nivel) {
-        this.nivel = nivel;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public void setMostrar(ArrayList<Materia> mostrar) {
@@ -75,9 +65,8 @@ public class MateriaFragment extends Fragment {
         }else if(mostrar==null){
             materiaAdapter= new MateriaAdapter(mv,this.getContext());
         }else{
-            MateriaAdapter materiaAdapter= new MateriaAdapter(mostrar,this.getContext());
+            materiaAdapter= new MateriaAdapter(mostrar,this.getContext());
         }
-        MateriaNivelParser materiaNivelParser = new MateriaNivelParser();
 
         View rootView=inflater.inflate(R.layout.fragment_materia,container,false);
 
