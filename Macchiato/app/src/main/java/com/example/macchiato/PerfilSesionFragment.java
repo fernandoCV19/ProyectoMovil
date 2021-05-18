@@ -41,8 +41,6 @@ public class PerfilSesionFragment extends Fragment {
     private String thisUserId;
     StorageReference storageReference;
     TextView usuarioShow,correoShow;
-    ImageButton  cambFoto;
-    ImageView profileImage;
     public PerfilSesionFragment() {
         // Required empty public constructor
     }
@@ -71,7 +69,6 @@ public class PerfilSesionFragment extends Fragment {
                     //Toast.makeText(InicioActivity2.this, "log in", Toast.LENGTH_SHORT).show();
                     String userUser= userProfile.getUserName();
                     String userEmail= userProfile.getEmail();
-                    String userName= userProfile.getFullName();
 
                     usuarioShow.setText(userUser);
                     correoShow.setText(userEmail);
@@ -112,35 +109,5 @@ public class PerfilSesionFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1000){
-            if(resultCode == Activity.RESULT_OK){
-                Uri imageUri = data.getData();
-                //profileImage.setImageURI(imageUri);
-                uploadImagesToFirebase(imageUri);
-            }
-        }
-    }
-    private  void uploadImagesToFirebase(Uri imUri){
-        StorageReference fileReference = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
-        fileReference.putFile(imUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                //Toast.makeText(getActivity(), "imagen guardada", Toast.LENGTH_SHORT).show();
-                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profileImage);
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "error al subir", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+
 }
