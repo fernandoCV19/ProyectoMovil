@@ -81,15 +81,10 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                     userProfile = snapshot.getValue(User.class);
-                                    String myjson = new Gson().toJson(userProfile);
-                                    Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
-                                    Toast.makeText(getApplicationContext(), jsonMap.toString(), Toast.LENGTH_SHORT).show();
+                                    crearJson();
                                 }
-
                                 @Override
-                                public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                                }
+                                public void onCancelled(@NonNull @NotNull DatabaseError error) { }
                             });
                             startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
                             finishAffinity();
@@ -106,6 +101,12 @@ public class LogInActivity extends AppCompatActivity {
     private void mensajeError(EditText cont,String texto){
         cont.setError(texto);
         cont.requestFocus();
+    }
+
+    private void crearJson(){
+        String myjson = new Gson().toJson(userProfile);
+        Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+        Toast.makeText(getApplicationContext(), jsonMap.toString(), Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -22,38 +22,30 @@ import com.google.firebase.database.ValueEventListener;
 public class CambiarPerfilActivity extends AppCompatActivity {
     EditText contAct,contNueva,contConfir;
     private FirebaseUser user;
-    private DatabaseReference reference;
-    private String thisUserId;
-
+    //private DatabaseReference reference;
+    //private String thisUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cambiar_perfil);
         asignarId();
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        reference= FirebaseDatabase.getInstance().getReference("User");
-        thisUserId=user.getUid();
-
-
+        inicializarUser();
     }
 
     public void guardarCambios(View view){
         String contNuevaText=contNueva.getText().toString().trim();
         String contConfirText=contConfir.getText().toString().trim();
         if(contNuevaText.isEmpty()){
-            contNueva.setError("ingrese su contrasena");
-            contNueva.requestFocus();
+            mensajeError(contNueva,"ingrese su contrasena");
             return;
         }
         if(contNuevaText.length()<6){
-            contNueva.setError("la contrasena es muy corta");
-            contNueva.requestFocus();
+            mensajeError(contNueva,"la contrasena es muy corta");
             return;
         }
         if(!contConfirText.equals(contNuevaText)){
-            contConfir.setError("las contrasenas son diferentes");
-            contConfir.requestFocus();
+            mensajeError(contConfir,"las contrasenas son diferentes");
             return;
         }
         user.updatePassword(contNuevaText).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -77,4 +69,14 @@ public class CambiarPerfilActivity extends AppCompatActivity {
         contNueva = findViewById(R.id.cc_contrNueva_id);
         contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
     }
+    private void inicializarUser(){
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        //reference= FirebaseDatabase.getInstance().getReference("User");
+        //thisUserId=user.getUid();
+    }
+    private void mensajeError(EditText cont,String texto){
+        cont.setError(texto);
+        cont.requestFocus();
+    }
+
 }
