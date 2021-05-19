@@ -38,15 +38,11 @@ public class PerfilSesionFragment extends Fragment {
     private FirebaseAuth auth;
     private FirebaseUser user;
     private DatabaseReference reference;
-    private String thisUserId;
     private User userProfile;
     StorageReference storageReference;
     TextView usuarioShow,correoShow;
     public PerfilSesionFragment() {
-        // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,31 +52,23 @@ public class PerfilSesionFragment extends Fragment {
         usuarioShow= (TextView) view.findViewById(R.id.usuarioActual_id);
         correoShow= (TextView) view.findViewById(R.id.correoActual_id);
         user= FirebaseAuth.getInstance().getCurrentUser();
-        storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference profileRef = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
 
         reference= FirebaseDatabase.getInstance().getReference("User");
-        thisUserId=user.getUid();
-        reference.child(thisUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userProfile = snapshot.getValue(User.class);
 
                 if(userProfile != null){
-                    //Toast.makeText(InicioActivity2.this, "log in", Toast.LENGTH_SHORT).show();
                     String userUser= userProfile.getUserName();
                     String userEmail= userProfile.getEmail();
-
                     usuarioShow.setText(userUser);
                     correoShow.setText(userEmail);
-
-
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                //Toast.makeText(InicioActivity2.this, "error", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -93,8 +81,6 @@ public class PerfilSesionFragment extends Fragment {
                     Intent intent = new Intent(getActivity(),Navigation_bottom.class);
                     startActivity(intent);
                     getActivity().finishAffinity();
-                }else{
-                    //Toast.makeText(PerfilSesionFragment.this, "error", Toast.LENGTH_SHORT).show();
                 }
 
             }

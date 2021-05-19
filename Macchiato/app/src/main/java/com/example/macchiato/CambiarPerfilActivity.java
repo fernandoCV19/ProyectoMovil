@@ -30,11 +30,8 @@ public class CambiarPerfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cambiar_perfil);
-        contAct = findViewById(R.id.cc_contrActual_id);
-        contNueva = findViewById(R.id.cc_contrNueva_id);
-        contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
+        asignarId();
         user = FirebaseAuth.getInstance().getCurrentUser();
-
         reference= FirebaseDatabase.getInstance().getReference("User");
         thisUserId=user.getUid();
 
@@ -42,7 +39,6 @@ public class CambiarPerfilActivity extends AppCompatActivity {
     }
 
     public void guardarCambios(View view){
-        String contActText=contAct.getText().toString().trim();
         String contNuevaText=contNueva.getText().toString().trim();
         String contConfirText=contConfir.getText().toString().trim();
         if(contNuevaText.isEmpty()){
@@ -53,6 +49,11 @@ public class CambiarPerfilActivity extends AppCompatActivity {
         if(contNuevaText.length()<6){
             contNueva.setError("la contrasena es muy corta");
             contNueva.requestFocus();
+            return;
+        }
+        if(!contConfirText.equals(contNuevaText)){
+            contConfir.setError("las contrasenas son diferentes");
+            contConfir.requestFocus();
             return;
         }
         user.updatePassword(contNuevaText).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -69,5 +70,11 @@ public class CambiarPerfilActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void asignarId(){
+        contAct = findViewById(R.id.cc_contrActual_id);
+        contNueva = findViewById(R.id.cc_contrNueva_id);
+        contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
     }
 }

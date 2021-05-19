@@ -54,23 +54,19 @@ public class LogInActivity extends AppCompatActivity {
         String email_txt= correo_L.getText().toString();
         String password_txt =contrasena_L.getText().toString();
         if(email_txt.isEmpty()){
-            correo_L.setError("ingrese su correo");
-            correo_L.requestFocus();
+            mensajeError(correo_L,"ingrese su correo");
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email_txt).matches()){
-            correo_L.setError("correo invalido");
-            correo_L.requestFocus();
+            mensajeError(correo_L,"correo invalido");
             return;
         }
         if(password_txt.isEmpty()){
-            contrasena_L.setError("ingrese su contrasena");
-            contrasena_L.requestFocus();
+            mensajeError(contrasena_L,"ingrese su contrasena");
             return;
         }
         if(password_txt.length()<6){
-            contrasena_L.setError("la contrasena es muy corta");
-            contrasena_L.requestFocus();
+            mensajeError(contrasena_L,"la contrasena es muy corta");
             return;
         }
 
@@ -79,7 +75,6 @@ public class LogInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
                             Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
                                     Toast.LENGTH_SHORT).show();
                             reference.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -89,7 +84,6 @@ public class LogInActivity extends AppCompatActivity {
                                     String myjson = new Gson().toJson(userProfile);
                                     Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
                                     Toast.makeText(getApplicationContext(), jsonMap.toString(), Toast.LENGTH_SHORT).show();
-
                                 }
 
                                 @Override
@@ -100,7 +94,6 @@ public class LogInActivity extends AppCompatActivity {
                             startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
                             finishAffinity();
                         } else {
-
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
@@ -108,6 +101,11 @@ public class LogInActivity extends AppCompatActivity {
                 });
 
 
+    }
+
+    private void mensajeError(EditText cont,String texto){
+        cont.setError(texto);
+        cont.requestFocus();
     }
 
 }

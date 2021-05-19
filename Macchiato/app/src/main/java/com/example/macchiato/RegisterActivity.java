@@ -30,13 +30,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        user_R= findViewById(R.id.editTextTextPersonName);
-        email_R=findViewById(R.id.editTextTextEmailAddress2);
-        password_R=findViewById(R.id.editTextTextPassword2);
-        confirm_R=findViewById(R.id.editTextTextPassword3);
-
+        asignarId();
         inicializarFirebase();
-
     }
 
     public void registrar(View view) {
@@ -114,5 +109,12 @@ public class RegisterActivity extends AppCompatActivity {
     private void mensajeError(EditText cont,String texto){
         cont.setError(texto);
         cont.requestFocus();
+    }
+
+    private void asignarId(){
+        user_R= findViewById(R.id.editTextTextPersonName);
+        email_R=findViewById(R.id.editTextTextEmailAddress2);
+        password_R=findViewById(R.id.editTextTextPassword2);
+        confirm_R=findViewById(R.id.editTextTextPassword3);
     }
 }
