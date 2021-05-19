@@ -48,7 +48,6 @@ public class LogInActivity extends AppCompatActivity {
     public void register(View view){
         Intent register=new Intent(this,RegisterActivity.class);
         startActivity(register);
-        //finish();
     }
 
     public void session(View view){
@@ -98,17 +97,12 @@ public class LogInActivity extends AppCompatActivity {
 
                                 }
                             });
-
-
-
                             startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
                             finishAffinity();
-                            //updateUI(user);
                         } else {
 
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
                         }
                     }
                 });
