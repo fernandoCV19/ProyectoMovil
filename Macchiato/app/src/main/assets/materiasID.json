@@ -42,22 +42,22 @@
     },
     {
       "id":"9",
-      "nombreMateria":" ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS"
+      "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS"
 
     },
     {
       "id":"10",
-      "nombreMateria":" ARQUITECTURA DE COMPUTADORAS I"
+      "nombreMateria":"ARQUITECTURA DE COMPUTADORAS I"
 
     },
     {
       "id":"11",
-      "nombreMateria":" PROGRAMACION"
+      "nombreMateria":"PROGRAMACION"
 
     },
     {
       "id":"12",
-      "nombreMateria":" CALCULO NUMERICO"
+      "nombreMateria":"CALCULO NUMERICO"
 
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       "id":"19",
-      "nombreMateria":" TALLER DE PROGRAMACION EN BAJO NIVEL"
+      "nombreMateria":"TALLER DE PROGRAMACION EN BAJO NIVEL"
 
     },
     {
@@ -132,7 +132,7 @@
 
     {
       "id":"26",
-      "nombreMateria":" SISTEMAS DE INFORMACION II"
+      "nombreMateria":"SISTEMAS DE INFORMACION II"
 
     },
 
@@ -150,7 +150,7 @@
 
     {
       "id":"29",
-      "nombreMateria":" INTELIGENCIA ARTIFICIAL I"
+      "nombreMateria":"INTELIGENCIA ARTIFICIAL I"
 
     },
 
@@ -168,7 +168,7 @@
     },
     {
       "id":"32",
-      "nombreMateria":"ESTRUCTURA Y SEMANTICA DE LENGUAJES DE"
+      "nombreMateria":"ESTRUCTURA Y SEMANTICA DE LENGUAJES DE PROGRAMACION"
 
     },
     {

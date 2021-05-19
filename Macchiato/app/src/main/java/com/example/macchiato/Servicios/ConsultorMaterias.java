@@ -40,6 +40,7 @@ public class ConsultorMaterias {
         String materiaActual = "";
         Materia actual = new Materia(0, "", '1', null,"", "A");
         boolean primero = true;
+        int contador = 0;
 
         for(GrupoModelParser grupoActual: listaGrupos){
             if(grupoActual.getNombre().equals(materiaActual)){
@@ -59,13 +60,17 @@ public class ConsultorMaterias {
                     materiaActual = actual.getNombre();
                 }catch(Exception e){
                     e.printStackTrace();
+                    System.out.println(actual.getNombre());
                 }
                 Grupo grupo = new Grupo(grupoActual.getID(),grupoActual.getGrupo(), grupoActual.getDocente(), grupoActual.getClases());
                 actual.getGrupos().add(grupo);
             }
         }
+        lisClasificada.get(actual.getNivel()).add(actual);
+        materias.add(actual);
         System.out.println(lisClasificada);
         System.out.println(materias);
+        System.out.println(contador);
     }
 
     private void iniciarHashMap (){

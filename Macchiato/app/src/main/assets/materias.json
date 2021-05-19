@@ -1023,7 +1023,7 @@
     {
 
       "id":"40",
-      "nombreMateria":" ORGANIZACION Y METODOS",
+      "nombreMateria":"ORGANIZACION Y METODOS",
       "codigo":"2010041",
       "docente":" CAMACHO DEL CASTILLO INDIRA",
       "nivel":"C",
@@ -1995,7 +1995,7 @@
     },
     {
       "id":"76",
-      "nombreMateria":" TALLER DE INGENIERIA DE SOFTWARE",
+      "nombreMateria":"TALLER DE INGENIERIA DE SOFTWARE",
       "codigo":"2010024",
       "docente":" BLANCO COCA LETICIA",
       "nivel":"G",
@@ -2017,7 +2017,7 @@
     },
     {
       "id":"77",
-      "nombreMateria":" ARQUITECTURA DE SOFTWARE",
+      "nombreMateria":"ARQUITECTURA DE SOFTWARE",
       "codigo":"2010100",
       "docente":"AZERO ALCOCER PABLO",
       "nivel":"G",
@@ -2046,7 +2046,7 @@
     {
 
       "id":"78",
-      "nombreMateria":" TELEFONIA IP",
+      "nombreMateria":"TELEFONIA IP",
       "codigo":"2010182",
       "docente":"MONTOYA BURGOS YONY RICHARD",
       "nivel":"G",
@@ -2090,7 +2090,7 @@
     },
     {
       "id":"80",
-      "nombreMateria":" TECNOLOGIA REDES AVANZADAS",
+      "nombreMateria":"TECNOLOGIA REDES AVANZADAS",
       "codigo":"2010205",
       "docente":"MONTECINOS CHOQUE MARCO ANTONIO",
       "nivel":"G",
@@ -2140,7 +2140,7 @@
     },
     {
       "id":"82",
-      "nombreMateria":" APLICACION DE SISTEMAS OPERATIVOS",
+      "nombreMateria":"APLICACION DE SISTEMAS OPERATIVOS",
       "codigo":"2010035",
       "docente":"CUSSI NICOLAS GROVER HUMBERTO",
       "nivel":"H",
@@ -2389,7 +2389,7 @@
     },
     {
       "id":"92",
-      "nombreMateria":" AGENTES INTELIGENTES",
+      "nombreMateria":"AGENTES INTELIGENTES",
       "codigo":"2010175",
       "docente":"MONTOYA BURGOS YONY RICHARD",
       "nivel":"I",
@@ -2411,7 +2411,7 @@
     },
     {
       "id":"93",
-      "nombreMateria":" APLICACIONES WEB AVANZADAS",
+      "nombreMateria":"APLICACIONES WEB AVANZADAS",
       "codigo":"2010198",
       "docente":"COSTAS JAUREGUI VLADIMIR ABEL",
       "nivel":"I",
@@ -2455,7 +2455,7 @@
     },
     {
       "id":"95",
-      "nombreMateria":" TALLER DE GRADO II",
+      "nombreMateria":"TALLER DE GRADO II",
       "codigo":"2010215",
       "docente":"MONTANO QUIROGA VICTOR HUGO",
       "nivel":"I",
