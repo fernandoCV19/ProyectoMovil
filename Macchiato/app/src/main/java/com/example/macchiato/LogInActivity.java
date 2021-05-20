@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.macchiato.Models.GlobalApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,10 +37,8 @@ public class LogInActivity extends AppCompatActivity {
 
     private EditText correo_L;
     private EditText contrasena_L;
-    private FirebaseAuth mAuth;
-    private DatabaseReference reference;
     private TextView olvide_contrasena;
-    private User userProfile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +47,6 @@ public class LogInActivity extends AppCompatActivity {
         correo_L= findViewById(R.id.editTextTextEmailAddress);
         contrasena_L= findViewById(R.id.editTextTextPassword);
         olvide_contrasena=findViewById(R.id.cont_olvidada_id);
-        mAuth = FirebaseAuth.getInstance();
-        reference= FirebaseDatabase.getInstance().getReference("User");
 
         olvide_contrasena.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +61,7 @@ public class LogInActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         String email = resetMail.getText().toString().trim();
 
-                        mAuth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        GlobalApplication.auth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(LogInActivity.this, "el link fue enviado a tu email", Toast.LENGTH_SHORT).show();
@@ -116,17 +113,17 @@ public class LogInActivity extends AppCompatActivity {
             return;
         }
 
-        mAuth.signInWithEmailAndPassword(email_txt,password_txt)
+        GlobalApplication.auth.signInWithEmailAndPassword(email_txt,password_txt)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
                                     Toast.LENGTH_SHORT).show();
-                            reference.child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            GlobalApplication.reference.child(GlobalApplication.auth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                    userProfile = snapshot.getValue(User.class);
+                                    GlobalApplication.userProfile = snapshot.getValue(User.class);
                                     crearJson();
                                 }
                                 @Override
@@ -150,7 +147,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void crearJson(){
-        String myjson = new Gson().toJson(userProfile);
+        String myjson = new Gson().toJson(GlobalApplication.userProfile);
         Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         Toast.makeText(getApplicationContext(), jsonMap.toString(), Toast.LENGTH_SHORT).show();
     }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.macchiato.Models.GlobalApplication;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CambiarPerfilActivity extends AppCompatActivity {
     EditText contAct,contNueva,contConfir;
-    private FirebaseUser user;
+    //private FirebaseUser user;
     //private DatabaseReference reference;
     //private String thisUserId;
 
@@ -48,7 +49,7 @@ public class CambiarPerfilActivity extends AppCompatActivity {
             mensajeError(contConfir,"las contrasenas son diferentes");
             return;
         }
-        user.updatePassword(contNuevaText).addOnSuccessListener(new OnSuccessListener<Void>() {
+        FirebaseAuth.getInstance().getCurrentUser().updatePassword(contNuevaText).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 startActivity(new Intent(CambiarPerfilActivity.this, Navigation_bottom.class));
@@ -70,7 +71,7 @@ public class CambiarPerfilActivity extends AppCompatActivity {
         contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
     }
     private void inicializarUser(){
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        //user = FirebaseAuth.getInstance().getCurrentUser();
         //reference= FirebaseDatabase.getInstance().getReference("User");
         //thisUserId=user.getUid();
     }
