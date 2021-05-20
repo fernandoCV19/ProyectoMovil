@@ -1,9 +1,9 @@
 package com.example.macchiato;
 
 public class User {
-    private String userName="";
+    private String userName="usuario vacio";
     private String fullName="";
-    private String email="";
+    private String email="email vacio";
     private String uid="";
     private String password="";
 

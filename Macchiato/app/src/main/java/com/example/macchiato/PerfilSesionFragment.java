@@ -32,7 +32,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PerfilSesionFragment extends Fragment {
 
@@ -64,6 +71,7 @@ public class PerfilSesionFragment extends Fragment {
             public void onClick(View v) {
                 if(GlobalApplication.auth!=null){
                     GlobalApplication.auth.signOut();
+                    crearJson();
                     Intent intent = new Intent(getActivity(),Navigation_bottom.class);
                     startActivity(intent);
                     getActivity().finishAffinity();
@@ -81,6 +89,23 @@ public class PerfilSesionFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void crearJson(){
+        String myjson = new Gson().toJson(new User());
+        Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+        try {
+            OutputStreamWriter archivo = new OutputStreamWriter(getActivity().openFileOutput("registro.json", Activity.MODE_PRIVATE));
+            archivo.write(myjson);
+            archivo.flush();
+            archivo.close();
+            //Toast.makeText(this,"fichero:"+ leerFichero(), Toast.LENGTH_SHORT).show();
+        } catch (IOException e ){
+            e.printStackTrace();
+        }
+        //GlobalApplication.userAct = (String) jsonMap.get("userName");
+        //GlobalApplication.emailAct = (String) jsonMap.get("email");
+        //Toast.makeText(getApplicationContext(), jsonMap.toString(), Toast.LENGTH_SHORT).show();
     }
 
 
