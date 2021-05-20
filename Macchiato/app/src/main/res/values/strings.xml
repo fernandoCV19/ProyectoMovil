@@ -17,6 +17,98 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_navigatorapp">MainActivity</string>
+   <string name ="txt_materia">Materia:</string>
+    <string name="txt_nota">Nota:</string>
+    <string name="txt_nivel">Nivel:</string>
+    <string name="txt_selectColor">SELECCIONAR COLOR</string>
+    <string-array name="niveles">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+    </string-array>
+
+    <string-array name="nivelA">
+        <item>INGLES I</item>
+        <item>FISICA GENERAL</item>
+        <item>ALGEBRA I</item>
+        <item>CALCULO I</item>
+        <item>INTRODUCCION A LA PROGRAMACION</item>
+    </string-array>
+
+    <string-array name="nivelB">
+        <item>INGLES II</item>
+        <item>ALGEBRA II</item>
+        <item>CALCULO II</item>
+        <item>ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS</item>
+        <item>ARQUITECTURA DE COMPUTADORAS I</item>
+        <item>PROGRAMACION</item>
+    </string-array>
+
+    <string-array name="nivelC">
+        <item>CALCULO NUMERICO</item>
+        <item>LOGICA</item>
+        <item>ARQUITECTURA DE COMPUTADORAS II</item>
+        <item>TEORIA DE GRAFOS</item>
+        <item>ORGANIZACION Y METODOS</item>
+        <item>METODOS Y TECNICAS DE PROGRAMACION</item>
+    </string-array>
+
+    <string-array name="nivelD">
+        <item>PROBABILIDAD Y ESTADISTICA</item>
+        <item>TALLER DE PROGRAMACION EN BAJO NIVEL</item>
+        <item>BASE DE DATOS I</item>
+        <item>SISTEMAS DE INFORMACION I</item>
+        <item>PROGRAMACION FUNCIONAL</item>
+        <item>ALGORITMOS AVANZADOS</item>
+    </string-array>
+
+    <string-array name="nivelE">
+        <item>BASE DE DATOS II</item>
+        <item>TALLER DE SISTEMAS OPERATIVOS</item>
+        <item>SISTEMAS DE INFORMACION II</item>
+        <item>TEORIA DE AUTOMATAS Y LENG. FORMALES</item>
+        <item>GRAFICACION POR COMPUTADORA</item>
+        <item>INTELIGENCIA ARTIFICIAL I</item>
+    </string-array>
+    <string-array name="nivelF">
+        <item>INGENIERIA DE SOFTWARE</item>
+        <item>REDES DE COMPUTADORAS</item>
+        <item>ESTRUCTURA Y SEMANTICA DE LENGUAJES DE</item>
+        <item>TALLER DE BASE DE DATOS</item>
+        <item>INTELIGENCIA ARTIFICIAL II</item>
+        <item>PROGRAMACION WEB</item>
+    </string-array>
+    <string-array name="nivelG">
+        <item>SIMULACION DE SISTEMAS</item>
+        <item>TALLER DE INGENIERIA DE SOFTWARE</item>
+        <item>ARQUITECTURA DE SOFTWARE</item>
+        <item>TELEFONIA IP</item>
+        <item>INTERACCION HUMANO COMPUTADOR</item>
+        <item>TECNOLOGIA REDES AVANZADAS</item>
+    </string-array>
+    <string-array name="nivelH">
+        <item>APLICACION DE SISTEMAS OPERATIVOS</item>
+        <item>EVALUACION Y AUDITORIA DE SISTEMAS</item>
+        <item>TALLER DE GRADO I</item>
+    </string-array>
+    <string-array name="nivelI">
+        <item>DATA WAREHOUSE</item>
+        <item>DISE¥O DE COMPILADORES</item>
+        <item>ROBOTICA</item>
+        <item>PROGRAMACION MOVIL</item>
+        <item>AGENTES INTELIGENTES</item>
+        <item>APLICACIONES WEB AVANZADAS</item>
+        <item>SEGURIDAD DE SISTEMAS</item>
+        <item>TALLER DE GRADO II</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

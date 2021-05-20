@@ -39,7 +39,7 @@
                     android:textSize="18sp" />
 
                 <ImageButton
-                    android:id="@+id/imageButton3"
+                    android:id="@+id/añadir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="48dp"
@@ -51,7 +51,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -59,24 +59,22 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_materias"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
 
-            <LinearLayout
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"/>
+                android:layout_marginTop="280dp"
+                android:text="Button" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="280dp"
-            android:onClick="openDialog"
-            android:text="Button" />
-
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
