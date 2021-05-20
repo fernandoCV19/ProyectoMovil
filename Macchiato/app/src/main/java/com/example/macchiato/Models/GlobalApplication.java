@@ -14,6 +14,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GlobalApplication extends Application {
     private static Context appContext;
@@ -22,6 +30,9 @@ public class GlobalApplication extends Application {
     public static FirebaseUser user;
     public static DatabaseReference reference;
     public static User userProfile;
+    public static Map<String, Object> jsonMap;
+    public static String userAct;
+    public static String emailAct;
 
 
     @Override
@@ -32,7 +43,7 @@ public class GlobalApplication extends Application {
         reference= FirebaseDatabase.getInstance().getReference("User");
         user= FirebaseAuth.getInstance().getCurrentUser();
         userProfile= new User();
-        if(user!=null){
+        /*if(user!=null){
             reference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -45,7 +56,35 @@ public class GlobalApplication extends Application {
                 public void onCancelled(@NonNull DatabaseError error) {
                 }
             });
+        }*/
+        jsonMap = new Gson().fromJson(leerFichero(), new TypeToken<HashMap<String, Object>>() {}.getType());
+        userAct = (String) jsonMap.get("userName");
+        emailAct = (String) jsonMap.get("email");
+        Toast.makeText(appContext, userAct, Toast.LENGTH_SHORT).show();
+        Toast.makeText(appContext, emailAct, Toast.LENGTH_SHORT).show();
+    }
+    private String leerFichero(){
+        FileInputStream fileInputStream = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        String texto ="";
+        try {
+            fileInputStream = openFileInput("registro.json");
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+            while((texto = bufferedReader.readLine())!= null){
+                stringBuilder.append(texto);
+            }
+            //Toast.makeText(getApplicationContext(), stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+        }catch (Exception e){}
+        finally {
+            if(fileInputStream != null){
+                try {
+                    fileInputStream.close();
+                }catch (Exception e){}
+            }
         }
+        return stringBuilder.toString();
     }
     public static Context getAppContext() {
         return appContext;

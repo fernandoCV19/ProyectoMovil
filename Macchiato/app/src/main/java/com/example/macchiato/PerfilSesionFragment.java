@@ -52,8 +52,8 @@ public class PerfilSesionFragment extends Fragment {
         usuarioShow= (TextView) view.findViewById(R.id.usuarioActual_id);
         correoShow= (TextView) view.findViewById(R.id.correoActual_id);
         //user= FirebaseAuth.getInstance().getCurrentUser();
-        usuarioShow.setText(GlobalApplication.userProfile.getUserName());
-        correoShow.setText(GlobalApplication.userProfile.getEmail());
+        usuarioShow.setText(GlobalApplication.userAct);
+        correoShow.setText(GlobalApplication.emailAct);
 
 
 
