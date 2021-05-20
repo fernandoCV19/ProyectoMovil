@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,13 @@ import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -149,7 +157,38 @@ public class LogInActivity extends AppCompatActivity {
     private void crearJson(){
         String myjson = new Gson().toJson(GlobalApplication.userProfile);
         Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
-        Toast.makeText(getApplicationContext(), jsonMap.toString(), Toast.LENGTH_SHORT).show();
-    }
+        try {
+            OutputStreamWriter archivo = new OutputStreamWriter(openFileOutput("registro.json", Activity.MODE_PRIVATE));
+            archivo.write(myjson);
+            archivo.flush();
+            archivo.close();
+        } catch (IOException e ){
+            e.printStackTrace();
+        }
 
+        //Toast.makeText(getApplicationContext(), jsonMap.toString(), Toast.LENGTH_SHORT).show();
+    }
+    private String leerFichero(){
+        FileInputStream fileInputStream = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        String texto ="";
+        try {
+            fileInputStream = openFileInput("registro.json");
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+            while((texto = bufferedReader.readLine())!= null){
+                stringBuilder.append(texto);
+            }
+            //Toast.makeText(getApplicationContext(), stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+        }catch (Exception e){}
+        finally {
+            if(fileInputStream != null){
+                try {
+                    fileInputStream.close();
+                }catch (Exception e){}
+            }
+        }
+        return stringBuilder.toString();
+    }
 }
