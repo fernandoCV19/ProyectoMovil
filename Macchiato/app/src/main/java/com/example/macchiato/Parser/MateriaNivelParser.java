@@ -17,8 +17,6 @@ public class MateriaNivelParser {
     }
     public ArrayList<MateriaNivel> parserMateriaNivel(String json) throws Exception{
 
-//        LectorJson lectorJson = new LectorJson();
-  //      Object obj = new JSONParser().parse(lectorJson.loadJSONFromAsset("materiasNivel.json",context));
         Object obj = new JSONParser().parse(json);
 
         JSONObject jo = (JSONObject) obj;

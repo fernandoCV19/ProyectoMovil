@@ -15,8 +15,6 @@ public class ParserMateriaID {
 
     public void iniciarIDs(String json) throws Exception {
         ids = new HashMap<>();
-        //LectorJson lectorJson = new LectorJson();
-        //Object obj = new JSONParser().parse(lectorJson.loadJSONFromAsset("materiasID.json",context));
         Object obj = new JSONParser().parse(json);
 
         JSONObject joMaterias = (JSONObject) obj;
