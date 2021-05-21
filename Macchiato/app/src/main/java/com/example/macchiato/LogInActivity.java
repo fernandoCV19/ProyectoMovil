@@ -164,6 +164,7 @@ public class LogInActivity extends AppCompatActivity {
             archivo.close();
             //Toast.makeText(this,"fichero:"+ leerFichero(), Toast.LENGTH_SHORT).show();
             leerFichero();
+
         } catch (IOException e ){
             e.printStackTrace();
         }

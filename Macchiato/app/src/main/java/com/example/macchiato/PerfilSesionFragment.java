@@ -44,7 +44,6 @@ import java.util.Map;
 public class PerfilSesionFragment extends Fragment {
 
     //private FirebaseAuth auth;
-
     //private DatabaseReference reference;
     //private User userProfile;
     TextView usuarioShow,correoShow;
@@ -99,13 +98,9 @@ public class PerfilSesionFragment extends Fragment {
             archivo.write(myjson);
             archivo.flush();
             archivo.close();
-            //Toast.makeText(this,"fichero:"+ leerFichero(), Toast.LENGTH_SHORT).show();
         } catch (IOException e ){
             e.printStackTrace();
         }
-        //GlobalApplication.userAct = (String) jsonMap.get("userName");
-        //GlobalApplication.emailAct = (String) jsonMap.get("email");
-        //Toast.makeText(getApplicationContext(), jsonMap.toString(), Toast.LENGTH_SHORT).show();
     }
 
 

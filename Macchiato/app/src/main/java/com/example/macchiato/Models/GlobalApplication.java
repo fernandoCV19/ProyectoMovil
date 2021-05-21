@@ -43,25 +43,12 @@ public class GlobalApplication extends Application {
         reference= FirebaseDatabase.getInstance().getReference("User");
         user= FirebaseAuth.getInstance().getCurrentUser();
         userProfile= new User();
-        /*if(user!=null){
-            reference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    userProfile = snapshot.getValue(User.class);
-                    if(userProfile != null){
 
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
-        }*/
         jsonMap = new Gson().fromJson(leerFichero(), new TypeToken<HashMap<String, Object>>() {}.getType());
         userAct = (String) jsonMap.get("userName");
         emailAct = (String) jsonMap.get("email");
-        Toast.makeText(appContext, userAct, Toast.LENGTH_SHORT).show();
-        Toast.makeText(appContext, emailAct, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(appContext, userAct, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(appContext, emailAct, Toast.LENGTH_SHORT).show();
     }
     private String leerFichero(){
         FileInputStream fileInputStream = null;
@@ -75,7 +62,6 @@ public class GlobalApplication extends Application {
             while((texto = bufferedReader.readLine())!= null){
                 stringBuilder.append(texto);
             }
-            //Toast.makeText(getApplicationContext(), stringBuilder.toString(), Toast.LENGTH_SHORT).show();
         }catch (Exception e){}
         finally {
             if(fileInputStream != null){
