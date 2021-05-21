@@ -11,16 +11,16 @@ public class Materia {
     private ArrayList<Grupo> grupos;
     private String color;
     private String codigo;
+    private ArrayList<String> requisitos;
 
-
-
-    public Materia(int id, String nombre, char nivel, ArrayList<Grupo> grupos, String color, String codigo) {
+    public Materia(int id, String nombre, char nivel, ArrayList<Grupo> grupos, String color, String codigo, ArrayList<String> requisitos) {
         this.id = id;
         this.nombre = nombre;
         this.nivel = nivel;
         this.grupos = grupos;
         this.color = color;
         this.codigo = codigo;
+        this.requisitos = requisitos;
     }
 
     public int getId() {
@@ -69,5 +69,12 @@ public class Materia {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+    public ArrayList<String> getRequisitos() {
+        return requisitos;
+    }
+
+    public void setRequisitos(ArrayList<String> requisitos) {
+        this.requisitos = requisitos;
     }
 }

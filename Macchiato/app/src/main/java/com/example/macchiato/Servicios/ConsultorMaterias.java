@@ -38,7 +38,7 @@ public class ConsultorMaterias {
 
         iniciarHashMap();
         String materiaActual = "";
-        Materia actual = new Materia(0, "", '1', null,"", "A");
+        Materia actual = new Materia(0, "", '1', null,"", "A", null);
         boolean primero = true;
         int contador = 0;
 
@@ -56,7 +56,7 @@ public class ConsultorMaterias {
                 }
                 //Actualiza actual
                 try{
-                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),getColorNivel(grupoActual.getNivel()), grupoActual.getCodigo());
+                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),getColorNivel(grupoActual.getNivel()), grupoActual.getCodigo(),(new ParserMateriaID()).getRequisitos(grupoActual.getNombre()));
                     materiaActual = actual.getNombre();
                 }catch(Exception e){
                     e.printStackTrace();
