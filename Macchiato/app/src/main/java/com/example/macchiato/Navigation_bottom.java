@@ -82,5 +82,8 @@ public class Navigation_bottom extends AppCompatActivity {
                 .commit();
     }
 
+    private void mostrarDetalles(){
+
+    }
 
 }

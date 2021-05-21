@@ -66,7 +66,7 @@
                 android:id="@+id/buttonIniciarSesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="132dp"
+                android:layout_marginTop="64dp"
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:text="CERRAR SESIÓN"

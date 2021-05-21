@@ -5,7 +5,7 @@
     android:id="@+id/mejoraquiponxd"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondos_fragments"
+    android:background="@drawable/fondo_materia"
     tools:context=".MateriaFragment">
 
 

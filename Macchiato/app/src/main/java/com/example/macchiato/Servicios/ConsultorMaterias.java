@@ -101,18 +101,19 @@ public class ConsultorMaterias {
 
     public String getColorNivel(char nivel) {
         String respuesta = "";
+
         switch(nivel) {
             case 'B':
                 respuesta = "#48a259";
                 break;
             case 'A':
-                respuesta = "#00e25f";
+                respuesta = "#FFAA66CC";
                 break;
             case 'C':
                 respuesta = "#99e801";
                 break;
             case 'D':
-                respuesta = "#48a259";
+                respuesta = "#FF33B5E5";
                 break;
             case 'E':
                 respuesta = "#48a259";
@@ -132,4 +133,5 @@ public class ConsultorMaterias {
         }
         return respuesta;
     }
+
 }

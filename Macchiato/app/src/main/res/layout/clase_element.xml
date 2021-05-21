@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardViewMateriaInfo"
+    android:id="@+id/cardViewClase"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="4dp"
+    app:cardCornerRadius="15dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -23,7 +22,7 @@
             android:padding="6dp">
 
             <LinearLayout
-                android:id="@+id/linearInfo"
+                android:id="@+id/linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -31,29 +30,32 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/numGrupoInfo"
+                    android:id="@+id/diaClase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:fontFamily="casual"
-                    android:text="Grupo N"
-                    android:textSize="20sp">
+                    android:gravity="center"
+                    android:text="Dia"
+                    android:textSize="16sp"
+                    android:textStyle="bold">
 
                 </TextView>
 
                 <TextView
-                    android:id="@+id/nomDocenteInfo"
+                    android:id="@+id/horaClase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="casual"
                     android:gravity="center"
-                    android:text="Nombre del Docente" />
+                    android:text="Horas"
+                    android:textStyle="bold" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/horariosInfo"
+                <TextView
+                    android:id="@+id/aulaClase"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Aula" />
 
             </LinearLayout>
         </RelativeLayout>
