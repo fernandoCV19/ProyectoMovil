@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.macchiato.EditJson;
 import com.example.macchiato.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,6 +34,7 @@ public class GlobalApplication extends Application {
     public static Map<String, Object> jsonMap;
     public static String userAct;
     public static String emailAct;
+    public static EditJson editJson;
 
 
     @Override
@@ -43,35 +45,15 @@ public class GlobalApplication extends Application {
         reference= FirebaseDatabase.getInstance().getReference("User");
         user= FirebaseAuth.getInstance().getCurrentUser();
         userProfile= new User();
+        editJson= new EditJson();
 
-        jsonMap = new Gson().fromJson(leerFichero(), new TypeToken<HashMap<String, Object>>() {}.getType());
+        jsonMap = new Gson().fromJson(editJson.leerFichero(), new TypeToken<HashMap<String, Object>>() {}.getType());
         userAct = (String) jsonMap.get("userName");
         emailAct = (String) jsonMap.get("email");
         //Toast.makeText(appContext, userAct, Toast.LENGTH_SHORT).show();
         //Toast.makeText(appContext, emailAct, Toast.LENGTH_SHORT).show();
     }
-    private String leerFichero(){
-        FileInputStream fileInputStream = null;
-        StringBuilder stringBuilder = new StringBuilder();
-        String texto ="";
-        try {
-            fileInputStream = openFileInput("registro.json");
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-            while((texto = bufferedReader.readLine())!= null){
-                stringBuilder.append(texto);
-            }
-        }catch (Exception e){}
-        finally {
-            if(fileInputStream != null){
-                try {
-                    fileInputStream.close();
-                }catch (Exception e){}
-            }
-        }
-        return stringBuilder.toString();
-    }
     public static Context getAppContext() {
         return appContext;
     }

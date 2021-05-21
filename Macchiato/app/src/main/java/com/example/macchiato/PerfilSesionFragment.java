@@ -70,7 +70,7 @@ public class PerfilSesionFragment extends Fragment {
             public void onClick(View v) {
                 if(GlobalApplication.auth!=null){
                     GlobalApplication.auth.signOut();
-                    crearJson();
+                    GlobalApplication.editJson.crearJson();
                     Intent intent = new Intent(getActivity(),Navigation_bottom.class);
                     startActivity(intent);
                     getActivity().finishAffinity();
@@ -90,18 +90,7 @@ public class PerfilSesionFragment extends Fragment {
         return view;
     }
 
-    private void crearJson(){
-        String myjson = new Gson().toJson(new User());
-        Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
-        try {
-            OutputStreamWriter archivo = new OutputStreamWriter(getActivity().openFileOutput("registro.json", Activity.MODE_PRIVATE));
-            archivo.write(myjson);
-            archivo.flush();
-            archivo.close();
-        } catch (IOException e ){
-            e.printStackTrace();
-        }
-    }
+
 
 
 }

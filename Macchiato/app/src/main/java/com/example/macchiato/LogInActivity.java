@@ -48,6 +48,7 @@ public class LogInActivity extends AppCompatActivity {
     private TextView olvide_contrasena;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,7 +133,8 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                     GlobalApplication.userProfile = snapshot.getValue(User.class);
-                                    crearJson();
+                                    GlobalApplication.editJson.crearJson();
+                                    GlobalApplication.editJson.leerFichero();
                                 }
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }
@@ -154,45 +156,5 @@ public class LogInActivity extends AppCompatActivity {
         cont.requestFocus();
     }
 
-    private void crearJson(){
-        String myjson = new Gson().toJson(GlobalApplication.userProfile);
-        Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
-        try {
-            OutputStreamWriter archivo = new OutputStreamWriter(openFileOutput("registro.json", Activity.MODE_PRIVATE));
-            archivo.write(myjson);
-            archivo.flush();
-            archivo.close();
-            //Toast.makeText(this,"fichero:"+ leerFichero(), Toast.LENGTH_SHORT).show();
-            leerFichero();
 
-        } catch (IOException e ){
-            e.printStackTrace();
-        }
-        GlobalApplication.userAct = (String) jsonMap.get("userName");
-        GlobalApplication.emailAct = (String) jsonMap.get("email");
-        //Toast.makeText(getApplicationContext(), jsonMap.toString(), Toast.LENGTH_SHORT).show();
-    }
-    private String leerFichero(){
-        FileInputStream fileInputStream = null;
-        StringBuilder stringBuilder = new StringBuilder();
-        String texto ="";
-        try {
-            fileInputStream = openFileInput("registro.json");
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-            while((texto = bufferedReader.readLine())!= null){
-                stringBuilder.append(texto);
-            }
-            //Toast.makeText(getApplicationContext(), stringBuilder.toString(), Toast.LENGTH_SHORT).show();
-        }catch (Exception e){}
-        finally {
-            if(fileInputStream != null){
-                try {
-                    fileInputStream.close();
-                }catch (Exception e){}
-            }
-        }
-        return stringBuilder.toString();
-    }
 }
