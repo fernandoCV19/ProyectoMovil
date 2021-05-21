@@ -12,10 +12,13 @@ import java.util.Iterator;
 public class ParserMateriaID {
 
     private static HashMap<String,Integer> ids;
-    public void iniciarIDs(Context context) throws Exception {
+
+    public void iniciarIDs(String json) throws Exception {
         ids = new HashMap<>();
-        LectorJson lectorJson = new LectorJson();
-        Object obj = new JSONParser().parse(lectorJson.loadJSONFromAsset("materiasID.json",context));
+        //LectorJson lectorJson = new LectorJson();
+        //Object obj = new JSONParser().parse(lectorJson.loadJSONFromAsset("materiasID.json",context));
+        Object obj = new JSONParser().parse(json);
+
         JSONObject joMaterias = (JSONObject) obj;
         JSONArray materias = (JSONArray) joMaterias.get("MATERIAS");
         JSONObject jo;

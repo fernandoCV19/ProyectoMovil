@@ -3,6 +3,7 @@ package com.example.macchiato.Servicios;
 import android.content.Context;
 
 import com.example.macchiato.Models.GrupoModelParser;
+import com.example.macchiato.Parser.LectorJson;
 import com.example.macchiato.Parser.ParserMateriaGrupo;
 import com.example.macchiato.Parser.ParserMateriaID;
 
@@ -12,11 +13,16 @@ public class Iniciador {
 
     public void iniciar(Context context) throws Exception {
         if(ConsultorMaterias.getLisClasificada() == null){
-            ParserMateriaGrupo parserMateriaGrupo = new ParserMateriaGrupo();
+            LectorJson lectorJson = new LectorJson();
 
-            ArrayList<GrupoModelParser> lista = parserMateriaGrupo.parserMateriaGrupo(context);
+            String json = lectorJson.loadJSONFromAsset("materias.json", context);
+            ParserMateriaGrupo parserMateriaGrupo = new ParserMateriaGrupo();
+            ArrayList<GrupoModelParser> lista = parserMateriaGrupo.parserMateriaGrupo(json);
+
+
+            json = lectorJson.loadJSONFromAsset("materiasID.json",context);
             ParserMateriaID parserMateriaID = new ParserMateriaID();
-            parserMateriaID.iniciarIDs(context);
+            parserMateriaID.iniciarIDs(json);
 
             ConsultorMaterias consultorMaterias = new ConsultorMaterias();
             consultorMaterias.clasificarMaterias(lista);
