@@ -67,8 +67,9 @@ public class MateriaNotaAdapter extends RecyclerView.Adapter<MateriaNotaAdapter.
 
         public void bindData(final MateriaNota item){
             nomMateria.setText(item. getMateria());
-            notaMateria.setText(item.getNota());
-           // color.setCardBackgroundColor(Color.parseColor(item.getColor()));
+            int num =item.getNota();
+            notaMateria.setText(String.valueOf(num));
+          // color.setCardBackgroundColor(Color.parseColor(item.getColor()));
         }
     }
 }

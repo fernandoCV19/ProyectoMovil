@@ -47,7 +47,7 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
     @Override
     public void onBindViewHolder(final MateriaAdapter.ViewHolder holder, final int position){
 
-        holder.bindData(mData.get(position));
+
     }
 
     public void setItems(List<Materia> items){mData=items;}

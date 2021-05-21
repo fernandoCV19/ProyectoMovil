@@ -51,7 +51,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        mostrar = new ArrayList<>();
             imageB = (ImageButton) findViewById(R.id.añadir);
             imageB.setOnClickListener(view -> {
              AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
@@ -134,7 +134,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         .setPositiveButton("añadir", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
-                                dialog.dismiss();
+                               // dialog.dismiss();
 
                             }
                         });
@@ -147,7 +147,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                 });
                 builder.setView(view1);
                 AlertDialog dialog =builder.create();
-                dialog.show();
+               // dialog.show();
 
 
 
@@ -165,7 +165,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                         String select = mSpinner.getSelectedItem().toString();
 
 
-                                        //    editText.setError(null);
+                                           editText.setError(null);
                                         String num = editText.getText().toString();
 
                                         if ("".equals(num)) {
@@ -180,23 +180,25 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
                                         if (numero >= 0 && numero <= 100) {
 
-                                            Toast.makeText(HistorialAcademicoActivity.this, "Todo correcto", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
+                                            dialog.dismiss();
 
                                         } else {
 
                                             editText.setError("Número fuera de rango");
                                             editText.requestFocus();
+                                            return;
                                         }
 
 
-                                        mostrar = new ArrayList<>();
+
                                         MateriaNota materiaNota = new MateriaNota(select, numero);
                                         mostrar.add(materiaNota);
                                         recyclerView = (RecyclerView) findViewById(R.id.list_materias);
                                         recyclerView.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-                                        MateriaNotaAdapter adapter = new MateriaNotaAdapter(mostrar, HistorialAcademicoActivity.this);
-                                        recyclerView.setAdapter(adapter);
-                                        recyclerView.setHasFixedSize(true);
+                                         MateriaNotaAdapter adapter = new MateriaNotaAdapter(mostrar, HistorialAcademicoActivity.this);
+                                         recyclerView.setAdapter(adapter);
+                                         recyclerView.setHasFixedSize(true);
 
                                         //if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Elige un nivel")) {
                                         //  }
@@ -209,7 +211,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                 });
                             }
                 });
-
 
 
 
