@@ -46,6 +46,7 @@ public class GlobalApplication extends Application {
         user= FirebaseAuth.getInstance().getCurrentUser();
         userProfile= new User();
         editJson= new EditJson();
+        //editJson.crearJson();
 
         jsonMap = new Gson().fromJson(editJson.leerFichero(), new TypeToken<HashMap<String, Object>>() {}.getType());
         userAct = (String) jsonMap.get("userName");
