@@ -53,7 +53,7 @@ public class MateriaFragment extends Fragment {
 
         Iniciador iniciador = new Iniciador();
         try {
-            iniciador.iniciar();
+            iniciador.iniciar(getContext());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -2,6 +2,7 @@ package com.example.macchiato.Parser;
 
 import android.app.Application;
 import android.content.Context;
+import android.view.contentcapture.ContentCaptureCondition;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,10 +17,10 @@ import java.io.InputStream;
 
 public class LectorJson {
 
-    public String loadJSONFromAsset(String archivo) {
+    public String loadJSONFromAsset(String archivo, Context context) {
         String json = null;
         try {
-            InputStream is = GlobalApplication.getAppContext().getAssets().open(archivo);
+            InputStream is = context.getAssets().open(archivo);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
