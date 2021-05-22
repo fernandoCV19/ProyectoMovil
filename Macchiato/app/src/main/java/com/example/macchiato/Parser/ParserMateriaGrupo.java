@@ -19,10 +19,8 @@ import java.util.Iterator;
 
 public class ParserMateriaGrupo {
 
-    public ArrayList<GrupoModelParser> parserMateriaGrupo(Context context) throws Exception
+    public ArrayList<GrupoModelParser> parserMateriaGrupo(String json) throws Exception
     {
-        LectorJson lectorJson = new LectorJson();
-        String json = lectorJson.loadJSONFromAsset("materias.json",context);
         Object obj = new JSONParser().parse(json);
 
         JSONObject jo =(JSONObject) obj;

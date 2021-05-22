@@ -33,12 +33,9 @@ public class ConsultorMaterias {
     }
 
     public  void clasificarMaterias (ArrayList<GrupoModelParser>listaGrupos){
-        lisClasificada = new HashMap();
-        materias = new ArrayList<>();
-
         iniciarHashMap();
         String materiaActual = "";
-        Materia actual = new Materia(0, "", '1', null,"", "A");
+        Materia actual = new Materia(0, "", '1', null,"", "A", null);
         boolean primero = true;
         int contador = 0;
 
@@ -56,7 +53,7 @@ public class ConsultorMaterias {
                 }
                 //Actualiza actual
                 try{
-                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),getColorNivel(grupoActual.getNivel()), grupoActual.getCodigo());
+                    actual = new Materia((new ParserMateriaID()).getID(grupoActual.getNombre()), grupoActual.getNombre(), grupoActual.getNivel(), new ArrayList<Grupo>(),getColorNivel(grupoActual.getNivel()), grupoActual.getCodigo(),(new ParserMateriaID()).getRequisitos(grupoActual.getNombre()));
                     materiaActual = actual.getNombre();
                 }catch(Exception e){
                     e.printStackTrace();
@@ -74,6 +71,8 @@ public class ConsultorMaterias {
     }
 
     private void iniciarHashMap (){
+        lisClasificada = new HashMap();
+        materias = new ArrayList<>();
         lisClasificada.put('A',new ArrayList<Materia>());
         lisClasificada.put('B',new ArrayList<Materia>());
         lisClasificada.put('C',new ArrayList<Materia>());
@@ -135,6 +134,8 @@ public class ConsultorMaterias {
             case 'I':
                 respuesta = "#48a259";
                 break;
+            default:
+                respuesta = "#ffffff";
         }
         return respuesta;
     }
