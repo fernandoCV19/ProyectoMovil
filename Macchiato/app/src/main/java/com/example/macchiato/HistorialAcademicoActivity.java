@@ -149,8 +149,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                 AlertDialog dialog =builder.create();
                // dialog.show();
 
-
-
                 dialog.setOnShowListener(new DialogInterface.OnShowListener() {
 
                     @Override
@@ -161,35 +159,26 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View view) {
 
-
                                         String select = mSpinner.getSelectedItem().toString();
-
-
-                                           editText.setError(null);
+                                        editText.setError(null);
                                         String num = editText.getText().toString();
 
                                         if ("".equals(num)) {
                                             editText.setError("Introduce un número");
-
                                             editText.requestFocus();
-
                                             return;
                                         }
 
                                         int numero = Integer.parseInt(num);
-
                                         if (numero >= 0 && numero <= 100) {
-
                                             Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
                                             dialog.dismiss();
 
                                         } else {
-
                                             editText.setError("Número fuera de rango");
                                             editText.requestFocus();
                                             return;
                                         }
-
 
 
                                         MateriaNota materiaNota = new MateriaNota(select, numero);
