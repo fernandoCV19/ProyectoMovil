@@ -46,24 +46,21 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_historial_academico);
         Iniciador iniciador = new Iniciador();
         try {
-            iniciador.iniciar();
+            iniciador.iniciar(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         mostrar = new ArrayList<>();
-            imageB = (ImageButton) findViewById(R.id.añadir);
-            imageB.setOnClickListener(view -> {
-             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
-             View view1 = getLayoutInflater().inflate(R.layout.layout_dialog, null);
+        imageB = (ImageButton) findViewById(R.id.añadir);
+        imageB.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
+            View view1 = getLayoutInflater().inflate(R.layout.layout_dialog, null);
              //spinners
-            mSpinner = (Spinner) view1.findViewById(R.id.materia);
+             mSpinner = (Spinner) view1.findViewById(R.id.materia);
              nSpinner =(Spinner) view1. findViewById(R.id.nivel);
              editText=(EditText) view1.findViewById(R.id.editText);
 
-            //consultar base
-           // consultorMaterias = new ConsultorMaterias();
-            //lisClasificada = consultorMaterias.getLisClasificada();
 
         nSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -200,22 +197,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                 });
                             }
                 });
-
-
-
                 dialog.show();
-
-
         });
-
-
-
-
-
-
-
-
-
     }
 }
 

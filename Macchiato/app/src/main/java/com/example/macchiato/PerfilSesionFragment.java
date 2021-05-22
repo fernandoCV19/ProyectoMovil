@@ -41,7 +41,6 @@ public class PerfilSesionFragment extends Fragment {
     private String thisUserId;
     StorageReference storageReference;
     TextView usuarioShow,correoShow;
-    ImageButton  cambFoto;
     ImageView profileImage;
     public PerfilSesionFragment() {
         // Required empty public constructor
@@ -105,6 +104,15 @@ public class PerfilSesionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),CambiarPerfilActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button historial= (Button) view.findViewById(R.id.buttonHistorial);
+        historial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),HistorialAcademicoActivity.class);
                 startActivity(intent);
             }
         });

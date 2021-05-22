@@ -66,7 +66,7 @@
                 android:id="@+id/buttonIniciarSesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:text="CERRAR SESIÓN"
@@ -79,6 +79,15 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="casual"
                 android:text="CAMBIAR CONTRASEÑA"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/buttonHistorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="casual"
+                android:text="historial academico"
                 android:textStyle="bold" />
 
         </LinearLayout>

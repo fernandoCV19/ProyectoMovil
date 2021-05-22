@@ -11,22 +11,43 @@
         android:padding="20dp"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/spinner"
+        <TextView
+            android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40" />
+            android:layout_marginTop="24dp"
+            android:fontFamily="casual"
+            android:text="Nivel"
+            android:textSize="16sp" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/spinnerNivel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp" />
+            android:layout_marginTop="24dp"
+            android:entries="@array/niveles" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="casual"
+            android:text="Materia"
+            android:textSize="16sp" />
+
+        <Spinner
+
+            android:id="@+id/spinnerMateria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCheckbox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="60dp" />
+            android:layout_marginTop="24dp" />
     </LinearLayout>
 
 </FrameLayout>
