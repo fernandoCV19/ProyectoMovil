@@ -3,31 +3,31 @@
     {
       "id":"1",
       "nombreMateria":"INGLES I",
-      "requisitos":["Examen de Ingreso"]
+      "requisitos":["EXAMEN DE INGRESO"]
 
     },
     {
       "id":"2",
       "nombreMateria":"FISICA GENERAL",
-      "requisitos":["Examen de Ingreso"]
+      "requisitos":["EXAMEN DE INGRESO"]
 
     },
     {
       "id":"3",
       "nombreMateria":"ALGEBRA I",
-      "requisitos":["Examen de Ingreso"]
+      "requisitos":["EXAMEN DE INGRESO"]
 
     },
     {
       "id":"4",
       "nombreMateria":"CALCULO I",
-      "requisitos":["Examen de Ingreso"]
+      "requisitos":["EXAMEN DE INGRESO"]
 
     },
     {
       "id":"5",
       "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
-      "requisitos":["Examen de Ingreso"]
+      "requisitos":["EXAMEN DE INGRESO"]
 
     },
     {
@@ -311,7 +311,7 @@
     {
       "id":"50",
       "nombreMateria":"AGENTES INTELIGENTES",
-      "requisitos":[]
+      "requisitos":["NINGUNA"]
 
     },
     {

@@ -134,14 +134,31 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
                     e.printStackTrace();
                 }
                 ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
-                ArrayList<Grupo> grupos = new ArrayList<>();
+                ArrayList<String> requisitos = new ArrayList<>();
 
                 for (Materia m : materias) {
                     if (m.getNombre().contentEquals(nomMateria.getText())) {
-                        grupos = m.getGrupos();
+                        requisitos = m.getRequisitos();
                         break;
                     }
                 }
+                StringBuilder requi=null;
+                for(String s : requisitos){
+                   if(requi==null){
+                        requi= new StringBuilder();
+                       requi.append(s);
+                   }else{
+                       requi.append("\n").append(s);
+                   }
+                }
+
+                LayoutInflater inflater = LayoutInflater.from(context);
+                View v = inflater.inflate(R.layout.requisitos_dialog, null);
+                TextView requisitosL=v.findViewById(R.id.ListaRequisitos);
+                requisitosL.setText(requi);
+                builder.setView(v);
+                AlertDialog dialog = builder.create();
+                dialog.show();
 
             }
         }
