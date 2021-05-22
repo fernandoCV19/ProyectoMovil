@@ -57,6 +57,7 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final MateriaAdapter.ViewHolder holder, final int position){
+
         holder.setOnClickListeners();
         holder.bindData(mData.get(position));
 
@@ -75,6 +76,7 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
         TextView nomMateria,codMateria;
         CardView color;
         Button botonDetalles;
+        Button requisitos;
         public ViewHolder(View itemView) {
             super(itemView);
             context=itemView.getContext();
@@ -82,44 +84,66 @@ public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHold
             this.nomMateria = itemView.findViewById(R.id.nomMateria);
             this.codMateria = itemView.findViewById(R.id.codMateria);
             this.color= itemView.findViewById(R.id.cardViewMateria);
+            this.requisitos=itemView.findViewById(R.id.requisitos);
         }
 
         public void setOnClickListeners(){
+            requisitos.setOnClickListener(this);
             botonDetalles.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view){
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            Iniciador iniciador=new Iniciador();
-            try {
-                iniciador.iniciar();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            ArrayList<Materia> materias= ConsultorMaterias.getMaterias();
-            ArrayList<Grupo> grupos=new ArrayList<>();
-
-            for(Materia m : materias){
-                if(m.getNombre().contentEquals(nomMateria.getText())){
-                   grupos=m.getGrupos();
-                   break;
+            if(view.getId()==R.id.botonDetalles) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                Iniciador iniciador = new Iniciador();
+                try {
+                    iniciador.iniciar(context);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
+                ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
+                ArrayList<Grupo> grupos = new ArrayList<>();
+
+                for (Materia m : materias) {
+                    if (m.getNombre().contentEquals(nomMateria.getText())) {
+                        grupos = m.getGrupos();
+                        break;
+                    }
+                }
+
+                InfoGrupoAdapter infoGrupoAdapter = new InfoGrupoAdapter(grupos, context);
+                LayoutInflater inflater = LayoutInflater.from(context);
+
+                View v = inflater.inflate(R.layout.infodialog, null);
+                recyclerView = (RecyclerView) v.findViewById(R.id.recyclerGrupos);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                recyclerView.setAdapter(infoGrupoAdapter);
+
+                builder.setView(v);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }else{
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                Iniciador iniciador = new Iniciador();
+                try {
+                    iniciador.iniciar(context);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
+                ArrayList<Grupo> grupos = new ArrayList<>();
+
+                for (Materia m : materias) {
+                    if (m.getNombre().contentEquals(nomMateria.getText())) {
+                        grupos = m.getGrupos();
+                        break;
+                    }
+                }
+
             }
-
-            InfoGrupoAdapter infoGrupoAdapter=new InfoGrupoAdapter(grupos,context);
-            LayoutInflater inflater =LayoutInflater.from(context);
-
-            View v = inflater.inflate(R.layout.infodialog, null);
-            recyclerView = (RecyclerView) v.findViewById(R.id.recyclerGrupos);
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(infoGrupoAdapter);
-
-            builder.setView(v);
-            AlertDialog dialog=builder.create();
-            dialog.show();
         }
 
         public void bindData(final Materia item){
