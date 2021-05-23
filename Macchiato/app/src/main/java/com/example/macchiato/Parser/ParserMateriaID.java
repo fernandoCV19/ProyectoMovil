@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +14,11 @@ public class ParserMateriaID {
 
     private static HashMap<String, Par> ids;
 
-    public void iniciarIDs(String json) throws Exception {
+    public HashMap<String, Par> getIds() {
+        return ids;
+    }
+
+    public void iniciarIDs(String json) throws ParseException {
         ids = new HashMap<>();
         Object obj = new JSONParser().parse(json);
 
@@ -40,12 +45,22 @@ public class ParserMateriaID {
     }
 
     public int getID(String materia){
-        return ids.get(materia).id;
+        int respuesta = 0;
+        if(ids.containsKey(materia)){
+            return ids.get(materia).id;
+        }else {
+            return respuesta;
+        }
 
     }
 
     public ArrayList<String> getRequisitos(String materia){
-        return ids.get(materia).requisitos;
+        if(ids.containsKey(materia)){
+            return ids.get(materia).requisitos;
+        }else{
+            ArrayList<String> respuesta = new ArrayList<>();
+            return respuesta;
+        }
 
     }
 
