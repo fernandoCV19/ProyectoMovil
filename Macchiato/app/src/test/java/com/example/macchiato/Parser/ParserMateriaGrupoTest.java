@@ -36,8 +36,6 @@ public class ParserMateriaGrupoTest {
     public void parserDeUnSoloGrupoYVerificacionDeCorrectaCreacionDelObjetoTest(){
         ArrayList<GrupoModelParser> aux = parserMateriaGrupo.parserMateriaGrupo("{\r\n  \"MATERIAS\":[\r\n    {\r\n      \"id\":\"1\",\r\n      \"nombreMateria\":\"INGLES I\",\r\n      \"codigo\":\"1803001\",\r\n      \"docente\":\"CESPEDES GUIZADA MARIA BENITA\",\r\n      \"nivel\":\"A\",\r\n      \"grupo\":\"1\",\r\n      \"clases\":[\r\n        {\r\n          \"dia\":\"MARTES\",\r\n          \"horaInicio\":\"8:15\",\r\n          \"horaFinal\":\"9:45\",\r\n          \"aula\":\"693B\"\r\n        },\r\n        {\r\n          \"dia\":\"VIERNES\",\r\n          \"horaInicio\":\"8:15\",\r\n          \"horaFinal\":\"9:45\",\r\n          \"aula\":\"691D\"\r\n        }\r\n      ]\r\n}\r\n  ]\r\n}" );
         GrupoModelParser objeto = aux.get(0);
-        Clase clase1 = objeto.getClases().get(0);
-        Clase clase2 = objeto.getClases().get(1);
 
         assertThat(objeto.getID()).isEqualTo(1);
         assertThat(objeto.getNombre()).isEqualTo("INGLES I");
@@ -45,6 +43,16 @@ public class ParserMateriaGrupoTest {
         assertThat(objeto.getNivel()).isEqualTo('A');
         assertThat(objeto.getGrupo()).isEqualTo("1");
         assertThat(objeto.getCodigo()).isEqualTo("1803001");
+
+    }
+
+    @Test
+    public void parserDeUnSoloGrupoYVerificacionDeCorrectaCreacionDeLasClasesTest(){
+        ArrayList<GrupoModelParser> aux = parserMateriaGrupo.parserMateriaGrupo("{\r\n  \"MATERIAS\":[\r\n    {\r\n      \"id\":\"1\",\r\n      \"nombreMateria\":\"INGLES I\",\r\n      \"codigo\":\"1803001\",\r\n      \"docente\":\"CESPEDES GUIZADA MARIA BENITA\",\r\n      \"nivel\":\"A\",\r\n      \"grupo\":\"1\",\r\n      \"clases\":[\r\n        {\r\n          \"dia\":\"MARTES\",\r\n          \"horaInicio\":\"8:15\",\r\n          \"horaFinal\":\"9:45\",\r\n          \"aula\":\"693B\"\r\n        },\r\n        {\r\n          \"dia\":\"VIERNES\",\r\n          \"horaInicio\":\"8:15\",\r\n          \"horaFinal\":\"9:45\",\r\n          \"aula\":\"691D\"\r\n        }\r\n      ]\r\n}\r\n  ]\r\n}" );
+        GrupoModelParser objeto = aux.get(0);
+        Clase clase1 = objeto.getClases().get(0);
+        Clase clase2 = objeto.getClases().get(1);
+
         assertThat(clase1.getDia()).isEqualTo(Dia.MARTES);
         assertThat(clase1.getAula()).isEqualTo("693B");
         assertThat(clase1.getHoraInicio()).isEqualTo("8:15");
