@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,18 +15,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
-import com.example.macchiato.Parser.MateriaNivelParser;
-import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.Iniciador;
 
-import java.net.CookieHandler;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class HistorialAcademicoActivity extends AppCompatActivity {
     ImageButton imageB;
@@ -36,7 +29,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     Spinner  nSpinner;
     EditText editText;
     ArrayList<MateriaNota> mostrar;
-    RecyclerView recyclerView;
+    RecyclerView recyclerViewApro;
+    RecyclerView recyclerViewRepro;
+
 
 
 
@@ -60,6 +55,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
              mSpinner = (Spinner) view1.findViewById(R.id.materia);
              nSpinner =(Spinner) view1. findViewById(R.id.nivel);
              editText=(EditText) view1.findViewById(R.id.editText);
+
 
 
         nSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -168,7 +164,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
                                         int numero = Integer.parseInt(num);
                                         if (numero >= 0 && numero <= 100) {
-                                            Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
+
                                             dialog.dismiss();
 
                                         } else {
@@ -178,13 +174,27 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                         }
 
 
+
                                         MateriaNota materiaNota = new MateriaNota(select, numero);
-                                        mostrar.add(materiaNota);
-                                        recyclerView = (RecyclerView) findViewById(R.id.list_materias);
-                                        recyclerView.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-                                         MateriaNotaAdapter adapter = new MateriaNotaAdapter(mostrar, HistorialAcademicoActivity.this);
-                                         recyclerView.setAdapter(adapter);
-                                         recyclerView.setHasFixedSize(true);
+                                        if(!mostrar .contains(materiaNota)) {
+                                            Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
+
+                                            recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
+                                            recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasReprobadas);
+                                            if (numero >= 51) {
+                                                recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
+                                                MateriaNotaAdapter adapter = new MateriaNotaAdapter(mostrar, HistorialAcademicoActivity.this);
+                                                recyclerViewApro.setAdapter(adapter);
+                                                recyclerViewApro.setHasFixedSize(true);
+                                                mostrar.add(materiaNota);
+                                            } else {
+
+                                                recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
+                                                MateriaNotaAdapter adapter3 = new MateriaNotaAdapter(mostrar, HistorialAcademicoActivity.this);
+                                                recyclerViewRepro.setAdapter(adapter3);
+                                                recyclerViewRepro.setHasFixedSize(true);
+                                            }
+                                        }
 
                                         //if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Elige un nivel")) {
                                         //  }
