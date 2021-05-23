@@ -12,6 +12,7 @@ public class MallaCurricular {
     private ArrayList<Integer> cola7;
     private int requisitos_ia1;
     private int requisitos_TG2;
+
     public MallaCurricular(){
 
         cola1=new ArrayList<>();

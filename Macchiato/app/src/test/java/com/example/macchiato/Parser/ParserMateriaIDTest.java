@@ -4,7 +4,6 @@ import org.json.simple.parser.ParseException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
 
 import java.util.HashMap;
 
@@ -17,7 +16,6 @@ public class ParserMateriaIDTest {
 
     @Before
     public void setup(){
-
         parserMateriaID = new ParserMateriaID();
     }
 
