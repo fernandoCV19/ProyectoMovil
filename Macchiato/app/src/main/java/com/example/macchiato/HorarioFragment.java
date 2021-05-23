@@ -16,6 +16,7 @@ import android.widget.Spinner;
 public class HorarioFragment extends Fragment {
     Spinner spinnerNivel;
     Spinner spinnerMateria;
+
     public HorarioFragment() {
         // Required empty public constructor
     }
@@ -24,9 +25,9 @@ public class HorarioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_horario, container, false);
-        spinnerNivel= view.findViewById(R.id.spinnerNivel);
-        spinnerMateria= view.findViewById(R.id.spinnerMateria);
+        View view = inflater.inflate(R.layout.fragment_horario, container, false);
+        spinnerNivel = view.findViewById(R.id.spinnerNivel);
+        spinnerMateria = view.findViewById(R.id.spinnerMateria);
 
         spinnerNivel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -34,8 +35,7 @@ public class HorarioFragment extends Fragment {
 
 
                 String selectedClass = parent.getItemAtPosition(position).toString();
-                switch (selectedClass)
-                {
+                switch (selectedClass) {
                     case "A":
 
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
@@ -88,14 +88,30 @@ public class HorarioFragment extends Fragment {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-        
-        
-        
+        spinnerMateria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+
+
+
         return view;
+
+
     }
+
 }
+
