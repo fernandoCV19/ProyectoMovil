@@ -17,10 +17,13 @@ public class Iniciador {
         lectorJson = new LectorJson();
     }
 
-    public void iniciar(Context context) throws Exception {
+    public boolean iniciar(Context context) throws Exception {
         if(ConsultorMaterias.getLisClasificada() == null){
             iniciarObjetosIDMateria(context);
             iniciarObjetosMateria(context);
+            return true;
+        }else{
+            return false;
         }
     }
 
