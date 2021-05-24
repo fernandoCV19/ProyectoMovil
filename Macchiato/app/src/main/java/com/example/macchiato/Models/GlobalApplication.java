@@ -18,8 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +50,13 @@ public class GlobalApplication extends Application {
         userProfile= new User();
         editJson= new EditJson();
 
-        jsonMap = new Gson().fromJson(editJson.leerFichero(), new TypeToken<HashMap<String, Object>>() {}.getType());
+        try {
+            jsonMap = new Gson().fromJson(editJson.leerFichero(), new TypeToken<HashMap<String, Object>>() {}.getType());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         userAct = (String) jsonMap.get("userName");
         emailAct = (String) jsonMap.get("email");
         //Toast.makeText(appContext, userAct, Toast.LENGTH_SHORT).show();
