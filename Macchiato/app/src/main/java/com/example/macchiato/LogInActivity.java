@@ -30,6 +30,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -134,7 +135,13 @@ public class LogInActivity extends AppCompatActivity {
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                     GlobalApplication.userProfile = snapshot.getValue(User.class);
                                     GlobalApplication.editJson.crearJson();
-                                    GlobalApplication.editJson.leerFichero();
+                                    try {
+                                        GlobalApplication.editJson.leerFichero();
+                                    } catch (FileNotFoundException e) {
+                                        e.printStackTrace();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }

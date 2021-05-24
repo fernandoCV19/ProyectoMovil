@@ -1,11 +1,9 @@
-package com.example.macchiato;
+package com.example.macchiato.Servicios;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 
 import com.example.macchiato.Models.GlobalApplication;
-import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -20,24 +18,23 @@ import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditJson {
-    public EditJson(){}
-
-    public void crearJson(){
+public class LectorFichero {
+    public void escribirFichero(String fichero, String contenido, Context context){
+        try {
+            OutputStreamWriter archivo = new OutputStreamWriter(context.openFileOutput(fichero, Activity.MODE_PRIVATE));
+            archivo.write(contenido);
+            archivo.flush();
+            archivo.close();
+        } catch (IOException e ){
+            e.printStackTrace();
+        }
+    }
+    public void crearJson(Context context){
         //quitar
         String myjson = new Gson().toJson(GlobalApplication.userProfile);
         //
         Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
-        try {
-            OutputStreamWriter archivo = new OutputStreamWriter(GlobalApplication.getAppContext().openFileOutput("registro.json", Activity.MODE_PRIVATE));
-            archivo.write(myjson);
-            archivo.flush();
-            archivo.close();
-            //Toast.makeText(this,"fichero:"+ leerFichero(), Toast.LENGTH_SHORT).show();
-
-        } catch (IOException e ){
-            e.printStackTrace();
-        }
+        escribirFichero("registro.json", myjson, context);
     }
 
     public String leerFichero(Context context) throws FileNotFoundException, JSONException {
@@ -45,7 +42,7 @@ public class EditJson {
         StringBuilder stringBuilder = new StringBuilder();
         String texto ="";
         try {
-            fileInputStream = GlobalApplication.getAppContext().openFileInput("registro.json");
+            fileInputStream = context.openFileInput("registro.json");
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
@@ -55,10 +52,11 @@ public class EditJson {
         }catch (Exception e){
             RegistroJSON rj = new RegistroJSON();
             rj.genararVacio(context);
-            leerFichero();
         }
         finally {
             if(fileInputStream != null){
+                RegistroJSON rj = new RegistroJSON();
+                rj.genararVacio(context);
                 try {
                     fileInputStream.close();
                 }catch (Exception e){}
