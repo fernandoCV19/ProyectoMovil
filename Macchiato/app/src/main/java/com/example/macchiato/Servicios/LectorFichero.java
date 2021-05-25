@@ -32,6 +32,12 @@ public class LectorFichero {
             e.printStackTrace();
         }
     }
+    public void crearJson(Context context, Map<String,Object> user){
+        String myjson = new Gson().toJson(user);
+        Toast.makeText(context, myjson, Toast.LENGTH_SHORT).show();
+        //Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+        escribirFichero("registro.json", myjson, context);
+    }
     public void crearJson(Context context, User user){
         String myjson = new Gson().toJson(user);
         //Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());

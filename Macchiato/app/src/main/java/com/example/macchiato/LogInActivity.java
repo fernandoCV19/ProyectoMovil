@@ -28,11 +28,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -125,10 +129,10 @@ public class LogInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
                                     Toast.LENGTH_SHORT).show();
-                            databaseReference.child("User").child(firebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                    User userProfile = snapshot.getValue(User.class);
+                                    Map userProfile = snapshot.getValue(Map.class);
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile);
                                     try {
