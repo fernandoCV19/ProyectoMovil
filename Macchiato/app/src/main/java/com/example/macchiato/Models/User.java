@@ -1,16 +1,18 @@
 package com.example.macchiato.Models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
     private String userName="usuario vacio";
     private String email="email vacio";
     private String uid="";
     private String password="";
-    private ArrayList<Materia> materiasAprobadas;
-    private ArrayList<Materia> materiasReprobadas;
-    private ArrayList<Materia> materiasPorTomar;
-    private ArrayList<Materia> materiasActuales;
+    public HashMap<String,Integer> materiasAprobadas;
+    private HashMap<String,Integer> materiasReprobadas;
+    private HashMap<String,Integer> materiasPorTomar;
+    public HashMap<String,Integer> materiasActuales;
 
 
     public User(){}
@@ -18,16 +20,16 @@ public class User {
         this.email=email;
         this.userName=userName;
         this.password=password;
-        materiasActuales = new ArrayList<>();
-        materiasAprobadas = new ArrayList<>();
-        materiasPorTomar = new ArrayList<>();
-        materiasReprobadas = new ArrayList<>();
-        ArrayList<Grupo> grupos = new ArrayList<>();
-        materiasActuales.add(new Materia(2,"ingles 2",'B',grupos,"azul","cod1"));
-        materiasActuales.add(new Materia(2,"calculo",'A',grupos,"blanco","cod2"));
-        materiasAprobadas.add(new Materia(2,"logica",'C',grupos,"verde","cod3"));
-        materiasPorTomar.add(new Materia(2,"base 3",'F',grupos,"azul","cod10"));
-        materiasPorTomar.add(new Materia(2,"agentes ",'G',grupos,"amarillo","cod1"));
+        materiasActuales = new HashMap() {
+        };
+        materiasAprobadas = new HashMap();
+        materiasPorTomar = new HashMap();
+        materiasReprobadas = new HashMap();
+        materiasActuales.put("a",123);
+        materiasActuales.put("b",444);
+        materiasAprobadas.put("c",000);
+        materiasPorTomar.put("d",999);
+        materiasPorTomar.put("e",100);
 
 
     }

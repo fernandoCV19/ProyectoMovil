@@ -66,6 +66,10 @@ public class PerfilSesionFragment extends Fragment {
         //usuarioShow.setText(GlobalApplication.userAct);
         //correoShow.setText(GlobalApplication.emailAct);
 
+        LectorFichero lectorFichero = new LectorFichero();
+        Map<String,Object> map = lectorFichero.devolverMapa(getContext());
+        usuarioShow.setText(map.get("userName").toString());
+        correoShow.setText(map.get("email").toString());
 
 
 

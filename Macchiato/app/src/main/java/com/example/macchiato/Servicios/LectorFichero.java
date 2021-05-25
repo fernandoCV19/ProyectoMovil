@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LectorFichero {
+    public Map<String,Object> jsonMap;
+
 
     public void escribirFichero(String fichero, String contenido, Context context){
         try {
@@ -37,10 +39,12 @@ public class LectorFichero {
         Toast.makeText(context, myjson, Toast.LENGTH_SHORT).show();
         //Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         escribirFichero("registro.json", myjson, context);
+        jsonMap = devolverMapa(context);
     }
     public void crearJson(Context context, User user){
         String myjson = new Gson().toJson(user);
-        //Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+        Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+        myjson = new Gson().toJson(jsonMap);
         escribirFichero("registro.json", myjson, context);
     }
 
@@ -70,7 +74,7 @@ public class LectorFichero {
                 }catch (Exception e){}
             }*/
         }
-        Toast.makeText(context, stringBuilder.toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, stringBuilder.toString(), Toast.LENGTH_SHORT).show();
         return stringBuilder.toString();
     }
 
