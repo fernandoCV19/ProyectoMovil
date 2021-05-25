@@ -18,7 +18,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.macchiato.Models.MateriaNota;
+import com.example.macchiato.Parser.ParserMateriaID;
 import com.example.macchiato.Servicios.Iniciador;
+import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -180,6 +182,12 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
 
                                         MateriaNota materiaNota = new MateriaNota(select, numero);
+
+                                        try {
+                                           new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
                                         if(!mostrarAprobadas .contains(materiaNota) ) {
                                             Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
 

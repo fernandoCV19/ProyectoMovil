@@ -55,7 +55,7 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         correo_L= findViewById(R.id.editTextTextEmailAddress);
         contrasena_L= findViewById(R.id.editTextTextPassword);
-        mAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         ActionBar actionBar;
         actionBar = getSupportActionBar();
         olvide_contrasena=findViewById(R.id.cont_olvidada_id);

@@ -27,7 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -61,13 +61,13 @@ public class HorarioFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ConsultorMaterias cs =new ConsultorMaterias();
-        HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
-        Character [] nomNiveles =new Character[9];
+        ConsultorMaterias cs = new ConsultorMaterias();
+        HashMap<Character, ArrayList<Materia>> list = cs.getLisClasificada();
+        Character[] nomNiveles = new Character[9];
         int j = 0;
         for (Character nivel : list.keySet()) {
 
-            nomNiveles[j ]=nivel;
+            nomNiveles[j] = nivel;
             j++;
         }
 
@@ -155,7 +155,7 @@ public class HorarioFragment extends Fragment {
 
         return view;
 
-        View view= inflater.inflate(R.layout.fragment_horario, container, false);
+      /*  View view= inflater.inflate(R.layout.fragment_horario, container, false);
         Button btnDes = (Button) view.findViewById(R.id.btn_descargar_id);
         btnDes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,6 +176,7 @@ public class HorarioFragment extends Fragment {
         });
         return view;
     }
+
 
     private  void  startDownloading(){
         FirebaseDatabase.getInstance().getReference().child("UMSS").child("cronograma")
@@ -202,5 +203,9 @@ public class HorarioFragment extends Fragment {
 
     }
 
+
+ */
+    }
 }
+
 

@@ -67,7 +67,7 @@ public class CambiarPerfilActivity extends AppCompatActivity {
     }
 
     private void asignarId(){
-        contAct = findViewById(R.id.cc_contrActual_id);
+      //  contAct = findViewById(R.id.cc_contrActual_id);
         contNueva = findViewById(R.id.cc_contrNueva_id);
         contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
     }
