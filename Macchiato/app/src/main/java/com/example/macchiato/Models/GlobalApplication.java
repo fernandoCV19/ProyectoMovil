@@ -2,28 +2,18 @@ package com.example.macchiato.Models;
 
 import android.app.Application;
 import android.content.Context;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import com.example.macchiato.EditJson;
-import com.example.macchiato.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 

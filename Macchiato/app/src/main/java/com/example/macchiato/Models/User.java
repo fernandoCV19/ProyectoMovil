@@ -1,17 +1,30 @@
-package com.example.macchiato;
+package com.example.macchiato.Models;
+
+import java.util.ArrayList;
 
 public class User {
     private String userName="usuario vacio";
-    private String fullName="";
     private String email="email vacio";
     private String uid="";
     private String password="";
+    private ArrayList<Materia> materiasAprobadas;
+    private ArrayList<Materia> materiasReprobadas;
+    private ArrayList<Materia> materiasPorTomar;
+    private ArrayList<Materia> materiasActuales;
+
 
     public User(){}
     public User(String userName,String email,String password){
         this.email=email;
         this.userName=userName;
         this.password=password;
+        materiasActuales = new ArrayList<>();
+        materiasAprobadas = new ArrayList<>();
+        materiasPorTomar = new ArrayList<>();
+        materiasReprobadas = new ArrayList<>();
+
+
+
     }
 
     public String getUserName() {
@@ -20,14 +33,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
 
     public String getEmail() {
