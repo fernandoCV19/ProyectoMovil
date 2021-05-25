@@ -133,8 +133,6 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                     User userProfile = snapshot.getValue(User.class);
-                                    //Toast.makeText(LogInActivity.this, userProfile.materiasActuales.get(0), Toast.LENGTH_SHORT).show();
-                                    //Toast.makeText(LogInActivity.this, userProfile.materiasAprobadas.get(0), Toast.LENGTH_SHORT).show();
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile);
                                     try {

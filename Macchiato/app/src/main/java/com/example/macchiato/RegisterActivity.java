@@ -87,13 +87,6 @@ public class RegisterActivity extends AppCompatActivity {
                             user.setUid(us.getUid());
                             LectorFichero lector = new LectorFichero();
                             lector.crearJson(getApplicationContext(),user);
-                            /*try {
-                                lector.leerFichero(getApplicationContext());
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }*/
                             databaseReference.child("Usuarios").child(us.getUid()).setValue(lector.devolverMapa(getApplicationContext())).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

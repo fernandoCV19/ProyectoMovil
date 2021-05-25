@@ -35,6 +35,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
@@ -44,6 +45,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class PerfilSesionFragment extends Fragment {
@@ -101,8 +103,15 @@ public class PerfilSesionFragment extends Fragment {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),CambiarPerfilActivity.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getActivity(),CambiarPerfilActivity.class);
+                startActivity(intent);*/
+               /*LinkedTreeMap aux = (LinkedTreeMap) map.get("materiasAprobadas");
+                Toast.makeText(getContext(), aux.size(), Toast.LENGTH_SHORT).show();*/
+
+                String a = map.get("materiasActuales").toString();
+                HashMap actuales = new Gson().fromJson(a, new TypeToken<HashMap<String, Object>>() {}.getType());
+                Toast.makeText(getContext(), actuales.get("a").toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), actuales.get("b").toString(), Toast.LENGTH_SHORT).show();
             }
         });
         return view;

@@ -63,7 +63,7 @@ public class LectorFichero {
         }catch (Exception e){
             RegistroJSON rj = new RegistroJSON();
             rj.genararVacio(context);
-            //leerFichero(context);
+            return leerFichero(context);
         }
         finally {
            /* if(fileInputStream != null){
