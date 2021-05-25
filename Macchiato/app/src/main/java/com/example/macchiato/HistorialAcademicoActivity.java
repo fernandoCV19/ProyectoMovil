@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Servicios.Iniciador;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -28,7 +29,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     Spinner mSpinner;
     Spinner  nSpinner;
     EditText editText;
-    ArrayList<MateriaNota> mostrar;
+    ArrayList<MateriaNota> mostrarAprobadas;
+    ArrayList<MateriaNota> mostrarReprobadas;
     RecyclerView recyclerViewApro;
     RecyclerView recyclerViewRepro;
 
@@ -46,9 +48,10 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mostrar = new ArrayList<>();
-        imageB = (ImageButton) findViewById(R.id.añadir);
-        imageB.setOnClickListener(view -> {
+        mostrarAprobadas = new ArrayList<>();
+        mostrarReprobadas = new ArrayList<>();
+        FloatingActionButton fab = findViewById(R.id.añadir_floating);
+        fab.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
             View view1 = getLayoutInflater().inflate(R.layout.layout_dialog, null);
              //spinners
@@ -175,24 +178,26 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
 
 
+
                                         MateriaNota materiaNota = new MateriaNota(select, numero);
-                                        if(!mostrar .contains(materiaNota)) {
+                                        if(!mostrarAprobadas .contains(materiaNota) ) {
                                             Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
 
                                             recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
                                             recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasReprobadas);
                                             if (numero >= 51) {
                                                 recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-                                                MateriaNotaAdapter adapter = new MateriaNotaAdapter(mostrar, HistorialAcademicoActivity.this);
+                                                MateriaNotaAdapter adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
                                                 recyclerViewApro.setAdapter(adapter);
                                                 recyclerViewApro.setHasFixedSize(true);
-                                                mostrar.add(materiaNota);
+                                                mostrarAprobadas.add(materiaNota);
                                             } else {
 
                                                 recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-                                                MateriaNotaAdapter adapter3 = new MateriaNotaAdapter(mostrar, HistorialAcademicoActivity.this);
+                                                MateriaNotaAdapter adapter3 = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
                                                 recyclerViewRepro.setAdapter(adapter3);
                                                 recyclerViewRepro.setHasFixedSize(true);
+                                                mostrarReprobadas.add(materiaNota);
                                             }
                                         }
 
