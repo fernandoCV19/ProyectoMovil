@@ -16,7 +16,7 @@ public class CreadorHorarios {
         return horarioSeleccionado;
     }
 
-    public void permutacion(ArrayList<Materia> materias, int materiaActual, ArrayList<Grupo> horarioActual, ArrayList<Grupo> horarioSeleccionado){
+    private void permutacion(ArrayList<Materia> materias, int materiaActual, ArrayList<Grupo> horarioActual, ArrayList<Grupo> horarioSeleccionado){
         if(horarioSeleccionado.size() < horarioActual.size()){
             copiarHorario(horarioActual, horarioSeleccionado);
         }

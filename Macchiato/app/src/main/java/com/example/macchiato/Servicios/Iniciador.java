@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Iniciador {
 
-    LectorJson lectorJson;
+    private LectorJson lectorJson;
 
     public Iniciador(){
         lectorJson = new LectorJson();
@@ -27,14 +27,14 @@ public class Iniciador {
         }
     }
 
-    public void iniciarObjetosIDMateria(Context context) throws Exception {
+    private void iniciarObjetosIDMateria(Context context) throws Exception {
         String json = lectorJson.loadJSONFromAsset("materiasID.json",context);
         ParserMateriaID parserMateriaID = new ParserMateriaID();
         parserMateriaID.iniciarIDs(json);
 
     }
 
-    public void iniciarObjetosMateria(Context context) throws Exception {
+    private void iniciarObjetosMateria(Context context) throws Exception {
         String json = lectorJson.loadJSONFromAsset("materias.json", context);
         ParserMateriaGrupo parserMateriaGrupo = new ParserMateriaGrupo();
         ArrayList<GrupoModelParser> lista = parserMateriaGrupo.parserMateriaGrupo(json);

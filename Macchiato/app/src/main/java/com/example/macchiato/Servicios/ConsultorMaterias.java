@@ -16,17 +16,20 @@ public class ConsultorMaterias {
     private static ArrayList<Materia> materias;
 
 
-    public   ArrayList<Grupo> devolverGrupos(ArrayList<Grupo>listaGrupos, ArrayList<Integer>ides ){
+    public   ArrayList<Grupo> devolverGrupos(ArrayList<Integer>ides ){
         ArrayList<Grupo>res=new ArrayList();
         for (Integer i : ides){
 
-            for(Grupo m :listaGrupos){
-                int id =m.getID();
-                if(id==i){
-                    res.add(m);
+            for(Materia materia: materias) {
+
+                for (Grupo grupo : materia.getGrupos()) {
+                    int id = grupo.getID();
+                    if (id == i) {
+                        res.add(grupo);
+
+                    }
 
                 }
-
             }
         }
         return res;
@@ -94,15 +97,6 @@ public class ConsultorMaterias {
         return materiasElegidas;
     }
 
-
-    public static HashMap <Character, ArrayList<Materia>> getLisClasificada(){
-        return lisClasificada;
-    }
-
-    public static ArrayList<Materia> getMaterias(){
-        return materias;
-    }
-
     public String getColorNivel(char nivel) {
         String respuesta = "";
         switch(nivel) {
@@ -137,5 +131,14 @@ public class ConsultorMaterias {
                 respuesta = "#ffffff";
         }
         return respuesta;
+    }
+
+
+    public static HashMap <Character, ArrayList<Materia>> getLisClasificada(){
+        return lisClasificada;
+    }
+
+    public static ArrayList<Materia> getMaterias(){
+        return materias;
     }
 }

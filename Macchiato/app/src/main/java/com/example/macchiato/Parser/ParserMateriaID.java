@@ -14,7 +14,7 @@ public class ParserMateriaID {
 
     private static HashMap<String, Par> ids;
 
-    public HashMap<String, Par> getIds() {
+    public static HashMap<String, Par> getIds() {
         return ids;
     }
 
