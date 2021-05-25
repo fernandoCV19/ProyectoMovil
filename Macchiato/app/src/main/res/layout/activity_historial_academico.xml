@@ -38,12 +38,11 @@
 
             <ImageButton
                 android:id="@+id/añadir"
-                style="@android:style/Widget.DeviceDefault.ImageButton"
+                style="@android:style/Widget.ImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="64dp"
-                android:backgroundTint="#B2551603"
-                android:foreground="@drawable/button" />
+                android:foreground="@drawable/add_file" />
 
         </LinearLayout>
 
@@ -56,11 +55,27 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_materias"
+                android:id="@+id/list_materiasAprobadas"
                 android:layout_width="match_parent"
-                android:layout_height="400dp">
+                android:layout_height="260dp">
 
             </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="casual"
+                android:gravity="center"
+                android:text="Materias reprobadas"
+                android:textColor="#090909"
+                android:textSize="18dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lista_MateriasReprobadas"
+                android:layout_width="match_parent"
+                android:layout_height="260dp" />
 
             <Button
                 android:id="@+id/button4"

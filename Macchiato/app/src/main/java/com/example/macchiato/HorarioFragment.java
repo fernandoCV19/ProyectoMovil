@@ -14,7 +14,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+
 import com.example.macchiato.Models.Grupo;
+
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.Iniciador;
@@ -42,12 +44,32 @@ public class HorarioFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
         spinnerNivel = view.findViewById(R.id.spinnerNivel);
         spinnerMateria = view.findViewById(R.id.spinnerMateria);
+
         Iniciador iniciador=new Iniciador();
+
+
+        Iniciador iniciador = new Iniciador();
+
         try {
             iniciador.iniciar(getContext());
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        ConsultorMaterias cs =new ConsultorMaterias();
+        HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
+        Character [] nomNiveles =new Character[9];
+        int j = 0;
+        for (Character nivel : list.keySet()) {
+
+            nomNiveles[j ]=nivel;
+            j++;
+        }
+
+
+        ArrayAdapter<Character> adapter2 = new ArrayAdapter<Character>(getContext(), R.layout.simple_spinner, nomNiveles);
+        spinnerNivel.setAdapter(adapter2);
+
         spinnerNivel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -58,45 +80,45 @@ public class HorarioFragment extends Fragment {
                     case "A":
 
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelA)));
                         break;
 
                     case "B":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelB)));
                         break;
 
                     case "C":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelC)));
                         break;
 
                     case "D":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelD)));
                         break;
                     case "E":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelE)));
                         break;
                     case "F":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelF)));
                         break;
                     case "G":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelG)));
                         break;
                     case "H":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
+                                R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelH)));
                         break;
 
@@ -136,7 +158,6 @@ public class HorarioFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
-
 
         return view;
     }

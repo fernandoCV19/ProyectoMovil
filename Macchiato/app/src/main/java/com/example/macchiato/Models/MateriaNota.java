@@ -9,4 +9,11 @@ public class MateriaNota {
     }
     public String getMateria(){return materia;}
     public int getNota(){return nota;}
+    @Override
+    public boolean equals(Object obj) {
+        MateriaNota p= (MateriaNota) obj;
+
+        return p.getMateria().equals(this.getMateria());
+
+    }
 }
