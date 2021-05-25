@@ -85,20 +85,21 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             FirebaseUser us= FirebaseAuth.getInstance().getCurrentUser();
                             user.setUid(us.getUid());
-                            databaseReference.child("Usuarios").child(us.getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            LectorFichero lector = new LectorFichero();
+                            lector.crearJson(getApplicationContext(),user);
+                            /*try {
+                                lector.leerFichero(getApplicationContext());
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }*/
+                            databaseReference.child("Usuarios").child(us.getUid()).setValue(lector.devolverMapa(getApplicationContext())).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(RegisterActivity.this, "exito", Toast.LENGTH_SHORT).show();
-                                        LectorFichero lector = new LectorFichero();
-                                        lector.crearJson(getApplicationContext(),user);
-                                        try {
-                                            lector.leerFichero(getApplicationContext());
-                                        } catch (FileNotFoundException e) {
-                                            e.printStackTrace();
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                        }
+
                                         startActivity(new Intent(RegisterActivity.this,Navigation_bottom.class));
                                         finishAffinity();
                                     }

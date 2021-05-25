@@ -67,4 +67,16 @@ public class LectorFichero {
         Toast.makeText(context, stringBuilder.toString(), Toast.LENGTH_SHORT).show();
         return stringBuilder.toString();
     }
+
+    public Map<String,Object> devolverMapa(Context context){
+        String res="";
+        try {
+            res=leerFichero(context);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return new Gson().fromJson(res, new TypeToken<HashMap<String, Object>>() {}.getType());
+    }
 }
