@@ -2,8 +2,10 @@ package com.example.macchiato.Servicios;
 
 import android.app.Activity;
 import android.content.Context;
+import android.widget.Toast;
 
 import com.example.macchiato.Models.GlobalApplication;
+import com.example.macchiato.Models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -19,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LectorFichero {
+
     public void escribirFichero(String fichero, String contenido, Context context){
         try {
             OutputStreamWriter archivo = new OutputStreamWriter(context.openFileOutput(fichero, Activity.MODE_PRIVATE));
@@ -29,11 +32,9 @@ public class LectorFichero {
             e.printStackTrace();
         }
     }
-    public void crearJson(Context context){
-        //quitar
-        String myjson = new Gson().toJson(GlobalApplication.userProfile);
-        //
-        Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+    public void crearJson(Context context, User user){
+        String myjson = new Gson().toJson(user);
+        //Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         escribirFichero("registro.json", myjson, context);
     }
 
@@ -52,16 +53,18 @@ public class LectorFichero {
         }catch (Exception e){
             RegistroJSON rj = new RegistroJSON();
             rj.genararVacio(context);
+            //leerFichero(context);
         }
         finally {
-            if(fileInputStream != null){
+           /* if(fileInputStream != null){
                 RegistroJSON rj = new RegistroJSON();
                 rj.genararVacio(context);
                 try {
                     fileInputStream.close();
                 }catch (Exception e){}
-            }
+            }*/
         }
+        Toast.makeText(context, stringBuilder.toString(), Toast.LENGTH_SHORT).show();
         return stringBuilder.toString();
     }
 }

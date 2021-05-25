@@ -22,7 +22,12 @@ public class User {
         materiasAprobadas = new ArrayList<>();
         materiasPorTomar = new ArrayList<>();
         materiasReprobadas = new ArrayList<>();
-
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        materiasActuales.add(new Materia(2,"ingles 2",'B',grupos,"azul","cod1"));
+        materiasActuales.add(new Materia(2,"calculo",'A',grupos,"blanco","cod2"));
+        materiasAprobadas.add(new Materia(2,"logica",'C',grupos,"verde","cod3"));
+        materiasPorTomar.add(new Materia(2,"base 3",'F',grupos,"azul","cod10"));
+        materiasPorTomar.add(new Materia(2,"agentes ",'G',grupos,"amarillo","cod1"));
 
 
     }

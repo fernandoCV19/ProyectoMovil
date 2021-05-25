@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.macchiato.Models.GlobalApplication;
+import com.example.macchiato.Models.User;
+import com.example.macchiato.Servicios.LectorFichero;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +38,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
@@ -43,9 +48,9 @@ import java.util.Map;
 
 public class PerfilSesionFragment extends Fragment {
 
-    //private FirebaseAuth auth;
-    //private DatabaseReference reference;
-    //private User userProfile;
+    private FirebaseAuth auth;
+    private DatabaseReference reference;
+    private User userProfile;
     TextView usuarioShow,correoShow;
     public PerfilSesionFragment() {
     }
@@ -54,12 +59,12 @@ public class PerfilSesionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_perfil_sesion, container, false);
-       // auth=FirebaseAuth.getInstance();
+        auth=FirebaseAuth.getInstance();
         usuarioShow= (TextView) view.findViewById(R.id.usuarioActual_id);
         correoShow= (TextView) view.findViewById(R.id.correoActual_id);
         //user= FirebaseAuth.getInstance().getCurrentUser();
-        usuarioShow.setText(GlobalApplication.userAct);
-        correoShow.setText(GlobalApplication.emailAct);
+        //usuarioShow.setText(GlobalApplication.userAct);
+        //correoShow.setText(GlobalApplication.emailAct);
 
 
 
@@ -68,10 +73,19 @@ public class PerfilSesionFragment extends Fragment {
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(GlobalApplication.auth!=null){
-                    GlobalApplication.auth.signOut();
-                    GlobalApplication.editJson.crearJson();
+                if(auth!=null){
+                    auth.signOut();
+                    //GlobalApplication.editJson.crearJson();
                     Intent intent = new Intent(getActivity(),Navigation_bottom.class);
+                    /*LectorFichero lector = new LectorFichero();
+                    lector.crearJson(getApplicationContext(),userProfile);
+                    try {
+                        lector.leerFichero(getApplicationContext());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }*/
                     startActivity(intent);
                     getActivity().finishAffinity();
                 }

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.macchiato.EditJson;
+import com.example.macchiato.Servicios.LectorFichero;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -20,38 +21,44 @@ import java.util.Map;
 public class GlobalApplication extends Application {
     private static Context appContext;
 
-    public static FirebaseAuth auth;
-    public static FirebaseUser user;
-    public static DatabaseReference reference;
-    public static User userProfile;
-    public static Map<String, Object> jsonMap;
-    public static String userAct;
-    public static String emailAct;
-    public static EditJson editJson;
+    //public static FirebaseAuth auth;
+    //public static FirebaseUser user;
+    //public static DatabaseReference reference;
+    //public static User userProfile;
+    //public static Map<String, Object> jsonMap;
+    //public static String userAct;
+    //public static String emailAct;
+    //public static EditJson editJson;
 
 
     @Override
     public void onCreate() {
         super.onCreate();
         appContext = getApplicationContext();
-        auth=FirebaseAuth.getInstance();
-        reference= FirebaseDatabase.getInstance().getReference("User");
-        user= FirebaseAuth.getInstance().getCurrentUser();
-        userProfile= new User();
-        editJson= new EditJson();
-        //editJson.crearJson();
-
+        LectorFichero lectorFichero = new LectorFichero();
         try {
-            jsonMap = new Gson().fromJson(editJson.leerFichero(), new TypeToken<HashMap<String, Object>>() {}.getType());
+            lectorFichero.leerFichero(getApplicationContext());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        userAct = (String) jsonMap.get("userName");
-        emailAct = (String) jsonMap.get("email");
-        //Toast.makeText(appContext, userAct, Toast.LENGTH_SHORT).show();
-        //Toast.makeText(appContext, emailAct, Toast.LENGTH_SHORT).show();
+        //auth=FirebaseAuth.getInstance();
+        //reference= FirebaseDatabase.getInstance().getReference("User");
+        //user= FirebaseAuth.getInstance().getCurrentUser();
+        //userProfile= new User();
+        //editJson= new EditJson();
+        //editJson.crearJson();
+
+        /*try {
+            //jsonMap = new Gson().fromJson(editJson.leerFichero(), new TypeToken<HashMap<String, Object>>() {}.getType());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+        //userAct = (String) jsonMap.get("userName");
+        //emailAct = (String) jsonMap.get("email");
     }
 
     public static Context getAppContext() {

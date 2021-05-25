@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.example.macchiato.Models.GlobalApplication;
+import com.example.macchiato.Models.User;
 import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,7 +26,7 @@ public class EditJson {
 
     public void crearJson(){
         //quitar
-        String myjson = new Gson().toJson(GlobalApplication.userProfile);
+        String myjson = new Gson().toJson(new User());
         //
         Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         try {
@@ -55,7 +56,7 @@ public class EditJson {
         }catch (Exception e){
             RegistroJSON rj = new RegistroJSON();
             rj.genararVacio(context);
-            leerFichero();
+            leerFichero(context);
         }
         finally {
             if(fileInputStream != null){

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.macchiato.Models.User;
+import com.example.macchiato.Servicios.LectorFichero;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -19,6 +20,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.json.JSONException;
+
+import java.io.FileNotFoundException;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -80,11 +85,20 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             FirebaseUser us= FirebaseAuth.getInstance().getCurrentUser();
                             user.setUid(us.getUid());
-                            databaseReference.child("User").child(us.getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            databaseReference.child("Usuarios").child(us.getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(RegisterActivity.this, "exito", Toast.LENGTH_SHORT).show();
+                                        LectorFichero lector = new LectorFichero();
+                                        lector.crearJson(getApplicationContext(),user);
+                                        try {
+                                            lector.leerFichero(getApplicationContext());
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
                                         startActivity(new Intent(RegisterActivity.this,Navigation_bottom.class));
                                         finishAffinity();
                                     }
