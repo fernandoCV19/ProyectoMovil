@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.macchiato.Models.GlobalApplication;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,41 +22,35 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CambiarPerfilActivity extends AppCompatActivity {
     EditText contAct,contNueva,contConfir;
-    private FirebaseUser user;
-    private DatabaseReference reference;
-    private String thisUserId;
-
+    //private FirebaseUser user;
+    //private DatabaseReference reference;
+    //private String thisUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_cambiar_perfil);
-        contNueva = findViewById(R.id.cc_contrNueva_id);
-        contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-
-        reference= FirebaseDatabase.getInstance().getReference("User");
-        thisUserId=user.getUid();
-
-
+        asignarId();
+        inicializarUser();
     }
 
     public void guardarCambios(View view){
-        String contActText=contAct.getText().toString().trim();
         String contNuevaText=contNueva.getText().toString().trim();
         String contConfirText=contConfir.getText().toString().trim();
         if(contNuevaText.isEmpty()){
-            contNueva.setError("ingrese su contrasena");
-            contNueva.requestFocus();
+            mensajeError(contNueva,"ingrese su contrasena");
             return;
         }
         if(contNuevaText.length()<6){
-            contNueva.setError("la contrasena es muy corta");
-            contNueva.requestFocus();
+            mensajeError(contNueva,"la contrasena es muy corta");
             return;
         }
-        user.updatePassword(contNuevaText).addOnSuccessListener(new OnSuccessListener<Void>() {
+        if(!contConfirText.equals(contNuevaText)){
+            mensajeError(contConfir,"las contrasenas son diferentes");
+            return;
+        }
+        FirebaseAuth.getInstance().getCurrentUser().updatePassword(contNuevaText).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 startActivity(new Intent(CambiarPerfilActivity.this, Navigation_bottom.class));
@@ -70,4 +65,20 @@ public class CambiarPerfilActivity extends AppCompatActivity {
         });
 
     }
+
+    private void asignarId(){
+        contAct = findViewById(R.id.cc_contrActual_id);
+        contNueva = findViewById(R.id.cc_contrNueva_id);
+        contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
+    }
+    private void inicializarUser(){
+        //user = FirebaseAuth.getInstance().getCurrentUser();
+        //reference= FirebaseDatabase.getInstance().getReference("User");
+        //thisUserId=user.getUid();
+    }
+    private void mensajeError(EditText cont,String texto){
+        cont.setError(texto);
+        cont.requestFocus();
+    }
+
 }
