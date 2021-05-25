@@ -5,8 +5,6 @@ import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.google.firebase.database.ThrowOnExtraProperties;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,19 +23,20 @@ public class LectorJsonTest {
     }
 
     @Test
-    public void archivoNoEncontradoDeberiaDevolverCadenaVaciaTest(){
+    public void dadoElNombreDeUnArchivoQueNoExisteYElContextoCuandoEsLLamadoElMetodoLectorEntoncesDeberiaDevolverUnaCadenaVacia(){
         String respuesta = lectorJson.loadJSONFromAsset("archivoQueNoExiste.json",context);
         assertThat(respuesta).isEmpty();
     }
 
+
     @Test
-    public void encontrarElArchivoDondeSeEncuentranTodosLosGruposTest(){
+    public void dadoElNombreDelJsonDondeEstanTodosLosGruposYElContextoCuandoEsLlamadoElMetodoLectorEntoncesDeberiaDevolverUnaCadenaNoVacia(){
         String respuesta = lectorJson.loadJSONFromAsset("materias.json",context);
         assertThat(respuesta).isNotEmpty();
     }
 
     @Test
-    public void correctaLecturaDelArchivoDondeSeEncuentrarTodosLosGruposTest(){
+    public void dadoElNombreDelJsonDondeEstanTodosLosGruposYElContextoCuandoEsLlamdoElMetodoLectorEntoncesDeberiaDevolverUnaCadenaDondeSeEncuentrenLosGrupos(){
         String respuesta = lectorJson.loadJSONFromAsset("materias.json",context);
         assertThat(respuesta).contains("\"nombreMateria\":\"INGLES I\"");
         assertThat(respuesta).contains("\"docente\":\"CESPEDES GUIZADA MARIA BENITA\"");
@@ -45,13 +44,13 @@ public class LectorJsonTest {
     }
 
     @Test
-    public void encontrarElArchivoDondeSeEncuentranTodasLasMateriasConSusIDsTest(){
+    public void dadoElNombreDelJsonDondeEstanTodosLosIdsDeLasMateriasYElContextoCuandoEsLlamadoElMetodoLectorEntoncesDeberiaDevolverUnaCadenaNoVacia(){
         String respuesta = lectorJson.loadJSONFromAsset("materiasID.json",context);
         assertThat(respuesta).isNotEmpty();
     }
 
     @Test
-    public void correctaLecturaDelArchivoDondeSeEncuentrarTodasLasMateriasConSusIDsTest(){
+    public void dadoElNombreDelJsonDondeEstanTodosLosIdsDeLasMateriasYElContextoCuandoEsLlamadoElMetodoLectorEntoncesDeberiaDevolverUnaCadenaDondeSeEncuentranLosIdsDeMateriasYSusRequisitos(){
         String respuesta = lectorJson.loadJSONFromAsset("materiasID.json",context);
         assertThat(respuesta).contains("\"nombreMateria\":\"INGLES I\"");
         assertThat(respuesta).contains("\"requisitos\":[\"Examen de Ingreso\"]");
@@ -59,13 +58,13 @@ public class LectorJsonTest {
     }
 
     @Test
-    public void encontrarElArchivoDondeSeEncuentranTodasLasMateriasConSuNivelTest(){
+    public void dadoElNombreDelJsonDondeEstanTodosLosCodigosDeLasMaterriasYElContextoCuandoEsLLamadoElMetodoLectorEntoncesDeberiaDevolverUnaCadenaNoVacia(){
         String respuesta = lectorJson.loadJSONFromAsset("materiasNivel.json",context);
         assertThat(respuesta).isNotEmpty();
     }
 
     @Test
-    public void correctaLecturaDelArchivoDondeSeEncuentrarTodasLasMateriasConSuNivelTest(){
+    public void dadoElNombreDelJsonDondeEstanTodosLosCodigosDeLasMaterriasYElContextoCuandoEsLLamadoElMetodoLectorEntoncesDeberiaDevolverUnaCadenaDondeSeEncuentrenLosCodigosDeLasMaterias(){
         String respuesta = lectorJson.loadJSONFromAsset("materiasNivel.json",context);
         assertThat(respuesta).contains("\"codigo\":\"1803001\"");
         assertThat(respuesta).contains("\"nombreMateria\":\" INGLES I\"");

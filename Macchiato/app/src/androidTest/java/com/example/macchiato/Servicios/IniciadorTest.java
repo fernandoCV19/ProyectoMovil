@@ -6,13 +6,10 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.example.macchiato.Parser.ParserMateriaID;
-import com.google.firebase.database.ThrowOnExtraProperties;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.net.ConnectException;
 
 import static com.google.common.truth.Truth.assertThat;
 
