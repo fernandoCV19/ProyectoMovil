@@ -3,7 +3,6 @@ package com.example.macchiato.Parser;
 import com.example.macchiato.Enums.Dia;
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.GrupoModelParser;
-import com.google.firebase.database.ThrowOnExtraProperties;
 
 import org.junit.Before;
 import org.junit.Test;

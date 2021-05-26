@@ -6,6 +6,7 @@ import com.example.macchiato.Models.Materia;
 import java.util.ArrayList;
 
 public class CreadorHorarios {
+
     public ArrayList<Grupo> crearHorario(ArrayList<Materia> materias){
         int materiaActual = 0;
         ArrayList<Grupo> horarioActual = new ArrayList<>();
@@ -46,7 +47,7 @@ public class CreadorHorarios {
         }
     }
 
-    public void copiarHorario(ArrayList<Grupo> horarioActual, ArrayList<Grupo> horarioSeleccionado){
+    private void copiarHorario(ArrayList<Grupo> horarioActual, ArrayList<Grupo> horarioSeleccionado){
         horarioSeleccionado.clear();
 
         for(Grupo g: horarioActual){
