@@ -35,6 +35,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     ArrayList<MateriaNota> mostrarReprobadas;
     RecyclerView recyclerViewApro;
     RecyclerView recyclerViewRepro;
+    Button button;
+    
 
 
 
@@ -221,6 +223,17 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             }
                 });
                 dialog.show();
+        });
+        button = findViewById(R.id.ver_Estadisticas);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
+                View view2 = getLayoutInflater().inflate(R.layout.dialog_estadisticas, null);
+
+                builder.setView(view2);
+                AlertDialog dialog =builder.create();
+                dialog.show();
+            }
         });
     }
 }
