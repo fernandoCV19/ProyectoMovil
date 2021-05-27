@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
+    app:cardBackgroundColor="#8d6e63"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
@@ -37,7 +38,9 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="casual"
                     android:text="Grupo N"
-                    android:textSize="20sp">
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
 
                 </TextView>
 
@@ -48,7 +51,10 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="casual"
                     android:gravity="center"
-                    android:text="Nombre del Docente" />
+                    android:text="Nombre del Docente"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/horariosInfo"

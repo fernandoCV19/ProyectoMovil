@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
+    app:cardBackgroundColor="#be9c91"
     app:cardCornerRadius="15dp"
     app:cardUseCompatPadding="true">
 
@@ -36,6 +37,7 @@
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Dia"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold">
 
@@ -48,14 +50,18 @@
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Horas"
+                    android:textColor="@color/white"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/aulaClase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="casual"
                     android:gravity="center"
-                    android:text="Aula" />
+                    android:text="Aula"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </RelativeLayout>

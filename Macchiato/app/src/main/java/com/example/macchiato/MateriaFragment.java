@@ -3,6 +3,9 @@ package com.example.macchiato;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -29,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class MateriaFragment extends Fragment {
@@ -37,6 +41,7 @@ public class MateriaFragment extends Fragment {
     RecyclerView recyclerView;
     HashMap<Character, ArrayList<Materia>> materias;
     MateriaAdapter materiaAdapter;
+    Toolbar toolbar;
     private static final String TAG = MateriaFragment.class.getSimpleName();
 
     public MateriaFragment() throws JSONException {
@@ -46,6 +51,7 @@ public class MateriaFragment extends Fragment {
     public void setMostrar(ArrayList<Materia> mostrar) {
         this.mostrar = mostrar;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,12 +75,12 @@ public class MateriaFragment extends Fragment {
         }
 
         View rootView=inflater.inflate(R.layout.fragment_materia,container,false);
-
+        toolbar = rootView.findViewById(R.id.toolbar);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.listRecyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaAdapter);
-
         return rootView;
     }
     @Override
@@ -133,6 +139,7 @@ public class MateriaFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
     }
 
 

@@ -17,7 +17,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_navigatorapp">MainActivity</string>
-   <string name ="txt_materia">Materia:</string>
+    <string name="txt_materia">Materia:</string>
     <string name="txt_nota">Nota:</string>
     <string name="txt_nivel">Nivel:</string>
     <string name="txt_selectColor">SELECCIONAR COLOR</string>

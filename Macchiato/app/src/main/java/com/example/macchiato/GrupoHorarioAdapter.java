@@ -24,6 +24,7 @@ import java.util.List;
 
 public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapter.ViewHolder>{
     private List<Grupo> mData;
+    private ArrayList<String> seleccionados;
     private LayoutInflater mInflater;
     private Context context;
     RecyclerView recyclerView;
@@ -62,7 +63,7 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
     public void setItems(List<Grupo> items){mData=items;}
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         CheckBox checkBoxGrupo;
 
@@ -75,6 +76,8 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
         public void bindData(final Grupo item){
             String mostrar=item.getGrupo()+" - "+item.getDocente();
             checkBoxGrupo.setText(mostrar);
+            if(checkBoxGrupo.isSelected()){}
+
         }
 
     }

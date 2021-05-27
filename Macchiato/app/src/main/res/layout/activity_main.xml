@@ -9,6 +9,7 @@
     android:background="@drawable/logo_nuevo"
     tools:context=".LogInActivity">
 
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"

@@ -1,18 +1,27 @@
 package com.example.macchiato;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
 
 
 import com.example.macchiato.Models.Grupo;
@@ -31,6 +40,7 @@ public class HorarioFragment extends Fragment {
     RecyclerView recyclerView;
     String selectedClass;
     String select;
+    Toolbar toolbar;
     public HorarioFragment() {
         // Required empty public constructor
     }
@@ -45,10 +55,12 @@ public class HorarioFragment extends Fragment {
         spinnerNivel = view.findViewById(R.id.spinnerNivel);
         spinnerMateria = view.findViewById(R.id.spinnerMateria);
 
+
+        toolbar = view.findViewById(R.id.toolbar);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
+
         Iniciador iniciador=new Iniciador();
 
-
-        Iniciador iniciador = new Iniciador();
 
         try {
             iniciador.iniciar(getContext());
@@ -83,19 +95,16 @@ public class HorarioFragment extends Fragment {
                                 R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelA)));
                         break;
-
                     case "B":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
                                 R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelB)));
                         break;
-
                     case "C":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
                                 R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelC)));
                         break;
-
                     case "D":
                         spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
                                 R.layout.simple_spinner,
@@ -123,8 +132,6 @@ public class HorarioFragment extends Fragment {
                         break;
 
                 }
-
-
                 spinnerMateria.setVisibility(View.VISIBLE);
             }
 
@@ -173,6 +180,35 @@ public class HorarioFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.botones_navegacion_mostrar, menu);
+    }
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        ArrayList<Materia> n;
+        switch(id) {
+            case R.id.cambiar_a_generar:
+                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment();
+                FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);
+                fragmentTransaction.disallowAddToBackStack();
+                fragmentTransaction.setReorderingAllowed(true);
+                fragmentTransaction.commit();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
