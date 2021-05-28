@@ -82,11 +82,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginEnd="278dp"
+                android:layout_marginEnd="10dp"
                 android:clickable="true"
                 app:backgroundTint="#ff7043"
                 app:fabSize="mini"
-                app:srcCompat="@drawable/plus" />
+                app:srcCompat="@drawable/addn" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatingActionButton2"
@@ -96,7 +96,7 @@
                 android:clickable="true"
                 app:backgroundTint="#ff7043"
                 app:fabSize="mini"
-                app:srcCompat="@drawable/remove__1_" />
+                app:srcCompat="@drawable/substract" />
         </LinearLayout>
 
         <Button

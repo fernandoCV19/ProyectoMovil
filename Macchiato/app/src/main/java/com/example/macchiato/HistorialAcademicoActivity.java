@@ -44,11 +44,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     TextView numMateriasRepro;
     TextView numMateriasCursa;
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,12 +67,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             nSpinner =(Spinner) view1. findViewById(R.id.nivel);
             editText=(EditText) view1.findViewById(R.id.editText);
 
-
-
             nSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
 
                     String selectedClass = parent.getItemAtPosition(position).toString();
                     switch (selectedClass)
@@ -224,9 +216,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             //if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Elige un nivel")) {
                             //  }
 
-
-
-
                         }
 
                     });
@@ -241,6 +230,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
                 int suma=0;
                 int sumaMaeriasA=0;
+                int promedioGeneral=0;
+                int promedioMa=0;
                 AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
                 View view2 = getLayoutInflater().inflate(R.layout.dialog_estadisticas, null);
                 promedioGen=view2.findViewById(R.id.promedio_nota);
@@ -248,7 +239,12 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                     suma +=materiaNota.getNota();
 
                 }
-                int promedioGeneral=suma/listaMaterias.size();
+                if(listaMaterias.size()!=0) {
+                    promedioGeneral = suma / listaMaterias.size();
+                }else{
+                    promedioGeneral = suma;
+                }
+
                 promedioGen.setText(String.valueOf(promedioGeneral));
 
                 promedioMateriasApr =view2.findViewById(R.id.promedio_notamateriasApro);
@@ -256,7 +252,12 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                     sumaMaeriasA +=materiaNota.getNota();
 
                 }
-                int promedioMa=sumaMaeriasA/mostrarAprobadas.size();
+                if(mostrarAprobadas.size()!=0) {
+                     promedioMa = sumaMaeriasA / mostrarAprobadas.size();
+                }else{
+                    promedioMa = sumaMaeriasA;
+
+                }
                 promedioMateriasApr.setText(String.valueOf(promedioMa));
 
                 numMateriasApro=view2.findViewById(R.id.num_materiasApro);
