@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -80,10 +81,6 @@ public class Navigation_bottom extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
-    }
-
-    private void mostrarDetalles(){
-
     }
 
 }

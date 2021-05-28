@@ -41,15 +41,20 @@ public class HorarioFragment extends Fragment {
     String selectedClass;
     String select;
     Toolbar toolbar;
+    ArrayList<ArrayList<Integer>> seleccionados;
+    GrupoHorarioAdapter materiaHorarioAdapter;
+    ArrayList<Materia> materias;
+    ArrayList<Grupo>   grupos;
+
     public HorarioFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        seleccionados= new ArrayList<>();
         View view = inflater.inflate(R.layout.fragment_horario, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
         spinnerNivel = view.findViewById(R.id.spinnerNivel);
@@ -161,7 +166,7 @@ public class HorarioFragment extends Fragment {
                 grupos = materia.getGrupos();
             }
         }
-        GrupoHorarioAdapter materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,this.getContext());
+        materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,this.getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
@@ -174,9 +179,11 @@ public class HorarioFragment extends Fragment {
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
+                seleccionados.add(materiaHorarioAdapter.getSeleccionados());
+                break;
             }
         }
-        GrupoHorarioAdapter materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,this.getContext());
+        materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,this.getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
@@ -200,7 +207,7 @@ public class HorarioFragment extends Fragment {
         ArrayList<Materia> n;
         switch(id) {
             case R.id.cambiar_a_generar:
-                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment();
+                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados.get(0));
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);

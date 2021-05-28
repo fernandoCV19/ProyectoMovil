@@ -8,6 +8,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,13 +19,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
+import com.example.macchiato.Servicios.ConsultorMaterias;
+import com.example.macchiato.Servicios.Iniciador;
 
 import java.util.ArrayList;
 
 
 public class MostrarHorarioFragment extends Fragment {
     Toolbar toolbar;
+    ArrayList<Integer> list;
+    RecyclerView recyclerView;
+    public MostrarHorarioFragment(){
+
+    }
+    public MostrarHorarioFragment(ArrayList<Integer> list){
+        this.list=list;
+    }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +47,35 @@ public class MostrarHorarioFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_mostrar_horario, container, false);
         toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
+        Iniciador iniciador=new Iniciador();
+
+
+        try {
+            iniciador.iniciar(getContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ArrayList<Materia> materias=ConsultorMaterias.getMaterias();
+        if(list!=null) {
+            ArrayList<Grupo> grupos = new ArrayList<>();
+            for (Integer in : list) {
+                for (Materia mat : materias) {
+                    for (Grupo grup : mat.getGrupos()) {
+                        if (grup.getID() == in) {
+                            grupos.add(grup);
+                        }
+                    }
+                }
+            }
+            MostrarHorarioAdapter mostrarHorarioAdapter = new MostrarHorarioAdapter(grupos, getContext());
+            recyclerView = view.findViewById(R.id.recyclerMostrar);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setAdapter(mostrarHorarioAdapter);
+        }
+
+
+
         return view;
     }
     @Override

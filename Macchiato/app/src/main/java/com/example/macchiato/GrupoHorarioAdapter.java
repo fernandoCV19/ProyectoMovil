@@ -24,7 +24,7 @@ import java.util.List;
 
 public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapter.ViewHolder>{
     private List<Grupo> mData;
-    private ArrayList<String> seleccionados;
+    private ArrayList<Integer> seleccionados;
     private LayoutInflater mInflater;
     private Context context;
     RecyclerView recyclerView;
@@ -33,10 +33,12 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
     public GrupoHorarioAdapter(List<Grupo> mData, Context context) {
         this.mData = mData;
         this.context = context;
-
+        seleccionados=new ArrayList<>();
     }
 
-
+    public ArrayList<Integer> getSeleccionados() {
+        return seleccionados;
+    }
 
     @Override
     public int getItemCount(){ return mData.size();}
@@ -76,7 +78,22 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
         public void bindData(final Grupo item){
             String mostrar=item.getGrupo()+" - "+item.getDocente();
             checkBoxGrupo.setText(mostrar);
-            if(checkBoxGrupo.isSelected()){}
+
+            checkBoxGrupo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (checkBoxGrupo.isChecked()) {
+                        seleccionados.add(item.getID());
+
+                    }
+                    else if (!checkBoxGrupo.isChecked()) {
+                       if(seleccionados.contains(item.getID())){
+                           seleccionados.remove((Object)item.getID());
+                       }
+                    }
+
+                }
+            });
 
         }
 

@@ -16,7 +16,7 @@ public class ConsultorMaterias {
     private static ArrayList<Materia> materias;
 
 
-    public   ArrayList<Grupo> devolverGrupos(ArrayList<Grupo>listaGrupos, ArrayList<Integer>ides ){
+    public static   ArrayList<Grupo> devolverGrupos(ArrayList<Grupo>listaGrupos, ArrayList<Integer>ides ){
         ArrayList<Grupo>res=new ArrayList();
         for (Integer i : ides){
 
