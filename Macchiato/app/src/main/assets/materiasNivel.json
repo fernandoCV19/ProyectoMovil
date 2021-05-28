@@ -5,258 +5,216 @@
             "codigo":"1803001",
             "nombreMateria":" INGLES I",
             "nivel":"A"
-
         },
         {
             "codigo":"2006063",
             "nombreMateria":"FISICA GENERAL",
             "nivel":"A"
-
         },
         {
             "codigo":"2008019",
             "nombreMateria":"ALGEBRA I",
             "nivel":"A"
-
         },
         {
             "codigo":"2008054",
             "nombreMateria":"CALCULO I",
             "nivel":"A"
-
         },
         {
             "codigo":"2010010",
             "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
             "nivel":"A"
-
         },
         {
             "codigo":"1803002",
             "nombreMateria":"INGLES II",
             "nivel":"B"
-
         },
         {
             "codigo":"2008022",
             "nombreMateria":"ALGEBRA II",
             "nivel":"B"
-
         },
         {
             "codigo":"2008056",
             "nombreMateria":"CALCULO II",
             "nivel":"B"
-
         },
         {
             "codigo":"2010003",
-            "nombreMateria":" ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+            "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
             "nivel":"B"
-
         },
         {
             "codigo":"2010013",
-            "nombreMateria":" ARQUITECTURA DE COMPUTADORAS I",
+            "nombreMateria":"ARQUITECTURA DE COMPUTADORAS I",
             "nivel":"B"
-
         },
         {
             "codigo":"2010200",
-            "nombreMateria":" PROGRAMACION",
+            "nombreMateria":"PROGRAMACION",
             "nivel":"B"
-
         },
         {
             "codigo":"2008060",
-            "nombreMateria":" CALCULO NUMERICO",
+            "nombreMateria":"CALCULO NUMERICO",
             "nivel":"C"
-
         },
         {
             "codigo":"2008140",
             "nombreMateria":"LOGICA",
             "nivel":"C"
-
         },
         {
             "codigo":"2010014",
             "nombreMateria":"ARQUITECTURA DE COMPUTADORAS II",
             "nivel":"C"
-
         },
         {
             "codigo":"2010037",
             "nombreMateria":"TEORIA DE GRAFOS",
             "nivel":"C"
-
         },
         {
             "codigo":"2010041",
             "nombreMateria":"ORGANIZACION Y METODOS",
             "nivel":"C"
-
         },
         {
             "codigo":"2010206",
             "nombreMateria":"METODOS Y TECNICAS DE PROGRAMACION",
             "nivel":"C"
-
         },
         {
             "codigo":"2008029",
             "nombreMateria":"PROBABILIDAD Y ESTADISTICA",
             "nivel":"D"
-
         },
         {
             "codigo":"2010005",
-            "nombreMateria":" TALLER DE PROGRAMACION EN BAJO NIVEL",
+            "nombreMateria":"TALLER DE PROGRAMACION EN BAJO NIVEL",
             "nivel":"D"
-
         },
         {
             "codigo":"2010015",
             "nombreMateria":"BASE DE DATOS I",
             "nivel":"D"
-
         },
         {
             "codigo":"2010018",
             "nombreMateria":"SISTEMAS DE INFORMACION I",
             "nivel":"D"
-
         },
 
         {
             "codigo":"2010038",
             "nombreMateria":"PROGRAMACION FUNCIONAL",
             "nivel":"D"
-
         },
 
         {
             "codigo":"2010197",
             "nombreMateria":"ALGORITMOS AVANZADOS",
             "nivel":"D"
-
         },
 
         {
             "codigo":"2010016",
             "nombreMateria":"BASE DE DATOS II",
             "nivel":"E"
-
         },
 
         {
             "codigo":"2010017",
             "nombreMateria":"TALLER DE SISTEMAS OPERATIVOS",
             "nivel":"E"
-
         },
 
         {
             "codigo":"2010022",
-            "nombreMateria":" SISTEMAS DE INFORMACION II",
+            "nombreMateria":"SISTEMAS DE INFORMACION II",
             "nivel":"E"
-
         },
 
         {
             "codigo":"2010040",
             "nombreMateria":"TEORIA DE AUTOMATAS Y LENG. FORMALES",
             "nivel":"E"
-
         },
 
         {
             "codigo":"2010042",
             "nombreMateria":"GRAFICACION POR COMPUTADORA",
             "nivel":"E"
-
         },
 
         {
             "codigo":"2010201",
             "nombreMateria":" INTELIGENCIA ARTIFICIAL I",
             "nivel":"E"
-
         },
 
         {
             "codigo":"2010020",
             "nombreMateria":"INGENIERIA DE SOFTWARE",
             "nivel":"F"
-
         },
-
 
         {
             "codigo":"2010047",
             "nombreMateria":"REDES DE COMPUTADORAS",
             "nivel":"F"
-
         },
         {
             "codigo":"2010049",
-            "nombreMateria":"ESTRUCTURA Y SEMANTICA DE LENGUAJES DE",
+            "nombreMateria":"ESTRUCTURA Y SEMANTICA DE LENGUAJES DE PROGRAMACION",
             "nivel":"F"
-
         },
         {
             "codigo":"2010053",
             "nombreMateria":"TALLER DE BASE DE DATOS",
             "nivel":"F"
-
         },
         {
             "codigo":"2010202",
             "nombreMateria":"INTELIGENCIA ARTIFICIAL II",
             "nivel":"F"
-
         },
         {
             "codigo":"2010203",
             "nombreMateria":"PROGRAMACION WEB",
             "nivel":"F"
-
         },
         {
             "codigo":"2010019",
             "nombreMateria":"SIMULACION DE SISTEMAS",
             "nivel":"G"
-
         },
         {
             "codigo":"2010024",
             "nombreMateria":"TALLER DE INGENIERIA DE SOFTWARE",
             "nivel":"G"
-
         },
         {
             "codigo":"2010100",
             "nombreMateria":"ARQUITECTURA DE SOFTWARE",
             "nivel":"G"
-
         },
         {
             "codigo":"2010182",
             "nombreMateria":"TELEFONIA IP",
             "nivel":"G"
-
         },
         {
             "codigo":"2010204",
             "nombreMateria":"INTERACCION HUMANO COMPUTADOR",
             "nivel":"G"
-
         },
         {
             "codigo":"2010205",
             "nombreMateria":"TECNOLOGIA REDES AVANZADAS",
             "nivel":"G"
-
         },
         {
             "codigo":"2010035",
@@ -273,52 +231,44 @@
             "codigo":"2010214",
             "nombreMateria":"TALLER DE GRADO I",
             "nivel":"H"
-
-        },
+        }, 
         {
             "codigo":"2010032",
             "nombreMateria":"DATA WAREHOUSE",
             "nivel":"I"
-
-        },
+        }, 
         {
             "codigo":"2010044",
             "nombreMateria":"DISE¥O DE COMPILADORES",
             "nivel":"I"
-
-        },
+        }, 
 
         {
             "codigo":"2010079",
             "nombreMateria":"WEB SEMANTICAS",
             "nivel":"I"
-
-        },
+        },  
 
         {
             "codigo":"2010103",
             "nombreMateria":"ROBOTICA",
             "nivel":"I"
-
-        },
+        }, 
         {
             "codigo":"2010174",
             "nombreMateria":"PROGRAMACION MOVIL",
             "nivel":"I"
-
-        },
+        }, 
         {
             "codigo":"2010175",
             "nombreMateria":"AGENTES INTELIGENTES",
             "nivel":"I"
-
-        },
+        }, 
         {
             "codigo":"2010198",
             "nombreMateria":"APLICACIONES WEB AVANZADAS",
             "nivel":"I"
-
-        },
+        }, 
         {
             "codigo":"2010209",
             "nombreMateria":"SEGURIDAD DE SISTEMAS",
@@ -331,5 +281,3 @@
         }
     ]
 }       
-
-    

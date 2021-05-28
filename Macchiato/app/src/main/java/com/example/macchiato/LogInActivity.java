@@ -1,6 +1,7 @@
 package com.example.macchiato;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,6 +29,8 @@ public class LogInActivity extends AppCompatActivity {
         correo_L= findViewById(R.id.editTextTextEmailAddress);
         contrasena_L= findViewById(R.id.editTextTextPassword);
         mAuth = FirebaseAuth.getInstance();
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
     }
 
     public void register(View view){

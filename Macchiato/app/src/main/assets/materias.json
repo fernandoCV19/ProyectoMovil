@@ -1,0 +1,2524 @@
+{
+  "MATERIAS":[
+    {
+      "id":"1",
+      "nombreMateria":"INGLES I",
+      "codigo":"1803001",
+      "docente":"CESPEDES GUIZADA MARIA BENITA",
+      "nivel":"A",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"693B"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"691D"
+        }
+      ]
+    },
+    {
+      "id":"2",
+      "nombreMateria":"INGLES I",
+      "codigo":"1803001",
+      "docente":"CESPEDES GUIZADA MARIA BENITA",
+      "nivel":"A",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"690D"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"690D"
+        }
+      ]
+    },
+    {
+      "id":"3",
+      "nombreMateria":"INGLES I",
+      "codigo":"1803001",
+      "docente":"PEETERS ILONAA MAGDA LENA",
+      "nivel":"A",
+      "grupo":"3",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"655"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691A"
+        }
+      ]
+    },
+    {
+      "id":"4",
+      "nombreMateria":"INGLES I",
+      "codigo":"1803001",
+      "docente":"GRILO SALVATIERRA MARIA ESTELA",
+      "nivel":"A",
+      "grupo":"4",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"684A"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"692E"
+        }
+      ]
+    },
+    {
+      "id":"5",
+      "nombreMateria":"INGLES I",
+      "codigo":"1803001",
+      "docente":"CESPEDES GUIZADA MARIA BENITA",
+      "nivel":"A",
+      "grupo":"5",
+      "clases":[
+        {
+          "dia":"JUEVES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"692F"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"691B"
+        }
+      ]
+    },
+    {
+      "id":"6",
+      "nombreMateria":"FISICA GENERAL",
+      "codigo":"2006063",
+      "docente":"VALENZUELA MIRANDA ROBERTO",
+      "nivel":"A",
+      "grupo":"B",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"651"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"692C"
+        }
+      ]
+    },
+    {
+      "id":"7",
+      "nombreMateria":"ALGEBRA I",
+      "codigo":"2008019",
+      "docente":"RODRIGUEZ SEJAS JUAN ANTONIO",
+      "nivel":"A",
+      "grupo":"10",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"617C"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"692C"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"692C"
+        }
+      ]
+    },
+    {
+      "id":"8",
+      "nombreMateria":"ALGEBRA I",
+      "codigo":"2008019",
+      "docente":"CARRASCO CALVO ALVARO HERNANDO",
+      "nivel":"A",
+      "grupo":"15",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"642"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"617"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"607"
+        }
+      ]
+    },
+    {
+      "id":"9",
+      "nombreMateria":"ALGEBRA I",
+      "codigo":"2008019",
+      "docente":"LEON ROMERO GUALBERTO",
+      "nivel":"A",
+      "grupo":"8",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"691C"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"692B"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"692C"
+        }
+      ]
+    },
+    {
+      "id":"10",
+      "nombreMateria":"CALCULO I",
+      "codigo":"2008054",
+      "docente":"GONZALES CARTAGENA LUCIO",
+      "nivel":"A",
+      "grupo":"10",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"642"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"642"
+        },
+        {
+          "dia":"SABADO",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"617C"
+        }
+      ]
+    },
+    {
+      "id":"11",
+      "nombreMateria":"CALCULO I",
+      "codigo":"2008054",
+      "docente":"ROJAS ZURITA RAMIRO",
+      "nivel":"A",
+      "grupo":"11",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"622"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"690B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"692E"
+        }
+      ]
+    },
+    {
+      "id":"12",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
+      "docente":"SALAZAR SERRUDO CARLA",
+      "nivel":"A",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"JUEVES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"691A"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"691E"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"623"
+        }
+      ]
+    },
+    {
+      "id":"13",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
+      "docente":"COSTAS JAUREGUI VLADIMIR ABEL",
+      "nivel":"A",
+      "grupo":"10",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"692D"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"693A"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"691B"
+        }
+      ]
+    },
+    {
+      "id":"14",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
+      "docente":"BLANCO COCA LETICIA",
+      "nivel":"A",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"617"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"691B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"624"
+        }
+      ]
+    },
+    {
+      "id":"15",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
+      "docente":"USTARIZ VARGAS HERNAN",
+      "nivel":"A",
+      "grupo":"3",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"607"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"612"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"624"
+        }
+      ]
+    },
+    {
+      "id":"16",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
+      "docente":"VILLARROEL TAPIA HENRY FRANK",
+      "nivel":"A",
+      "grupo":"4",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"612"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"617"
+        },
+        {
+          "dia":"SABADO",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691D"
+        }
+      ]
+    },
+    {
+      "id":"17",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
+      "docente":"MONTANO QUIROGA VICTOR HUGO",
+      "nivel":"A",
+      "grupo":"5",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"690B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"623"
+        },
+        {
+          "dia":"SABADO",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691C"
+        }
+      ]
+    },
+    {
+      "id":"18",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
+      "docente":"SALAZAR SERRUDO CARLA",
+      "nivel":"A",
+      "grupo":"6",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"692D"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"691E"
+        },
+        {
+          "dia":"SABADO",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"661"
+        }
+      ]
+    },
+    {
+      "id":"19",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "codigo":"2010010",
+      "docente":"FLORES VILLARROEL CORINA",
+      "nivel":"A",
+      "grupo":"7",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"690C"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"691F"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"691E"
+        }
+      ]
+    },
+    {
+      "id":"20",
+      "nombreMateria":"INGLES II",
+      "codigo":"1803002",
+      "docente":"PEETERS ILONAA MAGNA LENA",
+      "nivel":"B",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"661"
+        }
+      ]
+    },
+    {
+      "id":"21",
+      "nombreMateria":"INGLES II",
+      "codigo":"1803002",
+      "docente":"PEETERS ILONAA MAGNA LENA",
+      "nivel":"B",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"JUEVES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691B"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691C"
+        }
+      ]
+    },
+    {
+      "id":"22",
+      "nombreMateria":"INGLES II",
+      "codigo":"1803002",
+      "docente":"PEETERS ILONAA MAGNA LENA",
+      "nivel":"B",
+      "grupo":"3",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"692G"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"662H"
+        }
+      ]
+    },
+    {
+
+      "id":"23",
+      "nombreMateria":"ALGEBRA II",
+      "codigo":"2008022",
+      "docente":"SALINAS PERICON WALTER OSCAR",
+      "nivel":"B",
+      "grupo":"5A",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"690E"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"692A"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"18:45",
+          "horaFinal":"20:15",
+          "aula":"690E"
+        }
+      ]
+    },
+    {
+      "id":"24",
+      "nombreMateria":"ALGEBRA II",
+      "codigo":"2008022",
+      "docente":"MEDINA GAMBOA JULIO",
+      "nivel":"B",
+      "grupo":"6",
+      "clases":[
+        {
+          "dia":"JUEVES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"660"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"661A"
+        },
+        {
+          "dia":"SABADO",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"662B"
+        }
+      ]
+    },
+
+    {
+      "id":"25",
+      "nombreMateria":"ALGEBRA II",
+      "codigo":"2008022",
+      "docente":"OMONTE OJALVO JOSE ROBERTO",
+      "nivel":"B",
+      "grupo":"8",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"624"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"662D"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"662B"
+        }
+      ]
+    },
+    {
+      "id":"26",
+      "nombreMateria":"CALCULO II",
+      "codigo":"2008056",
+      "docente":"MARTINEZ MAIDA AMILCAR SAUL",
+      "nivel":"B",
+      "grupo":"12",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"692H"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"14:15:",
+          "horaFinal":"15:45",
+          "aula":"692H"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"12:45:",
+          "horaFinal":"14:15",
+          "aula":"617C"
+        }
+      ]
+    },
+    {
+      "id":"27",
+      "nombreMateria":"CALCULO II",
+      "codigo":"2008056",
+      "docente":"TERRAZAS LOBO JUAN",
+      "nivel":"B",
+      "grupo":"6",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"623"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"625C"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"693A"
+        }
+      ]
+    },
+    {
+      "id":"28",
+      "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+      "codigo":"2010003",
+      "docente":"TORRICO BASCOPE ROSEMARY",
+      "nivel":"B",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"617C"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"651"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"690C"
+        }
+      ]
+    },
+    {
+      "id":"29",
+      "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+      "codigo":"2010003",
+      "docente":"BLANCO COCA LETICIA",
+      "nivel":"B",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"623"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"623"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"624"
+        }
+      ]
+    },
+    {
+      "id":"30",
+      "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+      "codigo":"2010003",
+      "docente":"BLANCO COCA LETICIA",
+      "nivel":"B",
+      "grupo":"3",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"18:45",
+          "horaFinal":"20:15",
+          "aula":"622"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"691C"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"690C"
+        }
+      ]
+    },
+    {
+      "id":"31",
+      "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+      "codigo":"2010003",
+      "docente":"TORRICO BASCOPE ROSEMARY",
+      "nivel":"B",
+      "grupo":"5",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"691B"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"625D"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"690D"
+        }
+      ]
+    },
+    {
+      "id":"32",
+      "nombreMateria":"ARQUITECTURA DE COMPUTADORAS I",
+      "codigo":"2010013",
+      "docente":" ACHA PEREZ SAMUEL",
+      "nivel":"B",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"JUEVES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"622"
+        },
+        {
+          "dia":"SABADO",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"623"
+        }
+
+      ]
+    },
+    {
+      "id":"33",
+      "nombreMateria":"ARQUITECTURA DE COMPUTADORAS I",
+      "codigo":"2010013",
+      "docente":"BLANCO COCA LETICIA",
+      "nivel":"B",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"691B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"624"
+        }
+
+      ]
+    },
+    {
+      "id":"34",
+      "nombreMateria":"PROGRAMACION",
+      "codigo":"2010200",
+      "docente":"TORRICO BASCOPE ROSEMARY",
+      "nivel":"B",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"691A"
+        }
+      ]
+    },
+    {
+      "id":"35",
+      "nombreMateria":"CALCULO NUMERICO",
+      "codigo":"2008060",
+      "docente":"JUCHANI BAZUALDO DEMETRIO",
+      "nivel":"C",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"622"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"693A"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"693D"
+        }
+      ]
+    },
+    {
+
+      "id":"36",
+      "nombreMateria":"CALCULO NUMERICO",
+      "codigo":"2008060",
+      "docente":"ZABALAGA MONTANO OSCAR A.",
+      "nivel":"C",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"8:15",
+          "horaFinal":"15:45",
+          "aula":"622"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"693A"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"693D"
+        }
+      ]
+    },
+    {
+      "id":"37",
+      "nombreMateria":"LOGICA",
+      "codigo":"2008140",
+      "docente":"HOEPFNER REYNOLDS MAURICIO",
+      "nivel":"C",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"617C"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"607"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"690B"
+        }
+      ]
+    },
+    {
+      "id":"38",
+      "nombreMateria":"ARQUITECTURA DE COMPUTADORAS II",
+      "codigo":"2010014",
+      "docente":"AGREDA CORRALES LUIS ROBERTO",
+      "nivel":"C",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"691F"
+        },
+
+        {
+          "dia":"JUEVES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"692C"
+        }
+      ]
+    },
+    {
+      "id":"39",
+      "nombreMateria":"TEORIA DE GRAFOS",
+      "codigo":"2010037",
+      "docente":"MONTOYA BURGOS YONY RICHARD",
+      "nivel":"C",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"690B"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"680A"
+        }
+      ]
+    },
+    {
+
+      "id":"40",
+      "nombreMateria":"ORGANIZACION Y METODOS",
+      "codigo":"2010041",
+      "docente":" CAMACHO DEL CASTILLO INDIRA",
+      "nivel":"C",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"655"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"41",
+      "nombreMateria":"METODOS Y TECNICAS DE PROGRAMACION",
+      "codigo":"2010206",
+      "docente":"FLORES VILLARROEL CORINA",
+      "nivel":"C",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"652"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"625D"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"652"
+        }
+      ]
+    },
+    {
+      "id":"42",
+      "nombreMateria":"METODOS Y TECNICAS DE PROGRAMACION",
+      "codigo":"2010206",
+      "docente":"MANZUR SORIA CARLOS B.",
+      "nivel":"C",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"652"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"652"
+        }
+      ]
+    },
+    {
+      "id":"43",
+      "nombreMateria":"METODOS Y TECNICAS DE PROGRAMACION",
+      "codigo":"2010206",
+      "docente":"MONTOYA BURGOS YONY RICHARD",
+      "nivel":"C",
+      "grupo":"5",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"655"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"655"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"652"
+        }
+      ]
+    },
+    {
+      "id":"44",
+      "nombreMateria":"PROBABILIDAD Y ESTADISTICA",
+      "codigo":"2008029",
+      "docente":"DELGADILLO COSSIO DAVID ALFREDO",
+      "nivel":"D",
+      "grupo":"3",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"617C"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"692A"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"MAGCIV"
+        }
+      ]
+    },
+    {
+      "id":"45",
+      "nombreMateria":"PROBABILIDAD Y ESTADISTICA",
+      "codigo":"2008029",
+      "docente":"OMONTE OJALVO JOSE ROBERTO",
+      "nivel":"D",
+      "grupo":"4",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"612"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"624"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"642"
+        }
+      ]
+    },
+    {
+      "id":"46",
+      "nombreMateria":"TALLER DE PROGRAMACION EN BAJO NIVEL",
+      "codigo":"2010005",
+      "docente":"MONTECINOS CHOQUE MARCON ANTONIO",
+      "nivel":"D",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"691B"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"661"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"691E"
+        }
+      ]
+    },
+    {
+      "id":"47",
+      "nombreMateria":"BASE DE DATOS I",
+      "codigo":"2010015",
+      "docente":"SALAZAR ANAYA ROSEMARY",
+      "nivel":"D",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"691B"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"691B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"693D"
+        }
+      ]
+    },
+    {
+      "id":"48",
+      "nombreMateria":"BASE DE DATOS I",
+      "codigo":"2010015",
+      "docente":"CALANCHA NAVIA BORIS",
+      "nivel":"D",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"AUDIT"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"651"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"661"
+        }
+      ]
+    },
+    {
+      "id":"49",
+      "nombreMateria":"SISTEMAS DE INFORMACION I",
+      "codigo":"2010018",
+      "docente":"SALAZAR SERRUNO CARLA",
+      "nivel":"D",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"692B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691E"
+        }
+      ]
+    },
+    {
+      "id":"50",
+      "nombreMateria":"SISTEMAS DE INFORMACION I",
+      "codigo":"2010018",
+      "docente":"SALAZAR SERRUDO CARLA",
+      "nivel":"D",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"691B"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"642"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"693A"
+        }
+      ]
+    },
+    {
+      "id":"51",
+      "nombreMateria":"PROGRAMACION FUNCIONAL",
+      "codigo":"2010038",
+      "docente":"APARICIO YUJA TATIANA",
+      "nivel":"D",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"661"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"655"
+        }
+      ]
+    },
+    {
+      "id":"52",
+      "nombreMateria":"ALGORITMOS AVANZADOS",
+      "codigo":"2010197",
+      "docente":"BLANCO COCA LETICIA",
+      "nivel":"D",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"691C"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"690D"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"693D"
+        }
+      ]
+    },
+    {
+      "id":"53",
+      "nombreMateria":"BASE DE DATOS II",
+      "codigo":"2010016",
+      "docente":"APARICIO YUJA TATIANA",
+      "nivel":"E",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"617B"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"617B"
+        }
+      ]
+    },
+    {
+      "id":"54",
+      "nombreMateria":"BASE DE DATOS II",
+      "codigo":"2010016",
+      "docente":"APARICIO YUJA TATIANA",
+      "nivel":"E",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"625D"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"55",
+      "nombreMateria":"TALLER DE SISTEMAS OPERATIVOS",
+      "codigo":"2010017",
+      "docente":"ORELLANA ARAOZ JORGE WALTER",
+      "nivel":"E",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"692G"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"691A"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"691C"
+        }
+      ]
+    },
+    {
+      "id":"56",
+      "nombreMateria":"TALLER DE SISTEMAS OPERATIVOS",
+      "codigo":"2010017",
+      "docente":"ORELLANA ARAOZ JORGE WALTER",
+      "nivel":"E",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"692B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"693B"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"624"
+        }
+      ]
+    },
+    {
+      "id":"57",
+      "nombreMateria":"TALLER DE SISTEMAS OPERATIVOS",
+      "codigo":"2010017",
+      "docente":"CUSSI NICOLAS GROVER HUMBERT",
+      "nivel":"E",
+      "grupo":"3",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"18:45",
+          "horaFinal":"20:15",
+          "aula":"691E"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"20:15",
+          "horaFinal":"21:45",
+          "aula":"691A"
+        },
+        {
+          "dia":"SABADO",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"58",
+      "nombreMateria":"SISTEMAS DE INFORMACION II",
+      "codigo":"2010022",
+      "docente":"FLORES SOLIZ JUAN MARCELO",
+      "nivel":"E",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"655"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"690D"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"690B"
+        }
+      ]
+    },
+    {
+      "id":"59",
+      "nombreMateria":"SISTEMAS DE INFORMACION II",
+      "codigo":"2010022",
+      "docente":"JALDIN ROSALES K. ROLANDO",
+      "nivel":"E",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"655"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"655"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"690B"
+        }
+      ]
+    },
+    {
+      "id":"60",
+      "nombreMateria":"TEORIA DE AUTOMATAS Y LENG. FORMALES",
+      "codigo":"2010040",
+      "docente":"MONTANO QUIROGA VICTOR HUGO",
+      "nivel":"E",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"692H"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"661"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"652"
+        }
+      ]
+    },
+    {
+      "id":"61",
+      "nombreMateria":"GRAFICACION POR COMPUTADORA",
+      "codigo":"2010042",
+      "docente":"CALANCHA NAVIA BORIS",
+      "nivel":"E",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"690D"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"62",
+      "nombreMateria":"INTELIGENCIA ARTIFICIAL I",
+      "codigo":"2010201",
+      "docente":"GARCIA PEREZ CARMEN ROSA",
+      "nivel":"E",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"692D"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"692A"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"691A"
+        }
+      ]
+    },
+    {
+      "id":"63",
+      "nombreMateria":"INTELIGENCIA ARTIFICIAL I",
+      "codigo":"2010201",
+      "docente":"RODRIGUEZ BILBAO ERIKA PATRICIA",
+      "nivel":"E",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"692H"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"692B"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"692H"
+        }
+      ]
+    },
+    {
+      "id":"64",
+      "nombreMateria":"INGENIERIA DE SOFTWARE",
+      "codigo":"2010020",
+      "docente":"CAMACHO DEL CASTILLO INDIRA",
+      "nivel":"F",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"652"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"692D"
+        }
+      ]
+    },
+    {
+      "id":"65",
+      "nombreMateria":"INGENIERIA DE SOFTWARE",
+      "codigo":"2010020",
+      "docente":"TORRICO BASCOPE ROSEMARY",
+      "nivel":"F",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"690B"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691D"
+        }
+      ]
+    },
+    {
+      "id":"66",
+      "nombreMateria":"REDES DE COMPUTADORAS",
+      "codigo":"2010047",
+      "docente":"ORELLANA ARAOZ JORGE WALTER",
+      "nivel":"F",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"692B"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"693A"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"692C"
+        }
+      ]
+    },
+    {
+      "id":"67",
+      "nombreMateria":"REDES DE COMPUTADORAS",
+      "codigo":"2010047",
+      "docente":"ORELLANA ARAOZ JORGE WALTER",
+      "nivel":"F",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691B"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"693A"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"692G"
+        }
+      ]
+    },
+    {
+      "id":"68",
+      "nombreMateria":"ESTRUCTURA Y SEMANTICA DE LENGUAJES DE PROGRAMACION",
+      "codigo":"2010049",
+      "docente":"ROMERO RODRIGUEZ PATRICIA",
+      "nivel":"F",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"617B"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"625C"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"692H"
+        }
+      ]
+    },
+    {
+      "id":"69",
+      "nombreMateria":"TALLER DE BASE DE DATOS",
+      "codigo":"2010053",
+      "docente":"CALANCHA NAVIA BORIS",
+      "nivel":"F",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"JUEVES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"70",
+      "nombreMateria":"TALLER DE BASE DE DATOS",
+      "codigo":"2010053",
+      "docente":"CALANCHA NAVIA BORIS",
+      "nivel":"F",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"AUDIT"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"71",
+      "nombreMateria":"TALLER DE BASE DE DATOS",
+      "codigo":"2010053",
+      "docente":"FLORES SOLIZ JUAN MARCELO",
+      "nivel":"F",
+      "grupo":"3",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"690B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"690B"
+        }
+      ]
+    },
+    {
+      "id":"72",
+      "nombreMateria":"INTELIGENCIA ARTIFICIAL II",
+      "codigo":"2010202",
+      "docente":"GARCIA PEREZ CARMEN ROSA",
+      "nivel":"F",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"12:45",
+          "horaFinal":"14:15",
+          "aula":"691C"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"690B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691C"
+        }
+      ]
+    },
+    {
+      "id":"73",
+      "nombreMateria":"PROGRAMACION WEB",
+      "codigo":"2010203",
+      "docente":"COSTAS JAUREGUI VLADIMIR ABEL",
+      "nivel":"F",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"691B"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"691B"
+        }
+      ]
+    },
+    {
+      "id":"74",
+      "nombreMateria":"SIMULACION DE SISTEMAS",
+      "codigo":"2010019",
+      "docente":"VILLARROEL TAPIA HENRY FRANK",
+      "nivel":"G",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"617C"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"655"
+        }
+      ]
+    },
+    {
+      "id":"75",
+      "nombreMateria":"TALLER DE INGENIERIA DE SOFTWARE",
+      "codigo":"2010024",
+      "docente":"FLORES VILLARROEL CORINA",
+      "nivel":"G",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"690D"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"655"
+        }
+      ]
+    },
+    {
+      "id":"76",
+      "nombreMateria":"TALLER DE INGENIERIA DE SOFTWARE",
+      "codigo":"2010024",
+      "docente":" BLANCO COCA LETICIA",
+      "nivel":"G",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"651"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"8:15",
+          "horaFinal":"9:45",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"77",
+      "nombreMateria":"ARQUITECTURA DE SOFTWARE",
+      "codigo":"2010100",
+      "docente":"AZERO ALCOCER PABLO",
+      "nivel":"G",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"625C"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":" 6:45",
+          "horaFinal":"8:15",
+          "aula":"690C"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"692D"
+        }
+      ]
+    },
+    {
+
+      "id":"78",
+      "nombreMateria":"TELEFONIA IP",
+      "codigo":"2010182",
+      "docente":"MONTOYA BURGOS YONY RICHARD",
+      "nivel":"G",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"655"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":"17:15",
+          "horaFinal":"18:45",
+          "aula":"625D"
+        }
+      ]
+    },
+    {
+      "id":"79",
+      "nombreMateria":"INTERACCION HUMANO COMPUTADOR",
+      "codigo":"2010204",
+      "docente":"FLORES VILLARROEL CORINA",
+      "nivel":"G",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"6:45",
+          "horaFinal":"8:15",
+          "aula":"690D"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"18:45",
+          "horaFinal":"20:15",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"80",
+      "nombreMateria":"TECNOLOGIA REDES AVANZADAS",
+      "codigo":"2010205",
+      "docente":"MONTECINOS CHOQUE MARCO ANTONIO",
+      "nivel":"G",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"691D"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"661"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"14:15",
+          "horaFinal":"15:45",
+          "aula":"691E"
+        }
+      ]
+    },
+    {
+      "id":"81",
+      "nombreMateria":"APLICACION DE SISTEMAS OPERATIVOS",
+      "codigo":"2010035",
+      "docente":"CUSSI NICOLAS GROVER HUMBERTO",
+      "nivel":"H",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"VIERNES",
+          "horaInicio":"18:45",
+          "horaFinal":"20:15",
+          "aula":"693D"
+        },
+        {
+          "dia":"SABADO",
+          "horaInicio":"9:45",
+          "horaFinal":"11:15",
+          "aula":"691B"
+        }
+      ]
+    },
+    {
+      "id":"82",
+      "nombreMateria":"APLICACION DE SISTEMAS OPERATIVOS",
+      "codigo":"2010035",
+      "docente":"CUSSI NICOLAS GROVER HUMBERTO",
+      "nivel":"H",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":" 12:45",
+          "horaFinal":"14:15",
+          "aula":"693B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":" 18:45",
+          "horaFinal":"20:15",
+          "aula":"690B"
+        }
+      ]
+    },
+    {
+      "id":"83",
+      "nombreMateria":"EVALUACION Y AUDITORIA DE SISTEMAS",
+      "codigo":"2010102",
+      "docente":"ROMERO RODRIGUEZ PATRICIA",
+      "nivel":"H",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":" 11:15",
+          "horaFinal":"12:45",
+          "aula":"691F"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":" 8:15",
+          "horaFinal":"9:45",
+          "aula":"690B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":" 8:15",
+          "horaFinal":"9:45",
+          "aula":"690C"
+        }
+      ]
+    },
+    {
+      "id": "84",
+      "nombreMateria": "EVALUACION Y AUDITORIA DE SISTEMAS",
+      "codigo":"2010102",
+      "docente": "VILLARROEL NOVILLO JIMMY",
+      "nivel": "H",
+      "grupo": "2",
+      "clases": [
+        {
+          "dia": "LUNES",
+          "horaInicio": " 17:15",
+          "horaFinal": "18:45",
+          "aula": "692C"
+        },
+        {
+          "dia": "MARTES",
+          "horaInicio": " 8:15",
+          "horaFinal": "9:45",
+          "aula": "691D"
+        },
+        {
+          "dia": "MIERCOLES",
+          "horaInicio": " 17:15",
+          "horaFinal": "18:45",
+          "aula": "692A"
+        }
+      ]
+    },
+
+    {
+      "id":"85",
+      "nombreMateria":"TALLER DE GRADO I",
+      "codigo":"2010214",
+      "docente":"FLORES VILLARROEL CORINA",
+      "nivel":"H",
+      "grupo":"6",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":" 17:15",
+          "horaFinal":"18:45",
+          "aula":"692C"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":" 8:15",
+          "horaFinal":"9:45",
+          "aula":"691D"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":" 17:15",
+          "horaFinal":"18:45",
+          "aula":"692A"
+        }
+      ]
+    },
+    {
+      "id":"86",
+      "nombreMateria":"TALLER DE GRADO I",
+      "codigo":"2010214",
+      "docente":"ROMERO RODRIGUEZ PATRICIA",
+      "nivel":"H",
+      "grupo":"7",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":" 9:45",
+          "horaFinal":"11:15",
+          "aula":"617C"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":" 11:15",
+          "horaFinal":"12:45",
+          "aula":"617B"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":" 9:45",
+          "horaFinal":"11:15",
+          "aula":"690C"
+        }
+      ]
+    },
+    {
+      "id":"87",
+      "nombreMateria":"DATA WAREHOUSE",
+      "codigo":"2010032",
+      "docente":"CALANCHA NAVIA BORIS",
+      "nivel":"I",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":" 11:15",
+          "horaFinal":"12:45",
+          "aula":"692H"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":" 14:15",
+          "horaFinal":"15:45",
+          "aula":"690C"
+        }
+      ]
+    },
+    {
+
+      "id":"88",
+      "nombreMateria":"DISE¥O DE COMPILADORES",
+      "codigo":"2010044",
+      "docente":"AZERO ALCOCER PABLO",
+      "nivel":"I",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":" 14:15",
+          "horaFinal":"15:45",
+          "aula":"692D"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":" 14:15",
+          "horaFinal":"15:45",
+          "aula":"692D"
+        }
+      ]
+    },
+    {
+
+      "id":"89",
+      "nombreMateria":"WEB SEMANTICAS",
+      "codigo":"2010079",
+      "docente":"RODRIGUEZ BILBAO ERIKA PATRICIA",
+      "nivel":"I",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":" 17:15",
+          "horaFinal":"18:45",
+          "aula":"693D"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":" 17:15",
+          "horaFinal":"18:45",
+          "aula":"655"
+        }
+      ]
+    },
+
+
+    {
+      "id":"90",
+      "nombreMateria":"ROBOTICA",
+      "codigo":"2010103",
+      "docente":"GARCIA PEREZ CARMEN ROSA",
+      "nivel":"I",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":" 9:45",
+          "horaFinal":"11:15",
+          "aula":"692F"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":" 11:15",
+          "horaFinal":"12:45",
+          "aula":"692D"
+        }
+      ]
+    },
+    {
+      "id":"91",
+      "nombreMateria":"PROGRAMACION MOVIL",
+      "codigo":"2010174",
+      "docente":"FIORILO LOZADA AMERICO",
+      "nivel":"I",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":" 20:15",
+          "horaFinal":"21:45",
+          "aula":"691C"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":" 20:15",
+          "horaFinal":"21:45",
+          "aula":"691E"
+        }
+      ]
+    },
+    {
+      "id":"92",
+      "nombreMateria":"AGENTES INTELIGENTES",
+      "codigo":"2010175",
+      "docente":"MONTOYA BURGOS YONY RICHARD",
+      "nivel":"I",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MARTES",
+          "horaInicio":"  8:15",
+          "horaFinal":"9:45",
+          "aula":"INFLAB"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":"  8:15",
+          "horaFinal":"9:45",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"93",
+      "nombreMateria":"APLICACIONES WEB AVANZADAS",
+      "codigo":"2010198",
+      "docente":"COSTAS JAUREGUI VLADIMIR ABEL",
+      "nivel":"I",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":" 8:15",
+          "horaFinal":"9:45",
+          "aula":"624"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":"11:15",
+          "horaFinal":"12:45",
+          "aula":"655"
+        }
+      ]
+    },
+    {
+      "id":"94",
+      "nombreMateria":"SEGURIDAD DE SISTEMAS",
+      "codigo":"2010209",
+      "docente":"ANTEZANA CAMACHO MARCELO",
+      "nivel":"I",
+      "grupo":"1",
+      "clases":[
+        {
+          "dia":"LUNES",
+          "horaInicio":" 11:15",
+          "horaFinal":"12:45",
+          "aula":"660"
+        },
+        {
+          "dia":"MARTES",
+          "horaInicio":" 11:15",
+          "horaFinal":"12:45",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"95",
+      "nombreMateria":"TALLER DE GRADO II",
+      "codigo":"2010215",
+      "docente":"MONTANO QUIROGA VICTOR HUGO",
+      "nivel":"I",
+      "grupo":"2",
+      "clases":[
+        {
+          "dia":"JUEVES",
+          "horaInicio":" 8:15",
+          "horaFinal":"9:45",
+          "aula":"INFDEP"
+        },
+        {
+          "dia":"VIERNES",
+          "horaInicio":"9:45",
+          "horaFinal":"11:45",
+          "aula":"INFLAB"
+        }
+      ]
+    },
+    {
+      "id":"96",
+      "nombreMateria":"TALLER DE GRADO II",
+      "codigo":"2010215",
+      "docente":"GARCIA PEREZ CARMEN ROSA",
+      "nivel":"I",
+      "grupo":"3",
+      "clases":[
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":" 8:15",
+          "horaFinal":"9:45",
+          "aula":"INFDEP"
+        },
+        {
+          "dia":"JUEVES",
+          "horaInicio":" 8:15",
+          "horaFinal":"9:45",
+          "aula":"655"
+        }
+      ]
+    },
+    {
+      "id":"97",
+      "nombreMateria":"TALLER DE GRADO II",
+      "codigo":"2010215",
+      "docente":"ROMERO RODRIGUEZ PATRICIA",
+      "nivel":"I",
+      "grupo":"4",
+      "clases":[
+
+        {
+          "dia":"MARTES",
+          "horaInicio":" 8:15",
+          "horaFinal":"9:45",
+          "aula":"690C"
+        },
+        {
+          "dia":"MIERCOLES",
+          "horaInicio":" 14:15",
+          "horaFinal":"15:45",
+          "aula":"617C"
+        }
+      ]
+    }
+  ]
+}

@@ -29,8 +29,8 @@ public class CambiarPerfilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_cambiar_perfil);
-        contAct = findViewById(R.id.cc_contrActual_id);
         contNueva = findViewById(R.id.cc_contrNueva_id);
         contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
         user = FirebaseAuth.getInstance().getCurrentUser();

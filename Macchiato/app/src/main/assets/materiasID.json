@@ -1,0 +1,338 @@
+{
+  "MATERIAS":[
+    {
+      "id":"1",
+      "nombreMateria":"INGLES I",
+      "requisitos":["EXAMEN DE INGRESO"]
+
+    },
+    {
+      "id":"2",
+      "nombreMateria":"FISICA GENERAL",
+      "requisitos":["EXAMEN DE INGRESO"]
+
+    },
+    {
+      "id":"3",
+      "nombreMateria":"ALGEBRA I",
+      "requisitos":["EXAMEN DE INGRESO"]
+
+    },
+    {
+      "id":"4",
+      "nombreMateria":"CALCULO I",
+      "requisitos":["EXAMEN DE INGRESO"]
+
+    },
+    {
+      "id":"5",
+      "nombreMateria":"INTRODUCCION A LA PROGRAMACION",
+      "requisitos":["EXAMEN DE INGRESO"]
+
+    },
+    {
+      "id":"6",
+      "nombreMateria":"INGLES II",
+      "requisitos":["INGLES I"]
+
+    },
+    {
+      "id":"7",
+      "nombreMateria":"ALGEBRA II",
+      "requisitos":["ALGEBRA I"]
+
+    },
+    {
+      "id":"8",
+      "nombreMateria":"CALCULO II",
+      "requisitos":["CALCULO I"]
+
+    },
+    {
+      "id":"9",
+      "nombreMateria":"ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS",
+      "requisitos":["INTRODUCCION A LA PROGRAMACION"]
+
+    },
+    {
+      "id":"10",
+      "nombreMateria":"ARQUITECTURA DE COMPUTADORAS I",
+      "requisitos":["FISICA GENERAL"]
+
+    },
+    {
+      "id":"11",
+      "nombreMateria":"PROGRAMACION",
+      "requisitos":["INTRODUCCION A LA PROGRAMACION"]
+
+    },
+    {
+      "id":"12",
+      "nombreMateria":"CALCULO NUMERICO",
+      "requisitos":["CALCULO II"]
+
+    },
+    {
+      "id":"13",
+      "nombreMateria":"LOGICA",
+      "requisitos":["ALGEBRA II"]
+
+    },
+    {
+      "id":"14",
+      "nombreMateria":"ARQUITECTURA DE COMPUTADORAS II",
+      "requisitos":["ARQUITECTURA DE COMPUTADORAS I"]
+
+    },
+    {
+      "id":"15",
+      "nombreMateria":"TEORIA DE GRAFOS",
+      "requisitos":["PROGRAMACION"]
+
+    },
+    {
+      "id":"16",
+      "nombreMateria":"ORGANIZACION Y METODOS",
+      "requisitos":["INGLES II"]
+
+    },
+    {
+      "id":"17",
+      "nombreMateria":"METODOS Y TECNICAS DE PROGRAMACION",
+      "requisitos":["ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS"]
+
+    },
+    {
+      "id":"18",
+      "nombreMateria":"PROBABILIDAD Y ESTADISTICA",
+      "requisitos":["CALCULO NUMERICO"]
+
+    },
+    {
+      "id":"19",
+      "nombreMateria":"TALLER DE PROGRAMACION EN BAJO NIVEL",
+      "requisitos":["ARQUITECTURA DE COMPUTADORAS II"]
+
+    },
+    {
+      "id":"20",
+      "nombreMateria":"BASE DE DATOS I",
+      "requisitos":["ORGANIZACION Y METODOS"]
+
+    },
+    {
+      "id":"21",
+      "nombreMateria":"SISTEMAS DE INFORMACION I",
+      "requisitos":["METODOS Y TECNICAS DE PROGRAMACION"]
+
+    },
+
+    {
+      "id":"22",
+      "nombreMateria":"PROGRAMACION FUNCIONAL",
+      "requisitos":["LOGICA"]
+
+    },
+
+    {
+      "id":"23",
+      "nombreMateria":"ALGORITMOS AVANZADOS",
+      "requisitos":["TEORIA DE GRAFOS"]
+
+    },
+
+    {
+      "id":"24",
+      "nombreMateria":"BASE DE DATOS II",
+      "requisitos":["BASE DE DATOS I"]
+
+    },
+
+    {
+      "id":"25",
+      "nombreMateria":"TALLER DE SISTEMAS OPERATIVOS",
+      "requisitos":["TALLER DE PROGRAMACION EN BAJO NIVEL"]
+
+    },
+
+    {
+      "id":"26",
+      "nombreMateria":"SISTEMAS DE INFORMACION II",
+      "requisitos":["SISTEMAS DE INFORMACION I"]
+
+    },
+
+    {
+      "id":"27",
+      "nombreMateria":"TEORIA DE AUTOMATAS Y LENG. FORMALES",
+      "requisitos":["TALLER DE PROGRAMACION EN BAJO NIVEL"]
+
+    },
+
+    {
+      "id":"28",
+      "nombreMateria":"GRAFICACION POR COMPUTADORA",
+      "requisitos":["ALGORITMOS AVANZADOS"]
+
+    },
+
+    {
+      "id":"29",
+      "nombreMateria":"INTELIGENCIA ARTIFICIAL I",
+      "requisitos":["PROGRAMACION FUNCIONAL", "PROBABILIDAD Y ESTADISTICA"]
+
+    },
+
+    {
+      "id":"30",
+      "nombreMateria":"INGENIERIA DE SOFTWARE",
+      "requisitos":["SISTEMAS DE INFORMACION II"]
+
+    },
+
+
+    {
+      "id":"31",
+      "nombreMateria":"REDES DE COMPUTADORAS",
+      "requisitos":["TALLER DE SISTEMAS OPERATIVOS"]
+
+    },
+    {
+      "id":"32",
+      "nombreMateria":"ESTRUCTURA Y SEMANTICA DE LENGUAJES DE PROGRAMACION",
+      "requisitos":["TEORIA DE AUTOMATAS Y LENG. FORMALES"]
+
+    },
+    {
+      "id":"33",
+      "nombreMateria":"TALLER DE BASE DE DATOS",
+      "requisitos":["BASE DE DATOS II"]
+
+    },
+    {
+      "id":"34",
+      "nombreMateria":"INTELIGENCIA ARTIFICIAL II",
+      "requisitos":["INTELIGENCIA ARTIFICIAL I"]
+
+    },
+    {
+      "id":"35",
+      "nombreMateria":"PROGRAMACION WEB",
+      "requisitos":["GRAFICACION POR COMPUTADORA"]
+
+    },
+    {
+      "id":"36",
+      "nombreMateria":"SIMULACION DE SISTEMAS",
+      "requisitos":["ESTRUCTURA Y SEMANTICA DE LENGUAJES DE PROGRAMACION"]
+
+    },
+    {
+      "id":"37",
+      "nombreMateria":"TALLER DE INGENIERIA DE SOFTWARE",
+      "requisitos":["TALLER DE BASE DE DATOS", "INGENIERIA DE SOFTWARE"]
+
+    },
+    {
+      "id":"38",
+      "nombreMateria":"ARQUITECTURA DE SOFTWARE",
+      "requisitos":["PROGRAMACION WEB"]
+
+    },
+    {
+      "id":"39",
+      "nombreMateria":"TELEFONIA IP",
+      "requisitos":["BASE DE DATOS II"]
+
+    },
+    {
+      "id":"40",
+      "nombreMateria":"INTERACCION HUMANO COMPUTADOR",
+      "requisitos":["INTELIGENCIA ARTIFICIAL II"]
+
+    },
+    {
+      "id":"41",
+      "nombreMateria":"TECNOLOGIA REDES AVANZADAS",
+      "requisitos":["REDES DE COMPUTADORAS"]
+
+    },
+    {
+      "id":"42",
+      "nombreMateria":"APLICACION DE SISTEMAS OPERATIVOS",
+      "requisitos":["TECNOLOGIA REDES AVANZADAS"]
+
+    },
+    {
+      "id":"43",
+      "nombreMateria":"EVALUACION Y AUDITORIA DE SISTEMAS",
+      "requisitos":["ARQUITECTURA DE SOFTWARE"]
+
+    },
+
+    {
+      "id":"44",
+      "nombreMateria":"TALLER DE GRADO I",
+      "requisitos":["TALLER DE INGERNIERIA DE SOFTWARE"]
+
+    },
+    {
+      "id":"45",
+      "nombreMateria":"DATA WAREHOUSE",
+      "requisitos":["TALLER DE BASE DE DATOS"]
+
+    },
+    {
+      "id":"46",
+      "nombreMateria":"DISE¥O DE COMPILADORES",
+      "requisitos":["INGENIERIA DE SOFTWARE"]
+
+    },
+
+    {
+      "id":"47",
+      "nombreMateria":"WEB SEMANTICAS",
+      "requisitos":["INGENIERIA DE SOFTWARE"]
+
+    },
+
+    {
+      "id":"48",
+      "nombreMateria":"ROBOTICA",
+      "requisitos":["INTELIGENCIA ARTIFICIAL I"]
+
+    },
+    {
+      "id":"49",
+      "nombreMateria":"PROGRAMACION MOVIL",
+      "requisitos":["REDES DE COMPUTADORAS"]
+
+    },
+    {
+      "id":"50",
+      "nombreMateria":"AGENTES INTELIGENTES",
+      "requisitos":["NINGUNA"]
+
+    },
+    {
+      "id":"51",
+      "nombreMateria":"APLICACIONES WEB AVANZADAS",
+      "requisitos":["INGENIERIA DE SOFTWARE"]
+
+    },
+    {
+      "id":"52",
+      "nombreMateria":"SEGURIDAD DE SISTEMAS",
+      "requisitos":["EVALUACION Y AUDITORIA DE SISTEMAS"]
+
+    },
+    {
+      "id":"53",
+      "nombreMateria":"TALLER DE GRADO II",
+      "requisitos":["TALLER DE GRADO I", "EVALUACION Y AUDITORIA DE SISTEMAS"]
+
+    }
+  ]
+}
+
+

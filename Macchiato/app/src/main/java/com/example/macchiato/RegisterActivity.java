@@ -42,7 +42,6 @@ public class RegisterActivity extends AppCompatActivity {
         inicializarFirebase();
         firebaseAuth = FirebaseAuth.getInstance();
 
-
     }
 
     public void registrar(View view) {
