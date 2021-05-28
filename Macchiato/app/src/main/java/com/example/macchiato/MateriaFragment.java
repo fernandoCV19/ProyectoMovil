@@ -48,7 +48,7 @@ public class MateriaFragment extends Fragment {
 
     }
 
-    public void setMostrar(ArrayList<Materia> mostrar) {
+    /*public void setMostrar(ArrayList<Materia> mostrar) {
         this.mostrar = mostrar;
     }
 
@@ -157,7 +157,7 @@ public class MateriaFragment extends Fragment {
         fragmentTransaction.disallowAddToBackStack();
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commit();
-    }
+    }*/
 
 
 
