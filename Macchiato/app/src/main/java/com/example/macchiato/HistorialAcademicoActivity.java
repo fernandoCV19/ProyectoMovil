@@ -184,7 +184,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                         MateriaNota materiaNota = new MateriaNota(select, numero);
 
                                         try {
-                                           new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
+                                           RegistroJSON rj = new RegistroJSON();
+                                           int idMat = new ParserMateriaID().getID(select);
+                                           rj.aniadirNota( idMat,numero,getApplicationContext());
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
