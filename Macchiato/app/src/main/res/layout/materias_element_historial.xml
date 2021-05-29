@@ -32,6 +32,13 @@
                 android:layout_marginTop="2dp"
                 android:orientation="horizontal">
 
+                <CheckBox
+                    android:id="@+id/eliminar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".0"
+                    android:textColorLink="#121212" />
+
                 <TextView
                     android:id="@+id/nomMateria"
                     android:layout_width="0dp"
