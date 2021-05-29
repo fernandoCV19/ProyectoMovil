@@ -246,6 +246,15 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                 }
 
                 promedioGen.setText(String.valueOf(promedioGeneral));
+                                        try {
+                                           RegistroJSON rj = new RegistroJSON();
+                                           int idMat = new ParserMateriaID().getID(select);
+                                           rj.aniadirNota( idMat,numero,getApplicationContext());
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                        if(!mostrarAprobadas .contains(materiaNota) ) {
+                                            Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
 
                 promedioMateriasApr =view2.findViewById(R.id.promedio_notamateriasApro);
                 for (MateriaNota materiaNota:mostrarAprobadas){

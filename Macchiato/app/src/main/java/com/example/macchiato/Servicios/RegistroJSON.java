@@ -1,26 +1,17 @@
 package com.example.macchiato.Servicios;
 
-import android.app.Activity;
 import android.content.Context;
-
-import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Models.MateriaNota;
 
-import org.json.JSONArray;
+import org.json.simple.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class RegistroJSON {
-    //public void genararVacio() throws FileNotFoundException, JSONException {}
     public LectorFichero lf;
     public RegistroJSON(){
         lf = new LectorFichero();
@@ -69,22 +60,43 @@ public class RegistroJSON {
 
         notas = (JSONArray) jo.get(campo);
         if(notas == null) notas = new JSONArray();
-        notas.put(j);
+        notas.add(j);
 
         jo.put(campo, notas);
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
 
-    public ArrayList<MateriaNota> getNotas(Context context) throws Exception{
+    public void quitarMateria(String campo, MateriaNota quitar, Context context)throws Exception{
+        Object obj = new JSONParser().parse(lf.leerFichero(context));
+
+        JSONObject jo = (JSONObject) obj;
+        JSONObject j = new JSONObject();
+        JSONArray notasJS = (JSONArray) jo.get(campo);
+
+        for(int i=0; i<notasJS.size(); i++){
+            j = (JSONObject)notasJS.get(i);
+            String m = (String)j.get("materia");
+            int n = ((Long)j.get("nota")).intValue();
+
+            if(m.contains(quitar.getMateria()) && n == quitar.getNota())
+                notasJS.remove(i);
+
+            break;
+        }
+        jo.put(campo, notasJS);
+
+        lf.escribirFichero("registro.json", jo.toString(), context);
+    }
+    public ArrayList<MateriaNota> getMateriaNota(String campo, Context context) throws Exception{
         ArrayList<MateriaNota> notas = new ArrayList<>();
         Object obj = new JSONParser().parse(lf.leerFichero(context));
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
-        JSONArray notasJS = (JSONArray) jo.get("notas");
+        JSONArray notasJS = (JSONArray) jo.get(campo);
 
-        for(int i=0; i<notasJS.length(); i++){
+        for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
             String m = (String)j.get("materia");
             int n = ((Long)j.get("nota")).intValue();
@@ -98,9 +110,9 @@ public class RegistroJSON {
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
-        JSONArray matsJS = (JSONArray) jo.get("materias tomadas");
+        JSONArray matsJS = (JSONArray) jo.get("Materias Actuales");
 
-        for (int i=0; i<matsJS.length(); i++){
+        for (int i=0; i<matsJS.size(); i++){
             int m = ((Long)matsJS.get(i)).intValue();
             mats.add(m);
         }
@@ -112,11 +124,11 @@ public class RegistroJSON {
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
-        JSONArray materias = (JSONArray) jo.get("materias tomadas");
+        JSONArray materias = (JSONArray) jo.get("Materias Actuales");
 
 
         if(materias == null) materias = new JSONArray();
-        materias.put(matID);
+        materias.add(matID);
         jo.put("materias tomadas", materias);
 
         lf.escribirFichero("registro.json", jo.toString(), context);
