@@ -172,22 +172,19 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
                             int numero = Integer.parseInt(num);
                             if (numero >= 0 && numero <= 100) {
-
                                 dialog.dismiss();
-
                             } else {
                                 editText.setError("Número fuera de rango");
                                 editText.requestFocus();
                                 return;
                             }
-
-
-
-
                             MateriaNota materiaNota = new MateriaNota(select, numero);
 
                             try {
-                                new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
+                                RegistroJSON rj = new RegistroJSON();
+                                int idMat = new ParserMateriaID().getID(select);
+                                rj.aniadirNota( idMat,numero,getApplicationContext());
+                                //new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -216,7 +213,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             //if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Elige un nivel")) {
                             //  }
 
-                        }
+                            }
 
                     });
                 }
@@ -246,15 +243,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                 }
 
                 promedioGen.setText(String.valueOf(promedioGeneral));
-                                        try {
-                                           RegistroJSON rj = new RegistroJSON();
-                                           int idMat = new ParserMateriaID().getID(select);
-                                           rj.aniadirNota( idMat,numero,getApplicationContext());
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                        if(!mostrarAprobadas .contains(materiaNota) ) {
-                                            Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
+
+                                        //if(!mostrarAprobadas .contains(materiaNota) ) {
+                                         //   Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
 
                 promedioMateriasApr =view2.findViewById(R.id.promedio_notamateriasApro);
                 for (MateriaNota materiaNota:mostrarAprobadas){
