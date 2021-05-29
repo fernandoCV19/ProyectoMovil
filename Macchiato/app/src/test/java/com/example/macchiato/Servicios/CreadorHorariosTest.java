@@ -500,4 +500,383 @@ public class CreadorHorariosTest {
         assertThat(res.get(3).getDocente()).contains("Materia4");
         assertThat(res.get(4).getDocente()).contains("Materia5");
     }
+
+    @Test
+    public void dadoUnaMateriaCuandoLlamamosCrearHorarioDeberiaDevolverUnaListaConSoloUnGrupo(){
+        Materia materia1 = mock(Materia.class);
+        Grupo grupo1 = mock(Grupo.class);
+        when(grupo1.getDocente()).thenReturn("Materia1");
+        Clase clase1 = mock(Clase.class);
+        when(clase1.getDia()).thenReturn(Dia.MARTES);
+        when(clase1.getHoraInicio()).thenReturn("8:15");
+        Clase clase2 = mock(Clase.class);
+        when(clase2.getDia()).thenReturn(Dia.VIERNES);
+        when(clase2.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo1 = new ArrayList<>();
+        clasesGrupo1.add(clase1);
+        clasesGrupo1.add(clase2);
+        when(grupo1.getClases()).thenReturn(clasesGrupo1);
+
+        Grupo grupo2 = mock(Grupo.class);
+        when(grupo2.getDocente()).thenReturn("Materia1");
+        Clase clase3 = mock(Clase.class);
+        when(clase3.getDia()).thenReturn(Dia.MARTES);
+        when(clase3.getHoraInicio()).thenReturn("11:15");
+        Clase clase4 = mock(Clase.class);
+        when(clase4.getDia()).thenReturn(Dia.VIERNES);
+        when(clase4.getHoraInicio()).thenReturn("9:45");
+
+        ArrayList<Clase> clasesGrupo2 = new ArrayList<>();
+        clasesGrupo2.add(clase3);
+        clasesGrupo2.add(clase4);
+        when(grupo2.getClases()).thenReturn(clasesGrupo2);
+
+        Grupo grupo3 = mock(Grupo.class);
+        when(grupo3.getDocente()).thenReturn("Materia1");
+        Clase clase5 = mock(Clase.class);
+        when(clase5.getDia()).thenReturn(Dia.LUNES);
+        when(clase5.getHoraInicio()).thenReturn("6:45");
+        Clase clase6 = mock(Clase.class);
+        when(clase6.getDia()).thenReturn(Dia.MIERCOLES);
+        when(clase6.getHoraInicio()).thenReturn("9:45");
+
+        ArrayList<Clase> clasesGrupo3 = new ArrayList<>();
+        clasesGrupo3.add(clase5);
+        clasesGrupo3.add(clase6);
+        when(grupo3.getClases()).thenReturn(clasesGrupo3);
+
+        Grupo grupo4 = mock(Grupo.class);
+        when(grupo4.getDocente()).thenReturn("Materia1");
+        Clase clase7 = mock(Clase.class);
+        when(clase7.getDia()).thenReturn(Dia.MARTES);
+        when(clase7.getHoraInicio()).thenReturn("15:45");
+        Clase clase8 = mock(Clase.class);
+        when(clase8.getDia()).thenReturn(Dia.VIERNES);
+        when(clase8.getHoraInicio()).thenReturn("14:15");
+
+        ArrayList<Clase> clasesGrupo4 = new ArrayList<>();
+        clasesGrupo4.add(clase7);
+        clasesGrupo4.add(clase8);
+        when(grupo4.getClases()).thenReturn(clasesGrupo4);
+
+        Grupo grupo5 = mock(Grupo.class);
+        when(grupo5.getDocente()).thenReturn("Materia1");
+        Clase clase9 = mock(Clase.class);
+        when(clase9.getDia()).thenReturn(Dia.JUEVES);
+        when(clase9.getHoraInicio()).thenReturn("9:45");
+        Clase clase10 = mock(Clase.class);
+        when(clase10.getDia()).thenReturn(Dia.VIERNES);
+        when(clase10.getHoraInicio()).thenReturn("11:15");
+
+        ArrayList<Clase> clasesGrupo5 = new ArrayList<>();
+        clasesGrupo5.add(clase9);
+        clasesGrupo5.add(clase10);
+        when(grupo5.getClases()).thenReturn(clasesGrupo5);
+
+        ArrayList<Grupo> gruposMateria1 = new ArrayList<>();
+        gruposMateria1.add(grupo1);
+        gruposMateria1.add(grupo2);
+        gruposMateria1.add(grupo3);
+        gruposMateria1.add(grupo4);
+        gruposMateria1.add(grupo5);
+        when(materia1.getGrupos()).thenReturn(gruposMateria1);
+
+        ArrayList <Materia> materias = new ArrayList<>();
+        materias.add(materia1);
+        ArrayList<Grupo> res = creadorHorarios.crearHorario(materias);
+        assertThat(res).hasSize(1);
+    }
+
+    @Test
+    public void dadoCincoMateriasConChoquesEntreTodosCuandoLlamamosACrearHorarioEntoncesDeberiaDevolverUnaListaConUnSoloGrupo(){
+        Materia materia1 = mock(Materia.class);
+        Grupo grupo1 = mock(Grupo.class);
+        when(grupo1.getDocente()).thenReturn("Materia1");
+        Clase clase1 = mock(Clase.class);
+        when(clase1.getDia()).thenReturn(Dia.MARTES);
+        when(clase1.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo1 = new ArrayList<>();
+        clasesGrupo1.add(clase1);
+        when(grupo1.getClases()).thenReturn(clasesGrupo1);
+
+        ArrayList<Grupo> gruposMateria1 = new ArrayList<>();
+        gruposMateria1.add(grupo1);
+        when(materia1.getGrupos()).thenReturn(gruposMateria1);
+
+
+        Materia materia2 = mock(Materia.class);
+        Grupo grupo6 = mock(Grupo.class);
+        when(grupo6.getDocente()).thenReturn("Materia2");
+        Clase clase11 = mock(Clase.class);
+        when(clase11.getDia()).thenReturn(Dia.MARTES);
+        when(clase11.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo6 = new ArrayList<>();
+        clasesGrupo6.add(clase11);
+        when(grupo6.getClases()).thenReturn(clasesGrupo6);
+
+        ArrayList<Grupo> gruposMateria2 = new ArrayList<>();
+        gruposMateria2.add(grupo6);
+        when(materia2.getGrupos()).thenReturn(gruposMateria2);
+
+
+        Materia materia3 = mock(Materia.class);
+        Grupo grupo7 = mock(Grupo.class);
+        when(grupo7.getDocente()).thenReturn("Materia3");
+        Clase clase13 = mock(Clase.class);
+        when(clase13.getDia()).thenReturn(Dia.MARTES);
+        when(clase13.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo7 = new ArrayList<>();
+        clasesGrupo7.add(clase13);
+        when(grupo7.getClases()).thenReturn(clasesGrupo7);
+
+        ArrayList<Grupo> gruposMateria3 = new ArrayList<>();
+        gruposMateria3.add(grupo7);
+        when(materia3.getGrupos()).thenReturn(gruposMateria3);
+
+
+        Materia materia4 = mock(Materia.class);
+        Grupo grupo10 = mock(Grupo.class);
+        when(grupo10.getDocente()).thenReturn("Materia4");
+        Clase clase22 = mock(Clase.class);
+        when(clase22.getDia()).thenReturn(Dia.MARTES);
+        when(clase22.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo10 = new ArrayList<>();
+        clasesGrupo10.add(clase22);
+        when(grupo10.getClases()).thenReturn(clasesGrupo10);
+
+        ArrayList<Grupo> gruposMateria4 = new ArrayList<>();
+        gruposMateria4.add(grupo10);
+        when(materia4.getGrupos()).thenReturn(gruposMateria4);
+
+
+        Materia materia5 = mock(Materia.class);
+        Grupo grupo12 = mock(Grupo.class);
+        when(grupo12.getDocente()).thenReturn("Materia5");
+        Clase clase28 = mock(Clase.class);
+        when(clase28.getDia()).thenReturn(Dia.MARTES);
+        when(clase28.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo12 = new ArrayList<>();
+        clasesGrupo12.add(clase28);
+        when(grupo12.getClases()).thenReturn(clasesGrupo12);
+
+        ArrayList<Grupo> gruposMateria5 = new ArrayList<>();
+        gruposMateria5.add(grupo12);
+        when(materia5.getGrupos()).thenReturn(gruposMateria5);
+
+        ArrayList <Materia> materias = new ArrayList<>();
+        materias.add(materia1);
+        materias.add(materia2);
+        materias.add(materia3);
+        materias.add(materia4);
+        materias.add(materia5);
+
+
+        ArrayList<Grupo> res = creadorHorarios.crearHorario(materias);
+        assertThat(res).hasSize(1);
+        assertThat(res.get(0).getDocente()).contains("Materia1");
+    }
+
+    @Test
+    public void dadoCincoMateriasConDosChoquesCuandoLlamamosACrearHorarioEntoncesDeberiaDevolverUnaListaConTresGrupos(){
+        Materia materia1 = mock(Materia.class);
+        Grupo grupo1 = mock(Grupo.class);
+        when(grupo1.getDocente()).thenReturn("Materia1");
+        Clase clase1 = mock(Clase.class);
+        when(clase1.getDia()).thenReturn(Dia.MARTES);
+        when(clase1.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo1 = new ArrayList<>();
+        clasesGrupo1.add(clase1);
+        when(grupo1.getClases()).thenReturn(clasesGrupo1);
+
+        ArrayList<Grupo> gruposMateria1 = new ArrayList<>();
+        gruposMateria1.add(grupo1);
+        when(materia1.getGrupos()).thenReturn(gruposMateria1);
+
+
+        Materia materia2 = mock(Materia.class);
+        Grupo grupo6 = mock(Grupo.class);
+        when(grupo6.getDocente()).thenReturn("Materia2");
+        Clase clase11 = mock(Clase.class);
+        when(clase11.getDia()).thenReturn(Dia.MIERCOLES);
+        when(clase11.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo6 = new ArrayList<>();
+        clasesGrupo6.add(clase11);
+        when(grupo6.getClases()).thenReturn(clasesGrupo6);
+
+        ArrayList<Grupo> gruposMateria2 = new ArrayList<>();
+        gruposMateria2.add(grupo6);
+        when(materia2.getGrupos()).thenReturn(gruposMateria2);
+
+
+        Materia materia3 = mock(Materia.class);
+        Grupo grupo7 = mock(Grupo.class);
+        when(grupo7.getDocente()).thenReturn("Materia3");
+        Clase clase13 = mock(Clase.class);
+        when(clase13.getDia()).thenReturn(Dia.MIERCOLES);
+        when(clase13.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo7 = new ArrayList<>();
+        clasesGrupo7.add(clase13);
+        when(grupo7.getClases()).thenReturn(clasesGrupo7);
+
+        ArrayList<Grupo> gruposMateria3 = new ArrayList<>();
+        gruposMateria3.add(grupo7);
+        when(materia3.getGrupos()).thenReturn(gruposMateria3);
+
+
+        Materia materia4 = mock(Materia.class);
+        Grupo grupo10 = mock(Grupo.class);
+        when(grupo10.getDocente()).thenReturn("Materia4");
+        Clase clase22 = mock(Clase.class);
+        when(clase22.getDia()).thenReturn(Dia.MIERCOLES);
+        when(clase22.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo10 = new ArrayList<>();
+        clasesGrupo10.add(clase22);
+        when(grupo10.getClases()).thenReturn(clasesGrupo10);
+
+        ArrayList<Grupo> gruposMateria4 = new ArrayList<>();
+        gruposMateria4.add(grupo10);
+        when(materia4.getGrupos()).thenReturn(gruposMateria4);
+
+
+        Materia materia5 = mock(Materia.class);
+        Grupo grupo12 = mock(Grupo.class);
+        when(grupo12.getDocente()).thenReturn("Materia5");
+        Clase clase28 = mock(Clase.class);
+        when(clase28.getDia()).thenReturn(Dia.VIERNES);
+        when(clase28.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo12 = new ArrayList<>();
+        clasesGrupo12.add(clase28);
+        when(grupo12.getClases()).thenReturn(clasesGrupo12);
+
+        ArrayList<Grupo> gruposMateria5 = new ArrayList<>();
+        gruposMateria5.add(grupo12);
+        when(materia5.getGrupos()).thenReturn(gruposMateria5);
+
+        ArrayList <Materia> materias = new ArrayList<>();
+        materias.add(materia1);
+        materias.add(materia2);
+        materias.add(materia3);
+        materias.add(materia4);
+        materias.add(materia5);
+
+
+        ArrayList<Grupo> res = creadorHorarios.crearHorario(materias);
+        assertThat(res).hasSize(3);
+    }
+
+    @Test
+    public void dadoCincoMateriasDondeLaPrimeraChocaConTodasLasDemasCuandoLlamamosACrearHorarioEntoncesDeberiaDevolverUnaListaConCuatroGrupos(){
+        Materia materia1 = mock(Materia.class);
+        Grupo grupo1 = mock(Grupo.class);
+        when(grupo1.getDocente()).thenReturn("Materia1");
+        Clase clase1 = mock(Clase.class);
+        when(clase1.getDia()).thenReturn(Dia.LUNES);
+        when(clase1.getHoraInicio()).thenReturn("8:15");
+        Clase clase2 = mock(Clase.class);
+        when(clase2.getDia()).thenReturn(Dia.MARTES);
+        when(clase2.getHoraInicio()).thenReturn("8:15");
+        Clase clase3 = mock(Clase.class);
+        when(clase3.getDia()).thenReturn(Dia.MIERCOLES);
+        when(clase3.getHoraInicio()).thenReturn("8:15");
+        Clase clase4 = mock(Clase.class);
+        when(clase4.getDia()).thenReturn(Dia.JUEVES);
+        when(clase4.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo1 = new ArrayList<>();
+        clasesGrupo1.add(clase1);
+        clasesGrupo1.add(clase2);
+        clasesGrupo1.add(clase3);
+        clasesGrupo1.add(clase4);
+        when(grupo1.getClases()).thenReturn(clasesGrupo1);
+
+        ArrayList<Grupo> gruposMateria1 = new ArrayList<>();
+        gruposMateria1.add(grupo1);
+        when(materia1.getGrupos()).thenReturn(gruposMateria1);
+
+
+        Materia materia2 = mock(Materia.class);
+        Grupo grupo6 = mock(Grupo.class);
+        when(grupo6.getDocente()).thenReturn("Materia2");
+        Clase clase11 = mock(Clase.class);
+        when(clase11.getDia()).thenReturn(Dia.LUNES);
+        when(clase11.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo6 = new ArrayList<>();
+        clasesGrupo6.add(clase11);
+        when(grupo6.getClases()).thenReturn(clasesGrupo6);
+
+        ArrayList<Grupo> gruposMateria2 = new ArrayList<>();
+        gruposMateria2.add(grupo6);
+        when(materia2.getGrupos()).thenReturn(gruposMateria2);
+
+
+        Materia materia3 = mock(Materia.class);
+        Grupo grupo7 = mock(Grupo.class);
+        when(grupo7.getDocente()).thenReturn("Materia3");
+        Clase clase13 = mock(Clase.class);
+        when(clase13.getDia()).thenReturn(Dia.MARTES);
+        when(clase13.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo7 = new ArrayList<>();
+        clasesGrupo7.add(clase13);
+        when(grupo7.getClases()).thenReturn(clasesGrupo7);
+
+        ArrayList<Grupo> gruposMateria3 = new ArrayList<>();
+        gruposMateria3.add(grupo7);
+        when(materia3.getGrupos()).thenReturn(gruposMateria3);
+
+
+        Materia materia4 = mock(Materia.class);
+        Grupo grupo10 = mock(Grupo.class);
+        when(grupo10.getDocente()).thenReturn("Materia4");
+        Clase clase22 = mock(Clase.class);
+        when(clase22.getDia()).thenReturn(Dia.MIERCOLES);
+        when(clase22.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo10 = new ArrayList<>();
+        clasesGrupo10.add(clase22);
+        when(grupo10.getClases()).thenReturn(clasesGrupo10);
+
+        ArrayList<Grupo> gruposMateria4 = new ArrayList<>();
+        gruposMateria4.add(grupo10);
+        when(materia4.getGrupos()).thenReturn(gruposMateria4);
+
+
+        Materia materia5 = mock(Materia.class);
+        Grupo grupo12 = mock(Grupo.class);
+        when(grupo12.getDocente()).thenReturn("Materia5");
+        Clase clase28 = mock(Clase.class);
+        when(clase28.getDia()).thenReturn(Dia.JUEVES);
+        when(clase28.getHoraInicio()).thenReturn("8:15");
+
+        ArrayList<Clase> clasesGrupo12 = new ArrayList<>();
+        clasesGrupo12.add(clase28);
+        when(grupo12.getClases()).thenReturn(clasesGrupo12);
+
+        ArrayList<Grupo> gruposMateria5 = new ArrayList<>();
+        gruposMateria5.add(grupo12);
+        when(materia5.getGrupos()).thenReturn(gruposMateria5);
+
+        ArrayList <Materia> materias = new ArrayList<>();
+        materias.add(materia1);
+        materias.add(materia2);
+        materias.add(materia3);
+        materias.add(materia4);
+        materias.add(materia5);
+
+
+        ArrayList<Grupo> res = creadorHorarios.crearHorario(materias);
+        assertThat(res).hasSize(4);
+    }
 }
