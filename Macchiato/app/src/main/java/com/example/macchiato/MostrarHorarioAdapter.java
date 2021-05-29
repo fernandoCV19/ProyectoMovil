@@ -64,16 +64,20 @@ public class MostrarHorarioAdapter extends RecyclerView.Adapter<MostrarHorarioAd
     public class ViewHolder extends RecyclerView.ViewHolder {
         Context context;
         TextView nomMateria;
+        TextView docente;
         CheckBox checkBoxGrupo;
 
         public ViewHolder(View itemView) {
             super(itemView);
             context =itemView.getContext();
-            this.nomMateria=itemView.findViewById(R.id.nomMateria);
+            nomMateria=itemView.findViewById(R.id.nomMateriaX);
+            docente=itemView.findViewById(R.id.docente_grupo_id);
         }
 
         public void bindData(final Grupo item){
-            String nombre="";
+            String nombre=item.getGrupo();
+            String doc= item.getDocente();
+
             Iniciador iniciador = new Iniciador();
             try {
                 iniciador.iniciar(context);
@@ -88,7 +92,11 @@ public class MostrarHorarioAdapter extends RecyclerView.Adapter<MostrarHorarioAd
                 }
             }
             nomMateria.setText(nombre);
+            docente.setText(doc);
             ClaseAdapter claseAdapter=new ClaseAdapter(item.getClases(),context);
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View v = inflater.inflate(R.layout.infodialog, null);
+            recyclerView = (RecyclerView) v.findViewById(R.id.recyclerGrupos);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             recyclerView.setAdapter(claseAdapter);

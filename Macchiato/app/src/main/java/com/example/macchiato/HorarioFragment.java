@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-
+import android.widget.Toast;
 
 
 import com.example.macchiato.Models.Grupo;
@@ -41,7 +41,7 @@ public class HorarioFragment extends Fragment {
     String selectedClass;
     String select;
     Toolbar toolbar;
-    ArrayList<ArrayList<Integer>> seleccionados;
+    ArrayList<Integer> seleccionados;
     GrupoHorarioAdapter materiaHorarioAdapter;
     ArrayList<Materia> materias;
     ArrayList<Grupo>   grupos;
@@ -176,10 +176,14 @@ public class HorarioFragment extends Fragment {
     void cambiarRecycler(){
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         ArrayList<Grupo>   grupos = new ArrayList<>();
+
         for(Materia materia: materias){
+            //Toast.makeText(getContext(), "buscando", Toast.LENGTH_SHORT).show();
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
-                seleccionados.add(materiaHorarioAdapter.getSeleccionados());
+                //Toast.makeText(getContext(), "guardado", Toast.LENGTH_SHORT).show();
+                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+                Toast.makeText(getContext(), "tam: "+seleccionados.size(), Toast.LENGTH_SHORT).show();
                 break;
             }
         }
@@ -207,7 +211,14 @@ public class HorarioFragment extends Fragment {
         ArrayList<Materia> n;
         switch(id) {
             case R.id.cambiar_a_generar:
-                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados.get(0));
+                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados);
+                /*ArrayList<Integer> aux = new ArrayList<>();
+                aux.add(1);
+                aux.add(2);
+                aux.add(3);
+                aux.add(5);
+                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(aux);*/
+
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);

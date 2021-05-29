@@ -89,14 +89,13 @@ public class PerfilSesionFragment extends Fragment {
             }
         });
 
-<<<<<<< HEAD
-        cambFoto.setOnClickListener(new View.OnClickListener() {
+        /*cambFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(openGallery,1000);
             }
-        });
+        });*/
 
         Button btnDes = (Button) view.findViewById(R.id.id_descargas);
         btnDes.setOnClickListener(new View.OnClickListener() {
@@ -130,9 +129,7 @@ public class PerfilSesionFragment extends Fragment {
 
 
         Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonIniciarSesion);
-=======
-     Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonIniciarSesion);
->>>>>>> cb48527ddb5dc80b6cd72259d3bbb73fdc17bd9a
+
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

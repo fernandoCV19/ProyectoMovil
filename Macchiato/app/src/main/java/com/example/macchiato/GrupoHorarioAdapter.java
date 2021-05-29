@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -84,9 +85,11 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
                 public void onClick(View v) {
                     if (checkBoxGrupo.isChecked()) {
                         seleccionados.add(item.getID());
+                        Toast.makeText(context, "good", Toast.LENGTH_SHORT).show();
 
                     }
                     else if (!checkBoxGrupo.isChecked()) {
+                        Toast.makeText(context, "bad", Toast.LENGTH_SHORT).show();
                        if(seleccionados.contains(item.getID())){
                            seleccionados.remove((Object)item.getID());
                        }

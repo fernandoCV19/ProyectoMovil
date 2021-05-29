@@ -13,15 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Macchiato">
-<<<<<<< HEAD
         <activity android:name=".Descargas_Externas"></activity>
         <activity android:name=".CambiarPerfilActivity" />
-=======
         <activity android:name=".HistorialAcademicoActivity">
         </activity>
-        <activity android:name=".CambiarPerfilActivity">
-        </activity>
->>>>>>> cb48527ddb5dc80b6cd72259d3bbb73fdc17bd9a
+
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".Navigation_bottom">

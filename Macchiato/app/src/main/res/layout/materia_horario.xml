@@ -8,5 +8,18 @@
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="90dp" />
+        tools:layout_editor_absoluteY="90dp" >
+
+        <TextView
+            android:id="@+id/nomMateria2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="Materia"
+            android:textSize="16sp"
+            android:textStyle="bold">
+
+        </TextView>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

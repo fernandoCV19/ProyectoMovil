@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import com.example.macchiato.Models.Grupo;
@@ -32,6 +33,7 @@ public class MostrarHorarioFragment extends Fragment {
     ArrayList<Integer> list;
     RecyclerView recyclerView;
     public MostrarHorarioFragment(){
+        list = new ArrayList<>();
 
     }
     public MostrarHorarioFragment(ArrayList<Integer> list){
@@ -48,6 +50,12 @@ public class MostrarHorarioFragment extends Fragment {
         toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
         Iniciador iniciador=new Iniciador();
+
+        if(list.isEmpty()){
+            Toast.makeText(getContext(), "vacia", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(getContext(), "a"+list.size(), Toast.LENGTH_SHORT).show();
+        }
 
 
         try {
