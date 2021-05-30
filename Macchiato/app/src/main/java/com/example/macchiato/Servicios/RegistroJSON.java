@@ -128,7 +128,17 @@ public class RegistroJSON {
 
 
         if(materias == null) materias = new JSONArray();
-        materias.add(matID);
+        boolean contiene = false;
+        for (int i=0; i<materias.size(); i++){
+            int m = ((Long)materias.get(i)).intValue();
+            if(m == matID) {
+                contiene = true;
+                break;
+            }
+        }
+        if(!contiene)
+            materias.add(matID);
+
         jo.put("Materias Actuales", materias);
 
         lf.escribirFichero("registro.json", jo.toString(), context);
