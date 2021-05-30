@@ -43,6 +43,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.macchiato.Models.GlobalApplication;
+import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -73,6 +74,7 @@ public class HorarioFragment extends Fragment {
     ArrayList<Grupo>   grupos;
     ArrayList<GrupoHorarioAdapter> grupoHorarioAdapters;
     Button guardar;
+    RegistroJSON registroJSON;
     public HorarioFragment() {
         seleccionados= new ArrayList<>();
     }
@@ -200,6 +202,16 @@ public class HorarioFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_LONG).show();
                 seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+                registroJSON=new RegistroJSON();
+                Context context=getContext();
+                for(Integer integer: seleccionados){
+                    try {
+                        registroJSON.aniadirMateriaTomada(integer,context);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
             }
         });
 
@@ -232,8 +244,6 @@ public class HorarioFragment extends Fragment {
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
-                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
-                Toast.makeText(getContext(), "tam: "+seleccionados.size(), Toast.LENGTH_SHORT).show();
                 break;
             }
         }

@@ -73,7 +73,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerCheckbox"
             android:layout_width="match_parent"
-            android:layout_height="299dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp">
 
         </androidx.recyclerview.widget.RecyclerView>

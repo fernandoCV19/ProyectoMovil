@@ -129,7 +129,7 @@ public class RegistroJSON {
 
         if(materias == null) materias = new JSONArray();
         materias.add(matID);
-        jo.put("materias tomadas", materias);
+        jo.put("Materias Actuales", materias);
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
