@@ -6,12 +6,24 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.Manifest;
+import android.app.DownloadManager;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,10 +33,24 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
 import android.widget.Toast;
 
 
 import com.example.macchiato.Models.Grupo;
+
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.macchiato.Models.GlobalApplication;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+//import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
+
 
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Servicios.ConsultorMaterias;
@@ -77,14 +103,20 @@ public class HorarioFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         crearVistas();
         ConsultorMaterias cs =new ConsultorMaterias();
         HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
         Character [] nomNiveles =new Character[9];
+
+        ConsultorMaterias cs = new ConsultorMaterias();
+        HashMap<Character, ArrayList<Materia>> list = cs.getLisClasificada();
+        Character[] nomNiveles = new Character[9];
+
         int j = 0;
         for (Character nivel : list.keySet()) {
 
-            nomNiveles[j ]=nivel;
+            nomNiveles[j] = nivel;
             j++;
         }
 
@@ -212,10 +244,57 @@ public class HorarioFragment extends Fragment {
         recyclerView.setAdapter(materiaHorarioAdapter);
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
+      /*  View view= inflater.inflate(R.layout.fragment_horario, container, false);
+        Button btnDes = (Button) view.findViewById(R.id.btn_descargar_id);
+        btnDes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(getActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+                            PackageManager.PERMISSION_DENIED){
+                        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permissions,1000);
+                    }else {
+                        startDownloading();
+                    }
+                }
+                else {
+                    startDownloading();
+                }
+            }
+        });
+        return view;
+    }
+
+
+    private  void  startDownloading(){
+        FirebaseDatabase.getInstance().getReference().child("UMSS").child("cronograma")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        String url = snapshot.getValue(String.class);
+                        DownloadManager.Request request= new DownloadManager.Request(Uri.parse(url));
+                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+                        request.setTitle("Download");
+                        request.setDescription("Descargando archivo");
+
+                        request.allowScanningByMediaScanner();
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+System.currentTimeMillis());
+                        DownloadManager downloadManager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+                        downloadManager.enqueue(request);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+                });
 
     }
     @Override
@@ -237,7 +316,7 @@ public class HorarioFragment extends Fragment {
                 aux.add(3);
                 aux.add(5);
                 MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(aux);*/
-
+/*
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);
@@ -248,12 +327,18 @@ public class HorarioFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+
     void crearVistas(){
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         for(Materia materia: materias){
             GrupoHorarioAdapter grupoHorarioAdapter=new GrupoHorarioAdapter(materia.getGrupos(),getContext());
             grupoHorarioAdapters.add(grupoHorarioAdapter);
         }
+
+
+ */
+
     }
 }
+
 
