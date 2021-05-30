@@ -77,7 +77,6 @@ public class ClaseAdapter extends RecyclerView.Adapter<ClaseAdapter.ViewHolder> 
             diaClase.setText(item.getDia().toString());
             horaClase.setText(horaDeClase);
             aulaClase.setText(item.getAula());
-            //color.setCardBackgroundColor(Color.parseColor(item.getColor()));
         }
 
     }

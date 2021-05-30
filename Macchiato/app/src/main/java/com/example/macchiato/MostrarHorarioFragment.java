@@ -34,7 +34,6 @@ public class MostrarHorarioFragment extends Fragment {
     RecyclerView recyclerView;
     public MostrarHorarioFragment(){
         list = new ArrayList<>();
-
     }
     public MostrarHorarioFragment(ArrayList<Integer> list){
         this.list=list;
@@ -104,7 +103,7 @@ public class MostrarHorarioFragment extends Fragment {
         ArrayList<Materia> n;
         switch(id) {
             case R.id.cambiar_a_generar:
-                HorarioFragment mostrarHorarioFragment=new HorarioFragment();
+                HorarioFragment mostrarHorarioFragment=new HorarioFragment(list);
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);

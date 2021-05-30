@@ -41,6 +41,10 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
         return seleccionados;
     }
 
+    public List<Grupo> getmData() {
+        return mData;
+    }
+
     @Override
     public int getItemCount(){ return mData.size();}
 
@@ -84,6 +88,7 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
                 @Override
                 public void onClick(View v) {
                     if (checkBoxGrupo.isChecked()) {
+                        if(!seleccionados.contains(item.getID()))
                         seleccionados.add(item.getID());
                         Toast.makeText(context, "good", Toast.LENGTH_SHORT).show();
 
