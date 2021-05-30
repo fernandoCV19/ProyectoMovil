@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HorarioFragment">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
-        android:orientation="horizontal"/>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -36,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="48dp"
+        android:gravity="right"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -77,14 +73,18 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerCheckbox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="24dp"/>
-    </LinearLayout>
+            android:layout_height="299dp"
+            android:layout_marginTop="24dp">
 
-    <Button
-        android:id="@+id/btn_descargar_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="descargar" />
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/buttonGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="guardar" />
+
+    </LinearLayout>
 
 </FrameLayout>

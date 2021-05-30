@@ -181,29 +181,8 @@ public class PerfilSesionFragment extends Fragment {
             if(resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
                 //profileImage.setImageURI(imageUri);
-                uploadImagesToFirebase(imageUri);
             }
         }
-    }
-    private  void uploadImagesToFirebase(Uri imUri){
-        StorageReference fileReference = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
-        fileReference.putFile(imUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                //Toast.makeText(getActivity(), "imagen guardada", Toast.LENGTH_SHORT).show();
-                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profileImage);
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "error al subir", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private  void  startDownloading(){

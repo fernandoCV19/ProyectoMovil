@@ -72,6 +72,7 @@ public class HorarioFragment extends Fragment {
     ArrayList<Materia> materias;
     ArrayList<Grupo>   grupos;
     ArrayList<GrupoHorarioAdapter> grupoHorarioAdapters;
+    Button guardar;
     public HorarioFragment() {
         seleccionados= new ArrayList<>();
     }
@@ -87,6 +88,7 @@ public class HorarioFragment extends Fragment {
         grupos=new ArrayList<>();
         materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext());
         View view = inflater.inflate(R.layout.fragment_horario, container, false);
+        guardar=view.findViewById(R.id.buttonGuardar);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
         spinnerNivel = view.findViewById(R.id.spinnerNivel);
         spinnerMateria = view.findViewById(R.id.spinnerMateria);
@@ -109,17 +111,12 @@ public class HorarioFragment extends Fragment {
         HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
         Character [] nomNiveles =new Character[9];
 
-        ConsultorMaterias cs = new ConsultorMaterias();
-        HashMap<Character, ArrayList<Materia>> list = cs.getLisClasificada();
-        Character[] nomNiveles = new Character[9];
-
         int j = 0;
         for (Character nivel : list.keySet()) {
 
             nomNiveles[j] = nivel;
             j++;
         }
-
 
         ArrayAdapter<Character> adapter2 = new ArrayAdapter<Character>(getContext(), R.layout.simple_spinner, nomNiveles);
         spinnerNivel.setAdapter(adapter2);
@@ -198,6 +195,14 @@ public class HorarioFragment extends Fragment {
             }
 
         });
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_LONG).show();
+                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+            }
+        });
+
 
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         ArrayList<Grupo>   grupos = new ArrayList<>();
@@ -248,28 +253,7 @@ public class HorarioFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-
-      /*  View view= inflater.inflate(R.layout.fragment_horario, container, false);
-        Button btnDes = (Button) view.findViewById(R.id.btn_descargar_id);
-        btnDes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                    if(getActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)==
-                            PackageManager.PERMISSION_DENIED){
-                        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                        requestPermissions(permissions,1000);
-                    }else {
-                        startDownloading();
-                    }
-                }
-                else {
-                    startDownloading();
-                }
-            }
-        });
-        return view;
+        setHasOptionsMenu(true);;
     }
 
 
@@ -316,7 +300,7 @@ public class HorarioFragment extends Fragment {
                 aux.add(3);
                 aux.add(5);
                 MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(aux);*/
-/*
+
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);
@@ -336,7 +320,6 @@ public class HorarioFragment extends Fragment {
         }
 
 
- */
 
     }
 }
