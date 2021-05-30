@@ -2,6 +2,7 @@ package com.example.macchiato;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,7 +47,54 @@ public class HorarioFragment extends Fragment {
     ArrayList<Materia> materias;
     ArrayList<Grupo>   grupos;
 
+    ArrayAdapter<String> arrayAdapterA;
+    ArrayAdapter<String> arrayAdapterB;
+    ArrayAdapter<String> arrayAdapterC;
+    ArrayAdapter<String> arrayAdapterD;
+    ArrayAdapter<String> arrayAdapterE;
+    ArrayAdapter<String> arrayAdapterF;
+    ArrayAdapter<String> arrayAdapterG;
+    ArrayAdapter<String> arrayAdapterH;
+
+
     public HorarioFragment() {
+        Context context= getActivity().getApplicationContext();
+        arrayAdapterA=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelA));
+        arrayAdapterB=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelB));
+        arrayAdapterC=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelC));
+        arrayAdapterD=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelD));
+        arrayAdapterE=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelE));
+        arrayAdapterF=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelF));
+        arrayAdapterG=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelG));
+        arrayAdapterH=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelH));
+
+    }
+
+    public HorarioFragment(ArrayList<Integer> list, ArrayAdapter<String>arrayAdapterA,ArrayAdapter<String>arrayAdapterB,ArrayAdapter<String>arrayAdapterC,ArrayAdapter<String>arrayAdapterD
+                           ,ArrayAdapter<String>arrayAdapterE,ArrayAdapter<String>arrayAdapterF,ArrayAdapter<String>arrayAdapterG,ArrayAdapter<String>arrayAdapterH){
+        this.arrayAdapterA=arrayAdapterA;
+        this.arrayAdapterB=arrayAdapterB;
+        this.arrayAdapterC=arrayAdapterC;
+        this.arrayAdapterD=arrayAdapterD;
+        this.arrayAdapterE=arrayAdapterE;
+        this.arrayAdapterF=arrayAdapterF;
+        this.arrayAdapterG=arrayAdapterG;
 
     }
 
@@ -101,39 +149,25 @@ public class HorarioFragment extends Fragment {
                                 getResources().getStringArray(R.array.nivelA)));
                         break;
                     case "B":
-                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                R.layout.simple_spinner,
-                                getResources().getStringArray(R.array.nivelB)));
+                        spinnerMateria.setAdapter(arrayAdapterA);
                         break;
                     case "C":
-                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                R.layout.simple_spinner,
-                                getResources().getStringArray(R.array.nivelC)));
+                        spinnerMateria.setAdapter(arrayAdapterA);
                         break;
                     case "D":
-                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                R.layout.simple_spinner,
-                                getResources().getStringArray(R.array.nivelD)));
+                        spinnerMateria.setAdapter(arrayAdapterA);
                         break;
                     case "E":
-                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                R.layout.simple_spinner,
-                                getResources().getStringArray(R.array.nivelE)));
+                        spinnerMateria.setAdapter(arrayAdapterE);
                         break;
                     case "F":
-                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                R.layout.simple_spinner,
-                                getResources().getStringArray(R.array.nivelF)));
+                        spinnerMateria.setAdapter(arrayAdapterF);
                         break;
                     case "G":
-                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                R.layout.simple_spinner,
-                                getResources().getStringArray(R.array.nivelG)));
+                        spinnerMateria.setAdapter(arrayAdapterG);
                         break;
                     case "H":
-                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
-                                R.layout.simple_spinner,
-                                getResources().getStringArray(R.array.nivelH)));
+                        spinnerMateria.setAdapter(arrayAdapterH);
                         break;
 
                 }
@@ -211,7 +245,8 @@ public class HorarioFragment extends Fragment {
         ArrayList<Materia> n;
         switch(id) {
             case R.id.cambiar_a_generar:
-                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados);
+                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados,arrayAdapterA,arrayAdapterB,arrayAdapterC,
+                        arrayAdapterD,arrayAdapterE,arrayAdapterF,arrayAdapterG,arrayAdapterH);
                 /*ArrayList<Integer> aux = new ArrayList<>();
                 aux.add(1);
                 aux.add(2);
