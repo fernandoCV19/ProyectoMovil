@@ -45,7 +45,7 @@
                     android:id="@+id/docente_grupo_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="docente" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/horariosInfo"
