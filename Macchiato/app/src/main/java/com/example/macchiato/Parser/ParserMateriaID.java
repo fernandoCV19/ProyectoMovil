@@ -46,7 +46,7 @@ public class ParserMateriaID {
 
     public int getID(String materia){
         int respuesta = 0;
-        if(ids.containsKey(materia)){
+        if(ids != null && ids.containsKey(materia)){
             return ids.get(materia).id;
         }else {
             return respuesta;
@@ -55,7 +55,7 @@ public class ParserMateriaID {
     }
 
     public ArrayList<String> getRequisitos(String materia){
-        if(ids.containsKey(materia)){
+        if(ids != null && ids.containsKey(materia)){
             return ids.get(materia).requisitos;
         }else{
             ArrayList<String> respuesta = new ArrayList<>();
