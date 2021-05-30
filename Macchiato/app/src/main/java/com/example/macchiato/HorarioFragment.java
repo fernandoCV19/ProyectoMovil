@@ -58,6 +58,8 @@ public class HorarioFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         grupoHorarioAdapters=new ArrayList<>();
+        grupos=new ArrayList<>();
+        materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext());
         View view = inflater.inflate(R.layout.fragment_horario, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
         spinnerNivel = view.findViewById(R.id.spinnerNivel);
@@ -170,9 +172,16 @@ public class HorarioFragment extends Fragment {
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
+                break;
             }
         }
-        materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,this.getContext());
+        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext());
+        for(GrupoHorarioAdapter g : grupoHorarioAdapters){
+            if(g.getmData().equals(grupoHorarioAdapter.getmData())){
+                materiaHorarioAdapter=g;
+                break;
+            }
+        }
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
@@ -184,10 +193,8 @@ public class HorarioFragment extends Fragment {
         ArrayList<Grupo>   grupos = new ArrayList<>();
 
         for(Materia materia: materias){
-            //Toast.makeText(getContext(), "buscando", Toast.LENGTH_SHORT).show();
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
-                //Toast.makeText(getContext(), "guardado", Toast.LENGTH_SHORT).show();
                 seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
                 Toast.makeText(getContext(), "tam: "+seleccionados.size(), Toast.LENGTH_SHORT).show();
                 break;
@@ -197,6 +204,7 @@ public class HorarioFragment extends Fragment {
         for(GrupoHorarioAdapter g : grupoHorarioAdapters){
             if(g.getmData().equals(grupoHorarioAdapter.getmData())){
                 materiaHorarioAdapter=g;
+                break;
             }
         }
         recyclerView.setHasFixedSize(true);

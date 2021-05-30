@@ -84,17 +84,19 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
             String mostrar=item.getGrupo()+" - "+item.getDocente();
             checkBoxGrupo.setText(mostrar);
 
+
+
             checkBoxGrupo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (checkBoxGrupo.isChecked()) {
                         if(!seleccionados.contains(item.getID()))
                         seleccionados.add(item.getID());
-                        Toast.makeText(context, "good", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "añadido", Toast.LENGTH_SHORT).show();
 
                     }
                     else if (!checkBoxGrupo.isChecked()) {
-                        Toast.makeText(context, "bad", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "eliminado", Toast.LENGTH_SHORT).show();
                        if(seleccionados.contains(item.getID())){
                            seleccionados.remove((Object)item.getID());
                        }
