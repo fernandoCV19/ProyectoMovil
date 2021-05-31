@@ -20,7 +20,7 @@ public class IniciadorTest {
     private Context context;
 
     @Before
-    public void setup(){
+    public void setUp(){
         iniciador = new Iniciador();
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
     }

@@ -15,12 +15,12 @@ public class ParserMateriaIDTest {
     private ParserMateriaID parserMateriaID;
 
     @Before
-    public void setup(){
+    public void setUp(){
         parserMateriaID = new ParserMateriaID();
     }
 
     @After
-    public void teardown(){
+    public void tearDown(){
         parserMateriaID.getIds().clear();
     }
 

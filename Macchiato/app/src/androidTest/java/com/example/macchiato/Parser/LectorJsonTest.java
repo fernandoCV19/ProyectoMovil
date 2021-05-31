@@ -17,7 +17,7 @@ public class LectorJsonTest {
     private Context context;
 
     @Before
-    public void setup(){
+    public void setUp(){
         lectorJson = new LectorJson();
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
     }

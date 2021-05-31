@@ -21,12 +21,12 @@ public class ConsultorMateriasTest {
     private ConsultorMaterias consultorMaterias;
 
     @Before
-    public void setup(){
+    public void setUp(){
         consultorMaterias = new ConsultorMaterias();
     }
 
     @After
-    public void teardown(){
+    public void tearDown(){
         if(ConsultorMaterias.getMaterias() != null) {
             ArrayList<Materia> aux = ConsultorMaterias.getMaterias();
             aux.clear();

@@ -16,7 +16,7 @@ public class ParserMateriaGrupoTest {
     private ParserMateriaGrupo parserMateriaGrupo;
 
     @Before
-    public void setup(){
+    public void setUp(){
         parserMateriaGrupo = new ParserMateriaGrupo();
     }
 

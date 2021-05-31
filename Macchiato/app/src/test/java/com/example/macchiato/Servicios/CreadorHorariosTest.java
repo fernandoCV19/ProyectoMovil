@@ -17,7 +17,7 @@ public class CreadorHorariosTest {
     private CreadorHorarios creadorHorarios;
 
     @Before
-    public void setup(){
+    public void setUp(){
         creadorHorarios = new CreadorHorarios();
     }
 
