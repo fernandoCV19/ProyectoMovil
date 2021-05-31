@@ -63,20 +63,18 @@ public class  MostrarHorarioAdapter extends RecyclerView.Adapter<MostrarHorarioA
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         Context context;
-        TextView nomMateria;
-        TextView docente;
+        TextView nomMateria,docente;
         CheckBox checkBoxGrupo;
 
         public ViewHolder(View itemView) {
             super(itemView);
             context =itemView.getContext();
-            nomMateria=itemView.findViewById(R.id.nomMateriaX);
+            nomMateria=itemView.findViewById(R.id.nomMateriaHorario);
             docente=itemView.findViewById(R.id.docente_grupo_id);
         }
 
         public void bindData(final Grupo item){
-            String nombre=item.getGrupo();
-            String doc= item.getDocente();
+            String nombre="";
 
             Iniciador iniciador = new Iniciador();
             try {
@@ -86,17 +84,17 @@ public class  MostrarHorarioAdapter extends RecyclerView.Adapter<MostrarHorarioA
             }
             ArrayList<Materia> materias= ConsultorMaterias.getMaterias();
             for(Materia mate: materias){
-                if(mate.getGrupos().equals(mData)){
-                    nombre=mate.getNombre();
-                    break;
-                }
+               for(Grupo grupo : mate.getGrupos()){
+                   if(grupo.equals(item)){
+                       nombre=mate.getNombre();
+                       break;
+                   }
+               }
             }
             nomMateria.setText(nombre);
-            docente.setText(doc);
+            docente.setText(item.getDocente());
             ClaseAdapter claseAdapter=new ClaseAdapter(item.getClases(),context);
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View v = inflater.inflate(R.layout.infodialog, null);
-            recyclerView = (RecyclerView) v.findViewById(R.id.recyclerGrupos);
+            recyclerView =  itemLayoutView.findViewById(R.id.horariosInfo);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             recyclerView.setAdapter(claseAdapter);

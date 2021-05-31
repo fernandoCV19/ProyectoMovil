@@ -7,12 +7,24 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.Manifest;
+import android.app.DownloadManager;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,10 +34,25 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
 import android.widget.Toast;
 
 
 import com.example.macchiato.Models.Grupo;
+
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.macchiato.Models.GlobalApplication;
+import com.example.macchiato.Servicios.RegistroJSON;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+//import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
+
 
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Servicios.ConsultorMaterias;
@@ -47,40 +74,26 @@ public class HorarioFragment extends Fragment {
     ArrayList<Materia> materias;
     ArrayList<Grupo>   grupos;
 
-    ArrayAdapter<String> arrayAdapterA;
-    ArrayAdapter<String> arrayAdapterB;
-    ArrayAdapter<String> arrayAdapterC;
-    ArrayAdapter<String> arrayAdapterD;
-    ArrayAdapter<String> arrayAdapterE;
-    ArrayAdapter<String> arrayAdapterF;
-    ArrayAdapter<String> arrayAdapterG;
-    ArrayAdapter<String> arrayAdapterH;
-
-
+    ArrayList<GrupoHorarioAdapter> grupoHorarioAdapters;
+    Button guardar;
+    RegistroJSON registroJSON;
     public HorarioFragment() {
-        Context context= getActivity().getApplicationContext();
-
-
+        seleccionados= new ArrayList<>();
     }
-
-    public HorarioFragment(ArrayList<Integer> list, ArrayAdapter<String>arrayAdapterA,ArrayAdapter<String>arrayAdapterB,ArrayAdapter<String>arrayAdapterC,ArrayAdapter<String>arrayAdapterD
-                           ,ArrayAdapter<String>arrayAdapterE,ArrayAdapter<String>arrayAdapterF,ArrayAdapter<String>arrayAdapterG,ArrayAdapter<String>arrayAdapterH){
-        this.arrayAdapterA=arrayAdapterA;
-        this.arrayAdapterB=arrayAdapterB;
-        this.arrayAdapterC=arrayAdapterC;
-        this.arrayAdapterD=arrayAdapterD;
-        this.arrayAdapterE=arrayAdapterE;
-        this.arrayAdapterF=arrayAdapterF;
-        this.arrayAdapterG=arrayAdapterG;
-
+    public HorarioFragment(ArrayList<Integer> seleccionados) {
+       this.seleccionados=seleccionados;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        seleccionados= new ArrayList<>();
+        registroJSON=new RegistroJSON();
+        grupoHorarioAdapters=new ArrayList<>();
+        grupos=new ArrayList<>();
+        materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         View view = inflater.inflate(R.layout.fragment_horario, container, false);
+        guardar=view.findViewById(R.id.buttonGuardar);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
         spinnerNivel = view.findViewById(R.id.spinnerNivel);
         spinnerMateria = view.findViewById(R.id.spinnerMateria);
@@ -98,44 +111,21 @@ public class HorarioFragment extends Fragment {
             e.printStackTrace();
         }
 
+        crearVistas();
         ConsultorMaterias cs =new ConsultorMaterias();
         HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
         Character [] nomNiveles =new Character[9];
+
         int j = 0;
         for (Character nivel : list.keySet()) {
 
-            nomNiveles[j ]=nivel;
+            nomNiveles[j] = nivel;
             j++;
         }
-
 
         ArrayAdapter<Character> adapter2 = new ArrayAdapter<Character>(getContext(), R.layout.simple_spinner, nomNiveles);
         spinnerNivel.setAdapter(adapter2);
 
-        arrayAdapterA=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelA));
-        arrayAdapterB=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelB));
-        arrayAdapterC=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelC));
-        arrayAdapterD=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelD));
-        arrayAdapterE=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelE));
-        arrayAdapterF=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelF));
-        arrayAdapterG=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelG));
-        arrayAdapterH=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelH));
 
         spinnerNivel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -152,29 +142,50 @@ public class HorarioFragment extends Fragment {
                                 getResources().getStringArray(R.array.nivelA)));
                         break;
                     case "B":
-                        spinnerMateria.setAdapter(arrayAdapterB);
+                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
+                                R.layout.simple_spinner,
+                                getResources().getStringArray(R.array.nivelB)));
                         break;
                     case "C":
-                        spinnerMateria.setAdapter(arrayAdapterC);
+                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
+                                R.layout.simple_spinner,
+                                getResources().getStringArray(R.array.nivelC)));
                         break;
                     case "D":
-                        spinnerMateria.setAdapter(arrayAdapterD);
+                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
+                                R.layout.simple_spinner,
+                                getResources().getStringArray(R.array.nivelD)));
                         break;
                     case "E":
-                        spinnerMateria.setAdapter(arrayAdapterE);
+                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
+                                R.layout.simple_spinner,
+                                getResources().getStringArray(R.array.nivelE)));
                         break;
                     case "F":
-                        spinnerMateria.setAdapter(arrayAdapterF);
+                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
+                                R.layout.simple_spinner,
+                                getResources().getStringArray(R.array.nivelF)));
                         break;
                     case "G":
-                        spinnerMateria.setAdapter(arrayAdapterG);
+                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
+                                R.layout.simple_spinner,
+                                getResources().getStringArray(R.array.nivelG)));
                         break;
                     case "H":
-                        spinnerMateria.setAdapter(arrayAdapterH);
+                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
+                                R.layout.simple_spinner,
+                                getResources().getStringArray(R.array.nivelH)));
                         break;
 
                 }
                 spinnerMateria.setVisibility(View.VISIBLE);
+                if(select!=null) {
+                    try {
+                        cambiarRecycler();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             @Override
@@ -186,7 +197,12 @@ public class HorarioFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 select = spinnerMateria.getSelectedItem().toString();
-                cambiarRecycler();
+                try {
+                    cambiarRecycler();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
 
             @Override
@@ -195,45 +211,97 @@ public class HorarioFragment extends Fragment {
             }
 
         });
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_LONG).show();
+                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+                Context context=getContext();
+                for(Integer integer: seleccionados){
+                    try {
+                        registroJSON.aniadirMateriaTomada(integer,context);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
+
 
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         ArrayList<Grupo>   grupos = new ArrayList<>();
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
+                break;
             }
         }
-        materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,this.getContext());
+        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
+        for(GrupoHorarioAdapter g : grupoHorarioAdapters){
+            if(g.getmData().equals(grupoHorarioAdapter.getmData())){
+                materiaHorarioAdapter=g;
+                break;
+            }
+        }
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
 
         return view;
     }
-    void cambiarRecycler(){
+    void cambiarRecycler() throws Exception {
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         ArrayList<Grupo>   grupos = new ArrayList<>();
-
+        ArrayList<Integer> selecs=registroJSON.getMateriasTomadas(getContext());
         for(Materia materia: materias){
-            //Toast.makeText(getContext(), "buscando", Toast.LENGTH_SHORT).show();
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
-                //Toast.makeText(getContext(), "guardado", Toast.LENGTH_SHORT).show();
-                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
-                Toast.makeText(getContext(), "tam: "+seleccionados.size(), Toast.LENGTH_SHORT).show();
                 break;
             }
         }
-        materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,this.getContext());
+        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),selecs);
+        for(GrupoHorarioAdapter g : grupoHorarioAdapters){
+            if(g.getmData().equals(grupoHorarioAdapter.getmData())){
+                materiaHorarioAdapter=g;
+                break;
+            }
+        }
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(true);;
+    }
+
+
+    private  void  startDownloading(){
+        FirebaseDatabase.getInstance().getReference().child("UMSS").child("cronograma")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        String url = snapshot.getValue(String.class);
+                        DownloadManager.Request request= new DownloadManager.Request(Uri.parse(url));
+                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+                        request.setTitle("Download");
+                        request.setDescription("Descargando archivo");
+
+                        request.allowScanningByMediaScanner();
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+System.currentTimeMillis());
+                        DownloadManager downloadManager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+                        downloadManager.enqueue(request);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+                });
 
     }
     @Override
@@ -248,8 +316,7 @@ public class HorarioFragment extends Fragment {
         ArrayList<Materia> n;
         switch(id) {
             case R.id.cambiar_a_generar:
-                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados,arrayAdapterA,arrayAdapterB,arrayAdapterC,
-                        arrayAdapterD,arrayAdapterE,arrayAdapterF,arrayAdapterG,arrayAdapterH);
+                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados);
                 /*ArrayList<Integer> aux = new ArrayList<>();
                 aux.add(1);
                 aux.add(2);
@@ -267,5 +334,17 @@ public class HorarioFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+
+    void crearVistas(){
+        ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
+        for(Materia materia: materias){
+            GrupoHorarioAdapter grupoHorarioAdapter=new GrupoHorarioAdapter(materia.getGrupos(),getContext(),seleccionados);
+            grupoHorarioAdapters.add(grupoHorarioAdapter);
+        }
+
+
+
+    }
 }
+
 

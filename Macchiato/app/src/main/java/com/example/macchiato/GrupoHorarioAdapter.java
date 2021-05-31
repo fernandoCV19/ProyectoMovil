@@ -30,15 +30,23 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
     private Context context;
     RecyclerView recyclerView;
     View itemLayoutView;
+    private  ArrayList<Integer> selecs;
 
-    public GrupoHorarioAdapter(List<Grupo> mData, Context context) {
+    public GrupoHorarioAdapter(List<Grupo> mData, Context context,ArrayList<Integer> selecs) {
         this.mData = mData;
         this.context = context;
+        this.selecs=selecs;
         seleccionados=new ArrayList<>();
     }
 
     public ArrayList<Integer> getSeleccionados() {
         return seleccionados;
+    }
+
+
+
+    public List<Grupo> getmData() {
+        return mData;
     }
 
     @Override
@@ -79,17 +87,24 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
         public void bindData(final Grupo item){
             String mostrar=item.getGrupo()+" - "+item.getDocente();
             checkBoxGrupo.setText(mostrar);
-
+            if(selecs!=null){
+               for(Integer integer : selecs){
+                   if(integer == item.getID()){
+                       checkBoxGrupo.setChecked(true);
+                   }
+               }
+            }
             checkBoxGrupo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (checkBoxGrupo.isChecked()) {
+                        if(!seleccionados.contains(item.getID()))
                         seleccionados.add(item.getID());
-                        Toast.makeText(context, "good", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "añadido", Toast.LENGTH_SHORT).show();
 
                     }
                     else if (!checkBoxGrupo.isChecked()) {
-                        Toast.makeText(context, "bad", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "eliminado", Toast.LENGTH_SHORT).show();
                        if(seleccionados.contains(item.getID())){
                            seleccionados.remove((Object)item.getID());
                        }
@@ -97,6 +112,8 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
 
                 }
             });
+
+
 
         }
 

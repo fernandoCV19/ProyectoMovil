@@ -27,6 +27,10 @@ public class Navigation_bottom extends AppCompatActivity {
     BottomNavigationView mBottomNavigation;
     private FirebaseAuth auth;
     FirebaseUser firebaseUser;
+    MateriaFragment materiaFragment;
+    MostrarHorarioFragment mostrarHorarioFragment;
+    AjustesFragment ajustesFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +38,21 @@ public class Navigation_bottom extends AppCompatActivity {
         showSelectedFragment(new MostrarHorarioFragment());
 
 
+        mostrarHorarioFragment=new MostrarHorarioFragment();
+        try {
+            materiaFragment= new MateriaFragment();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ajustesFragment = new AjustesFragment();
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         auth=FirebaseAuth.getInstance();
+
 
         firebaseUser = auth.getCurrentUser();
         mBottomNavigation =(BottomNavigationView) findViewById(R.id.bottomNavigationView);
@@ -58,17 +71,13 @@ public class Navigation_bottom extends AppCompatActivity {
 
                 }
                 if(item.getItemId()==R.id.nav_horario){
-                    showSelectedFragment(new MostrarHorarioFragment());
+                    showSelectedFragment(mostrarHorarioFragment);
                 }
                 if(item.getItemId()==R.id.nav_materias){
-                    try {
-                        showSelectedFragment(new MateriaFragment());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    showSelectedFragment(materiaFragment);
                 }
                 if(item.getItemId()==R.id.nav_ajustes){
-                    showSelectedFragment(new AjustesFragment());
+                    showSelectedFragment(ajustesFragment);
                 }
                 return true;
             }

@@ -31,7 +31,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/nomMateriaX"
+                    android:id="@+id/nomMateriaHorario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -46,6 +46,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="docente" />
+                    android:fontFamily="casual"
+                    android:text="TextView" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/horariosInfo"

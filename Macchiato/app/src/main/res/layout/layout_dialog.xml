@@ -1,132 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/relativeGrupos"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fondo_materia">
-
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/promedio_nota"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_weight=".3"
+            android:fontFamily="casual"
+            android:gravity="start"
+            android:text="@string/txt_nivel"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/nivel_vista"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".3"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:text="@string/txt_nivel"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-            <Spinner
-                android:id="@+id/nivel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".3"
-                android:entries="@array/niveles" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/añadir"
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/nivel"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_weight=".3"
+            android:entries="@array/niveles" />
 
-            <TextView
-                android:id="@+id/materia_vista"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".3"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:text="@string/txt_materia"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
+    </LinearLayout>
 
-            <Spinner
-                android:id="@+id/materia"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".3" />
+    <LinearLayout
+        android:id="@+id/añadir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/materia_vista"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".3"
+            android:fontFamily="casual"
+            android:gravity="start"
+            android:text="@string/txt_materia"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
 
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/nota_vista"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".3"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:text="@string/txt_nota"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".3"
-                android:ems="10"
-                android:inputType="numberDecimal" />
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/select_color"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/white"
-                android:fontFamily="casual"
-                android:gravity="center_horizontal"
-                android:text="@string/txt_selectColor"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        <Spinner
+            android:id="@+id/materia"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".3" />
 
 
     </LinearLayout>
-</RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/nota_vista"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:fontFamily="casual"
+            android:gravity="start"
+            android:text="@string/txt_nota"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/select_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:fontFamily="casual"
+            android:gravity="center_horizontal"
+            android:text="@string/txt_selectColor"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</LinearLayout>

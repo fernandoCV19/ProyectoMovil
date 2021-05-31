@@ -13,7 +13,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,15 +34,6 @@
                 android:text="Materias Aprobadas"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
-
-            <ImageButton
-                android:id="@+id/añadir"
-                style="@android:style/Widget.ImageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="64dp"
-                android:foreground="@drawable/add_file" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -75,17 +65,50 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lista_MateriasReprobadas"
                 android:layout_width="match_parent"
-                android:layout_height="260dp" />
+                android:layout_height="260dp">
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="casual"
-                android:text="ver estadisticas" />
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/añadir_floating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                app:backgroundTint="#ff7043"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/addn" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                app:backgroundTint="#ff7043"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/substract" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/ver_Estadisticas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="50dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="ver estadisticas" />
 
     </LinearLayout>
 

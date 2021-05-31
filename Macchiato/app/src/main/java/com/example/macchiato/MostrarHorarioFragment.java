@@ -33,28 +33,11 @@ public class MostrarHorarioFragment extends Fragment {
     Toolbar toolbar;
     ArrayList<Integer> list;
     RecyclerView recyclerView;
-    ArrayAdapter<String> arrayAdapterA;
-    ArrayAdapter<String> arrayAdapterB;
-    ArrayAdapter<String> arrayAdapterC;
-    ArrayAdapter<String> arrayAdapterD;
-    ArrayAdapter<String> arrayAdapterE;
-    ArrayAdapter<String> arrayAdapterF;
-    ArrayAdapter<String> arrayAdapterG;
-    ArrayAdapter<String> arrayAdapterH;
+
     public MostrarHorarioFragment(){
         list = new ArrayList<>();
-
     }
-    public MostrarHorarioFragment(ArrayList<Integer> list,
-    ArrayAdapter<String>arrayAdapterA, ArrayAdapter<String>arrayAdapterB, ArrayAdapter<String>arrayAdapterC, ArrayAdapter<String>arrayAdapterD
-            , ArrayAdapter<String>arrayAdapterE, ArrayAdapter<String>arrayAdapterF, ArrayAdapter<String>arrayAdapterG, ArrayAdapter<String>arrayAdapterH){
-        this.arrayAdapterA=arrayAdapterA;
-        this.arrayAdapterB=arrayAdapterB;
-        this.arrayAdapterC=arrayAdapterC;
-        this.arrayAdapterD=arrayAdapterD;
-        this.arrayAdapterE=arrayAdapterE;
-        this.arrayAdapterF=arrayAdapterF;
-        this.arrayAdapterG=arrayAdapterG;
+    public MostrarHorarioFragment(ArrayList<Integer> list){
         this.list=list;
     }
 
@@ -122,8 +105,9 @@ public class MostrarHorarioFragment extends Fragment {
         ArrayList<Materia> n;
         switch(id) {
             case R.id.cambiar_a_generar:
-                HorarioFragment mostrarHorarioFragment=new HorarioFragment(list,arrayAdapterA,arrayAdapterB,arrayAdapterC,
-                        arrayAdapterD,arrayAdapterE,arrayAdapterF,arrayAdapterG,arrayAdapterH);
+
+                HorarioFragment mostrarHorarioFragment=new HorarioFragment(list);
+
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);
