@@ -140,7 +140,7 @@ public class LogInActivity extends AppCompatActivity {
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile);
                                     try {
-                                        lector.leerFichero(getApplicationContext());
+                                        lector.leerFichero(getApplicationContext(), "registro.json");
                                     } catch (FileNotFoundException e) {
                                         e.printStackTrace();
                                     } catch (JSONException e) {

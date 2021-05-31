@@ -47,12 +47,12 @@ public class LectorFichero {
         escribirFichero("registro.json", myjson, context);
     }
 
-    public String leerFichero(Context context) throws FileNotFoundException, JSONException {
+    public String leerFichero(Context context, String nombreArchivo) throws FileNotFoundException, JSONException {
         FileInputStream fileInputStream = null;
         StringBuilder stringBuilder = new StringBuilder();
         String texto ="";
         try {
-            fileInputStream = context.openFileInput("registro.json");
+            fileInputStream = context.openFileInput(nombreArchivo);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
@@ -62,7 +62,7 @@ public class LectorFichero {
         }catch (Exception e){
             RegistroJSON rj = new RegistroJSON();
             rj.genararVacio(context);
-            return leerFichero(context);
+            return leerFichero(context, "registro.json");
         }
         finally {
            /* if(fileInputStream != null){
@@ -80,7 +80,7 @@ public class LectorFichero {
     public Map<String,Object> devolverMapa(Context context){
         String res="";
         try {
-            res=leerFichero(context);
+            res=leerFichero(context, "registro.json");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {
