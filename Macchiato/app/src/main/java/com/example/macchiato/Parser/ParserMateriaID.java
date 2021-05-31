@@ -14,6 +14,8 @@ public class ParserMateriaID {
 
     private static HashMap<String, Par> ids;
 
+    private static int idAuxiliar = 0;
+
     public static HashMap<String, Par> getIds() {
         return ids;
     }
@@ -45,11 +47,11 @@ public class ParserMateriaID {
     }
 
     public int getID(String materia){
-        int respuesta = 0;
         if(ids != null && ids.containsKey(materia)){
             return ids.get(materia).id;
         }else {
-            return respuesta;
+            idAuxiliar--;
+            return idAuxiliar;
         }
 
     }
