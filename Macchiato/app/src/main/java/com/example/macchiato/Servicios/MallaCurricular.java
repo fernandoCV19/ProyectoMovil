@@ -148,4 +148,19 @@ public class MallaCurricular {
         sinTomar.addAll((Collection)hs);
         return sinTomar;
     }
+
+    public void quitarVarios(ArrayList<Integer> varios){
+        if(varios.contains(22) || varios.contains(18)) requisitos_ia1--;
+        if(varios.contains(44) || varios.contains(43)) requisitos_TG2--;
+
+        for(int i=0; i<varios.size(); i++){
+            if(cola1.contains(varios.get(i))) cola1.remove(varios.get(i));
+            if(cola2.contains(varios.get(i))) cola2.remove(varios.get(i));
+            if(cola3.contains(varios.get(i))) cola3.remove(varios.get(i));
+            if(cola4.contains(varios.get(i))) cola4.remove(varios.get(i));
+            if(cola5.contains(varios.get(i))) cola5.remove(varios.get(i));
+            if(cola6.contains(varios.get(i))) cola6.remove(varios.get(i));
+            if(cola7.contains(varios.get(i))) cola7.remove(varios.get(i));
+        }
+    }
 }
