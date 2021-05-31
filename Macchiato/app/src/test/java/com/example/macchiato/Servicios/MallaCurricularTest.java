@@ -13,12 +13,12 @@ public class MallaCurricularTest {
     private MallaCurricular mallaCurricular;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(){
         mallaCurricular = new MallaCurricular();
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown(){
         mallaCurricular = null;
     }
 
@@ -102,6 +102,13 @@ public class MallaCurricularTest {
 
         ArrayList<Integer> ids = mallaCurricular.getSiguientes();
         assertThat(ids).hasSize(6);
+        assertThat(ids).contains(30);
+        assertThat(ids).contains(31);
+        assertThat(ids).contains(32);
+        assertThat(ids).contains(33);
+        assertThat(ids).contains(34);
+        assertThat(ids).contains(35);
+
     }
 
     private void llenarIds(ArrayList<Integer> ids, int inicio, int fin){

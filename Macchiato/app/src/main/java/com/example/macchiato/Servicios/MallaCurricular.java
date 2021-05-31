@@ -94,6 +94,7 @@ public class MallaCurricular {
         aniadir(cola4.get(0), cola5.get(0),sig);
         aniadir(cola5.get(0), cola6.get(0),sig);
         aniadir(cola6.get(0), cola7.get(0),sig);
+        aniadir(cola7.get(0), 1,sig);
 
         Set<String> hs = new HashSet<>();
         hs.addAll((Collection)sig);
