@@ -12,32 +12,31 @@
     <application
         android:name="com.example.macchiato.Models.GlobalApplication"
         android:allowBackup="true"
-        android:screenOrientation="portrait"
         android:icon="@mipmap/ic_launcher"
         android:label="Macchiato"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Macchiato">
         <activity android:name=".Descargas_Externas"
-
+            android:screenOrientation="portrait"
             >
         </activity>
         <activity android:name=".CambiarPerfilActivity"
-
+            android:screenOrientation="portrait"
             />
         <activity android:name=".HistorialAcademicoActivity"
-
+            android:screenOrientation="portrait"
             >
         </activity>
 
         <activity android:name=".RegisterActivity"
-
+            android:screenOrientation="portrait"
             />
         <activity android:name=".LogInActivity"
-
+            android:screenOrientation="portrait"
             />
         <activity android:name=".Navigation_bottom"
-
+            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
