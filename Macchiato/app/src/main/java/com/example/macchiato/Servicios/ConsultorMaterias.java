@@ -1,11 +1,9 @@
 package com.example.macchiato.Servicios;
-import android.view.MenuItem;
 
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.GrupoModelParser;
 import com.example.macchiato.Parser.ParserMateriaID;
-import com.example.macchiato.R;
 
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -15,9 +13,8 @@ public class ConsultorMaterias {
 
     private static ArrayList<Materia> materias;
 
-
-    public   ArrayList<Grupo> devolverGrupos(ArrayList<Integer>ides ){
-        ArrayList<Grupo>res=new ArrayList();
+    public   ArrayList<Par> devolverGrupos(ArrayList<Integer>ides ){
+        ArrayList<Par>res=new ArrayList();
         for (Integer i : ides){
 
             for(Materia materia: materias) {
@@ -25,7 +22,7 @@ public class ConsultorMaterias {
                 for (Grupo grupo : materia.getGrupos()) {
                     int id = grupo.getID();
                     if (id == i) {
-                        res.add(grupo);
+                        res.add(new Par(grupo,materia.getNombre()));
 
                     }
 
@@ -38,7 +35,7 @@ public class ConsultorMaterias {
     public  void clasificarMaterias (ArrayList<GrupoModelParser>listaGrupos){
         iniciarHashMap();
         String materiaActual = "";
-        Materia actual = new Materia(0, "", '1', null,"", "A", null);
+        Materia actual = new Materia(0, "", 'A', null,"", "A", null);
         boolean primero = true;
         int contador = 0;
 
@@ -68,23 +65,20 @@ public class ConsultorMaterias {
         }
         lisClasificada.get(actual.getNivel()).add(actual);
         materias.add(actual);
-        System.out.println(lisClasificada);
-        System.out.println(materias);
-        System.out.println(contador);
     }
 
     private void iniciarHashMap (){
-        lisClasificada = new HashMap();
+        lisClasificada = new HashMap<>();
         materias = new ArrayList<>();
-        lisClasificada.put('A',new ArrayList<Materia>());
-        lisClasificada.put('B',new ArrayList<Materia>());
-        lisClasificada.put('C',new ArrayList<Materia>());
-        lisClasificada.put('D',new ArrayList<Materia>());
-        lisClasificada.put('E',new ArrayList<Materia>());
-        lisClasificada.put('F',new ArrayList<Materia>());
-        lisClasificada.put('G',new ArrayList<Materia>());
-        lisClasificada.put('H',new ArrayList<Materia>());
-        lisClasificada.put('I',new ArrayList<Materia>());
+        lisClasificada.put('A',new ArrayList<>());
+        lisClasificada.put('B',new ArrayList<>());
+        lisClasificada.put('C',new ArrayList<>());
+        lisClasificada.put('D',new ArrayList<>());
+        lisClasificada.put('E',new ArrayList<>());
+        lisClasificada.put('F',new ArrayList<>());
+        lisClasificada.put('G',new ArrayList<>());
+        lisClasificada.put('H',new ArrayList<>());
+        lisClasificada.put('I',new ArrayList<>());
     }
 
     public ArrayList<Materia> getListaMaterias(ArrayList<Integer> ids){
@@ -97,30 +91,20 @@ public class ConsultorMaterias {
         return materiasElegidas;
     }
 
-
-    public static HashMap <Character, ArrayList<Materia>> getLisClasificada(){
-        return lisClasificada;
-    }
-
-    public static ArrayList<Materia> getMaterias(){
-        return materias;
-    }
-
     public String getColorNivel(char nivel) {
         String respuesta = "";
-
         switch(nivel) {
             case 'B':
                 respuesta = "#48a259";
                 break;
             case 'A':
-                respuesta = "#FFAA66CC";
+                respuesta = "#00e25f";
                 break;
             case 'C':
                 respuesta = "#99e801";
                 break;
             case 'D':
-                respuesta = "#FF33B5E5";
+                respuesta = "#48a259";
                 break;
             case 'E':
                 respuesta = "#48a259";
@@ -143,4 +127,38 @@ public class ConsultorMaterias {
         return respuesta;
     }
 
+
+    public static HashMap <Character, ArrayList<Materia>> getLisClasificada(){
+        return lisClasificada;
+    }
+
+    public static ArrayList<Materia> getMaterias(){
+        return materias;
+    }
+
+    public class Par{
+        private Grupo grupo;
+        private String materia;
+
+        public Grupo getGrupo() {
+            return grupo;
+        }
+
+        public void setGrupo(Grupo grupo) {
+            this.grupo = grupo;
+        }
+
+        public String getMateria() {
+            return materia;
+        }
+
+        public void setMateria(String materia) {
+            this.materia = materia;
+        }
+
+        public Par(Grupo grupo, String materia){
+            this.grupo = grupo;
+            this.materia = materia;
+        }
+    }
 }

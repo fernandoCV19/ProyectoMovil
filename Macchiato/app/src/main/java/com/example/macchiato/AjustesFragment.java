@@ -19,7 +19,10 @@ import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.macchiato.Servicios.CreadorAlarma;
+
 import java.net.CookieManager;
+import java.util.ArrayList;
 
 public class AjustesFragment extends Fragment {
     Button btn;
@@ -33,6 +36,14 @@ public class AjustesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        CreadorAlarma ca = new CreadorAlarma();
+        try {
+            ca.crear(getContext());
+            ArrayList<Intent> intents ;
+            //for(int i=0; i<)
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return inflater.inflate(R.layout.fragment_ajustes, container, false);
     }
 
