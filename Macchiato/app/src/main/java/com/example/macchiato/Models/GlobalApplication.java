@@ -37,7 +37,7 @@ public class GlobalApplication extends Application {
         appContext = getApplicationContext();
         LectorFichero lectorFichero = new LectorFichero();
         try {
-            lectorFichero.leerFichero(getApplicationContext());
+            lectorFichero.leerFichero(getApplicationContext(), "registro.json");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {

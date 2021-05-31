@@ -16,17 +16,20 @@ public class ConsultorMaterias {
     private static ArrayList<Materia> materias;
 
 
-    public static   ArrayList<Grupo> devolverGrupos(ArrayList<Grupo>listaGrupos, ArrayList<Integer>ides ){
+    public   ArrayList<Grupo> devolverGrupos(ArrayList<Integer>ides ){
         ArrayList<Grupo>res=new ArrayList();
         for (Integer i : ides){
 
-            for(Grupo m :listaGrupos){
-                int id =m.getID();
-                if(id==i){
-                    res.add(m);
+            for(Materia materia: materias) {
+
+                for (Grupo grupo : materia.getGrupos()) {
+                    int id = grupo.getID();
+                    if (id == i) {
+                        res.add(grupo);
+
+                    }
 
                 }
-
             }
         }
         return res;
