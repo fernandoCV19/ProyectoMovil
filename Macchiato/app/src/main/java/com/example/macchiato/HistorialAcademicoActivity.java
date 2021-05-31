@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Parser.ParserMateriaID;
+import com.example.macchiato.Servicios.EstadisticaHA;
 import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -47,12 +48,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     MateriaNotaAdapter adapter;
     MateriaNotaAdapter adapter3;
 
-    public void setMostrarAprobadas(ArrayList<MateriaNota> mostrarAprobadas) {
-        this.mostrarAprobadas = mostrarAprobadas;
-    }
-    public void setMostrarReprobadas(ArrayList<MateriaNota> mostrarReprobadas) {
-        this.mostrarReprobadas = mostrarReprobadas;
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +56,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         mostrarAprobadas = new ArrayList<>();
         mostrarReprobadas = new ArrayList<>();
         listaMaterias = new ArrayList<>();
+
 
 
             FloatingActionButton fab = findViewById(R.id.añadir_floating);
@@ -182,14 +179,11 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             }
                             MateriaNota materiaNota = new MateriaNota(select, numero);
 
-                            try {
-                                RegistroJSON rj = new RegistroJSON();
-                                int idMat = new ParserMateriaID().getID(select);
-                                rj.aniadirNota( idMat,numero,getApplicationContext());
+                          //  try {
+                              //  RegistroJSON rj = new RegistroJSON();
+                              //  int idMat = new ParserMateriaID().getID(select);
+                               // rj.aniadirNota( idMat,numero,getApplicationContext());
                                 //new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
-
-
-                            MateriaNota materiaNota = new MateriaNota(select, numero);
 
                             try {
                                 new RegistroJSON().aniadirNota(new ParserMateriaID().getID(select), numero, getApplicationContext());
@@ -280,25 +274,10 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                 numMateriasCursa = view2.findViewById(R.id.num_materiasCursadas);
 
 
-
-
-                                        //if(!mostrarAprobadas .contains(materiaNota) ) {
-                                         //   Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
-
                 promedioMateriasApr =view2.findViewById(R.id.promedio_notamateriasApro);
-                for (MateriaNota materiaNota:mostrarAprobadas){
-                    sumaMaeriasA +=materiaNota.getNota();
-
-                }
-                if (mostrarAprobadas.size() != 0) {
-                    promedioMa = sumaMateriasA / mostrarAprobadas.size();
-                } else {
-                    promedioMa = sumaMateriasA;
-
-                }
-                Iniciador
-                promedioGen.setText(String.valueOf(promedioGeneral));
-                promedioMateriasApr.setText(String.valueOf(promedioMa));
+                EstadisticaHA estadisticaHA = new EstadisticaHA(listaMaterias,mostrarAprobadas);
+                promedioGen.setText(String.valueOf(estadisticaHA.calcularPromedioGeneral()));
+                promedioMateriasApr.setText(String.valueOf(estadisticaHA.calcularPromedioMateriasA()));
 
                 numMateriasApro.setText(String.valueOf(mostrarAprobadas.size()));
                 numMateriasRepro.setText(String.valueOf(mostrarReprobadas.size()));
