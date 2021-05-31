@@ -1,8 +1,13 @@
 package com.example.macchiato.Servicios;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Collection;
 
 public class MallaCurricular {
+
     private ArrayList<Integer> cola1;
     private ArrayList<Integer> cola2;
     private ArrayList<Integer> cola3;
@@ -12,7 +17,6 @@ public class MallaCurricular {
     private ArrayList<Integer> cola7;
     private int requisitos_ia1;
     private int requisitos_TG2;
-
     public MallaCurricular(){
 
         cola1=new ArrayList<>();
@@ -52,7 +56,6 @@ public class MallaCurricular {
         cola4.add(37);
         cola4.add(44);
         cola4.add(53);
-
         cola5=new ArrayList<>();
         cola5.add(5);
         cola5.add(11);
@@ -62,7 +65,6 @@ public class MallaCurricular {
         cola5.add(35);
         cola5.add(38);
         cola5.add(53);
-
         cola6=new ArrayList<>();
         cola6.add(2);
         cola6.add(10);
@@ -93,6 +95,11 @@ public class MallaCurricular {
         aniadir(cola5.get(0), cola6.get(0),sig);
         aniadir(cola6.get(0), cola7.get(0),sig);
 
+        Set<String> hs = new HashSet<>();
+        hs.addAll((Collection)sig);
+        sig.clear();
+        sig.addAll((Collection)hs);
+
         return sig;
     }
     private void aniadir(int a, int b, ArrayList<Integer> sig){
@@ -107,6 +114,7 @@ public class MallaCurricular {
 
         if(b == 29 && requisitos_ia1 == 0) sig.add(b);
         else if(b == 53 && requisitos_TG2 == 0) sig.add(b);
+        else sig.add(a);
     }
     public void quitar(ArrayList<Integer> q){
         if(q.contains(22) || q.contains(18)) requisitos_ia1--;
@@ -134,6 +142,10 @@ public class MallaCurricular {
 
         while(sinTomar.get(0) == 0) sinTomar.remove(0);
 
+        Set<String> hs = new HashSet<>();
+        hs.addAll((Collection)sinTomar);
+        sinTomar.clear();
+        sinTomar.addAll((Collection)hs);
         return sinTomar;
     }
 }
