@@ -86,9 +86,10 @@ public class HorarioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        registroJSON=new RegistroJSON();
         grupoHorarioAdapters=new ArrayList<>();
         grupos=new ArrayList<>();
-        materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext());
+        materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         View view = inflater.inflate(R.layout.fragment_horario, container, false);
         guardar=view.findViewById(R.id.buttonGuardar);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
@@ -174,8 +175,13 @@ public class HorarioFragment extends Fragment {
 
                 }
                 spinnerMateria.setVisibility(View.VISIBLE);
-                if(select!=null)
-                cambiarRecycler();
+                if(select!=null) {
+                    try {
+                        cambiarRecycler();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             @Override
@@ -187,7 +193,11 @@ public class HorarioFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 select = spinnerMateria.getSelectedItem().toString();
-                cambiarRecycler();
+                try {
+                    cambiarRecycler();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
 
@@ -202,7 +212,6 @@ public class HorarioFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_LONG).show();
                 seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
-                registroJSON=new RegistroJSON();
                 Context context=getContext();
                 for(Integer integer: seleccionados){
                     try {
@@ -224,7 +233,7 @@ public class HorarioFragment extends Fragment {
                 break;
             }
         }
-        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext());
+        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         for(GrupoHorarioAdapter g : grupoHorarioAdapters){
             if(g.getmData().equals(grupoHorarioAdapter.getmData())){
                 materiaHorarioAdapter=g;
@@ -237,17 +246,17 @@ public class HorarioFragment extends Fragment {
 
         return view;
     }
-    void cambiarRecycler(){
+    void cambiarRecycler() throws Exception {
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         ArrayList<Grupo>   grupos = new ArrayList<>();
-
+        ArrayList<Integer> selecs=registroJSON.getMateriasTomadas(getContext());
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
                 break;
             }
         }
-        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext());
+        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),selecs);
         for(GrupoHorarioAdapter g : grupoHorarioAdapters){
             if(g.getmData().equals(grupoHorarioAdapter.getmData())){
                 materiaHorarioAdapter=g;
@@ -325,7 +334,7 @@ public class HorarioFragment extends Fragment {
     void crearVistas(){
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         for(Materia materia: materias){
-            GrupoHorarioAdapter grupoHorarioAdapter=new GrupoHorarioAdapter(materia.getGrupos(),getContext());
+            GrupoHorarioAdapter grupoHorarioAdapter=new GrupoHorarioAdapter(materia.getGrupos(),getContext(),seleccionados);
             grupoHorarioAdapters.add(grupoHorarioAdapter);
         }
 
