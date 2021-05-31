@@ -179,17 +179,20 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             }
                             MateriaNota materiaNota = new MateriaNota(select, numero);
 
-                          //  try {
-                              //  RegistroJSON rj = new RegistroJSON();
-                              //  int idMat = new ParserMateriaID().getID(select);
-                               // rj.aniadirNota( idMat,numero,getApplicationContext());
-                                //new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
-
                             try {
-                                new RegistroJSON().aniadirNota(new ParserMateriaID().getID(select), numero, getApplicationContext());
+                                RegistroJSON rj = new RegistroJSON();
+                                int idMat = new ParserMateriaID().getID(select);
+                                rj.aniadirNota(idMat, numero, getApplicationContext());
+                              //  new RegistroJSON().aniadirNota(new ParserMateriaID().getID(select), numero, getApplicationContext());
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
+
+                            //  try {
+                            //    new RegistroJSON().aniadirNota(new ParserMateriaID().getID(select), numero, getApplicationContext());
+                            //  } catch (Exception e) {
+                            //       e.printStackTrace();
+                            //    }
                             if (!mostrarAprobadas.contains(materiaNota)) {
                                 Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
 
@@ -213,13 +216,14 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                     mostrarReprobadas.add(materiaNota);
                                 }
                             }
+                        }
 
                             //if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Elige un nivel")) {
                             //  }
 
-                            }
 
-                    });
+
+                        });
                 }
             });
             dialog.show();
@@ -228,33 +232,36 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         remove.setOnClickListener(vie -> {
 
 
-            ArrayList<MateriaNota> selecionadas = adapter.getSelect();
-            ArrayList<MateriaNota> selecionadasRepro = adapter3.getSelect();
-            if (selecionadas != null)
+            if(adapter.getSelect()!=null) {
+                ArrayList<MateriaNota> selecionadas = adapter.getSelect();
+                    for (MateriaNota materiaNota : selecionadas) {
+                        if (mostrarAprobadas.contains(materiaNota) && adapter != null) {
+                            mostrarAprobadas.remove(materiaNota);
+                            listaMaterias.remove(materiaNota);
+                            adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
+                            // recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
+                            recyclerViewApro.setAdapter(adapter);
+                            //  calcularPromedios();
 
-                for (MateriaNota materiaNota : selecionadas) {
-                    if (mostrarAprobadas.contains(materiaNota) && adapter != null) {
-                        mostrarAprobadas.remove(materiaNota);
-                        adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
-                        // recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
-                        recyclerViewApro.setAdapter(adapter);
-                      //  calcularPromedios();
-
+                        }
                     }
                 }
 
-            if (selecionadasRepro != null) {
-                for (MateriaNota materiaNotaR : selecionadasRepro) {
-                    if (mostrarReprobadas.contains(materiaNotaR) && adapter3 != null) {
-                        mostrarReprobadas.remove(materiaNotaR);
-                        adapter3 = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
-                        //recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
-                        recyclerViewRepro.setAdapter(adapter3);
-                       // calcularPromedios();
+            if(adapter3.getSelect()!=null) {
+                ArrayList<MateriaNota> selecionadasRepro = adapter3.getSelect();
+                    for (MateriaNota materiaNotaR : selecionadasRepro) {
+                        if (mostrarReprobadas.contains(materiaNotaR) && adapter3 != null) {
+                            mostrarReprobadas.remove(materiaNotaR);
+                            listaMaterias.remove(materiaNotaR);
+                            adapter3 = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+                            //recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
+                            recyclerViewRepro.setAdapter(adapter3);
+                            // calcularPromedios();
 
+                        }
                     }
                 }
-            }
+
 
 
         });
