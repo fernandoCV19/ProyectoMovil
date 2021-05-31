@@ -253,6 +253,15 @@ public class HorarioFragment extends Fragment {
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
+                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+                Context context=getContext();
+                for(Integer integer: seleccionados){
+                    try {
+                        registroJSON.aniadirMateriaTomada(integer,context);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             }
         }
