@@ -59,30 +59,7 @@ public class HorarioFragment extends Fragment {
 
     public HorarioFragment() {
         Context context= getActivity().getApplicationContext();
-        arrayAdapterA=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelA));
-        arrayAdapterB=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelB));
-        arrayAdapterC=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelC));
-        arrayAdapterD=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelD));
-        arrayAdapterE=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelE));
-        arrayAdapterF=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelF));
-        arrayAdapterG=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelG));
-        arrayAdapterH=new ArrayAdapter<String>(getActivity().getApplicationContext(),
-                R.layout.simple_spinner,
-                getResources().getStringArray(R.array.nivelH));
+
 
     }
 
@@ -135,9 +112,35 @@ public class HorarioFragment extends Fragment {
         ArrayAdapter<Character> adapter2 = new ArrayAdapter<Character>(getContext(), R.layout.simple_spinner, nomNiveles);
         spinnerNivel.setAdapter(adapter2);
 
+        arrayAdapterA=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelA));
+        arrayAdapterB=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelB));
+        arrayAdapterC=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelC));
+        arrayAdapterD=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelD));
+        arrayAdapterE=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelE));
+        arrayAdapterF=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelF));
+        arrayAdapterG=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelG));
+        arrayAdapterH=new ArrayAdapter<String>(getActivity().getApplicationContext(),
+                R.layout.simple_spinner,
+                getResources().getStringArray(R.array.nivelH));
+
         spinnerNivel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
 
 
                 selectedClass = parent.getItemAtPosition(position).toString();
@@ -149,13 +152,13 @@ public class HorarioFragment extends Fragment {
                                 getResources().getStringArray(R.array.nivelA)));
                         break;
                     case "B":
-                        spinnerMateria.setAdapter(arrayAdapterA);
+                        spinnerMateria.setAdapter(arrayAdapterB);
                         break;
                     case "C":
-                        spinnerMateria.setAdapter(arrayAdapterA);
+                        spinnerMateria.setAdapter(arrayAdapterC);
                         break;
                     case "D":
-                        spinnerMateria.setAdapter(arrayAdapterA);
+                        spinnerMateria.setAdapter(arrayAdapterD);
                         break;
                     case "E":
                         spinnerMateria.setAdapter(arrayAdapterE);
