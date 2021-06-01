@@ -59,10 +59,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         listaMaterias = new ArrayList<>();
 
 
-
-
-
-
             FloatingActionButton fab = findViewById(R.id.añadir_floating);
             fab.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
@@ -218,14 +214,14 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                 } else {
 
                                     recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-<<<<<<< HEAD
+
 
                                     //adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
 
 
-=======
+
                                     adapter3 = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
->>>>>>> parent of 87b3359 (recuperar historial casi listo)
+
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewRepro.setAdapter(adapter3);
                                    recyclerViewRepro.setHasFixedSize(true);
