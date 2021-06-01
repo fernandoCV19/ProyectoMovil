@@ -21,13 +21,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Parser.ParserMateriaID;
 import com.example.macchiato.Servicios.EstadisticaHA;
 import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -49,74 +47,22 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     TextView numMateriasRepro;
     TextView numMateriasCursa;
     MateriaNotaAdapter adapter;
-    MateriaNotaAdapter adapterReprobadas;
+    MateriaNotaAdapter adapter3;
 
-
-    public HistorialAcademicoActivity(){
-
-        mostrarAprobadas = new ArrayList<>();
-        mostrarReprobadas = new ArrayList<>();
-        listaMaterias = new ArrayList<>();
-    }
-
-    public HistorialAcademicoActivity(ArrayList<MateriaNota> mostrarAprobadas,ArrayList<MateriaNota> mostrarReprobadas){
-        this.mostrarAprobadas = mostrarReprobadas;
-        this.mostrarReprobadas = mostrarReprobadas;
-        listaMaterias = new ArrayList<>();
-
-    }
-
-
-    public ArrayList<MateriaNota> getMostrarAprobadas() {
-        return mostrarAprobadas;
-    }
-
-    public void setMostrarAprobadas(ArrayList<MateriaNota> mostrarAprobadas) {
-        this.mostrarAprobadas = mostrarAprobadas;
-    }
-
-    public ArrayList<MateriaNota> getMostrarReprobadas() {
-        return mostrarReprobadas;
-    }
-
-    public void setMostrarReprobadas(ArrayList<MateriaNota> mostrarReprobadas) {
-        this.mostrarReprobadas = mostrarReprobadas;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_academico);
-        mostrarAprobadas= new ArrayList<>();
-        mostrarReprobadas= new ArrayList<>();
-        RegistroJSON registroJSON= new RegistroJSON();
-        try {
-            mostrarAprobadas= registroJSON.getMateriaNota("Materias Aprobadas",this);
-            mostrarReprobadas = registroJSON.getMateriaNota("Materias Reprobadas",this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
-        recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasReprobadas);
-        if(!mostrarAprobadas.isEmpty()){
-            recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
-            adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
-            recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-
-            recyclerViewApro.setAdapter(adapter);
-            recyclerViewApro.setHasFixedSize(true);
-        }
-        if(!mostrarReprobadas.isEmpty()) {
-            adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
-            recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
+        mostrarAprobadas = new ArrayList<>();
+        mostrarReprobadas = new ArrayList<>();
+        listaMaterias = new ArrayList<>();
 
 
-            recyclerViewRepro.setAdapter(adapterReprobadas);
-            recyclerViewRepro.setHasFixedSize(true);
-        }
-        
-        
-        
+
+
+
+
             FloatingActionButton fab = findViewById(R.id.añadir_floating);
             fab.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
@@ -259,7 +205,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                 recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
                                 recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasReprobadas);
                                 listaMaterias.add(materiaNota);
-                                adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+                                adapter3 = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
                                 adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
 
                                 if (numero >= 51) {
@@ -272,14 +218,18 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                 } else {
 
                                     recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
+<<<<<<< HEAD
 
                                     //adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
 
 
+=======
+                                    adapter3 = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+>>>>>>> parent of 87b3359 (recuperar historial casi listo)
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
-                                    recyclerViewRepro.setAdapter(adapterReprobadas);
-                                    recyclerViewRepro.setHasFixedSize(true);
-                                    //  getDisplaySize();
+                                    recyclerViewRepro.setAdapter(adapter3);
+                                   recyclerViewRepro.setHasFixedSize(true);
+                                 //   getDisplaySize();
 
                                     mostrarReprobadas.add(materiaNota);
                                 }
@@ -315,15 +265,15 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                     }
                 }
 
-            if(adapterReprobadas.getSelect()!=null) {
-                ArrayList<MateriaNota> selecionadasRepro = adapterReprobadas.getSelect();
+            if(adapter3.getSelect()!=null) {
+                ArrayList<MateriaNota> selecionadasRepro = adapter3.getSelect();
                     for (MateriaNota materiaNotaR : selecionadasRepro) {
-                        if (mostrarReprobadas.contains(materiaNotaR) && adapterReprobadas != null) {
+                        if (mostrarReprobadas.contains(materiaNotaR) && adapter3 != null) {
                             mostrarReprobadas.remove(materiaNotaR);
                             listaMaterias.remove(materiaNotaR);
-                            adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+                            adapter3 = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
                             //recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
-                            recyclerViewRepro.setAdapter(adapterReprobadas);
+                            recyclerViewRepro.setAdapter(adapter3);
                             // calcularPromedios();
 
                         }
@@ -333,6 +283,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
 
         });
+
 
         button = findViewById(R.id.ver_Estadisticas);
 
@@ -365,7 +316,23 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         });
 
     }
+    public void getDisplaySize (){
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        (HistorialAcademicoActivity.this).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        //if you need three fix imageview in width
+        int devicewidth = displaymetrics.widthPixels / 3;
 
+        //if you need 4-5-6 anything fix imageview in height
+        int deviceheight = displaymetrics.heightPixels / 4;
+
+      //  ViewGroup.LayoutParams params=recyclerViewRepro.getLayoutParams();
+       // params.height=deviceheight;
+      //  params.width=devicewidth;
+     //   recyclerViewRepro.setLayoutParams(params);
+
+
+
+    }
 }
 
 

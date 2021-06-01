@@ -20,10 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.macchiato.Models.GlobalApplication;
-import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Models.User;
 import com.example.macchiato.Servicios.LectorFichero;
-import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,7 +44,6 @@ import org.json.JSONException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -58,20 +55,16 @@ public class PerfilSesionFragment extends Fragment {
     private User userProfile;
     TextView usuarioShow,correoShow;
     ImageView profileImage;
-    Intent intentHistorial;
-
     public PerfilSesionFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_perfil_sesion, container, false);
         auth=FirebaseAuth.getInstance();
         usuarioShow= (TextView) view.findViewById(R.id.usuarioActual_id);
         correoShow= (TextView) view.findViewById(R.id.correoActual_id);
-        intentHistorial=new Intent(getActivity(), HistorialAcademicoActivity.class);
         //user= FirebaseAuth.getInstance().getCurrentUser();
         //usuarioShow.setText(GlobalApplication.userAct);
         //correoShow.setText(GlobalApplication.emailAct);
@@ -123,14 +116,12 @@ public class PerfilSesionFragment extends Fragment {
             }
         });
 
-
-
-
         Button historial= (Button) view.findViewById(R.id.buttonHistorial);
         historial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intentHistorial);
+                Intent intent = new Intent(getActivity(),HistorialAcademicoActivity.class);
+                startActivity(intent);
             }
         });
         return view;
