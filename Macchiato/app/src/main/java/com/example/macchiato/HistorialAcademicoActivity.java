@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,7 +24,6 @@ import android.widget.Toast;
 import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Parser.ParserMateriaID;
 import com.example.macchiato.Servicios.EstadisticaHA;
-import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -56,6 +57,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         mostrarAprobadas = new ArrayList<>();
         mostrarReprobadas = new ArrayList<>();
         listaMaterias = new ArrayList<>();
+
+
+
 
 
 
@@ -196,12 +200,17 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             if (!mostrarAprobadas.contains(materiaNota)) {
                                 Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
 
+
+
                                 recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
                                 recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasReprobadas);
                                 listaMaterias.add(materiaNota);
+                                adapter3 = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+                                adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
+
                                 if (numero >= 51) {
                                     recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-                                    adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
+
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewApro.setAdapter(adapter);
                                     recyclerViewApro.setHasFixedSize(true);
@@ -212,7 +221,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                     adapter3 = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewRepro.setAdapter(adapter3);
-                                    recyclerViewRepro.setHasFixedSize(true);
+                                   recyclerViewRepro.setHasFixedSize(true);
+                                 //   getDisplaySize();
+
                                     mostrarReprobadas.add(materiaNota);
                                 }
                             }
@@ -296,6 +307,23 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+    public void getDisplaySize (){
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        (HistorialAcademicoActivity.this).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        //if you need three fix imageview in width
+        int devicewidth = displaymetrics.widthPixels / 3;
+
+        //if you need 4-5-6 anything fix imageview in height
+        int deviceheight = displaymetrics.heightPixels / 4;
+
+      //  ViewGroup.LayoutParams params=recyclerViewRepro.getLayoutParams();
+       // params.height=deviceheight;
+      //  params.width=devicewidth;
+     //   recyclerViewRepro.setLayoutParams(params);
+
+
 
     }
 }

@@ -29,6 +29,7 @@ public class MateriaNotaAdapter extends RecyclerView.Adapter<MateriaNotaAdapter.
     public MateriaNotaAdapter(List<MateriaNota> mData, Context context) {
         this.mData = mData;
         this.context = context;
+        select = new ArrayList<>();
     }
 
     public ArrayList<MateriaNota> getSelect() {
@@ -61,12 +62,13 @@ public class MateriaNotaAdapter extends RecyclerView.Adapter<MateriaNotaAdapter.
         final MateriaNota mn =mData.get(position);
         holder.checkBox.setChecked(mn.esSeleccionado());
 
+
         holder.setItemClickListener( new MateriaNotaAdapter.ViewHolder.ItemClickListener() {
             @Override
             public void OnItemClick(View v, int pos) {
                 CheckBox checkBox = (CheckBox) v;
                 MateriaNota materiaNota = mData.get(pos);
-                select = new ArrayList<>();
+
                 if (checkBox.isChecked()) {
                     materiaNota.setSeleccionado(true);
                     select.add(materiaNota);
