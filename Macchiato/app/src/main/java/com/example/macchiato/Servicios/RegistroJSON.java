@@ -96,11 +96,13 @@ public class RegistroJSON {
         JSONObject j = new JSONObject();
         JSONArray notasJS = (JSONArray) jo.get(campo);
 
-        for(int i=0; i<notasJS.size(); i++){
-            j = (JSONObject)notasJS.get(i);
-            String m = (String)j.get("materia");
-            int n = ((Long)j.get("nota")).intValue();
-            notas.add(new MateriaNota(m,n));
+        if(notasJS!=null) {
+            for (int i = 0; i < notasJS.size(); i++) {
+                j = (JSONObject) notasJS.get(i);
+                String m = (String) j.get("materia");
+                int n = ((Long) j.get("nota")).intValue();
+                notas.add(new MateriaNota(m, n));
+            }
         }
         return notas;
     }

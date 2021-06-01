@@ -77,7 +77,6 @@ public class HorarioFragment extends Fragment {
     ArrayList<Materia> materias;
     ArrayList<Grupo>   grupos;
 
-    ArrayList<GrupoHorarioAdapter> grupoHorarioAdapters;
     Button guardar;
     RegistroJSON registroJSON;
     public HorarioFragment() {
@@ -93,7 +92,7 @@ public class HorarioFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         registroJSON=new RegistroJSON();
-        grupoHorarioAdapters=new ArrayList<>();
+
         grupos=new ArrayList<>();
         materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         View view = inflater.inflate(R.layout.fragment_horario, container, false);
@@ -115,7 +114,6 @@ public class HorarioFragment extends Fragment {
             e.printStackTrace();
         }
 
-        crearVistas();
         ConsultorMaterias cs =new ConsultorMaterias();
         HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
         Character [] nomNiveles =new Character[9];
@@ -232,11 +230,12 @@ public class HorarioFragment extends Fragment {
                 try {
                     DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    HashMap<String,Integer> mapAux= new HashMap<String, Integer>();
-                    for(Integer id: registroJSON.getMateriasTomadas(context)){
-                        mapAux.put(id.toString(),id);
+                    HashMap<String,Integer> map = new HashMap<>();
+                    ArrayList<Integer> l = registroJSON.getMateriasTomadas(context);
+                    for (Integer id: l){
+                        map.put("a"+id.toString(),id);
                     }
-                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(registroJSON.getMateriasTomadas(context));
+                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(map);
                 } catch (Exception e) {
                     Toast.makeText(context, "Error al sincronizar", Toast.LENGTH_SHORT).show();
                 }
@@ -252,13 +251,7 @@ public class HorarioFragment extends Fragment {
                 break;
             }
         }
-        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
-        for(GrupoHorarioAdapter g : grupoHorarioAdapters){
-            if(g.getmData().equals(grupoHorarioAdapter.getmData())){
-                materiaHorarioAdapter=g;
-                break;
-            }
-        }
+        materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
@@ -272,16 +265,19 @@ public class HorarioFragment extends Fragment {
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
+                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+                Context context=getContext();
+                for(Integer integer: seleccionados){
+                    try {
+                        registroJSON.aniadirMateriaTomada(integer,context);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             }
         }
-        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),selecs);
-        for(GrupoHorarioAdapter g : grupoHorarioAdapters){
-            if(g.getmData().equals(grupoHorarioAdapter.getmData())){
-                materiaHorarioAdapter=g;
-                break;
-            }
-        }
+        materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
@@ -350,16 +346,7 @@ public class HorarioFragment extends Fragment {
     }
 
 
-    void crearVistas(){
-        ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
-        for(Materia materia: materias){
-            GrupoHorarioAdapter grupoHorarioAdapter=new GrupoHorarioAdapter(materia.getGrupos(),getContext(),seleccionados);
-            grupoHorarioAdapters.add(grupoHorarioAdapter);
-        }
 
-
-
-    }
 }
 
 

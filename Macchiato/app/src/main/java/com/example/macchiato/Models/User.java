@@ -9,25 +9,36 @@ public class User {
     private String email="email vacio";
     private String uid="";
     private String password="";
-    /*public HashMap<String,Integer> materiasAprobadas;
+    public HashMap<String,Integer> materiasAprobadas;
     private HashMap<String,Integer> materiasReprobadas;
     private HashMap<String,Integer> materiasPorTomar;
-    public HashMap<String,Integer> materiasActuales;*/
-    private ArrayList<Integer> materiasAprobadas;
+    public ArrayList<Integer> materiasActuales;
+    /*private ArrayList<Integer> materiasAprobadas;
     private ArrayList<Integer> materiasReprobadas;
     private ArrayList<Integer> materiasPorTomar;
-    public ArrayList<Integer> materiasActuales;
+    public ArrayList<Integer> materiasActuales;*/
 
 
-    public User(){}
+    public User(){
+        materiasAprobadas = new HashMap<>();
+        materiasReprobadas = new HashMap<>();
+        materiasPorTomar = new HashMap<>();
+        materiasActuales = new ArrayList<Integer>();
+
+    }
     public User(String userName,String email,String password){
         this.email=email;
         this.userName=userName;
         this.password=password;
-        materiasActuales = new ArrayList<Integer>();
+        /*materiasActuales = new ArrayList<Integer>();
         materiasAprobadas = new ArrayList<Integer>();
         materiasPorTomar = new ArrayList<Integer>();
-        materiasReprobadas = new ArrayList<Integer>();
+        materiasReprobadas = new ArrayList<Integer>();*/
+         materiasAprobadas = new HashMap<>();
+         materiasReprobadas = new HashMap<>();
+         materiasPorTomar = new HashMap<>();
+        materiasActuales = new ArrayList<Integer>();
+
 
 
 

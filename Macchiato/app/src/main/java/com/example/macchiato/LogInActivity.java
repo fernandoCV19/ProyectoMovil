@@ -133,10 +133,20 @@ public class LogInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
                                     Toast.LENGTH_SHORT).show();
-                            databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).child("materiasActuales").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                    User userProfile = snapshot.getValue(User.class);
+                                    Map<String, Object> map= new HashMap<>();
+                                    LectorFichero lector = new LectorFichero();
+                                    lector.crearJson(getApplicationContext(),map);
+                                    /*for(DataSnapshot postSnapshot :snapshot.getChildren()){
+                                        try {
+                                            map.put(snapshot.getKey(),(HashMap<String, Object>) postSnapshot.getValue());
+                                            Toast.makeText(LogInActivity.this, map.toString(), Toast.LENGTH_SHORT).show();
+                                        }catch (Exception e){}
+
+                                    }*/
+                                    /*User userProfile = snapshot.getValue(User.class);
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile);
                                     try {
@@ -145,7 +155,7 @@ public class LogInActivity extends AppCompatActivity {
                                         e.printStackTrace();
                                     } catch (JSONException e) {
                                         e.printStackTrace();
-                                    }
+                                    }*/
                                 }
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }

@@ -15,11 +15,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONException;
+
+import java.util.ArrayList;
 
 public class Navigation_bottom extends AppCompatActivity {
 
@@ -35,10 +38,16 @@ public class Navigation_bottom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_naivigation_bottom);
-        showSelectedFragment(new MostrarHorarioFragment());
 
-
-        mostrarHorarioFragment=new MostrarHorarioFragment();
+        RegistroJSON registroJSON= new RegistroJSON();
+        ArrayList<Integer> tomadas= new ArrayList<>();
+        try {
+            tomadas= registroJSON.getMateriasTomadas(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mostrarHorarioFragment=new MostrarHorarioFragment(tomadas);
+        showSelectedFragment(mostrarHorarioFragment);
         try {
             materiaFragment= new MateriaFragment();
         } catch (JSONException e) {
