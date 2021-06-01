@@ -98,7 +98,7 @@ public class RegistroJSON {
 
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
-            String m = (String)j.get("materia");
+            String m = ((Long)j.get("materiaID")).intValue()+"";
             int n = ((Long)j.get("nota")).intValue();
             notas.add(new MateriaNota(m,n));
         }
