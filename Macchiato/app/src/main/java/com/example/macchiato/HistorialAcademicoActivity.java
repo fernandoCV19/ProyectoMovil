@@ -272,7 +272,10 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                 } else {
 
                                     recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
+
                                     //adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+
+
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewRepro.setAdapter(adapterReprobadas);
                                     recyclerViewRepro.setHasFixedSize(true);
