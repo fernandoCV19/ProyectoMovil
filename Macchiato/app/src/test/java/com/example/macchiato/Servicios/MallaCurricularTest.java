@@ -43,7 +43,6 @@ public class MallaCurricularTest {
     public void dadoUnEstudianteAproboTodoElPrimerSemestreCuandoQuitarEntoncesAlLlamarGetSiguientesEntoncesDevuelveLasMateriasDelSegundoSemestre(){
         ArrayList<Integer> aprobadas = new ArrayList<>();
         llenarIds(aprobadas, 1, 5);
-        aprobadas.add(1);aprobadas.add(2);aprobadas.add(3);aprobadas.add(4);aprobadas.add(5);
         mallaCurricular.quitar(aprobadas);
 
         ArrayList<Integer> ids = mallaCurricular.getSiguientes();
@@ -143,7 +142,7 @@ public class MallaCurricularTest {
     @Test
     public void dadoUnEstudianteQueAproboTodasLasMateriasCuandoGetSiguientesEntoncesDevuelveProyectoDeGrado2(){
         ArrayList<Integer> aprobadas = new ArrayList<>();
-        llenarIds(aprobadas, 1, 32);
+        llenarIds(aprobadas, 1, 35);
 
         mallaCurricular.quitarVarios(aprobadas);
 

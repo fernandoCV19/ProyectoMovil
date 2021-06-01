@@ -84,17 +84,36 @@ public class MallaCurricular {
 
         requisitos_ia1 = requisitos_TG2 = 2;
     }
+
     public ArrayList<Integer> getSiguientes(){
         ArrayList<Integer> sig = new ArrayList<>();
 
+        int cola_1, cola_2, cola_3, cola_4, cola_5, cola_6, cola_7;
 
-        aniadir(cola1.get(0), cola2.get(0),sig);
-        aniadir(cola2.get(0), cola3.get(0),sig);
-        aniadir(cola3.get(0), cola4.get(0),sig);
-        aniadir(cola4.get(0), cola5.get(0),sig);
-        aniadir(cola5.get(0), cola6.get(0),sig);
-        aniadir(cola6.get(0), cola7.get(0),sig);
-        aniadir(cola7.get(0), 1,sig);
+        cola_1=cola_2=cola_3=cola_4=cola_5=cola_6=cola_7=0;
+        if(cola1.size()!=0)
+            cola_1 = cola1.get(0);
+        if(cola2.size()!=0)
+            cola_2 = cola2.get(0);
+        if(cola3.size()!=0)
+            cola_3 = cola3.get(0);
+        if(cola4.size()!=0)
+            cola_4 = cola4.get(0);
+        if(cola5.size()!=0)
+            cola_5 = cola5.get(0);
+        if(cola6.size()!=0)
+            cola_6 = cola6.get(0);
+        if(cola7.size()!=0)
+            cola_7 = cola7.get(0);
+
+        aniadir(cola_1, cola_2,sig);
+        aniadir(cola_2, cola_3,sig);
+        aniadir(cola_3, cola_4,sig);
+        aniadir(cola_4, cola_5,sig);
+        aniadir(cola_5, cola_6,sig);
+        aniadir(cola_6, cola_7,sig);
+
+        aniadir(cola_7, 0,sig);
 
         Set<String> hs = new HashSet<>();
         hs.addAll((Collection)sig);
@@ -103,6 +122,7 @@ public class MallaCurricular {
 
         return sig;
     }
+
     private void aniadir(int a, int b, ArrayList<Integer> sig){
         int aux = 0;
         if(a == 0) a = b;
@@ -111,7 +131,7 @@ public class MallaCurricular {
         if(a == 29 && requisitos_ia1 == 0) sig.add(a);
         else if(a == 53 && requisitos_TG2 == 0) sig.add(a);
 
-        if(b == 0) return;
+        if(b == 0) sig.add(a);
 
         if(b == 29 && requisitos_ia1 == 0) sig.add(b);
         else if(b == 53 && requisitos_TG2 == 0) sig.add(b);

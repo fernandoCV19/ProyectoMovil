@@ -1,7 +1,5 @@
 package com.example.macchiato.Servicios;
 
-import androidx.core.widget.TextViewCompat;
-
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.GrupoModelParser;
@@ -9,7 +7,6 @@ import com.example.macchiato.Parser.ParserMateriaID;
 
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.regex.MatchResult;
 
 public class ConsultorMaterias {
 
@@ -17,7 +14,7 @@ public class ConsultorMaterias {
 
     private static ArrayList<Materia> materias;
 
-    public   ArrayList<Par> devolverGrupos(ArrayList<Integer>ides ){
+    public   ArrayList<Par> devolverGrupos(ArrayList<Integer>ides){
         ArrayList<Par>res=new ArrayList();
         for (Integer i : ides){
 
