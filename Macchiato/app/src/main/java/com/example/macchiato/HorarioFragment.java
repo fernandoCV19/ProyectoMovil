@@ -45,8 +45,10 @@ import android.widget.Toast;
 
 import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Servicios.RegistroJSON;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 //import com.google.gson.Gson;
@@ -60,6 +62,7 @@ import com.example.macchiato.Servicios.Iniciador;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class HorarioFragment extends Fragment {
@@ -82,6 +85,7 @@ public class HorarioFragment extends Fragment {
     }
     public HorarioFragment(ArrayList<Integer> seleccionados) {
        this.seleccionados=seleccionados;
+
     }
 
     @Override
@@ -225,6 +229,17 @@ public class HorarioFragment extends Fragment {
                     }
                 }
 
+                try {
+                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    HashMap<String,Integer> mapAux= new HashMap<String, Integer>();
+                    for(Integer id: registroJSON.getMateriasTomadas(context)){
+                        mapAux.put(id.toString(),id);
+                    }
+                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(registroJSON.getMateriasTomadas(context));
+                } catch (Exception e) {
+                    Toast.makeText(context, "Error al sincronizar", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

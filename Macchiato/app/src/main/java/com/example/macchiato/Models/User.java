@@ -9,10 +9,14 @@ public class User {
     private String email="email vacio";
     private String uid="";
     private String password="";
-    public HashMap<String,Integer> materiasAprobadas;
+    /*public HashMap<String,Integer> materiasAprobadas;
     private HashMap<String,Integer> materiasReprobadas;
     private HashMap<String,Integer> materiasPorTomar;
-    public HashMap<String,Integer> materiasActuales;
+    public HashMap<String,Integer> materiasActuales;*/
+    private ArrayList<Integer> materiasAprobadas;
+    private ArrayList<Integer> materiasReprobadas;
+    private ArrayList<Integer> materiasPorTomar;
+    public ArrayList<Integer> materiasActuales;
 
 
     public User(){}
@@ -20,16 +24,11 @@ public class User {
         this.email=email;
         this.userName=userName;
         this.password=password;
-        materiasActuales = new HashMap() {
-        };
-        materiasAprobadas = new HashMap();
-        materiasPorTomar = new HashMap();
-        materiasReprobadas = new HashMap();
-        materiasActuales.put("a",123);
-        materiasActuales.put("b",444);
-        materiasAprobadas.put("c",000);
-        materiasPorTomar.put("d",999);
-        materiasPorTomar.put("e",100);
+        materiasActuales = new ArrayList<Integer>();
+        materiasAprobadas = new ArrayList<Integer>();
+        materiasPorTomar = new ArrayList<Integer>();
+        materiasReprobadas = new ArrayList<Integer>();
+
 
 
     }
