@@ -14,7 +14,8 @@ public class Alarma {
                 .putExtra(AlarmClock.EXTRA_MESSAGE, mensaje)
                 .putExtra(AlarmClock.EXTRA_HOUR, hora)
                 .putExtra(AlarmClock.EXTRA_MINUTES, minuto)
-                .putExtra(AlarmClock.EXTRA_DAYS, dias);
+                .putExtra(AlarmClock.EXTRA_DAYS, dias)
+                .putExtra(AlarmClock.EXTRA_SKIP_UI, true);
         return intent;
     }
     public void establerAlarma(String mensaje, int hora, int minuto, ArrayList<Integer> dias,Context context) throws InterruptedException {

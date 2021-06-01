@@ -36,7 +36,7 @@ public class CreadorAlarma {
                 hora = Integer.parseInt(hora_minuto[0]);
                 minuto = Integer.parseInt(hora_minuto[1]);
 
-                alarma.establerAlarma(aula+" "+materia,hora, minuto,dias, context);
+                //alarma.establerAlarma(aula+" "+materia,hora, minuto,dias, context);
                 intents.add(alarma.getIntents(aula+" "+materia,hora, minuto,dias));
             }
         }

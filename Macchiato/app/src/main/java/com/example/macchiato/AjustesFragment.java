@@ -39,8 +39,10 @@ public class AjustesFragment extends Fragment {
         CreadorAlarma ca = new CreadorAlarma();
         try {
             ca.crear(getContext());
-            ArrayList<Intent> intents ;
-            //for(int i=0; i<)
+            ArrayList<Intent> intents = ca.crear(getContext());
+            for(int i=0; i<intents.size(); i++){
+               startActivityForResult( intents.get(i), 501);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
