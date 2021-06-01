@@ -136,9 +136,9 @@ public class LogInActivity extends AppCompatActivity {
                             databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).child("materiasActuales").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                    Map<String, Object> map= new HashMap<>();
+                                    /*Map<String, Object> map= new HashMap<>();
                                     LectorFichero lector = new LectorFichero();
-                                    lector.crearJson(getApplicationContext(),map);
+                                    lector.crearJson(getApplicationContext(),map);*/
                                     /*for(DataSnapshot postSnapshot :snapshot.getChildren()){
                                         try {
                                             map.put(snapshot.getKey(),(HashMap<String, Object>) postSnapshot.getValue());
@@ -146,7 +146,7 @@ public class LogInActivity extends AppCompatActivity {
                                         }catch (Exception e){}
 
                                     }*/
-                                    /*User userProfile = snapshot.getValue(User.class);
+                                    User userProfile = snapshot.getValue(User.class);
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile);
                                     try {
@@ -155,7 +155,7 @@ public class LogInActivity extends AppCompatActivity {
                                         e.printStackTrace();
                                     } catch (JSONException e) {
                                         e.printStackTrace();
-                                    }*/
+                                    }
                                 }
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }

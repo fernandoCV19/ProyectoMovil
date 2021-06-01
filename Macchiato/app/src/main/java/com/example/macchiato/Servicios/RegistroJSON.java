@@ -22,10 +22,10 @@ public class RegistroJSON {
         jo.put("password", "");
         jo.put("uid", "");
         jo.put("User Name", "");
-        jo.put("Materias Aprobadas", new ArrayList<>());
-        jo.put("Materias Reprobadas", new ArrayList<>());
-        jo.put("Materias por Tomar", new ArrayList<>());
-        jo.put("Materias Actuales", new ArrayList<>());
+        jo.put("materiasAprobadas", new ArrayList<>());
+        jo.put("materiasReprobadas", new ArrayList<>());
+        jo.put("materiasPorTomar", new ArrayList<>());
+        jo.put("materiasActuales", new ArrayList<>());
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
@@ -54,9 +54,9 @@ public class RegistroJSON {
         JSONArray notas;
         String campo = "";
         if(nota >50)
-            campo = "Materias Aprobadas";
+            campo = "materiasAprobadas";
         else
-            campo = "Materias Reprobadas";
+            campo = "materiasReprobadas";
 
         notas = (JSONArray) jo.get(campo);
         if(notas == null) notas = new JSONArray();
@@ -112,10 +112,10 @@ public class RegistroJSON {
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
-        JSONArray matsJS = (JSONArray) jo.get("Materias Actuales");
+        JSONArray matsJS = (JSONArray) jo.get("materiasActuales");
 
         for (int i=0; i<matsJS.size(); i++){
-            int m = ((Long)matsJS.get(i)).intValue();
+            int m = ((Double)matsJS.get(i)).intValue();
             mats.add(m);
         }
         return mats;
@@ -126,7 +126,7 @@ public class RegistroJSON {
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
-        JSONArray materias = (JSONArray) jo.get("Materias Actuales");
+        JSONArray materias = (JSONArray) jo.get("materiasActuales");
 
 
         if(materias == null) materias = new JSONArray();
@@ -141,7 +141,7 @@ public class RegistroJSON {
         if(!contiene)
             materias.add(matID);
 
-        jo.put("Materias Actuales", materias);
+        jo.put("materiasActuales", materias);
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
