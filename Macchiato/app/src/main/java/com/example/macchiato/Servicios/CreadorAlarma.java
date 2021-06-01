@@ -2,7 +2,10 @@ package com.example.macchiato.Servicios;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.provider.AlarmClock;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.Grupo;
@@ -12,9 +15,8 @@ import java.util.ArrayList;
 public class CreadorAlarma {
     public CreadorAlarma(){}
 
-    public ArrayList<Intent> crear(Context context) throws Exception {
-        ArrayList <Intent> intents = new ArrayList<>();
-
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public void crear(Context context) throws Exception {
         RegistroJSON rj = new RegistroJSON();
         ConsultorMaterias cm = new ConsultorMaterias();
         ArrayList<Integer> lista = rj.getMateriasTomadas(context);
@@ -36,11 +38,9 @@ public class CreadorAlarma {
                 hora = Integer.parseInt(hora_minuto[0]);
                 minuto = Integer.parseInt(hora_minuto[1]);
 
-                //alarma.establerAlarma(aula+" "+materia,hora, minuto,dias, context);
-                intents.add(alarma.getIntents(aula+" "+materia,hora, minuto,dias));
+                alarma.establerAlarma(aula+" "+materia,hora, minuto,dias, context);
             }
         }
-        return intents;
     }
     public void borrar(Context context) throws Exception {
         RegistroJSON rj = new RegistroJSON();

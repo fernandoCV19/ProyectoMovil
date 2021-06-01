@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
@@ -32,6 +33,7 @@ public class AjustesFragment extends Fragment {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,10 +41,6 @@ public class AjustesFragment extends Fragment {
         CreadorAlarma ca = new CreadorAlarma();
         try {
             ca.crear(getContext());
-            ArrayList<Intent> intents = ca.crear(getContext());
-            for(int i=0; i<intents.size(); i++){
-               startActivityForResult( intents.get(i), 501);
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -84,15 +84,29 @@ public class MallaCurricular {
     }
     public ArrayList<Integer> getSiguientes(){
         ArrayList<Integer> sig = new ArrayList<>();
+        int cola_1, cola_2, cola_3, cola_4, cola_5, cola_6, cola_7;
+        cola_1=cola_2=cola_3=cola_4=cola_5=cola_6=cola_7=1;
+        if(cola1.size()==0)
+            cola_1 = cola1.get(0);
+        else if(cola2.size()==0)
+                cola_2 = cola2.get(0);
+        else if(cola3.size()==0)
+                cola_3 = cola3.get(0);
+        else if(cola4.size()==0)
+                cola_4 = cola4.get(0);
+        else if(cola5.size()==0)
+                cola_5 = cola5.get(0);
+        else if(cola6.size()==0)
+                cola_6 = cola6.get(0);
+        else if(cola7.size()==0)
+                cola_7 = cola7.get(0);
 
-
-        aniadir(cola1.get(0), cola2.get(0),sig);
-        aniadir(cola2.get(0), cola3.get(0),sig);
-        aniadir(cola3.get(0), cola4.get(0),sig);
-        aniadir(cola4.get(0), cola5.get(0),sig);
-        aniadir(cola5.get(0), cola6.get(0),sig);
-        aniadir(cola6.get(0), cola7.get(0),sig);
-
+        aniadir(cola_1, cola_2,sig);
+        aniadir(cola_2, cola_3,sig);
+        aniadir(cola_3, cola_4,sig);
+        aniadir(cola_4, cola_5,sig);
+        aniadir(cola_5, cola_6,sig);
+        aniadir(cola_6, cola_7,sig);
         return sig;
     }
     private void aniadir(int a, int b, ArrayList<Integer> sig){
