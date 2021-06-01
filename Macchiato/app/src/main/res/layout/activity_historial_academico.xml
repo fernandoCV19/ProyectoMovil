@@ -9,9 +9,9 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="4dp"
         android:orientation="vertical"
@@ -45,12 +45,17 @@
                     android:textColor="#090909"
                     android:textSize="18dp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/lista_MateriasReprobadas"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                </androidx.recyclerview.widget.RecyclerView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/lista_MateriasReprobadas"
+                        android:layout_width="match_parent"
+                        android:layout_height="195dp">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+                </FrameLayout>
 
             </LinearLayout>
 
@@ -67,7 +72,7 @@
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Materias Aprobadas"
@@ -77,7 +82,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/list_materiasAprobadas"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="195dp"
                     android:layout_marginBottom="1dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
@@ -88,7 +93,7 @@
                 android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="25dp"
                 android:gravity="right"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +102,7 @@
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/floating_eliminar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:clickable="true"
@@ -107,7 +112,7 @@
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/añadir_floating"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
                     android:layout_marginEnd="10dp"
@@ -122,13 +127,16 @@
                 android:id="@+id/ver_Estadisticas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:text="ver estadisticas"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
