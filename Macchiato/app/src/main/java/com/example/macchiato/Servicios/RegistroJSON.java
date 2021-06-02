@@ -1,6 +1,8 @@
 package com.example.macchiato.Servicios;
 
 import android.content.Context;
+
+import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
 
 import org.json.simple.JSONArray;
@@ -13,10 +15,15 @@ import java.util.ArrayList;
 
 public class RegistroJSON {
     public LectorFichero lf;
+
     public RegistroJSON(){
         lf = new LectorFichero();
     }
-    public void genararVacio(Context context) throws FileNotFoundException, JSONException {
+
+    /*
+    Genera un archivo vacio con los parametros en vacio
+    * */
+    public void genararVacio(Context context, String nombre) throws FileNotFoundException, JSONException {
         JSONObject jo = new JSONObject();
         jo.put("email", "");
         jo.put("password", "");
@@ -27,8 +34,12 @@ public class RegistroJSON {
         jo.put("Materias por Tomar", new ArrayList<>());
         jo.put("Materias Actuales", new ArrayList<>());
 
-        lf.escribirFichero("registro.json", jo.toString(), context);
+        lf.escribirFichero(nombre , jo.toString(), context);
     }
+
+    /*
+    Le das los atributos del usuario y te los escribe en el fichero.
+    * */
     public void registrarUsuario(String email, String password, String uid, String userName, Context context, String nombreArchivo)throws Exception{
 
 
@@ -40,8 +51,12 @@ public class RegistroJSON {
         jo.put("uid", uid);
         jo.put("User Name", userName);
 
-        lf.escribirFichero("registro.json", jo.toString(), context);
+        lf.escribirFichero(nombreArchivo, jo.toString(), context);
     }
+
+    /*
+    Anade una nota al json indicado por parametro
+    * */
     public void aniadirNota(int materiaID, int nota, Context context, String nombreArchivo) throws Exception {
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
@@ -64,9 +79,12 @@ public class RegistroJSON {
 
         jo.put(campo, notas);
 
-        lf.escribirFichero("registro.json", jo.toString(), context);
+        lf.escribirFichero(nombreArchivo, jo.toString(), context);
     }
 
+    /*
+        Indicar el campo e indicar la materia a quitar
+    * */
     public void quitarMateria(String campo, MateriaNota quitar, Context context, String nombreArchivo)throws Exception{
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
@@ -76,7 +94,7 @@ public class RegistroJSON {
 
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
-            String m = ((Long)j.get("materiaID")).intValue() + "";
+            String m = ((Long)j.get("materiaID")).intValue()+"";
             int n = ((Long)j.get("nota")).intValue();
 
             if(m.contains(quitar.getMateria()) && n == quitar.getNota())
@@ -88,6 +106,9 @@ public class RegistroJSON {
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
     }
 
+    /*
+    Indicas el campo y te devuelve todas las notas
+    * */
     public ArrayList<MateriaNota> getMateriaNota(String campo, Context context, String nombreArchivo) throws Exception{
         ArrayList<MateriaNota> notas = new ArrayList<>();
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
@@ -98,13 +119,22 @@ public class RegistroJSON {
 
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
+
+            ArrayList<Integer>ides=new ArrayList<>();
             String m = ((Long)j.get("materiaID")).intValue()+"";
+            ides.add(Integer.parseInt(m));
+            ArrayList<Materia>materias=new ConsultorMaterias().getListaMaterias(ides);
+            Materia materia =materias.get(0);
+            m =materia.getNombre();
             int n = ((Long)j.get("nota")).intValue();
             notas.add(new MateriaNota(m,n));
         }
         return notas;
     }
 
+    /*
+    Materias actuales
+    * */
     public ArrayList<Integer> getMateriasTomadas(Context context, String nombreArchivo) throws Exception{
         ArrayList<Integer> mats = new ArrayList<>();
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
@@ -120,6 +150,9 @@ public class RegistroJSON {
         return mats;
     }
 
+    /*
+    Anadir un grupo
+    * */
     public void aniadirMateriaTomada(int matID, Context context, String nombreArchivo) throws Exception {
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 

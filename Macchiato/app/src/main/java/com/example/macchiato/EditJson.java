@@ -55,7 +55,7 @@ public class EditJson {
             }
         }catch (Exception e){
             RegistroJSON rj = new RegistroJSON();
-            rj.genararVacio(context);
+            rj.genararVacio(context, "registro.json");
             leerFichero(context);
         }
         finally {
