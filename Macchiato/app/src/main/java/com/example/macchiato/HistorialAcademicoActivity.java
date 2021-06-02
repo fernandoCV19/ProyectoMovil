@@ -269,7 +269,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewApro.setAdapter(adapter);
-                                    recyclerViewApro.setHasFixedSize(true);
+                                  //  recyclerViewApro.setHasFixedSize(true);
+                                    
                                     mostrarAprobadas.add(materiaNota);
                                 } else {
 
@@ -282,6 +283,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewRepro.setAdapter(adapterReprobadas);
                                     recyclerViewRepro.setHasFixedSize(true);
+
                                     //  getDisplaySize();
 
                                     mostrarReprobadas.add(materiaNota);
@@ -366,6 +368,22 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+    public void getDisplaySize (){
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        (HistorialAcademicoActivity.this).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        //if you need three fix imageview in width
+        //int devicewidth = displaymetrics.widthPixels / 3;
+
+        //if you need 4-5-6 anything fix imageview in height
+        //int deviceheight = displaymetrics.heightPixels / 4;
+
+       recyclerViewApro.setMinimumWidth(180);
+        recyclerViewApro.setMinimumHeight(185);
+
+
+
 
     }
 
