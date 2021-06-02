@@ -1,6 +1,8 @@
 package com.example.macchiato.Servicios;
 
 import android.content.Context;
+
+import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
 
 import org.json.simple.JSONArray;
@@ -118,7 +120,13 @@ public class RegistroJSON {
 
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
+
+            ArrayList<Integer>ides=new ArrayList<>();
             String m = ((Long)j.get("materiaID")).intValue()+"";
+            ides.add(Integer.parseInt(m));
+            ArrayList<Materia>materias=new ConsultorMaterias().getListaMaterias(ides);
+            Materia materia =materias.get(0);
+            m =materia.getNombre();
             int n = ((Long)j.get("nota")).intValue();
             notas.add(new MateriaNota(m,n));
         }
@@ -148,6 +156,9 @@ public class RegistroJSON {
     * */
     public void aniadirMateriaTomada(int matID, Context context, String nombreArchivo) throws Exception {
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
+
+    public void aniadirMateriaTomada(int matID, Context context) throws Exception {
+        Object obj = new JSONParser().parse(lf.leerFichero(context));
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();

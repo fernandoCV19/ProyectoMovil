@@ -65,6 +65,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation files('libs/json-simple-1.1.jar')
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 
