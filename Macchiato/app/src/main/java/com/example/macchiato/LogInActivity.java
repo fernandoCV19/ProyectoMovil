@@ -138,7 +138,7 @@ public class LogInActivity extends AppCompatActivity {
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                     User userProfile = snapshot.getValue(User.class);
                                     LectorFichero lector = new LectorFichero();
-                                    lector.crearJson(getApplicationContext(),userProfile);
+                                    lector.crearJson(getApplicationContext(),userProfile, "registro.json");
                                     try {
                                         lector.leerFichero(getApplicationContext(), "registro.json");
                                     } catch (FileNotFoundException e) {

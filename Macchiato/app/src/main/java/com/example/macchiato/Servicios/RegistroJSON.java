@@ -29,10 +29,10 @@ public class RegistroJSON {
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
-    public void registrarUsuario(String email, String password, String uid, String userName, Context context)throws Exception{
+    public void registrarUsuario(String email, String password, String uid, String userName, Context context, String nombreArchivo)throws Exception{
 
 
-        Object obj = new JSONParser().parse(lf.leerFichero(context, "registro.json"));
+        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
         JSONObject jo = (JSONObject) obj;
 
         jo.put("email", email);
@@ -42,8 +42,8 @@ public class RegistroJSON {
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
-    public void aniadirNota(int materiaID, int nota, Context context) throws Exception {
-        Object obj = new JSONParser().parse(lf.leerFichero(context, "registro.json"));
+    public void aniadirNota(int materiaID, int nota, Context context, String nombreArchivo) throws Exception {
+        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
         JSONObject jo = (JSONObject) obj;
 
@@ -67,8 +67,8 @@ public class RegistroJSON {
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
 
-    public void quitarMateria(String campo, MateriaNota quitar, Context context)throws Exception{
-        Object obj = new JSONParser().parse(lf.leerFichero(context, "registro.json"));
+    public void quitarMateria(String campo, MateriaNota quitar, Context context, String nombreArchivo)throws Exception{
+        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
@@ -89,9 +89,9 @@ public class RegistroJSON {
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
 
-    public ArrayList<MateriaNota> getMateriaNota(String campo, Context context) throws Exception{
+    public ArrayList<MateriaNota> getMateriaNota(String campo, Context context, String nombreArchivo) throws Exception{
         ArrayList<MateriaNota> notas = new ArrayList<>();
-        Object obj = new JSONParser().parse(lf.leerFichero(context, "registro.json"));
+        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
@@ -99,16 +99,16 @@ public class RegistroJSON {
 
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
-            String m = (String)j.get("materia");
+            String m = ((Long)j.get("materiaID")).intValue()+"";
             int n = ((Long)j.get("nota")).intValue();
             notas.add(new MateriaNota(m,n));
         }
         return notas;
     }
 
-    public ArrayList<Integer> getMateriasTomadas(Context context) throws Exception{
+    public ArrayList<Integer> getMateriasTomadas(Context context, String nombreArchivo) throws Exception{
         ArrayList<Integer> mats = new ArrayList<>();
-        Object obj = new JSONParser().parse(lf.leerFichero(context, "registro.json"));
+        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
@@ -121,8 +121,8 @@ public class RegistroJSON {
         return mats;
     }
 
-    public void aniadirMateriaTomada(int matID, Context context) throws Exception {
-        Object obj = new JSONParser().parse(lf.leerFichero(context, "registro.json"));
+    public void aniadirMateriaTomada(int matID, Context context, String nombreArchivo) throws Exception {
+        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();

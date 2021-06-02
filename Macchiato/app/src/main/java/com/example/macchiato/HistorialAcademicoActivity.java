@@ -183,7 +183,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             try {
                                 RegistroJSON rj = new RegistroJSON();
                                 int idMat = new ParserMateriaID().getID(select);
-                                rj.aniadirNota( idMat,numero,getApplicationContext());
+                                rj.aniadirNota( idMat,numero,getApplicationContext(), "registro.json");
                                 //new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
                             } catch (Exception e) {
                                 e.printStackTrace();
