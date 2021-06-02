@@ -1,27 +1,29 @@
 package com.example.macchiato.Parser;
 
-import android.app.Application;
-import android.content.Context;
 
 import com.example.macchiato.Enums.Dia;
 import com.example.macchiato.Models.Clase;
-import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Models.GrupoModelParser;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ParserMateriaGrupo {
 
-    public ArrayList<GrupoModelParser> parserMateriaGrupo(String json) throws Exception
+    public ArrayList<GrupoModelParser> parserMateriaGrupo(String json)
     {
-        Object obj = new JSONParser().parse(json);
+        Object obj = null;
+        try {
+            obj = new JSONParser().parse(json);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
 
         JSONObject jo =(JSONObject) obj;
         JSONObject joc;

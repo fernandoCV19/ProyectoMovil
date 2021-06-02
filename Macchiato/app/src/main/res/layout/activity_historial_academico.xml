@@ -10,105 +10,134 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="4dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="104dp"
-                android:fontFamily="casual"
-                android:gravity="center"
-                android:text="Materias Aprobadas"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_materiasAprobadas"
+            <LinearLayout
+                android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
-                android:layout_height="260dp">
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="casual"
+                    android:gravity="center"
+                    android:text="Materias Reprobadas"
+                    android:textColor="#090909"
+                    android:textSize="18dp" />
 
-            <TextView
-                android:id="@+id/textView14"
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/lista_MateriasReprobadas"
+                        android:layout_width="match_parent"
+                        android:layout_height="185dp">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="casual"
-                android:gravity="center"
-                android:text="Materias reprobadas"
-                android:textColor="#090909"
-                android:textSize="18dp" />
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/lista_MateriasReprobadas"
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="casual"
+                    android:gravity="center"
+                    android:text="Materias Aprobadas"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_materiasAprobadas"
+                    android:layout_width="match_parent"
+                    android:layout_height="185dp"
+                    android:layout_marginBottom="1dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
-                android:layout_height="260dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="right"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floating_eliminar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    app:backgroundTint="#ff7043"
+                    app:fabSize="mini"
+                    app:srcCompat="@drawable/substract" />
 
-        </LinearLayout>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/añadir_floating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:orientation="horizontal">
+                    android:layout_marginEnd="10dp"
+                    android:clickable="true"
+                    app:backgroundTint="#ff7043"
+                    app:fabSize="mini"
+                    app:srcCompat="@drawable/addn" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/añadir_floating"
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/ver_Estadisticas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="casual"
+                android:gravity="center"
+                android:text="ver estadisticas"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                app:layout_constraintVertical_bias="0.0" />
 
-                android:layout_marginEnd="10dp"
-                android:clickable="true"
-                app:backgroundTint="#ff7043"
-                app:fabSize="mini"
-                app:srcCompat="@drawable/addn" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:clickable="true"
-                app:backgroundTint="#ff7043"
-                app:fabSize="mini"
-                app:srcCompat="@drawable/substract" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/ver_Estadisticas"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="50dp"
-            android:fontFamily="casual"
-            android:gravity="center"
-            android:text="ver estadisticas" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

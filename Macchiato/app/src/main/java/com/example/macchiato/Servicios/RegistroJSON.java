@@ -1,6 +1,8 @@
 package com.example.macchiato.Servicios;
 
 import android.content.Context;
+
+import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
 
 import org.json.simple.JSONArray;
@@ -21,11 +23,11 @@ public class RegistroJSON {
         jo.put("email", "");
         jo.put("password", "");
         jo.put("uid", "");
-        jo.put("User Name", "");
-        jo.put("materias Aprobadas", new ArrayList<>());
-        jo.put("materias Reprobadas", new ArrayList<>());
-        jo.put("materias Por Tomar", new ArrayList<>());
-        jo.put("materias Actuales", new ArrayList<>());
+        jo.put("userName", "");
+        jo.put("materiasAprobadas", new ArrayList<>());
+        jo.put("materiasReprobadas", new ArrayList<>());
+        jo.put("materiasPorTomar", new ArrayList<>());
+        jo.put("materiasActuales", new ArrayList<>());
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
@@ -38,7 +40,7 @@ public class RegistroJSON {
         jo.put("email", email);
         jo.put("password", password);
         jo.put("uid", uid);
-        jo.put("User Name", userName);
+        jo.put("userName", userName);
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
@@ -96,6 +98,7 @@ public class RegistroJSON {
         JSONObject j = new JSONObject();
         JSONArray notasJS = (JSONArray) jo.get(campo);
 
+/*<<<<<<< HEAD
         if(notasJS!=null) {
             for (int i = 0; i < notasJS.size(); i++) {
                 j = (JSONObject) notasJS.get(i);
@@ -103,9 +106,23 @@ public class RegistroJSON {
                 int n = ((Long) j.get("nota")).intValue();
                 notas.add(new MateriaNota(m, n));
             }
+=======*/
+        for(int i=0; i<notasJS.size(); i++){
+            j = (JSONObject)notasJS.get(i);
+
+            ArrayList<Integer>ides=new ArrayList<>();
+            String m = ((Long)j.get("materiaID")).intValue()+"";
+            ides.add(Integer.parseInt(m));
+            ArrayList<Materia>materias=new ConsultorMaterias().getListaMaterias(ides);
+            Materia materia =materias.get(0);
+            m =materia.getNombre();
+            int n = ((Long)j.get("nota")).intValue();
+            notas.add(new MateriaNota(m,n));
+//>>>>>>> HistorialAcademicoNuevo
         }
         return notas;
     }
+
     public ArrayList<Integer> getMateriasTomadas(Context context) throws Exception{
         ArrayList<Integer> mats = new ArrayList<>();
         Object obj = new JSONParser().parse(lf.leerFichero(context));
@@ -121,6 +138,7 @@ public class RegistroJSON {
         }
         return mats;
     }
+
 
     public void aniadirMateriaTomada(int matID, Context context) throws Exception {
         Object obj = new JSONParser().parse(lf.leerFichero(context));
