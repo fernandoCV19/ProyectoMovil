@@ -1,12 +1,17 @@
 package com.example.macchiato.Servicios;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Collection;
 
 public class MallaCurricular {
+
     private ArrayList<Integer> cola1;
     private ArrayList<Integer> cola2;
     private ArrayList<Integer> cola3;
@@ -55,7 +60,6 @@ public class MallaCurricular {
         cola4.add(37);
         cola4.add(44);
         cola4.add(53);
-
         cola5=new ArrayList<>();
         cola5.add(5);
         cola5.add(11);
@@ -65,7 +69,6 @@ public class MallaCurricular {
         cola5.add(35);
         cola5.add(38);
         cola5.add(53);
-
         cola6=new ArrayList<>();
         cola6.add(2);
         cola6.add(10);
@@ -85,24 +88,26 @@ public class MallaCurricular {
 
         requisitos_ia1 = requisitos_TG2 = 2;
     }
+
     public ArrayList<Integer> getSiguientes(){
         ArrayList<Integer> sig = new ArrayList<>();
+
         int cola_1, cola_2, cola_3, cola_4, cola_5, cola_6, cola_7;
 
         cola_1=cola_2=cola_3=cola_4=cola_5=cola_6=cola_7=0;
-        if(cola1.size()==0)
+        if(cola1.size()!=0)
             cola_1 = cola1.get(0);
-        if(cola2.size()==0)
+        if(cola2.size()!=0)
             cola_2 = cola2.get(0);
-        if(cola3.size()==0)
+        if(cola3.size()!=0)
             cola_3 = cola3.get(0);
-        if(cola4.size()==0)
+        if(cola4.size()!=0)
             cola_4 = cola4.get(0);
-        if(cola5.size()==0)
+        if(cola5.size()!=0)
             cola_5 = cola5.get(0);
-        if(cola6.size()==0)
+        if(cola6.size()!=0)
             cola_6 = cola6.get(0);
-        if(cola7.size()==0)
+        if(cola7.size()!=0)
             cola_7 = cola7.get(0);
 
         aniadir(cola_1, cola_2,sig);
@@ -112,12 +117,15 @@ public class MallaCurricular {
         aniadir(cola_5, cola_6,sig);
         aniadir(cola_6, cola_7,sig);
 
+        aniadir(cola_7, 0,sig);
+
         Set<String> hs = new HashSet<>();
         hs.addAll((Collection)sig);
         sig.clear();
         sig.addAll((Collection)hs);
         return sig;
     }
+
     private void aniadir(int a, int b, ArrayList<Integer> sig){
         int aux = 0;
         if(a == 0) a = b;
@@ -126,7 +134,7 @@ public class MallaCurricular {
         if(a == 29 && requisitos_ia1 == 0) sig.add(a);
         else if(a == 53 && requisitos_TG2 == 0) sig.add(a);
 
-        if(b == 0) return;
+        if(b == 0) sig.add(a);
 
         if(b == 29 && requisitos_ia1 == 0) sig.add(b);
         else if(b == 53 && requisitos_TG2 == 0) sig.add(b);
@@ -144,20 +152,6 @@ public class MallaCurricular {
         if(q.contains(cola6.get(0))) cola6.remove(0);
         if(q.contains(cola7.get(0))) cola7.remove(0);
     }
-    public void quitarVarios(ArrayList<Integer> varios){
-        if(varios.contains(22) || varios.contains(18)) requisitos_ia1--;
-        if(varios.contains(44) || varios.contains(43)) requisitos_TG2--;
-
-        for(int i=0; i<varios.size(); i++){
-            if(cola1.contains(varios.get(i))) cola1.remove(varios.get(i));
-            if(cola2.contains(varios.get(i))) cola2.remove(varios.get(i));
-            if(cola3.contains(varios.get(i))) cola3.remove(varios.get(i));
-            if(cola4.contains(varios.get(i))) cola4.remove(varios.get(i));
-            if(cola5.contains(varios.get(i))) cola5.remove(varios.get(i));
-            if(cola6.contains(varios.get(i))) cola6.remove(varios.get(i));
-            if(cola7.contains(varios.get(i))) cola7.remove(varios.get(i));
-        }
-    }
     public ArrayList<Integer> getSinTomar(){
         ArrayList<Integer> sinTomar = new ArrayList<>();
         sinTomar.addAll(cola1);
@@ -172,6 +166,25 @@ public class MallaCurricular {
 
         while(sinTomar.get(0) == 0) sinTomar.remove(0);
 
+        Set<String> hs = new HashSet<>();
+        hs.addAll((Collection)sinTomar);
+        sinTomar.clear();
+        sinTomar.addAll((Collection)hs);
         return sinTomar;
+    }
+
+    public void quitarVarios(ArrayList<Integer> varios){
+        if(varios.contains(22) || varios.contains(18)) requisitos_ia1--;
+        if(varios.contains(44) || varios.contains(43)) requisitos_TG2--;
+
+        for(int i=0; i<varios.size(); i++){
+            if(cola1.contains(varios.get(i))) cola1.remove(varios.get(i));
+            if(cola2.contains(varios.get(i))) cola2.remove(varios.get(i));
+            if(cola3.contains(varios.get(i))) cola3.remove(varios.get(i));
+            if(cola4.contains(varios.get(i))) cola4.remove(varios.get(i));
+            if(cola5.contains(varios.get(i))) cola5.remove(varios.get(i));
+            if(cola6.contains(varios.get(i))) cola6.remove(varios.get(i));
+            if(cola7.contains(varios.get(i))) cola7.remove(varios.get(i));
+        }
     }
 }

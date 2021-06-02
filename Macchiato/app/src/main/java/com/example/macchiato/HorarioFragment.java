@@ -206,7 +206,7 @@ public class HorarioFragment extends Fragment {
                 Context context=getContext();
                 for(Integer integer: seleccionados){
                     try {
-                        registroJSON.aniadirMateriaTomada(integer,context);
+                        registroJSON.aniadirMateriaTomada(integer,context,"registro.json");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

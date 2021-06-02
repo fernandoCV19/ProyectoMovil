@@ -7,13 +7,14 @@ import com.example.macchiato.Parser.ParserMateriaID;
 
 import java.util.HashMap;
 import java.util.ArrayList;
+
 public class ConsultorMaterias {
 
     private static HashMap <Character, ArrayList<Materia>> lisClasificada;
 
     private static ArrayList<Materia> materias;
 
-    public   ArrayList<Par> devolverGrupos(ArrayList<Integer>ides ){
+    public   ArrayList<Par> devolverGrupos(ArrayList<Integer>ides){
         ArrayList<Par>res=new ArrayList();
         for (Integer i : ides){
 
@@ -32,7 +33,7 @@ public class ConsultorMaterias {
         return res;
     }
 
-    public  void clasificarMaterias (ArrayList<GrupoModelParser>listaGrupos){
+    public void clasificarMaterias (ArrayList<GrupoModelParser>listaGrupos){
         iniciarHashMap();
         String materiaActual = "";
         Materia actual = new Materia(0, "", 'A', null,"", "A", null);
@@ -84,8 +85,13 @@ public class ConsultorMaterias {
     public ArrayList<Materia> getListaMaterias(ArrayList<Integer> ids){
         ArrayList<Materia>materiasElegidas = new ArrayList<>();
 
-        for(Integer i: ids){
-            materiasElegidas.add(materias.get(i - 1));
+        for(Integer id:ids){
+            for(Materia materia: materias){
+                if (materia.getId() == id){
+                    materiasElegidas.add(materia);
+                    break;
+                }
+            }
         }
 
         return materiasElegidas;

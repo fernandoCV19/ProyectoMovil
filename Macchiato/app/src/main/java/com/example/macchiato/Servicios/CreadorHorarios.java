@@ -6,17 +6,39 @@ import com.example.macchiato.Models.Materia;
 import java.util.ArrayList;
 
 public class CreadorHorarios {
+
     public ArrayList<Grupo> crearHorario(ArrayList<Materia> materias){
-        int materiaActual = 0;
-        ArrayList<Grupo> horarioActual = new ArrayList<>();
-        ArrayList<Grupo> horarioSeleccionado = new ArrayList<>();
+        ArrayList<Grupo> elegido = new ArrayList<>();
+        boolean primero = true;
 
-        permutacion(materias, materiaActual, horarioActual, horarioSeleccionado);
+        for(int i = 0; i < materias.size(); i++) {
+            if(!primero){
+                Materia aux = materias.remove(0);
+                materias.add(aux);
+            }
 
-        return horarioSeleccionado;
+            int materiaActual = 0;
+            ArrayList<Grupo> horarioActual = new ArrayList<>();
+            ArrayList<Grupo> horarioSeleccionado = new ArrayList<>();
+
+            permutacion(materias, materiaActual, horarioActual, horarioSeleccionado);
+
+            if(horarioSeleccionado.size() > elegido.size()){
+                elegido = new ArrayList<>();
+                for (Grupo g:horarioSeleccionado) {
+                    elegido.add(g);
+                }
+            }
+
+            if (elegido.size() == materias.size()){
+                break;
+            }
+            primero = !primero;
+        }
+        return elegido;
     }
 
-    public void permutacion(ArrayList<Materia> materias, int materiaActual, ArrayList<Grupo> horarioActual, ArrayList<Grupo> horarioSeleccionado){
+    private void permutacion(ArrayList<Materia> materias, int materiaActual, ArrayList<Grupo> horarioActual, ArrayList<Grupo> horarioSeleccionado){
         if(horarioSeleccionado.size() < horarioActual.size()){
             copiarHorario(horarioActual, horarioSeleccionado);
         }
@@ -46,7 +68,7 @@ public class CreadorHorarios {
         }
     }
 
-    public void copiarHorario(ArrayList<Grupo> horarioActual, ArrayList<Grupo> horarioSeleccionado){
+    private void copiarHorario(ArrayList<Grupo> horarioActual, ArrayList<Grupo> horarioSeleccionado){
         horarioSeleccionado.clear();
 
         for(Grupo g: horarioActual){

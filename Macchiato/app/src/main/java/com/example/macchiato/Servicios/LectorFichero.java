@@ -33,18 +33,18 @@ public class LectorFichero {
             e.printStackTrace();
         }
     }
-    public void crearJson(Context context, Map<String,Object> user){
+    public void crearJson(Context context, Map<String,Object> user, String nombreArchivo){
         String myjson = new Gson().toJson(user);
         Toast.makeText(context, myjson, Toast.LENGTH_SHORT).show();
         //Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
-        escribirFichero("registro.json", myjson, context);
-        jsonMap = devolverMapa(context);
+        escribirFichero(nombreArchivo, myjson, context);
+        jsonMap = devolverMapa(context, nombreArchivo);
     }
-    public void crearJson(Context context, User user){
+    public void crearJson(Context context, User user, String nombreArchivo){
         String myjson = new Gson().toJson(user);
         Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         myjson = new Gson().toJson(jsonMap);
-        escribirFichero("registro.json", myjson, context);
+        escribirFichero(nombreArchivo, myjson, context);
     }
 
     public String leerFichero(Context context, String nombreArchivo) throws FileNotFoundException, JSONException {
@@ -62,25 +62,25 @@ public class LectorFichero {
         }catch (Exception e){
             RegistroJSON rj = new RegistroJSON();
             rj.genararVacio(context);
-            return leerFichero(context, "registro.json");
+            return leerFichero(context, nombreArchivo);
         }
         finally {
-           /* if(fileInputStream != null){
+            if(fileInputStream != null){
                 RegistroJSON rj = new RegistroJSON();
                 rj.genararVacio(context);
                 try {
                     fileInputStream.close();
                 }catch (Exception e){}
-            }*/
+            }
         }
         //Toast.makeText(context, stringBuilder.toString(), Toast.LENGTH_SHORT).show();
         return stringBuilder.toString();
     }
 
-    public Map<String,Object> devolverMapa(Context context){
+    public Map<String,Object> devolverMapa(Context context, String nombreArchivo){
         String res="";
         try {
-            res=leerFichero(context, "registro.json");
+            res=leerFichero(context, nombreArchivo);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (JSONException e) {

@@ -19,7 +19,7 @@ public class CreadorAlarma {
     public void crear(Context context) throws Exception {
         RegistroJSON rj = new RegistroJSON();
         ConsultorMaterias cm = new ConsultorMaterias();
-        ArrayList<Integer> lista = rj.getMateriasTomadas(context);
+        ArrayList<Integer> lista = rj.getMateriasTomadas(context, "registro.json");
         ArrayList<ConsultorMaterias.Par> gruposList = cm.devolverGrupos(lista);
         for(ConsultorMaterias.Par p: gruposList){
 
@@ -45,7 +45,7 @@ public class CreadorAlarma {
     public void borrar(Context context) throws Exception {
         RegistroJSON rj = new RegistroJSON();
         ConsultorMaterias cm = new ConsultorMaterias();
-        ArrayList<Integer> lista = rj.getMateriasTomadas(context);
+        ArrayList<Integer> lista = rj.getMateriasTomadas(context,"registro.json");
         ArrayList<ConsultorMaterias.Par> gruposList = cm.devolverGrupos(lista);
 
         for(ConsultorMaterias.Par p: gruposList){

@@ -76,7 +76,7 @@ public class PerfilSesionFragment extends Fragment {
         //correoShow.setText(GlobalApplication.emailAct);
 
         LectorFichero lectorFichero = new LectorFichero();
-        Map<String,Object> map = lectorFichero.devolverMapa(getContext());
+        Map<String,Object> map = lectorFichero.devolverMapa(getContext(),"registro.json");
        // usuarioShow.setText(map.get("userName").toString());
       //  correoShow.setText(map.get("email").toString());
 

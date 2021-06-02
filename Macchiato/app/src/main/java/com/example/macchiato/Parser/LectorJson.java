@@ -28,7 +28,7 @@ public class LectorJson {
             json = new String(buffer, "UTF-8");
         } catch (IOException ex) {
             ex.printStackTrace();
-            return null;
+            return "";
         }
         return json;
 

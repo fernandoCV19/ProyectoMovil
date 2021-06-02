@@ -88,8 +88,8 @@ public class RegisterActivity extends AppCompatActivity {
                             FirebaseUser us= FirebaseAuth.getInstance().getCurrentUser();
                             user.setUid(us.getUid());
                             LectorFichero lector = new LectorFichero();
-                            lector.crearJson(getApplicationContext(),user);
-                            databaseReference.child("Usuarios").child(us.getUid()).setValue(lector.devolverMapa(getApplicationContext())).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            lector.crearJson(getApplicationContext(),user,"registro.json");
+                            databaseReference.child("Usuarios").child(us.getUid()).setValue(lector.devolverMapa(getApplicationContext(),"registro.json")).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){

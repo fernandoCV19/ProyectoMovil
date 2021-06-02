@@ -11,27 +11,30 @@ import java.util.ArrayList;
 
 public class Iniciador {
 
-    LectorJson lectorJson;
+    private LectorJson lectorJson;
 
     public Iniciador(){
         lectorJson = new LectorJson();
     }
 
-    public void iniciar(Context context) throws Exception {
+    public boolean iniciar(Context context) throws Exception {
         if(ConsultorMaterias.getLisClasificada() == null){
             iniciarObjetosIDMateria(context);
             iniciarObjetosMateria(context);
+            return true;
+        }else{
+            return false;
         }
     }
 
-    public void iniciarObjetosIDMateria(Context context) throws Exception {
+    private void iniciarObjetosIDMateria(Context context) throws Exception {
         String json = lectorJson.loadJSONFromAsset("materiasID.json",context);
         ParserMateriaID parserMateriaID = new ParserMateriaID();
         parserMateriaID.iniciarIDs(json);
 
     }
 
-    public void iniciarObjetosMateria(Context context) throws Exception {
+    private void iniciarObjetosMateria(Context context) throws Exception {
         String json = lectorJson.loadJSONFromAsset("materias.json", context);
         ParserMateriaGrupo parserMateriaGrupo = new ParserMateriaGrupo();
         ArrayList<GrupoModelParser> lista = parserMateriaGrupo.parserMateriaGrupo(json);
