@@ -235,7 +235,7 @@ public class HorarioFragment extends Fragment {
                     for (Integer id: l){
                         map.put("a"+id.toString(),id);
                     }*/
-                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(registroJSON.getMateriasTomadas(context));
+                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(registroJSON.getMateriasTomadas(context, "registro.json"));
                 } catch (Exception e) {
                     Toast.makeText(context, "Error al sincronizar", Toast.LENGTH_SHORT).show();
                 }
@@ -261,7 +261,7 @@ public class HorarioFragment extends Fragment {
     void cambiarRecycler() throws Exception {
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         ArrayList<Grupo>   grupos = new ArrayList<>();
-        ArrayList<Integer> selecs=registroJSON.getMateriasTomadas(getContext());
+        ArrayList<Integer> selecs=registroJSON.getMateriasTomadas(getContext(), "registro.json");
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
@@ -269,7 +269,7 @@ public class HorarioFragment extends Fragment {
                 Context context=getContext();
                 for(Integer integer: seleccionados){
                     try {
-                        registroJSON.aniadirMateriaTomada(integer,context);
+                        registroJSON.aniadirMateriaTomada(integer,context, "registro.json");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
