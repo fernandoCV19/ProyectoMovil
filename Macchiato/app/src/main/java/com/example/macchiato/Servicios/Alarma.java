@@ -27,12 +27,9 @@ public class Alarma {
                 .putExtra(AlarmClock.EXTRA_HOUR, hora)
                 .putExtra(AlarmClock.EXTRA_MINUTES, minuto)
                 .putExtra(AlarmClock.EXTRA_DAYS, dias)
-                .putExtra(AlarmClock.EXTRA_SKIP_UI,true)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        String a =intent.getIdentifier();
-        intent.setIdentifier(mensaje);
-        String b =intent.getIdentifier();
-                context.startActivity(intent);
+                .putExtra(AlarmClock.EXTRA_SKIP_UI,true);
+
+        context.startActivity(intent);
     }
     public void cancelarAlarma(String mensaje, Context context){
         Intent alarmIntent = new Intent(AlarmClock.ACTION_DISMISS_ALARM);

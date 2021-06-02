@@ -66,7 +66,6 @@ public class RegistroJSON {
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
-
     public void quitarMateria(String campo, MateriaNota quitar, Context context)throws Exception{
         Object obj = new JSONParser().parse(lf.leerFichero(context, "registro.json"));
 
@@ -76,12 +75,11 @@ public class RegistroJSON {
 
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
-            String m = (String)j.get("materia");
+            String m = ((Long)j.get("materiaID")).intValue() + "";
             int n = ((Long)j.get("nota")).intValue();
 
             if(m.contains(quitar.getMateria()) && n == quitar.getNota())
                 notasJS.remove(i);
-
             break;
         }
         jo.put(campo, notasJS);

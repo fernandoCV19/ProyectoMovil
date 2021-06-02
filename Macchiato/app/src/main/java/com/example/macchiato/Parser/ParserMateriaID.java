@@ -41,7 +41,6 @@ public class ParserMateriaID {
 
     public int getID(String materia){
         return ids.get(materia).id;
-
     }
 
     public ArrayList<String> getRequisitos(String materia){

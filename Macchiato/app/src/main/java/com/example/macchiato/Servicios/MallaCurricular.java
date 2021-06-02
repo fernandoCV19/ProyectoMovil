@@ -1,7 +1,10 @@
 package com.example.macchiato.Servicios;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MallaCurricular {
     private ArrayList<Integer> cola1;
@@ -85,21 +88,22 @@ public class MallaCurricular {
     public ArrayList<Integer> getSiguientes(){
         ArrayList<Integer> sig = new ArrayList<>();
         int cola_1, cola_2, cola_3, cola_4, cola_5, cola_6, cola_7;
-        cola_1=cola_2=cola_3=cola_4=cola_5=cola_6=cola_7=1;
+
+        cola_1=cola_2=cola_3=cola_4=cola_5=cola_6=cola_7=0;
         if(cola1.size()==0)
             cola_1 = cola1.get(0);
-        else if(cola2.size()==0)
-                cola_2 = cola2.get(0);
-        else if(cola3.size()==0)
-                cola_3 = cola3.get(0);
-        else if(cola4.size()==0)
-                cola_4 = cola4.get(0);
-        else if(cola5.size()==0)
-                cola_5 = cola5.get(0);
-        else if(cola6.size()==0)
-                cola_6 = cola6.get(0);
-        else if(cola7.size()==0)
-                cola_7 = cola7.get(0);
+        if(cola2.size()==0)
+            cola_2 = cola2.get(0);
+        if(cola3.size()==0)
+            cola_3 = cola3.get(0);
+        if(cola4.size()==0)
+            cola_4 = cola4.get(0);
+        if(cola5.size()==0)
+            cola_5 = cola5.get(0);
+        if(cola6.size()==0)
+            cola_6 = cola6.get(0);
+        if(cola7.size()==0)
+            cola_7 = cola7.get(0);
 
         aniadir(cola_1, cola_2,sig);
         aniadir(cola_2, cola_3,sig);
@@ -107,6 +111,11 @@ public class MallaCurricular {
         aniadir(cola_4, cola_5,sig);
         aniadir(cola_5, cola_6,sig);
         aniadir(cola_6, cola_7,sig);
+
+        Set<String> hs = new HashSet<>();
+        hs.addAll((Collection)sig);
+        sig.clear();
+        sig.addAll((Collection)hs);
         return sig;
     }
     private void aniadir(int a, int b, ArrayList<Integer> sig){
@@ -121,6 +130,7 @@ public class MallaCurricular {
 
         if(b == 29 && requisitos_ia1 == 0) sig.add(b);
         else if(b == 53 && requisitos_TG2 == 0) sig.add(b);
+        else sig.add(a);
     }
     public void quitar(ArrayList<Integer> q){
         if(q.contains(22) || q.contains(18)) requisitos_ia1--;
