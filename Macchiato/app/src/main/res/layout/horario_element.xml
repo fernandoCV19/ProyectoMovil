@@ -45,6 +45,7 @@
                     android:id="@+id/docente_grupo_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="docente" />
                     android:fontFamily="casual"
                     android:text="TextView" />
 

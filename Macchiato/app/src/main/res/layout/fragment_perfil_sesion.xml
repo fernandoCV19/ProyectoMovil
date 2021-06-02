@@ -5,10 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PerfilFragment">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:background="#ff7043"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Theme.Macchiato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="Perfil"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="48dp"
         android:background="@drawable/fondos_fragments">
 
         <LinearLayout

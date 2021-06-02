@@ -9,32 +9,40 @@ public class User {
     private String email="email vacio";
     private String uid="";
     private String password="";
-    public HashMap<String,Integer> materiasAprobadas;
+    /*public HashMap<String,Integer> materiasAprobadas;
     private HashMap<String,Integer> materiasReprobadas;
     private HashMap<String,Integer> materiasPorTomar;
-    public HashMap<String,Integer> materiasActuales;
+    public ArrayList<Integer> materiasActuales;*/
+    private HashMap<String,Integer> materiasAprobadas;
+    private HashMap<String,Integer> materiasReprobadas;
+    private ArrayList<Integer> materiasPorTomar;
+    public ArrayList<Integer> materiasActuales;
 
 
-    public User(){}
-    public User(String userName,String email,String password){
-        this.email=email;
-        this.userName=userName;
-        this.password=password;
-        materiasActuales = new HashMap() {
-        };
-        materiasAprobadas = new HashMap();
-        materiasPorTomar = new HashMap();
-        materiasReprobadas = new HashMap();
-        materiasActuales.put("a",123);
-        materiasActuales.put("b",444);
-        materiasAprobadas.put("c",000);
-        materiasPorTomar.put("d",999);
-        materiasPorTomar.put("e",100);
+    public User(){
+        materiasAprobadas = new HashMap<>();
+        materiasReprobadas = new HashMap<>();
+        materiasPorTomar = new ArrayList<>();
+        materiasActuales = new ArrayList<>();
+
+    }
+    public User(String userName,String email,String password) {
+        this.email = email;
+        this.userName = userName;
+        this.password = password;
+        /*materiasActuales = new ArrayList<Integer>();
+        materiasAprobadas = new ArrayList<Integer>();
+        materiasPorTomar = new ArrayList<Integer>();
+        materiasReprobadas = new ArrayList<Integer>();*/
+        materiasAprobadas = new HashMap<>();
+        materiasReprobadas = new HashMap<>();
+        materiasPorTomar = new ArrayList<>();
+        materiasActuales = new ArrayList<>();
 
 
     }
 
-    public String getUserName() {
+        public String getUserName() {
         return userName;
     }
 

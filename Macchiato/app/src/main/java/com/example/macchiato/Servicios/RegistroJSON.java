@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RegistroJSON {
     public LectorFichero lf;
@@ -28,11 +29,11 @@ public class RegistroJSON {
         jo.put("email", "");
         jo.put("password", "");
         jo.put("uid", "");
-        jo.put("User Name", "");
-        jo.put("Materias Aprobadas", new ArrayList<>());
-        jo.put("Materias Reprobadas", new ArrayList<>());
-        jo.put("Materias por Tomar", new ArrayList<>());
-        jo.put("Materias Actuales", new ArrayList<>());
+        jo.put("userName", "");
+        jo.put("materiasAprobadas", new ArrayList<>());
+        jo.put("materiasReprobadas", new ArrayList<>());
+        jo.put("materiasPorTomar", new ArrayList<>());
+        jo.put("materiasActuales", new ArrayList<>());
 
         lf.escribirFichero(nombre , jo.toString(), context);
     }
@@ -49,7 +50,7 @@ public class RegistroJSON {
         jo.put("email", email);
         jo.put("password", password);
         jo.put("uid", uid);
-        jo.put("User Name", userName);
+        jo.put("userName", userName);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
     }
@@ -69,9 +70,9 @@ public class RegistroJSON {
         JSONArray notas;
         String campo = "";
         if(nota >50)
-            campo = "Materias Aprobadas";
+            campo = "materiasAprobadas";
         else
-            campo = "Materias Reprobadas";
+            campo = "materiasReprobadas";
 
         notas = (JSONArray) jo.get(campo);
         if(notas == null) notas = new JSONArray();
@@ -118,6 +119,15 @@ public class RegistroJSON {
         JSONObject j = new JSONObject();
         JSONArray notasJS = (JSONArray) jo.get(campo);
 
+/*<<<<<<< HEAD
+        if(notasJS!=null) {
+            for (int i = 0; i < notasJS.size(); i++) {
+                j = (JSONObject) notasJS.get(i);
+                String m = (String) j.get("materia");
+                int n = ((Long) j.get("nota")).intValue();
+                notas.add(new MateriaNota(m, n));
+            }
+=======*/
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
 
@@ -129,6 +139,7 @@ public class RegistroJSON {
             m =materia.getNombre();
             int n = ((Long)j.get("nota")).intValue();
             notas.add(new MateriaNota(m,n));
+//>>>>>>> HistorialAcademicoNuevo
         }
         return notas;
     }
@@ -142,10 +153,12 @@ public class RegistroJSON {
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
-        JSONArray matsJS = (JSONArray) jo.get("Materias Actuales");
+        JSONArray matsJS = (JSONArray) jo.get("materiasActuales");
+
 
         for (int i=0; i<matsJS.size(); i++){
             int m = ((Long)matsJS.get(i)).intValue();
+            //int m = (Integer) matsJS.get(i);
             mats.add(m);
         }
         return mats;
@@ -159,13 +172,14 @@ public class RegistroJSON {
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
-        JSONArray materias = (JSONArray) jo.get("Materias Actuales");
+        JSONArray materias = (JSONArray) jo.get("materiasActuales");
 
 
         if(materias == null) materias = new JSONArray();
         boolean contiene = false;
         for (int i=0; i<materias.size(); i++){
-            int m = ((Long)materias.get(i)).intValue();
+            int m = (((Long)materias.get(i))).intValue();
+            //int m = (Integer)materias.get(i);
             if(m == matID) {
                 contiene = true;
                 break;
@@ -174,7 +188,7 @@ public class RegistroJSON {
         if(!contiene)
             materias.add(matID);
 
-        jo.put("Materias Actuales", materias);
+        jo.put("materiasActuales", materias);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
     }
