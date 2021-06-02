@@ -48,6 +48,6 @@ public class RegistroJSONTest {
     public void dadoUnNombreDeArchivoCuandoGenerarVacioEntoncesCreaUnArchivoYLePoneUnFormatoPredefinido() throws FileNotFoundException, JSONException {
         registroJSON.genararVacio(context, nombreArchivo);
         String contenido = (new LectorFichero()).leerFichero(context,nombreArchivo);
-        assertThat(contenido).isEqualTo("{\"password\":\"\",\"Materias Aprobadas\":[],\"Materias Actuales\":[],\"User Name\":\"\",\"Materias por Tomar\":[],\"email\":\"\",\"uid\":\"\",\"Materias Reprobadas\":[]}");
+        assertThat(contenido).isEqualTo("{\"password\":\"\",\"materiasActuales\":[],\"materiasPorTomar\":[],\"materiasAprobadas\":[],\"email\":\"\",\"materiasReprobadas\":[],\"uid\":\"\",\"userName\":\"\"}");
     }
 }
