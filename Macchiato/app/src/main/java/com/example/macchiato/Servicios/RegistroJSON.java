@@ -132,6 +132,7 @@ public class RegistroJSON {
         JSONObject j = new JSONObject();
         JSONArray matsJS = (JSONArray) jo.get("materiasActuales");
 
+
         for (int i=0; i<matsJS.size(); i++){
             int m = ((Long)matsJS.get(i)).intValue();
             //int m = (Integer) matsJS.get(i);
