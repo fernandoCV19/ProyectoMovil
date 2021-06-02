@@ -216,7 +216,7 @@ public class HorarioFragment extends Fragment {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_SHORT).show();
                 seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
                 Context context=getContext();
                 for(Integer integer: seleccionados){
@@ -230,12 +230,12 @@ public class HorarioFragment extends Fragment {
                 try {
                     DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    HashMap<String,Integer> map = new HashMap<>();
+                    /*HashMap<String,Integer> map = new HashMap<>();
                     ArrayList<Integer> l = registroJSON.getMateriasTomadas(context);
                     for (Integer id: l){
                         map.put("a"+id.toString(),id);
-                    }
-                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(map);
+                    }*/
+                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(registroJSON.getMateriasTomadas(context));
                 } catch (Exception e) {
                     Toast.makeText(context, "Error al sincronizar", Toast.LENGTH_SHORT).show();
                 }

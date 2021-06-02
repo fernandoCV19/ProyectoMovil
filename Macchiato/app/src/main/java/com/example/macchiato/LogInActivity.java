@@ -133,7 +133,7 @@ public class LogInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
                                     Toast.LENGTH_SHORT).show();
-                            databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).child("materiasActuales").addListenerForSingleValueEvent(new ValueEventListener() {
+                            databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                     /*Map<String, Object> map= new HashMap<>();
@@ -156,6 +156,7 @@ public class LogInActivity extends AppCompatActivity {
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
+
                                 }
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }

@@ -22,10 +22,10 @@ public class RegistroJSON {
         jo.put("password", "");
         jo.put("uid", "");
         jo.put("User Name", "");
-        jo.put("materiasAprobadas", new ArrayList<>());
-        jo.put("materiasReprobadas", new ArrayList<>());
-        jo.put("materiasPorTomar", new ArrayList<>());
-        jo.put("materiasActuales", new ArrayList<>());
+        jo.put("materias Aprobadas", new ArrayList<>());
+        jo.put("materias Reprobadas", new ArrayList<>());
+        jo.put("materias Por Tomar", new ArrayList<>());
+        jo.put("materias Actuales", new ArrayList<>());
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
@@ -115,7 +115,8 @@ public class RegistroJSON {
         JSONArray matsJS = (JSONArray) jo.get("materiasActuales");
 
         for (int i=0; i<matsJS.size(); i++){
-            int m = ((Double)matsJS.get(i)).intValue();
+            int m = ((Long)matsJS.get(i)).intValue();
+            //int m = (Integer) matsJS.get(i);
             mats.add(m);
         }
         return mats;
@@ -132,7 +133,8 @@ public class RegistroJSON {
         if(materias == null) materias = new JSONArray();
         boolean contiene = false;
         for (int i=0; i<materias.size(); i++){
-            int m = ((Long)materias.get(i)).intValue();
+            int m = (((Long)materias.get(i))).intValue();
+            //int m = (Integer)materias.get(i);
             if(m == matID) {
                 contiene = true;
                 break;
