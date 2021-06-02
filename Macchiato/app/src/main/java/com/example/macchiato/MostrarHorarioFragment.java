@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 
@@ -32,6 +33,7 @@ public class MostrarHorarioFragment extends Fragment {
     Toolbar toolbar;
     ArrayList<Integer> list;
     RecyclerView recyclerView;
+
     public MostrarHorarioFragment(){
         list = new ArrayList<>();
     }
@@ -103,7 +105,9 @@ public class MostrarHorarioFragment extends Fragment {
         ArrayList<Materia> n;
         switch(id) {
             case R.id.cambiar_a_generar:
+
                 HorarioFragment mostrarHorarioFragment=new HorarioFragment(list);
+
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);

@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MostrarHorarioAdapter extends RecyclerView.Adapter<MostrarHorarioAdapter.ViewHolder> {
+public class  MostrarHorarioAdapter extends RecyclerView.Adapter<MostrarHorarioAdapter.ViewHolder> {
     private List<Grupo> mData;
     private ArrayList<Integer> seleccionados;
     private LayoutInflater mInflater;

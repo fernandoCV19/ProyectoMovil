@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,6 +54,12 @@ public class LectorFichero {
     public void crearJson(Context context, User user, String nombreArchivo){
         String myjson = new Gson().toJson(user);
         Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+        ArrayList<Double> aux = (ArrayList<Double>) jsonMap.get("materiasActuales");
+        ArrayList<Integer> aux2= new ArrayList<>();
+        for(Double d:aux){
+            aux2.add(d.intValue());
+        }
+        jsonMap.put("materiasActuales",aux2);
         myjson = new Gson().toJson(jsonMap);
         escribirFichero(nombreArchivo, myjson, context);
     }

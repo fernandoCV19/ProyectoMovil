@@ -2,6 +2,7 @@ package com.example.macchiato;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,8 +45,10 @@ import android.widget.Toast;
 
 import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Servicios.RegistroJSON;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 //import com.google.gson.Gson;
@@ -59,6 +62,7 @@ import com.example.macchiato.Servicios.Iniciador;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class HorarioFragment extends Fragment {
@@ -72,7 +76,7 @@ public class HorarioFragment extends Fragment {
     GrupoHorarioAdapter materiaHorarioAdapter;
     ArrayList<Materia> materias;
     ArrayList<Grupo>   grupos;
-    ArrayList<GrupoHorarioAdapter> grupoHorarioAdapters;
+
     Button guardar;
     RegistroJSON registroJSON;
     public HorarioFragment() {
@@ -80,15 +84,17 @@ public class HorarioFragment extends Fragment {
     }
     public HorarioFragment(ArrayList<Integer> seleccionados) {
        this.seleccionados=seleccionados;
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        grupoHorarioAdapters=new ArrayList<>();
+        registroJSON=new RegistroJSON();
+
         grupos=new ArrayList<>();
-        materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext());
+        materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         View view = inflater.inflate(R.layout.fragment_horario, container, false);
         guardar=view.findViewById(R.id.buttonGuardar);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
@@ -108,7 +114,6 @@ public class HorarioFragment extends Fragment {
             e.printStackTrace();
         }
 
-        crearVistas();
         ConsultorMaterias cs =new ConsultorMaterias();
         HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
         Character [] nomNiveles =new Character[9];
@@ -123,9 +128,11 @@ public class HorarioFragment extends Fragment {
         ArrayAdapter<Character> adapter2 = new ArrayAdapter<Character>(getContext(), R.layout.simple_spinner, nomNiveles);
         spinnerNivel.setAdapter(adapter2);
 
+
         spinnerNivel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
 
 
                 selectedClass = parent.getItemAtPosition(position).toString();
@@ -174,8 +181,13 @@ public class HorarioFragment extends Fragment {
 
                 }
                 spinnerMateria.setVisibility(View.VISIBLE);
-                if(select!=null)
-                cambiarRecycler();
+                if(select!=null) {
+                    try {
+                        cambiarRecycler();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             @Override
@@ -187,7 +199,11 @@ public class HorarioFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 select = spinnerMateria.getSelectedItem().toString();
-                cambiarRecycler();
+                try {
+                    cambiarRecycler();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
 
@@ -200,9 +216,8 @@ public class HorarioFragment extends Fragment {
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_SHORT).show();
                 seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
-                registroJSON=new RegistroJSON();
                 Context context=getContext();
                 for(Integer integer: seleccionados){
                     try {
@@ -212,6 +227,18 @@ public class HorarioFragment extends Fragment {
                     }
                 }
 
+                try {
+                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    /*HashMap<String,Integer> map = new HashMap<>();
+                    ArrayList<Integer> l = registroJSON.getMateriasTomadas(context);
+                    for (Integer id: l){
+                        map.put("a"+id.toString(),id);
+                    }*/
+                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(registroJSON.getMateriasTomadas(context));
+                } catch (Exception e) {
+                    Toast.makeText(context, "Error al sincronizar", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -224,36 +251,33 @@ public class HorarioFragment extends Fragment {
                 break;
             }
         }
-        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext());
-        for(GrupoHorarioAdapter g : grupoHorarioAdapters){
-            if(g.getmData().equals(grupoHorarioAdapter.getmData())){
-                materiaHorarioAdapter=g;
-                break;
-            }
-        }
+        materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
 
         return view;
     }
-    void cambiarRecycler(){
+    void cambiarRecycler() throws Exception {
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         ArrayList<Grupo>   grupos = new ArrayList<>();
-
+        ArrayList<Integer> selecs=registroJSON.getMateriasTomadas(getContext());
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
+                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+                Context context=getContext();
+                for(Integer integer: seleccionados){
+                    try {
+                        registroJSON.aniadirMateriaTomada(integer,context);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             }
         }
-        GrupoHorarioAdapter grupoHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext());
-        for(GrupoHorarioAdapter g : grupoHorarioAdapters){
-            if(g.getmData().equals(grupoHorarioAdapter.getmData())){
-                materiaHorarioAdapter=g;
-                break;
-            }
-        }
+        materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
@@ -322,16 +346,7 @@ public class HorarioFragment extends Fragment {
     }
 
 
-    void crearVistas(){
-        ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
-        for(Materia materia: materias){
-            GrupoHorarioAdapter grupoHorarioAdapter=new GrupoHorarioAdapter(materia.getGrupos(),getContext());
-            grupoHorarioAdapters.add(grupoHorarioAdapter);
-        }
 
-
-
-    }
 }
 
 

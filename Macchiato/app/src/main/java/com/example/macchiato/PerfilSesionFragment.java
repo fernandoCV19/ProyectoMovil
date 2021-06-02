@@ -83,20 +83,11 @@ public class PerfilSesionFragment extends Fragment {
         //correoShow.setText(GlobalApplication.emailAct);
 
         LectorFichero lectorFichero = new LectorFichero();
-        Map<String,Object> map = lectorFichero.devolverMapa(getContext(),"registro.json");
-       // usuarioShow.setText(map.get("userName").toString());
-      //  correoShow.setText(map.get("email").toString());
-
-
-
-        /*cambFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(openGallery,1000);
-            }
-        });*/
-
+        Map<String,Object> map = lectorFichero.devolverMapa(getContext());
+        if(map.get("userName")!=null && map.get("email")!=null) {
+            usuarioShow.setText(map.get("userName").toString());
+            correoShow.setText(map.get("email").toString());
+        }
         Button btnDes = (Button) view.findViewById(R.id.id_descargas);
         btnDes.setOnClickListener(new View.OnClickListener() {
             @Override
