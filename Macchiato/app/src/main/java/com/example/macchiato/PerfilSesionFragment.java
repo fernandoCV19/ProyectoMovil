@@ -1,14 +1,20 @@
 package com.example.macchiato;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +25,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.macchiato.Models.GlobalApplication;
+import com.example.macchiato.Models.User;
+import com.example.macchiato.Servicios.LectorFichero;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,23 +40,29 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class PerfilSesionFragment extends Fragment {
 
     private FirebaseAuth auth;
-    private FirebaseUser user;
     private DatabaseReference reference;
-    private String thisUserId;
-    StorageReference storageReference;
+    private User userProfile;
     TextView usuarioShow,correoShow;
-    ImageButton  cambFoto;
     ImageView profileImage;
     public PerfilSesionFragment() {
-        // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,46 +71,76 @@ public class PerfilSesionFragment extends Fragment {
         auth=FirebaseAuth.getInstance();
         usuarioShow= (TextView) view.findViewById(R.id.usuarioActual_id);
         correoShow= (TextView) view.findViewById(R.id.correoActual_id);
-        user= FirebaseAuth.getInstance().getCurrentUser();
-        storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference profileRef = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
+        //user= FirebaseAuth.getInstance().getCurrentUser();
+        //usuarioShow.setText(GlobalApplication.userAct);
+        //correoShow.setText(GlobalApplication.emailAct);
 
-        reference= FirebaseDatabase.getInstance().getReference("User");
-        thisUserId=user.getUid();
-        reference.child(thisUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+        LectorFichero lectorFichero = new LectorFichero();
+        Map<String,Object> map = lectorFichero.devolverMapa(getContext());
+       // usuarioShow.setText(map.get("userName").toString());
+      //  correoShow.setText(map.get("email").toString());
+
+
+
+        /*cambFoto.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userProfile = snapshot.getValue(User.class);
-
-                if(userProfile != null){
-                    //Toast.makeText(InicioActivity2.this, "log in", Toast.LENGTH_SHORT).show();
-                    String userUser= userProfile.getUserName();
-                    String userEmail= userProfile.getEmail();
-                    String userName= userProfile.getFullName();
-
-                    usuarioShow.setText(userUser);
-                    correoShow.setText(userEmail);
-
-                }
+            public void onClick(View v) {
+                Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(openGallery,1000);
             }
+        });*/
 
+        Button btnDes = (Button) view.findViewById(R.id.id_descargas);
+        btnDes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                //Toast.makeText(InicioActivity2.this, "error", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(getActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)==
+                            PackageManager.PERMISSION_DENIED){
+                        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+                        requestPermissions(permissions,1000);
+
+                    }else {
+                        startDownloading();
+                    }
+                }
+                else {
+                    startDownloading();
+                }       
             }
         });
 
-     Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonIniciarSesion);
+
+
+
+
+
+
+
+
+
+
+        Button btnLanzarActivity = (Button) view.findViewById(R.id.buttonIniciarSesion);
+
         btnLanzarActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(auth!=null){
                     auth.signOut();
+                    //GlobalApplication.editJson.crearJson();
                     Intent intent = new Intent(getActivity(),Navigation_bottom.class);
+                    /*LectorFichero lector = new LectorFichero();
+                    lector.crearJson(getApplicationContext(),userProfile);
+                    try {
+                        lector.leerFichero(getApplicationContext());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }*/
                     startActivity(intent);
                     getActivity().finishAffinity();
-                }else{
-                    //Toast.makeText(PerfilSesionFragment.this, "error", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -105,12 +150,29 @@ public class PerfilSesionFragment extends Fragment {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),CambiarPerfilActivity.class);
+                /*Intent intent = new Intent(getActivity(),CambiarPerfilActivity.class);
+                startActivity(intent);*/
+               /*LinkedTreeMap aux = (LinkedTreeMap) map.get("materiasAprobadas");
+                Toast.makeText(getContext(), aux.size(), Toast.LENGTH_SHORT).show();*/
+
+                String a = map.get("materiasActuales").toString();
+                HashMap actuales = new Gson().fromJson(a, new TypeToken<HashMap<String, Object>>() {}.getType());
+                Toast.makeText(getContext(), actuales.get("a").toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), actuales.get("b").toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button historial= (Button) view.findViewById(R.id.buttonHistorial);
+        historial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),HistorialAcademicoActivity.class);
                 startActivity(intent);
             }
         });
         return view;
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -119,28 +181,27 @@ public class PerfilSesionFragment extends Fragment {
             if(resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
                 //profileImage.setImageURI(imageUri);
-                uploadImagesToFirebase(imageUri);
             }
         }
     }
-    private  void uploadImagesToFirebase(Uri imUri){
-        StorageReference fileReference = storageReference.child("users/"+auth.getCurrentUser().getUid()+"/profile.jpg");
-        fileReference.putFile(imUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                //Toast.makeText(getActivity(), "imagen guardada", Toast.LENGTH_SHORT).show();
-                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profileImage);
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "error al subir", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+    private  void  startDownloading(){
+        String url ="http://imagenes.fcyt.umss.edu.bo/Cronograma%20Gestion%201-2021v6.pdf";
+
+        DownloadManager.Request request= new DownloadManager.Request(Uri.parse(url));
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+        request.setTitle("Download");
+        request.setDescription("Descargando archivo");
+
+        request.allowScanningByMediaScanner();
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+System.currentTimeMillis());
+        DownloadManager downloadManager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+        downloadManager.enqueue(request);
     }
+
+
+
+
+
 }

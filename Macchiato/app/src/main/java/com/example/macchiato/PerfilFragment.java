@@ -14,7 +14,6 @@ public class PerfilFragment extends Fragment {
 
 
     public PerfilFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -29,9 +28,9 @@ public class PerfilFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),LogInActivity.class);
                 startActivity(intent);
-                //getActivity().finish();
             }
         });
+
         return view;
     }
 

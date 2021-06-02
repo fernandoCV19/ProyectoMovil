@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    android:clickable="true"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="4dp"
+    app:cardCornerRadius="15dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -32,13 +30,13 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/nomMateria"
+                    android:id="@+id/nomMateriaX"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Materia"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -51,6 +49,33 @@
                     android:gravity="center"
                     android:text="Codigo de materia"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/botonDetalles"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:fontFamily="casual"
+                        android:gravity="center"
+                        android:text="GRUPOS"
+                        android:textColor="@color/black" />
+
+                    <Button
+                        android:id="@+id/requisitos"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="casual"
+                        android:text="requisitos"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
 
             </LinearLayout>
         </RelativeLayout>
