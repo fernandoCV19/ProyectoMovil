@@ -22,17 +22,25 @@ import java.util.Map;
 public class LectorFichero {
     public Map<String,Object> jsonMap;
 
-
-    public void escribirFichero(String fichero, String contenido, Context context){
+    /*
+    * Recibe un String y lo escribe el fichero indicado, reescribe lo que estaba antes
+    * */
+    public boolean escribirFichero(String fichero, String contenido, Context context){
         try {
             OutputStreamWriter archivo = new OutputStreamWriter(context.openFileOutput(fichero, Activity.MODE_PRIVATE));
             archivo.write(contenido);
             archivo.flush();
             archivo.close();
+            return true;
         } catch (IOException e ){
             e.printStackTrace();
+            return false;
         }
     }
+    /*
+
+
+    */
     public void crearJson(Context context, Map<String,Object> user, String nombreArchivo){
         String myjson = new Gson().toJson(user);
         Toast.makeText(context, myjson, Toast.LENGTH_SHORT).show();
@@ -40,6 +48,8 @@ public class LectorFichero {
         escribirFichero(nombreArchivo, myjson, context);
         jsonMap = devolverMapa(context, nombreArchivo);
     }
+
+
     public void crearJson(Context context, User user, String nombreArchivo){
         String myjson = new Gson().toJson(user);
         Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
@@ -47,6 +57,10 @@ public class LectorFichero {
         escribirFichero(nombreArchivo, myjson, context);
     }
 
+
+    /*
+    Recibe un nombre y devuelve en un String -> Si no existe el fichero crea -> Al crear iniciar todos los campos en vacio
+    * */
     public String leerFichero(Context context, String nombreArchivo) throws FileNotFoundException, JSONException {
         FileInputStream fileInputStream = null;
         StringBuilder stringBuilder = new StringBuilder();
@@ -61,13 +75,13 @@ public class LectorFichero {
             }
         }catch (Exception e){
             RegistroJSON rj = new RegistroJSON();
-            rj.genararVacio(context);
+            rj.genararVacio(context, nombreArchivo);
             return leerFichero(context, nombreArchivo);
         }
         finally {
             if(fileInputStream != null){
                 RegistroJSON rj = new RegistroJSON();
-                rj.genararVacio(context);
+                rj.genararVacio(context, nombreArchivo);
                 try {
                     fileInputStream.close();
                 }catch (Exception e){}
@@ -76,6 +90,7 @@ public class LectorFichero {
         //Toast.makeText(context, stringBuilder.toString(), Toast.LENGTH_SHORT).show();
         return stringBuilder.toString();
     }
+
 
     public Map<String,Object> devolverMapa(Context context, String nombreArchivo){
         String res="";
