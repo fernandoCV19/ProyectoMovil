@@ -78,15 +78,6 @@ public class LectorFichero {
             rj.genararVacio(context, nombreArchivo);
             return leerFichero(context, nombreArchivo);
         }
-        finally {
-            if(fileInputStream != null){
-                RegistroJSON rj = new RegistroJSON();
-                rj.genararVacio(context, nombreArchivo);
-                try {
-                    fileInputStream.close();
-                }catch (Exception e){}
-            }
-        }
         //Toast.makeText(context, stringBuilder.toString(), Toast.LENGTH_SHORT).show();
         return stringBuilder.toString();
     }
