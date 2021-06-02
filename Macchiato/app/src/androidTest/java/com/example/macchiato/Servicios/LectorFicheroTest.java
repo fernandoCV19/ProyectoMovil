@@ -22,6 +22,7 @@ public class LectorFicheroTest {
 
     private LectorFichero lectorFichero;
     private Context context;
+    private String nombreArchivo = "registroPrueba.json";
 
     @Before
     public void setUp(){
@@ -31,61 +32,61 @@ public class LectorFicheroTest {
 
     @After
     public void tearDown(){
-        if((new ArrayList<>(Arrays.asList(context.fileList())).contains("registroPrueba.json"))){
-            context.deleteFile("registroPrueba.json");
+        if((new ArrayList<>(Arrays.asList(context.fileList())).contains(nombreArchivo))){
+            context.deleteFile(nombreArchivo);
         }
     }
 
     @Test
     public void dadoUnNombreDeArchivoYUnContenidoCuandoEscribirFicheroEntoncesEscribreUnFicheroConEseNombreDeArchivo(){
-        boolean res = lectorFichero.escribirFichero("registroPrueba.json", "CONTENIDO", context);
+        boolean res = lectorFichero.escribirFichero(nombreArchivo, "CONTENIDO", context);
         assertThat(res).isTrue();
-        ArrayList <String> aux = new ArrayList<String>(Arrays.asList(context.fileList()));
-        assertThat(aux).contains("registroPrueba.json");
+        ArrayList <String> aux = new ArrayList<>(Arrays.asList(context.fileList()));
+        assertThat(aux).contains(nombreArchivo);
     }
 
     @Test
     public void dadoUnNombreDeArchivoYUnContenidoCuandoEscribirFicheroEntoncesEscribreUnFicheroConEseContenido() throws FileNotFoundException, JSONException {
-        boolean res = lectorFichero.escribirFichero("registroPrueba.json", "CONTENIDO", context);
-        String contenido = lectorFichero.leerFichero(context, "registroPrueba.json");
+        boolean res = lectorFichero.escribirFichero(nombreArchivo, "CONTENIDO", context);
+        String contenido = lectorFichero.leerFichero(context, nombreArchivo);
         assertThat(res).isTrue();
         assertThat(contenido).contains("CONTENIDO");
     }
 
     @Test
     public void dadoUnNombreDeArchivoYaExistenteCuandoEscribirFicheroEntoncesReemplazaElContenido() throws FileNotFoundException, JSONException {
-        lectorFichero.escribirFichero("registroPrueba.json", "CONTENIDO", context);
-        lectorFichero.escribirFichero("registroPrueba.json", "contenido", context);
-        String contenido = lectorFichero.leerFichero(context, "registroPrueba.json");
+        lectorFichero.escribirFichero(nombreArchivo, "CONTENIDO", context);
+        lectorFichero.escribirFichero(nombreArchivo, "contenido", context);
+        String contenido = lectorFichero.leerFichero(context, nombreArchivo);
         assertThat(contenido).isEqualTo("contenido");
     }
 
     @Test
     public void dadoUnNombreDeArchivoYaExistenteCuandoLeerFicheroEntoncesDevuelveElContenidoDelArchivo() throws FileNotFoundException, JSONException {
-        lectorFichero.escribirFichero("registroPrueba.json", "CONTENIDO", context);
-        String contenido = lectorFichero.leerFichero(context, "registroPrueba.json");
+        lectorFichero.escribirFichero(nombreArchivo, "CONTENIDO", context);
+        String contenido = lectorFichero.leerFichero(context, nombreArchivo);
         assertThat(contenido).contains("CONTENIDO");
     }
 
     @Test
     public void dadoUnNombreDeArchivoQueNoExisteCuandoLeerFicheroEntoncesCreaElArchivo() throws FileNotFoundException, JSONException {
-        lectorFichero.leerFichero(context, "registroPrueba.json");
+        lectorFichero.leerFichero(context, nombreArchivo);
         ArrayList <String> aux = new ArrayList<>(Arrays.asList(context.fileList()));
-        assertThat(aux).contains("registroPrueba.json");
+        assertThat(aux).contains(nombreArchivo);
     }
 
     @Test
     public void dadoUnNombreDeArchivoQueNoExisteCuandoLeerFicheroEntoncesCreaElArchivoYLoLlenaConUnFormatoPorDefecto() throws FileNotFoundException, JSONException{
-        lectorFichero.leerFichero(context, "registroPrueba.json");
-        String contenido = lectorFichero.leerFichero(context,"registroPrueba.json");
+        lectorFichero.leerFichero(context, nombreArchivo);
+        String contenido = lectorFichero.leerFichero(context,nombreArchivo);
         assertThat(contenido).isNotEmpty();
     }
 
     @Test
     public void dadoUnNombreDeArchivoExistenteCuandoLeerFicheroEntoncesNoModificaElContenidoDelArchivo() throws FileNotFoundException, JSONException {
-        lectorFichero.escribirFichero("registroPrueba.json", "CONTENIDO", context);
-        lectorFichero.leerFichero(context, "registroPrueba.json");
-        String contenido = lectorFichero.leerFichero(context, "registroPrueba.json");
+        lectorFichero.escribirFichero(nombreArchivo, "CONTENIDO", context);
+        lectorFichero.leerFichero(context, nombreArchivo);
+        String contenido = lectorFichero.leerFichero(context, nombreArchivo);
 
         assertThat(contenido).isEqualTo("CONTENIDO");
     }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class RegistroJSON {
     public LectorFichero lf;
+
     public RegistroJSON(){
         lf = new LectorFichero();
     }
