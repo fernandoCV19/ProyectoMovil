@@ -13,15 +13,15 @@ public class User {
     public ArrayList<Integer> materiasActuales;*/
     /*private ArrayList<Integer> materiasAprobadas;
     private ArrayList<Integer> materiasReprobadas;*/
-    private HashMap<String,Integer> materiasAprobadas;
-    private HashMap<String,Integer> materiasReprobadas;
+    private ArrayList<Integer> materiasAprobadas;
+    private ArrayList<Integer> materiasReprobadas;
     private ArrayList<Integer> materiasPorTomar;
     private ArrayList<Integer> materiasActuales;
 
 
     public User(){
-        materiasAprobadas = new HashMap<>();
-        materiasReprobadas = new HashMap<>();
+        materiasAprobadas = new ArrayList<Integer>();
+        materiasReprobadas = new ArrayList<Integer>();
         materiasPorTomar = new ArrayList<>();
         materiasActuales = new ArrayList<>();
 
@@ -34,8 +34,8 @@ public class User {
         materiasAprobadas = new ArrayList<Integer>();
         materiasPorTomar = new ArrayList<Integer>();
         materiasReprobadas = new ArrayList<Integer>();*/
-        materiasAprobadas = new HashMap<>();
-        materiasReprobadas = new HashMap<>();
+        materiasAprobadas = new ArrayList<>();
+        materiasReprobadas = new ArrayList<>();
         materiasPorTomar = new ArrayList<>();
         materiasActuales = new ArrayList<>();
 

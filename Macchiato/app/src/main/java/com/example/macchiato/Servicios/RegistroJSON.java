@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RegistroJSON {
     public LectorFichero lf;
@@ -24,8 +25,8 @@ public class RegistroJSON {
         jo.put("password", "");
         jo.put("uid", "");
         jo.put("userName", "");
-        jo.put("materiasAprobadas", new ArrayList<>());
-        jo.put("materiasReprobadas", new ArrayList<>());
+        jo.put("materiasAprobadas", new HashMap<>());
+        jo.put("materiasReprobadas", new HashMap<>());
         jo.put("materiasPorTomar", new ArrayList<>());
         jo.put("materiasActuales", new ArrayList<>());
 

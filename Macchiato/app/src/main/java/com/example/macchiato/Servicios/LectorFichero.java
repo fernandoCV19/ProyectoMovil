@@ -42,6 +42,7 @@ public class LectorFichero {
         jsonMap = devolverMapa(context);
     }
     public void crearJson(Context context, User user){
+        /*String matAprob*/
         String myjson = new Gson().toJson(user);
         Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         ArrayList<Double> aux = (ArrayList<Double>) jsonMap.get("materiasActuales");
