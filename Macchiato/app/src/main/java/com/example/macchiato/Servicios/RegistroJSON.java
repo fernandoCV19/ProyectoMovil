@@ -25,8 +25,8 @@ public class RegistroJSON {
         jo.put("password", "");
         jo.put("uid", "");
         jo.put("userName", "");
-        jo.put("materiasAprobadas", new HashMap<>());
-        jo.put("materiasReprobadas", new HashMap<>());
+        jo.put("materiasAprobadas", new ArrayList<>());
+        jo.put("materiasReprobadas", new ArrayList<>());
         jo.put("materiasPorTomar", new ArrayList<>());
         jo.put("materiasActuales", new ArrayList<>());
 
