@@ -92,8 +92,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         mostrarReprobadas= new ArrayList<>();
         RegistroJSON registroJSON= new RegistroJSON();
         try {
-            mostrarAprobadas= registroJSON.getMateriaNota("Materias Aprobadas",this);
-            mostrarReprobadas = registroJSON.getMateriaNota("Materias Reprobadas",this);
+            mostrarAprobadas= registroJSON.getMateriaNota("Materias Aprobadas",this, "registro.json");
+            mostrarReprobadas = registroJSON.getMateriaNota("Materias Reprobadas",this, "registro.json");
         } catch (Exception e) {
             e.printStackTrace();
         }

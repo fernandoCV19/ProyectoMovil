@@ -157,9 +157,6 @@ public class RegistroJSON {
     public void aniadirMateriaTomada(int matID, Context context, String nombreArchivo) throws Exception {
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
-    public void aniadirMateriaTomada(int matID, Context context) throws Exception {
-        Object obj = new JSONParser().parse(lf.leerFichero(context));
-
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
         JSONArray materias = (JSONArray) jo.get("Materias Actuales");
