@@ -53,7 +53,7 @@ public class LectorJsonTest {
     public void dadoElNombreDelJsonDondeEstanTodosLosIdsDeLasMateriasYElContextoCuandoEsLlamadoElMetodoLectorEntoncesDeberiaDevolverUnaCadenaDondeSeEncuentranLosIdsDeMateriasYSusRequisitos(){
         String respuesta = lectorJson.loadJSONFromAsset("materiasID.json",context);
         assertThat(respuesta).contains("\"nombreMateria\":\"INGLES I\"");
-        assertThat(respuesta).contains("\"requisitos\":[\"Examen de Ingreso\"]");
+        assertThat(respuesta).contains("\"requisitos\":[\"EXAMEN DE INGRESO\"]");
         assertThat(respuesta).contains("\"requisitos\":[\"PROGRAMACION FUNCIONAL\", \"PROBABILIDAD Y ESTADISTICA\"]");
     }
 

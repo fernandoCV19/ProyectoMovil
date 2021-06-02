@@ -88,6 +88,7 @@ public class RegistroJSON {
 
         lf.escribirFichero("registro.json", jo.toString(), context);
     }
+
     public ArrayList<MateriaNota> getMateriaNota(String campo, Context context) throws Exception{
         ArrayList<MateriaNota> notas = new ArrayList<>();
         Object obj = new JSONParser().parse(lf.leerFichero(context, "registro.json"));
@@ -104,6 +105,7 @@ public class RegistroJSON {
         }
         return notas;
     }
+
     public ArrayList<Integer> getMateriasTomadas(Context context) throws Exception{
         ArrayList<Integer> mats = new ArrayList<>();
         Object obj = new JSONParser().parse(lf.leerFichero(context, "registro.json"));
