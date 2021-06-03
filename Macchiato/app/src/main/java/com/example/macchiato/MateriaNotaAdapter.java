@@ -111,7 +111,7 @@ public class MateriaNotaAdapter extends RecyclerView.Adapter<MateriaNotaAdapter.
 
 
         public void bindData(final MateriaNota item) {
-            nomMateria.setText(item.getMateria());
+            nomMateria.setText(item.getMateriaId());
             int num = item.getNota();
             notaMateria.setText(String.valueOf(num));
             // color.setCardBackgroundColor(Color.parseColor(item.getColor()));

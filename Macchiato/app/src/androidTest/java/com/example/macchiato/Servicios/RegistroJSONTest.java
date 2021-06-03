@@ -174,4 +174,18 @@ public class RegistroJSONTest {
         String contenido = (new LectorFichero()).leerFichero(context,nombreArchivo);
         assertThat(contenido).contains("\"materiasReprobadas\":[{\"materiaID\":1,\"nota\":40}]");
     }
+
+    @Test
+    public void dadoElCampoAprobadoCuandoGetMateriaNotaEntoncesDevuelveTodasLasMateriasAprobadas() throws Exception {
+        Iniciador iniciador = new Iniciador();
+        iniciador.iniciar(context);
+        registroJSON.aniadirNota(1, 80, context, nombreArchivo);
+        registroJSON.aniadirNota(2, 70, context, nombreArchivo);
+        registroJSON.aniadirNota(3, 85, context, nombreArchivo);
+        ArrayList<MateriaNota> materias = registroJSON.getMateriaNota("materiasAprobadas", context, nombreArchivo);
+
+        assertThat(materias.get(0).getNota()).isEqualTo(80);
+        assertThat(materias.get(1).getNota()).isEqualTo(70);
+        assertThat(materias.get(2).getNota()).isEqualTo(85);
+    }
 }
