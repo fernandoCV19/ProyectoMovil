@@ -6,140 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".HistorialAcademicoActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <TextView
+        android:id="@+id/textView14"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="4dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="Materias Reprobadas"
+        android:textColor="#090909"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/lista_MateriasReprobadas" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="Materias Aprobadas"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+    <Button
+        android:id="@+id/ver_Estadisticas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="ver estadisticas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/añadir_floating" />
 
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="casual"
-                    android:gravity="center"
-                    android:text="Materias Reprobadas"
-                    android:textColor="#090909"
-                    android:textSize="18dp" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/añadir_floating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+        android:clickable="true"
+        app:backgroundTint="#ff7043"
+        app:fabSize="mini"
+        app:layout_constraintEnd_toStartOf="@+id/floating_eliminar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_materiasAprobadas"
+        app:srcCompat="@drawable/addn" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/lista_MateriasReprobadas"
-                        android:layout_width="match_parent"
-                        android:layout_height="185dp">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:backgroundTint="#ff7043"
+        app:fabSize="mini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/añadir_floating"
+        app:layout_constraintTop_toBottomOf="@+id/list_materiasAprobadas"
+        app:srcCompat="@drawable/substract" />
 
-                    </androidx.recyclerview.widget.RecyclerView>
-                </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lista_MateriasReprobadas"
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-            </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_materiasAprobadas"
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14">
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="casual"
-                    android:gravity="center"
-                    android:text="Materias Aprobadas"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/list_materiasAprobadas"
-                    android:layout_width="match_parent"
-                    android:layout_height="187dp"
-                    android:layout_marginBottom="1dp">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:gravity="right"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floating_eliminar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:clickable="true"
-                    app:backgroundTint="#ff7043"
-                    app:fabSize="mini"
-                    app:srcCompat="@drawable/substract" />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/añadir_floating"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginEnd="10dp"
-                    android:clickable="true"
-                    app:backgroundTint="#ff7043"
-                    app:fabSize="mini"
-                    app:srcCompat="@drawable/addn" />
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/ver_Estadisticas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="casual"
-                android:gravity="center"
-                android:text="ver estadisticas"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
