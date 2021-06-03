@@ -50,6 +50,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     TextView numMateriasCursa;
     MateriaNotaAdapter adapter;
     MateriaNotaAdapter adapterReprobadas;
+    RegistroJSON rj;
 
 
     public HistorialAcademicoActivity(){
@@ -110,14 +111,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         if(!mostrarReprobadas.isEmpty()) {
             adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
             recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-
-
             recyclerViewRepro.setAdapter(adapterReprobadas);
             recyclerViewRepro.setHasFixedSize(true);
         }
-        
-        
-        
 
             FloatingActionButton fab = findViewById(R.id.añadir_floating);
             fab.setOnClickListener(view -> {
@@ -240,7 +236,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             MateriaNota materiaNota = new MateriaNota(select, numero);
 
                             try {
-                                RegistroJSON rj = new RegistroJSON();
+                                 rj = new RegistroJSON();
                                 int idMat = new ParserMateriaID().getID(select);
                                 rj.aniadirNota( idMat,numero,getApplicationContext(), "registro.json");
                                 //new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
@@ -255,9 +251,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             //    }
                             if (!mostrarAprobadas.contains(materiaNota)) {
                                 Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
-
-
-
                                 recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
                                 recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasReprobadas);
                                 listaMaterias.add(materiaNota);
@@ -266,24 +259,21 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
                                 if (numero >= 51) {
                                     recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewApro.setAdapter(adapter);
-                                    recyclerViewApro.setHasFixedSize(true);
+                                  //  recyclerViewApro.setHasFixedSize(true);
+
+
                                     mostrarAprobadas.add(materiaNota);
                                 } else {
 
                                     recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-
-
-
                                     adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
-
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewRepro.setAdapter(adapterReprobadas);
                                     recyclerViewRepro.setHasFixedSize(true);
-                                    //  getDisplaySize();
 
+                                    //  getDisplaySize();
                                     mostrarReprobadas.add(materiaNota);
                                 }
                             }
@@ -297,6 +287,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         });
                 }
             });
+                getDisplaySize();
             dialog.show();
         });
         FloatingActionButton remove = findViewById(R.id.floating_eliminar);
@@ -309,6 +300,11 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         if (mostrarAprobadas.contains(materiaNota) && adapter != null) {
                             mostrarAprobadas.remove(materiaNota);
                             listaMaterias.remove(materiaNota);
+                            try {
+                                rj.quitarMateria("Materias Aprobadas ",materiaNota,this);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
                             // recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                             recyclerViewApro.setAdapter(adapter);
@@ -324,9 +320,16 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         if (mostrarReprobadas.contains(materiaNotaR) && adapterReprobadas != null) {
                             mostrarReprobadas.remove(materiaNotaR);
                             listaMaterias.remove(materiaNotaR);
+                            try {
+                                rj.quitarMateria("Materias Reprobadas",materiaNotaR,this);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
                             adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
                             //recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                             recyclerViewRepro.setAdapter(adapterReprobadas);
+
                             // calcularPromedios();
 
                         }
@@ -366,6 +369,22 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+    public void getDisplaySize (){
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        (HistorialAcademicoActivity.this).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        //if you need three fix imageview in width
+        //int devicewidth = displaymetrics.widthPixels / 3;
+
+        //if you need 4-5-6 anything fix imageview in height
+        //int deviceheight = displaymetrics.heightPixels / 4;
+
+       recyclerViewApro.setMinimumWidth(180);
+        recyclerViewApro.setMinimumHeight(185);
+
+
+
 
     }
 
