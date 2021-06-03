@@ -301,7 +301,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             mostrarAprobadas.remove(materiaNota);
                             listaMaterias.remove(materiaNota);
                             try {
-                                rj.quitarMateria("Materias Aprobadas ",materiaNota,this);
+                                rj.quitarMateria("Materias Aprobadas ",materiaNota,this,"registro.json");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -321,7 +321,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             mostrarReprobadas.remove(materiaNotaR);
                             listaMaterias.remove(materiaNotaR);
                             try {
-                                rj.quitarMateria("Materias Reprobadas",materiaNotaR,this);
+                                rj.quitarMateria("Materias Reprobadas",materiaNotaR,this,"registro.json");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
