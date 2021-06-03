@@ -28,6 +28,9 @@ import com.example.macchiato.Servicios.EstadisticaHA;
 import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -92,8 +95,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         mostrarReprobadas= new ArrayList<>();
         RegistroJSON registroJSON= new RegistroJSON();
         try {
-            mostrarAprobadas= registroJSON.getMateriaNota("Materias Aprobadas",this, "registro.json");
-            mostrarReprobadas = registroJSON.getMateriaNota("Materias Reprobadas",this, "registro.json");
+            mostrarAprobadas= registroJSON.getMateriaNota("materiasAprobadas",this, "registro.json");
+            mostrarReprobadas = registroJSON.getMateriaNota("materiasReprobadas",this, "registro.json");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -242,17 +245,16 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             try {
                                 RegistroJSON rj = new RegistroJSON();
                                 int idMat = new ParserMateriaID().getID(select);
-                                rj.aniadirNota( idMat,numero,getApplicationContext(), "registro.json");
-                                //new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
+                                rj.aniadirNota(idMat, numero, getApplicationContext(),"registro.json");
+                                //  new RegistroJSON().aniadirNota(new ParserMateriaID().getID(select), numero, getApplicationContext());
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
-                            //  try {
-                            //    new RegistroJSON().aniadirNota(new ParserMateriaID().getID(select), numero, getApplicationContext());
-                            //  } catch (Exception e) {
-                            //       e.printStackTrace();
-                            //    }
+
+
+
+
                             if (!mostrarAprobadas.contains(materiaNota)) {
                                 Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
 

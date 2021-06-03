@@ -1,9 +1,14 @@
 package com.example.macchiato.Servicios;
 
 import android.content.Context;
+import android.widget.Toast;
 
+import com.example.macchiato.HistorialAcademicoActivity;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.simple.JSONArray;
 import org.json.JSONException;
@@ -81,6 +86,13 @@ public class RegistroJSON {
         jo.put(campo, notas);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        try {
+            rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaNota(campo,context,"registro.json"));
+        }catch (Exception e){
+            Toast.makeText(context, "error al sincronzar", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /*
