@@ -26,6 +26,6 @@ public class MateriaNota {
     public void setSeleccionado(boolean seleccionado) {
         this.seleccionado = seleccionado;
     }
-    
+
 
 }

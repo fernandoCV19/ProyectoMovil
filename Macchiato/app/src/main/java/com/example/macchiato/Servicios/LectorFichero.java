@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -60,6 +61,15 @@ public class LectorFichero {
             aux2.add(d.intValue());
         }
         jsonMap.put("materiasActuales",aux2);
+
+        /*ArrayList<MateriaNota> aprobAux = (ArrayList<MateriaNota>) jsonMap.get("materiasAprobadas");
+        ArrayList<MateriaNota> aprobAux2= new ArrayList<>();
+        for(MateriaNota mn:aprobAux){
+            aprobAux2.add(mn);
+        }
+        jsonMap.put("materiasAprobadas",aprobAux2);*/
+
+
         myjson = new Gson().toJson(jsonMap);
         escribirFichero(nombreArchivo, myjson, context);
     }

@@ -130,16 +130,6 @@ public class RegistroJSON {
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
         JSONArray notasJS = (JSONArray) jo.get(campo);
-
-/*<<<<<<< HEAD
-        if(notasJS!=null) {
-            for (int i = 0; i < notasJS.size(); i++) {
-                j = (JSONObject) notasJS.get(i);
-                String m = (String) j.get("materia");
-                int n = ((Long) j.get("nota")).intValue();
-                notas.add(new MateriaNota(m, n));
-            }
-=======*/
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
 
@@ -151,10 +141,10 @@ public class RegistroJSON {
             m =materia.getNombre();
             int n = ((Long)j.get("nota")).intValue();
             notas.add(new MateriaNota(m,n));
-//>>>>>>> HistorialAcademicoNuevo
         }
         return notas;
     }
+
 
     /*
     Materias actuales
