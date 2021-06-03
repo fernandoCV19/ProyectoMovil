@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="@dimen/tamaño_appbar"
         android:background="#ff7043"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Theme.Macchiato">
@@ -22,7 +22,7 @@
             android:fontFamily="casual"
             android:gravity="center"
             android:text="Horario"
-            android:textSize="20sp"
+            android:textSize="@dimen/tamaño_titulo_appbar"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
@@ -30,7 +30,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="@dimen/margin_appbar"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -43,7 +43,7 @@
             android:gravity="center"
             android:text="Nivel"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="@dimen/tamaño_letras_normales" />
 
         <Spinner
             android:id="@+id/spinnerNivel"
@@ -60,7 +60,7 @@
             android:gravity="center"
             android:text="Materia"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="@dimen/tamaño_letras_normales" />
 
         <Spinner
 
@@ -79,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="guardar"
+                android:textSize="@dimen/tamaño_letras_botones"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

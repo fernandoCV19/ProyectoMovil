@@ -12,10 +12,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,9 +26,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:fontFamily="casual"
-            android:paddingStart="10dp"
-            android:paddingEnd="145dp"
             android:text="Contraseña Nueva:"
+            android:textSize="@dimen/tamaño_letras_normales"
             android:textStyle="bold" />
 
         <EditText
@@ -43,7 +39,8 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:fontFamily="casual"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textSize="@dimen/texto_para_escribir" />
 
         <TextView
             android:id="@+id/textView12"
@@ -52,9 +49,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:fontFamily="casual"
-            android:paddingStart="10dp"
-            android:paddingEnd="100dp"
             android:text="Repetir Contraseña Nueva: "
+            android:textSize="@dimen/tamaño_letras_normales"
             android:textStyle="bold" />
 
         <EditText
@@ -66,7 +62,8 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:fontFamily="casual"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textSize="@dimen/texto_para_escribir" />
 
         <Button
             android:id="@+id/button2"
@@ -79,6 +76,7 @@
             android:fontFamily="casual"
             android:onClick="guardarCambios"
             android:text="@string/textListo"
+            android:textSize="@dimen/tamaño_letras_botones"
             android:textStyle="bold" />
 
     </LinearLayout>

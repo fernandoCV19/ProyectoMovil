@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tamaño_titulo_appbar">16sp</dimen>
+    <dimen name="tamaño_letras_normales">14sp</dimen>
+    <dimen name="tamaño_letras_botones">10sp</dimen>
+    <dimen name="tamaño_appbar">35dp</dimen>
+    <dimen name="margin_appbar">36dp</dimen>
+    <dimen name="texto_para_escribir">12sp</dimen>
+</resources>

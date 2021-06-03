@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PerfilFragment">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="@dimen/tamaño_appbar"
         android:background="#ff7043"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Theme.Macchiato"
@@ -23,7 +24,7 @@
             android:fontFamily="casual"
             android:gravity="center"
             android:text="Perfil"
-            android:textSize="20sp"
+            android:textSize="@dimen/tamaño_titulo_appbar"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="8dp" />
@@ -40,9 +41,9 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +58,7 @@
                 android:layout_marginTop="32sp"
                 android:fontFamily="casual"
                 android:text="@string/textUsuario"
-                android:textSize="18sp" />
+                android:textSize="@dimen/tamaño_letras_normales" />
 
             <TextView
                 android:id="@+id/usuarioActual_id"
@@ -67,7 +68,7 @@
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:text="Usuario"
-                android:textSize="16sp" />
+                android:textSize="@dimen/tamaño_letras_normales" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -76,7 +77,7 @@
                 android:layout_marginTop="16sp"
                 android:fontFamily="casual"
                 android:text="Correo Electrónico:"
-                android:textSize="18sp" />
+                android:textSize="@dimen/tamaño_letras_normales" />
 
             <TextView
                 android:id="@+id/correoActual_id"
@@ -86,7 +87,7 @@
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:text="Correo Electrónico"
-                android:textSize="16sp" />
+                android:textSize="@dimen/tamaño_letras_normales" />
 
             <Button
                 android:id="@+id/buttonIniciarSesion"
@@ -96,13 +97,16 @@
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:text="CERRAR SESIÓN"
+                android:textSize="@dimen/tamaño_letras_botones"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/id_descargas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="desc" />
+                android:fontFamily="casual"
+                android:text="desc"
+                android:textSize="@dimen/tamaño_letras_botones" />
 
             <Button
                 android:id="@+id/buttonEditar"
@@ -111,6 +115,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="casual"
                 android:text="CAMBIAR CONTRASEÑA"
+                android:textSize="@dimen/tamaño_letras_botones"
                 android:textStyle="bold" />
 
             <Button
@@ -120,6 +125,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="casual"
                 android:text="historial academico"
+                android:textSize="@dimen/tamaño_letras_botones"
                 android:textStyle="bold" />
 
         </LinearLayout>

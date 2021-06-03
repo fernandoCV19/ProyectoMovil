@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PerfilFragment">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="@dimen/tamaño_appbar"
         android:background="#ff7043"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Theme.Macchiato">
@@ -21,23 +22,22 @@
             android:fontFamily="casual"
             android:gravity="center"
             android:text="Perfil"
-            android:textSize="20sp"
+            android:textSize="@dimen/tamaño_titulo_appbar"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_appbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +53,7 @@
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:text="Para guardar sus datos, inicie sesion"
-                android:textSize="18sp"
+                android:textSize="@dimen/tamaño_letras_normales"
                 android:textStyle="bold" />
 
             <ImageView
@@ -71,6 +71,7 @@
                 android:fontFamily="casual"
                 android:gravity="center"
                 android:text="@string/textIniciar_sesion"
+                android:textSize="@dimen/tamaño_letras_botones"
                 android:textStyle="bold" />
 
         </LinearLayout>

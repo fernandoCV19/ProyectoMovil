@@ -7,10 +7,11 @@
     tools:context=".AjustesFragment"
 
     >
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="@dimen/tamaño_appbar"
         android:background="#ff7043"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Theme.Macchiato">
@@ -19,11 +20,11 @@
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
             android:fontFamily="casual"
             android:gravity="center"
-            android:layout_marginEnd="15dp"
             android:text="Ajustes"
-            android:textSize="20sp"
+            android:textSize="@dimen/tamaño_titulo_appbar"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
@@ -44,7 +45,7 @@
             android:layout_marginEnd="64dp"
             android:fontFamily="casual"
             android:text="Notificaciones"
-            android:textSize="18dp"
+            android:textSize="@dimen/tamaño_letras_normales"
             app:layout_constraintEnd_toStartOf="@+id/switch2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
