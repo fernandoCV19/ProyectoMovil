@@ -110,7 +110,7 @@ public class RegistroJSON {
             String m = ((Long)j.get("materiaID")).intValue()+"";
             int n = ((Long)j.get("nota")).intValue();
 
-            if(m.contains(quitar.getMateria()) && n == quitar.getNota())
+            if(m.contains(quitar.getMateriaId()) && n == quitar.getNota())
                 notasJS.remove(i);
 
             break;
@@ -132,13 +132,7 @@ public class RegistroJSON {
         JSONArray notasJS = (JSONArray) jo.get(campo);
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
-
-            ArrayList<Integer>ides=new ArrayList<>();
             String m = ((Long)j.get("materiaID")).intValue()+"";
-            ides.add(Integer.parseInt(m));
-            ArrayList<Materia>materias=new ConsultorMaterias().getListaMaterias(ides);
-            Materia materia =materias.get(0);
-            m =materia.getNombre();
             int n = ((Long)j.get("nota")).intValue();
             notas.add(new MateriaNota(m,n));
         }
