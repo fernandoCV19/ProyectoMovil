@@ -84,10 +84,10 @@ public class PerfilSesionFragment extends Fragment {
 
         LectorFichero lectorFichero = new LectorFichero();
         Map<String,Object> map = lectorFichero.devolverMapa(getContext(), "registro.json");
-        if(map.get("userName")!=null && map.get("email")!=null) {
+       /* if(map.get("userName")!=null && map.get("email")!=null) {
             usuarioShow.setText(map.get("userName").toString());
             correoShow.setText(map.get("email").toString());
-        }
+        }*/
         Button btnDes = (Button) view.findViewById(R.id.id_descargas);
         btnDes.setOnClickListener(new View.OnClickListener() {
             @Override
