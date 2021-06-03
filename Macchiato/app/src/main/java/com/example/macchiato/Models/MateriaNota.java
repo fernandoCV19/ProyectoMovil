@@ -4,6 +4,7 @@ public class MateriaNota {
     private String materia;
     private int nota;
     private boolean seleccionado;
+
     public MateriaNota(String materia, int nota){
         this.materia = materia;
         this.nota = nota;
