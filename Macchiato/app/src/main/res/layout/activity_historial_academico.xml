@@ -8,37 +8,40 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:gravity="center"
         android:text="Materias Reprobadas"
         android:textColor="#090909"
         android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/list_materiasAprobadas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lista_MateriasReprobadas" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:gravity="center"
         android:text="Materias Aprobadas"
         android:textColor="@color/black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/lista_MateriasReprobadas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/ver_Estadisticas"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:gravity="center"
         android:text="ver estadisticas"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/añadir_floating" />
@@ -51,6 +54,7 @@
         android:clickable="true"
         app:backgroundTint="#ff7043"
         app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/ver_Estadisticas"
         app:layout_constraintEnd_toStartOf="@+id/floating_eliminar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_materiasAprobadas"
@@ -63,6 +67,7 @@
         android:clickable="true"
         app:backgroundTint="#ff7043"
         app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/ver_Estadisticas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/añadir_floating"
         app:layout_constraintTop_toBottomOf="@+id/list_materiasAprobadas"
@@ -70,8 +75,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_MateriasReprobadas"
-        android:layout_width="match_parent"
-        android:layout_height="185dp"
+        android:layout_width="0dp"
+        android:layout_height="195dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
@@ -80,9 +86,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_materiasAprobadas"
-        android:layout_width="match_parent"
-        android:layout_height="185dp"
+        android:layout_width="0dp"
+        android:layout_height="195dp"
+        app:layout_constraintBottom_toTopOf="@+id/añadir_floating"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14">
 
