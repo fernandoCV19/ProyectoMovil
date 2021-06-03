@@ -6,19 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".HistorialAcademicoActivity">
 
-    <TextView
-        android:id="@+id/textView14"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:gravity="center"
-        android:text="Materias Reprobadas"
-        android:textColor="#090909"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_materiasAprobadas"
+        android:layout_height="@dimen/tamaño_appbar"
+        android:background="#ff7043"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Theme.Macchiato"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lista_MateriasReprobadas" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="Historial Academico"
+            android:textSize="@dimen/tamaño_titulo_appbar"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView2"
@@ -31,12 +43,27 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/lista_MateriasReprobadas"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="Materias Reprobadas"
+        android:textColor="#090909"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/list_materiasAprobadas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lista_MateriasReprobadas" />
 
     <Button
         android:id="@+id/ver_Estadisticas"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:gravity="center"
@@ -56,7 +83,6 @@
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@+id/ver_Estadisticas"
         app:layout_constraintEnd_toStartOf="@+id/floating_eliminar"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_materiasAprobadas"
         app:srcCompat="@drawable/addn" />
 
@@ -69,20 +95,8 @@
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@+id/ver_Estadisticas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/añadir_floating"
         app:layout_constraintTop_toBottomOf="@+id/list_materiasAprobadas"
         app:srcCompat="@drawable/substract" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lista_MateriasReprobadas"
-        android:layout_width="0dp"
-        android:layout_height="195dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-    </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_materiasAprobadas"
@@ -93,6 +107,17 @@
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lista_MateriasReprobadas"
+        android:layout_width="0dp"
+        android:layout_height="195dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
     </androidx.recyclerview.widget.RecyclerView>
 
