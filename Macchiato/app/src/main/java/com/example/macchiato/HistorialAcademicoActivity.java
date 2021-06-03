@@ -66,9 +66,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         listaMaterias = new ArrayList<>();
 
     }
-
-
-
     public ArrayList<MateriaNota> getMostrarAprobadas() {
         return mostrarAprobadas;
     }
