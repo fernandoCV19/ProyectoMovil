@@ -22,7 +22,7 @@
             android:text="@string/txt_nivel"
             android:textAlignment="textStart"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="@dimen/texto_dialog" />
 
         <Spinner
             android:id="@+id/nivel"
@@ -51,7 +51,7 @@
             android:text="@string/txt_materia"
             android:textAlignment="textStart"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="@dimen/texto_dialog" />
 
         <Spinner
             android:id="@+id/materia"
@@ -80,7 +80,7 @@
             android:text="@string/txt_nota"
             android:textAlignment="textStart"
             android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:textSize="@dimen/texto_dialog" />
 
         <EditText
             android:id="@+id/editText"
@@ -88,7 +88,8 @@
             android:layout_height="wrap_content"
             android:layout_weight=".3"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:textSize="@dimen/texto_dialog" />
 
 
     </LinearLayout>
@@ -115,7 +116,7 @@
             android:text="@string/txt_selectColor"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textSize="18sp"
+            android:textSize="@dimen/tamaño_letras_botones"
             android:textStyle="bold" />
     </LinearLayout>
 

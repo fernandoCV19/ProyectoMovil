@@ -11,5 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:fontFamily="casual"
-        android:text="CheckBox" />
+        android:text="CheckBox"
+        android:textSize="@dimen/texto_checkbox" />
 </RelativeLayout>
