@@ -133,45 +133,45 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         case "A":
 
                             mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    android.R.layout.simple_spinner_dropdown_item,
+                                   R.layout.simple_spinner,
                                     getResources().getStringArray(R.array.nivelA)));
                             break;
 
                         case "B":
                             mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    android.R.layout.simple_spinner_dropdown_item,
+                                    R.layout.simple_spinner,
                                     getResources().getStringArray(R.array.nivelB)));
                             break;
 
                         case "C":
                             mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    android.R.layout.simple_spinner_dropdown_item,
+                                    R.layout.simple_spinner,
                                     getResources().getStringArray(R.array.nivelC)));
                             break;
 
                         case "D":
                             mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    android.R.layout.simple_spinner_dropdown_item,
+                                    R.layout.simple_spinner,
                                     getResources().getStringArray(R.array.nivelD)));
                             break;
                         case "E":
                             mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    android.R.layout.simple_spinner_dropdown_item,
+                                    R.layout.simple_spinner,
                                     getResources().getStringArray(R.array.nivelE)));
                             break;
                         case "F":
                             mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    android.R.layout.simple_spinner_dropdown_item,
+                                    R.layout.simple_spinner,
                                     getResources().getStringArray(R.array.nivelF)));
                             break;
                         case "G":
                             mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    android.R.layout.simple_spinner_dropdown_item,
+                                    R.layout.simple_spinner,
                                     getResources().getStringArray(R.array.nivelG)));
                             break;
                         case "H":
                             mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    android.R.layout.simple_spinner_dropdown_item,
+                                    R.layout.simple_spinner,
                                     getResources().getStringArray(R.array.nivelH)));
                             break;
 
