@@ -35,8 +35,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-/*=======
->>>>>>> HistorialAcademicoNuevo*/
 
     <LinearLayout
         android:id="@+id/linearLayout2"
