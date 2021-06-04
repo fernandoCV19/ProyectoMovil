@@ -220,10 +220,18 @@ public class HorarioFragment extends Fragment {
                 seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
                 Context context=getContext();
                 for(Integer integer: seleccionados){
-                    try {
-                        registroJSON.aniadirMateriaTomada(integer,context,"registro.json");
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    if(integer>0) {
+                        try {
+                            registroJSON.aniadirMateriaTomada(integer, context, "registro.json");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        try {
+                            registroJSON.quitarMateria(integer*(-1),"materiasActuales", context, "registro.json");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -255,10 +263,18 @@ public class HorarioFragment extends Fragment {
                 seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
                 Context context=getContext();
                 for(Integer integer: seleccionados){
-                    try {
-                        registroJSON.aniadirMateriaTomada(integer,context, "registro.json");
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    if(integer>0) {
+                        try {
+                            registroJSON.aniadirMateriaTomada(integer, context, "registro.json");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        try {
+                            registroJSON.quitarMateria(integer*(-1),"materiasActuales", context, "registro.json");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
                 break;
