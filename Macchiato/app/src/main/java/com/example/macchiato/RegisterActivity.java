@@ -72,7 +72,6 @@ public class  RegisterActivity extends AppCompatActivity {
             mensajeError(confirm_R,"ingrese la contrasena de nuevo");
             return;
         }
-
         if (!pp.equals(p)){
             mensajeError(confirm_R,"la contrasena no coincide con la anterior");
             return;
@@ -94,7 +93,6 @@ public class  RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(RegisterActivity.this, "exito", Toast.LENGTH_SHORT).show();
-
                                         startActivity(new Intent(RegisterActivity.this,Navigation_bottom.class));
                                         finishAffinity();
                                     }
@@ -113,14 +111,11 @@ public class  RegisterActivity extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         firebaseAuth = FirebaseAuth.getInstance();
-
     }
-
     private void mensajeError(EditText cont,String texto){
         cont.setError(texto);
         cont.requestFocus();
     }
-
     private void asignarId(){
         user_R= findViewById(R.id.editTextTextPersonName);
         email_R=findViewById(R.id.editTextTextEmailAddress2);

@@ -22,9 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CambiarPerfilActivity extends AppCompatActivity {
     EditText contAct,contNueva,contConfir;
-    //private FirebaseUser user;
-    //private DatabaseReference reference;
-    //private String thisUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,6 @@ public class CambiarPerfilActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_cambiar_perfil);
         asignarId();
-        inicializarUser();
     }
 
     public void guardarCambios(View view){
@@ -67,14 +63,8 @@ public class CambiarPerfilActivity extends AppCompatActivity {
     }
 
     private void asignarId(){
-      //  contAct = findViewById(R.id.cc_contrActual_id);
         contNueva = findViewById(R.id.cc_contrNueva_id);
         contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
-    }
-    private void inicializarUser(){
-        //user = FirebaseAuth.getInstance().getCurrentUser();
-        //reference= FirebaseDatabase.getInstance().getReference("User");
-        //thisUserId=user.getUid();
     }
     private void mensajeError(EditText cont,String texto){
         cont.setError(texto);

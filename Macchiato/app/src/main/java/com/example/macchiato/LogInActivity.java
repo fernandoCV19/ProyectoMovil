@@ -136,18 +136,6 @@ public class LogInActivity extends AppCompatActivity {
                             databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                    /*Map<String, Object> map= new HashMap<>();
-                                    LectorFichero lector = new LectorFichero();
-                                    lector.crearJson(getApplicationContext(),map);*/
-                                    /*for(DataSnapshot postSnapshot :snapshot.getChildren()){
-                                        try {
-                                            map.put(snapshot.getKey(),(HashMap<String, Object>) postSnapshot.getValue());
-                                            Toast.makeText(LogInActivity.this, map.toString(), Toast.LENGTH_SHORT).show();
-                                        }catch (Exception e){}
-
-                                    }*/
-
-
                                     User userProfile = snapshot.getValue(User.class);
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile, "registro.json");
