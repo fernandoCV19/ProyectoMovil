@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Models.User;
 import com.example.macchiato.Servicios.LectorFichero;
 import com.google.android.gms.tasks.OnCompleteListener;
