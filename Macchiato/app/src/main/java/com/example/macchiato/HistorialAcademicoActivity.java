@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,13 +19,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Parser.ParserMateriaID;
+import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.EstadisticaHA;
 import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -39,6 +36,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     EditText editText;
     ArrayList<MateriaNota> mostrarAprobadas;
     ArrayList<MateriaNota> mostrarReprobadas;
+    ArrayList<MateriaNota> listaAprobadasID;
+    ArrayList<MateriaNota> listaRebrobadasID;
     RecyclerView recyclerViewApro;
     RecyclerView recyclerViewRepro;
     Button button;
@@ -51,69 +50,74 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     MateriaNotaAdapter adapter;
     MateriaNotaAdapter adapterReprobadas;
     RegistroJSON rj;
+    ConsultorMaterias consultorMaterias;
 
 
-    public HistorialAcademicoActivity(){
+    public HistorialAcademicoActivity() {
 
         mostrarAprobadas = new ArrayList<>();
         mostrarReprobadas = new ArrayList<>();
         listaMaterias = new ArrayList<>();
     }
 
-    public HistorialAcademicoActivity(ArrayList<MateriaNota> mostrarAprobadas,ArrayList<MateriaNota> mostrarReprobadas){
+    public HistorialAcademicoActivity(ArrayList<MateriaNota> mostrarAprobadas, ArrayList<MateriaNota> mostrarReprobadas) {
         this.mostrarAprobadas = mostrarReprobadas;
         this.mostrarReprobadas = mostrarReprobadas;
         listaMaterias = new ArrayList<>();
 
-    }
-    public ArrayList<MateriaNota> getMostrarAprobadas() {
-        return mostrarAprobadas;
+
     }
 
-    public void setMostrarAprobadas(ArrayList<MateriaNota> mostrarAprobadas) {
-        this.mostrarAprobadas = mostrarAprobadas;
-    }
-
-    public ArrayList<MateriaNota> getMostrarReprobadas() {
-        return mostrarReprobadas;
-    }
-
-    public void setMostrarReprobadas(ArrayList<MateriaNota> mostrarReprobadas) {
-        this.mostrarReprobadas = mostrarReprobadas;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_academico);
-        mostrarAprobadas= new ArrayList<>();
-        mostrarReprobadas= new ArrayList<>();
-        RegistroJSON registroJSON= new RegistroJSON();
+        mostrarAprobadas = new ArrayList<>();
+        mostrarReprobadas = new ArrayList<>();
+        listaAprobadasID = new ArrayList<>();
+        listaRebrobadasID = new ArrayList<>();
+        RegistroJSON registroJSON = new RegistroJSON();
         try {
-            mostrarAprobadas= registroJSON.getMateriaNota("Materias Aprobadas",this, "registro.json");
-            mostrarReprobadas = registroJSON.getMateriaNota("Materias Reprobadas",this, "registro.json");
+            listaAprobadasID = registroJSON.getMateriaNota("Materias Aprobadas", this, "registro.json");
+            listaRebrobadasID = registroJSON.getMateriaNota("Materias Reprobadas", this, "registro.json");
+           consultorMaterias = new ConsultorMaterias();
+            for (MateriaNota materiaNota : listaAprobadasID) {
+                String nombre = consultorMaterias.getNombreMateria(materiaNota.getMateriaId());
+                MateriaNota materiaNota1 = new MateriaNota(nombre, materiaNota.getNota());
+                mostrarAprobadas.add(materiaNota1);
+                listaMaterias.add(materiaNota1);
+            }
+            for (MateriaNota materiaNota : listaRebrobadasID) {
+                String nombre = consultorMaterias.getNombreMateria(materiaNota.getMateriaId());
+                MateriaNota materiaNota1 = new MateriaNota(nombre, materiaNota.getNota());
+                mostrarReprobadas.add(materiaNota1);
+                listaMaterias.add(materiaNota1);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
-        recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasReprobadas);
-        if(!mostrarAprobadas.isEmpty()){
-            recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
+        EstadisticaHA estadisticaHA = new EstadisticaHA(listaMaterias, mostrarAprobadas);
+        estadisticaHA.calcularPromedioGeneral();
+        estadisticaHA.calcularPromedioMateriasA();
+        recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasReprobadas);
+        recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasAprobadas);
+        if (!mostrarAprobadas.isEmpty()) {
             adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
             recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-
             recyclerViewApro.setAdapter(adapter);
             recyclerViewApro.setHasFixedSize(true);
         }
-        if(!mostrarReprobadas.isEmpty()) {
+        if (!mostrarReprobadas.isEmpty()) {
             adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
             recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
             recyclerViewRepro.setAdapter(adapterReprobadas);
             recyclerViewRepro.setHasFixedSize(true);
         }
 
-            FloatingActionButton fab = findViewById(R.id.añadir_floating);
-            fab.setOnClickListener(view -> {
+        FloatingActionButton fab = findViewById(R.id.añadir_floating);
+        fab.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
             View view1 = getLayoutInflater().inflate(R.layout.layout_dialog, null);
             //spinners
@@ -130,7 +134,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         case "A":
 
                             mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                   R.layout.simple_spinner,
+                                    R.layout.simple_spinner,
                                     getResources().getStringArray(R.array.nivelA)));
                             break;
 
@@ -232,35 +236,33 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             }
                             MateriaNota materiaNota = new MateriaNota(select, numero);
 
-                            try {
-                                 rj = new RegistroJSON();
-                                int idMat = new ParserMateriaID().getID(select);
-                                rj.aniadirNota( idMat,numero,getApplicationContext(), "registro.json");
-                                //new RegistroJSON().aniadirNota( new ParserMateriaID().getID(select),numero,getApplicationContext());
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
 
-                            //  try {
-                            //    new RegistroJSON().aniadirNota(new ParserMateriaID().getID(select), numero, getApplicationContext());
-                            //  } catch (Exception e) {
-                            //       e.printStackTrace();
-                            //    }
+
                             if (!mostrarAprobadas.contains(materiaNota)) {
                                 Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
-                                recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasAprobadas);
-                                recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasReprobadas);
+                                recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasReprobadas);
+                                recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasAprobadas);
                                 listaMaterias.add(materiaNota);
-                                adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
-                                adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
+
+
+                                try {
+                                    rj = new RegistroJSON();
+
+                                    int idMat = new ParserMateriaID().getID(select);
+                                    rj.aniadirNota(idMat, numero, getApplicationContext(), "registro.json");
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+
+                               adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+                               adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
 
                                 if (numero >= 51) {
                                     recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewApro.setAdapter(adapter);
-                                  //  recyclerViewApro.setHasFixedSize(true);
-
-
+                                    recyclerViewApro.setHasFixedSize(true);
                                     mostrarAprobadas.add(materiaNota);
                                 } else {
 
@@ -269,71 +271,73 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                     recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
                                     recyclerViewRepro.setAdapter(adapterReprobadas);
                                     recyclerViewRepro.setHasFixedSize(true);
-
-                                    //  getDisplaySize();
                                     mostrarReprobadas.add(materiaNota);
                                 }
                             }
                         }
 
-                            //if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Elige un nivel")) {
-                            //  }
-
-
-
-                        });
+                        //if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Elige un nivel")) {
+                        //  }
+                    });
                 }
             });
-                getDisplaySize();
             dialog.show();
         });
         FloatingActionButton remove = findViewById(R.id.floating_eliminar);
         remove.setOnClickListener(vie -> {
-
-
-            if(adapter.getSelect()!=null) {
+            if (adapter.getSelect() != null) {
                 ArrayList<MateriaNota> selecionadas = adapter.getSelect();
-                    for (MateriaNota materiaNota : selecionadas) {
-                        if (mostrarAprobadas.contains(materiaNota) && adapter != null) {
-                            mostrarAprobadas.remove(materiaNota);
-                            listaMaterias.remove(materiaNota);
-                            try {
-                                rj.quitarMateria("Materias Aprobadas ",materiaNota,this,"registro.json");
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
-                            // recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
-                            recyclerViewApro.setAdapter(adapter);
-                            //  calcularPromedios();
+                for (MateriaNota materiaNota : selecionadas) {
+                    if (mostrarAprobadas.contains(materiaNota) && adapter != null) {
+                        mostrarAprobadas.remove(materiaNota);
+                        listaMaterias.remove(materiaNota);
+                        estadisticaHA.calcularPromedioGeneral();
+                        estadisticaHA.calcularPromedioMateriasA();
 
+                        try {
+                            rj = new RegistroJSON();
+                            String nombre=materiaNota.getMateriaId();
+                            String id =consultorMaterias.getIdMateria(nombre);
+                            MateriaNota materiaNotaID =new MateriaNota(id,materiaNota.getNota());
+                            rj.quitarMateria("Materias Aprobadas ", materiaNotaID, this, "registro.json");
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
+                        adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
+                         recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
+                        recyclerViewApro.setAdapter(adapter);
+
+
                     }
                 }
+            }
 
-            if(adapterReprobadas.getSelect()!=null) {
+            if (adapterReprobadas.getSelect() != null) {
                 ArrayList<MateriaNota> selecionadasRepro = adapterReprobadas.getSelect();
-                    for (MateriaNota materiaNotaR : selecionadasRepro) {
-                        if (mostrarReprobadas.contains(materiaNotaR) && adapterReprobadas != null) {
-                            mostrarReprobadas.remove(materiaNotaR);
-                            listaMaterias.remove(materiaNotaR);
-                            try {
-                                rj.quitarMateria("Materias Reprobadas",materiaNotaR,this,"registro.json");
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                for (MateriaNota materiaNotaR : selecionadasRepro) {
+                    if (mostrarReprobadas.contains(materiaNotaR) && adapterReprobadas != null) {
+                        mostrarReprobadas.remove(materiaNotaR);
+                        listaMaterias.remove(materiaNotaR);
+                        estadisticaHA.calcularPromedioGeneral();
+                        estadisticaHA.calcularPromedioMateriasA();
+                        try {
+                            rj = new RegistroJSON();
+                            String nombre=materiaNotaR.getMateriaId();
+                            String id =consultorMaterias.getIdMateria(nombre);
+                            MateriaNota materiaNotaID =new MateriaNota(id,materiaNotaR.getNota());
+                            rj.quitarMateria("Materias Aprobadas ", materiaNotaID, this, "registro.json");
 
-                            adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
-                            //recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
-                            recyclerViewRepro.setAdapter(adapterReprobadas);
-
-                            // calcularPromedios();
-
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
+                        adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+                        recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
+                        recyclerViewRepro.setAdapter(adapterReprobadas);
+
                     }
                 }
-
-
+            }
 
         });
 
@@ -351,8 +355,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                 numMateriasCursa = view2.findViewById(R.id.num_materiasCursadas);
 
 
-                promedioMateriasApr =view2.findViewById(R.id.promedio_notamateriasApro);
-                EstadisticaHA estadisticaHA = new EstadisticaHA(listaMaterias,mostrarAprobadas);
+                promedioMateriasApr = view2.findViewById(R.id.promedio_notamateriasApro);
+                EstadisticaHA estadisticaHA = new EstadisticaHA(listaMaterias, mostrarAprobadas);
                 promedioGen.setText(String.valueOf(estadisticaHA.calcularPromedioGeneral()));
                 promedioMateriasApr.setText(String.valueOf(estadisticaHA.calcularPromedioMateriasA()));
 
@@ -368,23 +372,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         });
 
     }
-    public void getDisplaySize (){
-        DisplayMetrics displaymetrics = new DisplayMetrics();
-        (HistorialAcademicoActivity.this).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        //if you need three fix imageview in width
-        //int devicewidth = displaymetrics.widthPixels / 3;
-
-        //if you need 4-5-6 anything fix imageview in height
-        //int deviceheight = displaymetrics.heightPixels / 4;
-
-       recyclerViewApro.setMinimumWidth(180);
-        recyclerViewApro.setMinimumHeight(185);
-
-
-
-
-    }
-
 }
 
 

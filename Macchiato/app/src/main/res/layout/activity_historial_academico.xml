@@ -41,7 +41,7 @@
         android:text="Materias Aprobadas"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/lista_MateriasReprobadas"
+        app:layout_constraintBottom_toTopOf="@+id/lista_MateriasAprobadas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,10 +56,10 @@
         android:text="Materias Reprobadas"
         android:textColor="#090909"
         android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_materiasAprobadas"
+        app:layout_constraintBottom_toTopOf="@+id/list_materiasReprobadas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lista_MateriasReprobadas" />
+        app:layout_constraintTop_toBottomOf="@+id/lista_MateriasAprobadas" />
 
     <Button
         android:id="@+id/ver_Estadisticas"
@@ -71,37 +71,39 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/añadir_floating" />
+        app:layout_constraintTop_toBottomOf="@+id/list_materiasReprobadas" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/añadir_floating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginEnd="5dp"
         android:clickable="true"
         app:backgroundTint="#ff7043"
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@+id/ver_Estadisticas"
         app:layout_constraintEnd_toStartOf="@+id/floating_eliminar"
-        app:layout_constraintTop_toBottomOf="@+id/list_materiasAprobadas"
+        app:layout_constraintTop_toBottomOf="@+id/list_materiasReprobadas"
         app:srcCompat="@drawable/addn" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_eliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
         android:clickable="true"
         app:backgroundTint="#ff7043"
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@+id/ver_Estadisticas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_materiasAprobadas"
+        app:layout_constraintTop_toBottomOf="@+id/list_materiasReprobadas"
         app:srcCompat="@drawable/substract" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_materiasAprobadas"
+        android:id="@+id/list_materiasReprobadas"
         android:layout_width="0dp"
-        android:layout_height="195dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/añadir_floating"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
@@ -111,11 +113,12 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lista_MateriasReprobadas"
+        android:id="@+id/lista_MateriasAprobadas"
         android:layout_width="0dp"
-        android:layout_height="195dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
