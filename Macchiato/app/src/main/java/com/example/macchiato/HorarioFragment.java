@@ -226,19 +226,6 @@ public class HorarioFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
-
-                try {
-                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    /*HashMap<String,Integer> map = new HashMap<>();
-                    ArrayList<Integer> l = registroJSON.getMateriasTomadas(context);
-                    for (Integer id: l){
-                        map.put("a"+id.toString(),id);
-                    }*/
-                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(registroJSON.getMateriasTomadas(context, "registro.json"));
-                } catch (Exception e) {
-                    Toast.makeText(context, "Error al sincronizar", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 

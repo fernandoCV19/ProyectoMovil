@@ -42,7 +42,6 @@ public class RegistroJSON {
 
         lf.escribirFichero(nombre , jo.toString(), context);
     }
-
     /*
     Le das los atributos del usuario y te los escribe en el fichero.
     * */
@@ -59,7 +58,6 @@ public class RegistroJSON {
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
     }
-
     /*
     Anade una nota al json indicado por parametro
     * */
@@ -88,11 +86,7 @@ public class RegistroJSON {
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        try {
-            rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaHash(campo,context,"registro.json"));
-        }catch (Exception e){
-            Toast.makeText(context, "error al sincronzar", Toast.LENGTH_SHORT).show();
-        }
+        actualizarFirebase(campo,context);
     }
 
     /*
@@ -157,8 +151,6 @@ public class RegistroJSON {
         }
         return notas;
     }
-
-
     /*
     Materias actuales
     * */
@@ -170,7 +162,6 @@ public class RegistroJSON {
         JSONObject j = new JSONObject();
         JSONArray matsJS = (JSONArray) jo.get("materiasActuales");
 
-
         for (int i=0; i<matsJS.size(); i++){
             int m = ((Long)matsJS.get(i)).intValue();
             //int m = (Integer) matsJS.get(i);
@@ -178,8 +169,6 @@ public class RegistroJSON {
         }
         return mats;
     }
-
-
     /*
     Anadir un grupo
     * */
@@ -189,7 +178,6 @@ public class RegistroJSON {
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
         JSONArray materias = (JSONArray) jo.get("materiasActuales");
-
 
         if(materias == null) materias = new JSONArray();
         boolean contiene = false;
@@ -207,5 +195,21 @@ public class RegistroJSON {
         jo.put("materiasActuales", materias);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
+        actualizarFirebase("materiasActuales",context);
+    }
+
+
+    private void actualizarFirebase(String campo,Context context){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        try {
+            if(campo.equals("materiasActuales")){
+                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriasTomadas(context, "registro.json"));
+            }else {
+                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaHash(campo,context,"registro.json"));
+            }
+        }catch (Exception e){
+            Toast.makeText(context, "error al sincronzar", Toast.LENGTH_SHORT).show();
+        }
     }
 }
