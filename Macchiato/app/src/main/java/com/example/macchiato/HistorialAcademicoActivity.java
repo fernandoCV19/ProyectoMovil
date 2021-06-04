@@ -79,8 +79,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         listaRebrobadasID = new ArrayList<>();
         RegistroJSON registroJSON = new RegistroJSON();
         try {
-            listaAprobadasID = registroJSON.getMateriaNota("Materias Aprobadas", this, "registro.json");
-            listaRebrobadasID = registroJSON.getMateriaNota("Materias Reprobadas", this, "registro.json");
+            listaAprobadasID = registroJSON.getMateriaNota("materiasAprobadas", this, "registro.json");
+            listaRebrobadasID = registroJSON.getMateriaNota("materiasReprobadas", this, "registro.json");
            consultorMaterias = new ConsultorMaterias();
             for (MateriaNota materiaNota : listaAprobadasID) {
                 String nombre = consultorMaterias.getNombreMateria(materiaNota.getMateriaId());
@@ -98,12 +98,12 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        EstadisticaHA estadisticaHA = new EstadisticaHA(listaMaterias, mostrarAprobadas);
+        EstadisticaHA estadisticaHA = new EstadisticaHA(listaMaterias, mostrarAprobadas,mostrarReprobadas);
         estadisticaHA.calcularPromedioGeneral();
         estadisticaHA.calcularPromedioMateriasA();
-        recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasReprobadas);
-        recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasAprobadas);
-        if (!mostrarAprobadas.isEmpty()) {
+        recyclerViewApro = (RecyclerView) findViewById(R.id.lista_MateriasAprobadas);
+        recyclerViewRepro = (RecyclerView) findViewById(R.id.list_materiasReprobadas);
+        if (!mostrarAprobadas.isEmpty() ) {
             adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
             recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
             recyclerViewApro.setAdapter(adapter);
@@ -236,15 +236,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             }
                             MateriaNota materiaNota = new MateriaNota(select, numero);
 
-
-
                             if (!mostrarAprobadas.contains(materiaNota)) {
                                 Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
-                                recyclerViewApro = (RecyclerView) findViewById(R.id.list_materiasReprobadas);
-                                recyclerViewRepro = (RecyclerView) findViewById(R.id.lista_MateriasAprobadas);
                                 listaMaterias.add(materiaNota);
-
-
                                 try {
                                     rj = new RegistroJSON();
 
@@ -253,8 +247,6 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
-
-
                                adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
                                adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
 
@@ -265,13 +257,15 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                     recyclerViewApro.setHasFixedSize(true);
                                     mostrarAprobadas.add(materiaNota);
                                 } else {
+                                    if (!mostrarReprobadas.contains(materiaNota)) {
 
-                                    recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-                                    adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
-                                    recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
-                                    recyclerViewRepro.setAdapter(adapterReprobadas);
-                                    recyclerViewRepro.setHasFixedSize(true);
-                                    mostrarReprobadas.add(materiaNota);
+                                        recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
+                                        adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+                                        recyclerViewRepro.setItemAnimator(new DefaultItemAnimator());
+                                        recyclerViewRepro.setAdapter(adapterReprobadas);
+                                        recyclerViewRepro.setHasFixedSize(true);
+                                        mostrarReprobadas.add(materiaNota);
+                                    }
                                 }
                             }
                         }
@@ -297,9 +291,10 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         try {
                             rj = new RegistroJSON();
                             String nombre=materiaNota.getMateriaId();
-                            String id =consultorMaterias.getIdMateria(nombre);
+                            int idMat = new ParserMateriaID().getID(nombre);
+                            String id =idMat+"";
                             MateriaNota materiaNotaID =new MateriaNota(id,materiaNota.getNota());
-                            rj.quitarMateria("Materias Aprobadas ", materiaNotaID, this, "registro.json");
+                            rj.quitarMateria("materiasAprobadas", materiaNotaID, this, "registro.json");
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -324,15 +319,16 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         try {
                             rj = new RegistroJSON();
                             String nombre=materiaNotaR.getMateriaId();
-                            String id =consultorMaterias.getIdMateria(nombre);
+                            int idMat = new ParserMateriaID().getID(nombre);
+                            String id =idMat+"";
                             MateriaNota materiaNotaID =new MateriaNota(id,materiaNotaR.getNota());
-                            rj.quitarMateria("Materias Aprobadas ", materiaNotaID, this, "registro.json");
+                            rj.quitarMateria("materiasReprobadas", materiaNotaID, this, "registro.json");
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                         adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
-                        recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
+                        recyclerViewRepro.setItemAnimator(new DefaultItemAnimator());
                         recyclerViewRepro.setAdapter(adapterReprobadas);
 
                     }
@@ -356,13 +352,13 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
 
                 promedioMateriasApr = view2.findViewById(R.id.promedio_notamateriasApro);
-                EstadisticaHA estadisticaHA = new EstadisticaHA(listaMaterias, mostrarAprobadas);
+                EstadisticaHA estadisticaHA = new EstadisticaHA(listaMaterias, mostrarAprobadas,mostrarReprobadas);
                 promedioGen.setText(String.valueOf(estadisticaHA.calcularPromedioGeneral()));
                 promedioMateriasApr.setText(String.valueOf(estadisticaHA.calcularPromedioMateriasA()));
 
-                numMateriasApro.setText(String.valueOf(mostrarAprobadas.size()));
-                numMateriasRepro.setText(String.valueOf(mostrarReprobadas.size()));
-                numMateriasCursa.setText(String.valueOf(listaMaterias.size()));
+                numMateriasApro.setText(String.valueOf(estadisticaHA.getMateriasAprobadas()));
+                numMateriasRepro.setText(String.valueOf(estadisticaHA.getMateriasReprobadas()));
+                numMateriasCursa.setText(String.valueOf(estadisticaHA.getListaMaterias()));
 
                 builder.setView(view2);
                 AlertDialog dialog = builder.create();
