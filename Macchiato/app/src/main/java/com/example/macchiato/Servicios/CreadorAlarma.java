@@ -14,58 +14,24 @@ import java.util.ArrayList;
 
 public class CreadorAlarma {
     public CreadorAlarma(){}
+    public void crear(Context context, int idGrupo, int clase, boolean crear){
+        if(clase <= 3) {
+            ConsultorMaterias consultorMaterias = new ConsultorMaterias();
+            ArrayList<Integer> id = new ArrayList<>();
+            id.add(idGrupo);
+            ConsultorMaterias.Par par = consultorMaterias.devolverGrupos(id).get(0);
+            Grupo g = par.getGrupo();
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
-    public void crear(Context context) throws Exception {
-        RegistroJSON rj = new RegistroJSON();
-        ConsultorMaterias cm = new ConsultorMaterias();
-        ArrayList<Integer> lista = rj.getMateriasTomadas(context, "registro.json");
-        ArrayList<ConsultorMaterias.Par> gruposList = cm.devolverGrupos(lista);
-        for(ConsultorMaterias.Par p: gruposList){
+            Clase c = g.getClases().get(clase);
 
-            Grupo g = p.getGrupo();
-            Alarma alarma = new Alarma();
-            String aula;
-            String materia = p.getMateria();
-            int hora, minuto;
-            ArrayList<Clase> clases = g.getClases();
-            for(Clase c: clases){
-                ArrayList<Integer> dias = new ArrayList<>();
-                dias.add(getDia(c.getDia().toString()));
-                aula = c.getAula();
+            String aula = c.getAula() + " - " + par.getMateria();
+            String[] hora_minuto = c.getHoraInicio().split(":");
+            int hora = Integer.parseInt(hora_minuto[0]);
+            int minuto = Integer.parseInt(hora_minuto[1]);
 
-                String[] hora_minuto = c.getHoraInicio().split(":");
-                hora = Integer.parseInt(hora_minuto[0]);
-                minuto = Integer.parseInt(hora_minuto[1]);
-
-                alarma.establerAlarma(aula+" "+materia,hora, minuto,dias, context);
-            }
+            Alarma alarma = new Alarma(aula, hora, minuto, c.getDia().toString());
+            if (crear) alarma.establerAlarma(context);
+            else alarma.cancelarAlarma(context);
         }
-    }
-    public void borrar(Context context) throws Exception {
-        RegistroJSON rj = new RegistroJSON();
-        ConsultorMaterias cm = new ConsultorMaterias();
-        ArrayList<Integer> lista = rj.getMateriasTomadas(context,"registro.json");
-        ArrayList<ConsultorMaterias.Par> gruposList = cm.devolverGrupos(lista);
-
-        for(ConsultorMaterias.Par p: gruposList){
-            Grupo g = p.getGrupo();
-            Alarma alarma = new Alarma();
-            String aula;
-            String materia = p.getMateria();
-            int hora, minuto;
-            ArrayList<Clase> clases = g.getClases();
-            for(Clase c: clases){
-                aula = c.getAula();
-                alarma.cancelarAlarma(aula+" "+materia, context);
-            }
-        }
-    }
-    private int getDia(String dia){
-        if(dia.contains("LUNES")) return 2;
-        else if(dia.contains("MARTES")) return 3;
-        else if(dia.contains("MIERCOLES")) return 4;
-        else if(dia.contains("JUEVES")) return 5;
-        else return 6;
     }
 }

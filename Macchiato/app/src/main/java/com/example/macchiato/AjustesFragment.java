@@ -38,12 +38,12 @@ public class AjustesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        /*CreadorAlarma ca = new CreadorAlarma();
+        CreadorAlarma ca = new CreadorAlarma();
         try {
-            ca.crear(getContext());
+            ca.crear(getContext(), 1,1, true);
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
         return inflater.inflate(R.layout.fragment_ajustes, container, false);
     }
 
