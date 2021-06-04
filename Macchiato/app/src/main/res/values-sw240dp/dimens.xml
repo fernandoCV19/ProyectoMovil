@@ -16,4 +16,6 @@
     <dimen name="horas_aula">11sp</dimen>
     <dimen name="texto_dialog">14sp</dimen>
     <dimen name="flecha_tamaño">150dp</dimen>
+    <dimen name="margen_register">16dp</dimen>
+    <dimen name="tamaño_por_defecto">11sp</dimen>
 </resources>

@@ -178,6 +178,11 @@ public class HorarioFragment extends Fragment {
                                 R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelH)));
                         break;
+                    case "I":
+                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
+                                R.layout.simple_spinner,
+                                getResources().getStringArray(R.array.nivelI)
+                                ));
 
                 }
                 spinnerMateria.setVisibility(View.VISIBLE);
