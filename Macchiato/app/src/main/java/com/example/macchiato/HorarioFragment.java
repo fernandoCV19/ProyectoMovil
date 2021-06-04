@@ -291,8 +291,6 @@ public class HorarioFragment extends Fragment {
         switch(id) {
             case R.id.cambiar_a_generar:
                 MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados);
-                
-
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);
