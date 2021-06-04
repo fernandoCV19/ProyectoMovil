@@ -9,11 +9,13 @@ public class EstadisticaHA {
 
     private ArrayList<MateriaNota> listaMaterias;
     private ArrayList<MateriaNota> mostrarAprobadas;
+    private ArrayList<MateriaNota> mostrarReprobadas;
 
 
-    public EstadisticaHA(ArrayList<MateriaNota> listaMaterias, ArrayList<MateriaNota> mostrarAprobadas) {
+    public EstadisticaHA(ArrayList<MateriaNota> listaMaterias, ArrayList<MateriaNota> mostrarAprobadas,ArrayList<MateriaNota> mostrarReprobadas) {
         this.listaMaterias = listaMaterias;
         this.mostrarAprobadas=mostrarAprobadas;
+        this.mostrarReprobadas=mostrarReprobadas;
     }
 
     public double calcularPromedioGeneral() {
@@ -54,4 +56,19 @@ public class EstadisticaHA {
 
     return promedioMa;
     }
+
+    public int getMateriasAprobadas (){
+
+        return    mostrarAprobadas.size();
+
+    }
+    public int getMateriasReprobadas (){
+
+        return    mostrarReprobadas.size();
+
+    }
+    public  int getListaMaterias(){
+        return listaMaterias.size();
+    }
+
 }
