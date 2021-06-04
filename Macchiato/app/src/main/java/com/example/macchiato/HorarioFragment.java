@@ -278,30 +278,6 @@ public class HorarioFragment extends Fragment {
     }
 
 
-    private  void  startDownloading(){
-        FirebaseDatabase.getInstance().getReference().child("UMSS").child("cronograma")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                        String url = snapshot.getValue(String.class);
-                        DownloadManager.Request request= new DownloadManager.Request(Uri.parse(url));
-                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-                        request.setTitle("Download");
-                        request.setDescription("Descargando archivo");
-
-                        request.allowScanningByMediaScanner();
-                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+System.currentTimeMillis());
-                        DownloadManager downloadManager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
-                        downloadManager.enqueue(request);
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError error) { }
-                });
-
-    }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -315,12 +291,7 @@ public class HorarioFragment extends Fragment {
         switch(id) {
             case R.id.cambiar_a_generar:
                 MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados);
-                /*ArrayList<Integer> aux = new ArrayList<>();
-                aux.add(1);
-                aux.add(2);
-                aux.add(3);
-                aux.add(5);
-                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(aux);*/
+                
 
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
