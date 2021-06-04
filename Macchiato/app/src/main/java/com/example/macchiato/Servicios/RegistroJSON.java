@@ -112,6 +112,7 @@ public class RegistroJSON {
         jo.put(campo, notasJS);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
+        actualizarFirebase(campo,context);
     }
 
     /*
