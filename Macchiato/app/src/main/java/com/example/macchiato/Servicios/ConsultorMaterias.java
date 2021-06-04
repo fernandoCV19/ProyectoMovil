@@ -153,6 +153,18 @@ public class ConsultorMaterias {
         return respuesta;
     }
 
+
+    public String getIdMateria(String nombre){
+
+        String respuesta = "";
+        for (Materia materia:materias) {
+            if (materia.getNombre() .equals( nombre)){
+                respuesta = materia.getId()+"";
+            }
+        }
+        return respuesta;
+    }
+
     public class Par{
         private Grupo grupo;
         private String materia;
