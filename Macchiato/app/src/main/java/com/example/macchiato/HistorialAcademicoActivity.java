@@ -79,8 +79,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         listaRebrobadasID = new ArrayList<>();
         RegistroJSON registroJSON = new RegistroJSON();
         try {
-            listaAprobadasID = registroJSON.getMateriaNota("Materias Aprobadas", this, "registro.json");
-            listaRebrobadasID = registroJSON.getMateriaNota("Materias Reprobadas", this, "registro.json");
+            listaAprobadasID = registroJSON.getMateriaNota("materiasAprobadas", this, "registro.json");
+            listaRebrobadasID = registroJSON.getMateriaNota("materiasReprobadas", this, "registro.json");
            consultorMaterias = new ConsultorMaterias();
             for (MateriaNota materiaNota : listaAprobadasID) {
                 String nombre = consultorMaterias.getNombreMateria(materiaNota.getMateriaId());
@@ -103,7 +103,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         estadisticaHA.calcularPromedioMateriasA();
         recyclerViewApro = (RecyclerView) findViewById(R.id.lista_MateriasAprobadas);
         recyclerViewRepro = (RecyclerView) findViewById(R.id.list_materiasReprobadas);
-        if (!mostrarAprobadas.isEmpty()) {
+        if (!mostrarAprobadas.isEmpty() ) {
             adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
             recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
             recyclerViewApro.setAdapter(adapter);
@@ -257,13 +257,15 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                     recyclerViewApro.setHasFixedSize(true);
                                     mostrarAprobadas.add(materiaNota);
                                 } else {
+                                    if (!mostrarReprobadas.contains(materiaNota)) {
 
-                                    recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-                                    adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
-                                    recyclerViewRepro.setItemAnimator(new DefaultItemAnimator());
-                                    recyclerViewRepro.setAdapter(adapterReprobadas);
-                                    recyclerViewRepro.setHasFixedSize(true);
-                                    mostrarReprobadas.add(materiaNota);
+                                        recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
+                                        adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+                                        recyclerViewRepro.setItemAnimator(new DefaultItemAnimator());
+                                        recyclerViewRepro.setAdapter(adapterReprobadas);
+                                        recyclerViewRepro.setHasFixedSize(true);
+                                        mostrarReprobadas.add(materiaNota);
+                                    }
                                 }
                             }
                         }
@@ -292,7 +294,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             int idMat = new ParserMateriaID().getID(nombre);
                             String id =idMat+"";
                             MateriaNota materiaNotaID =new MateriaNota(id,materiaNota.getNota());
-                            rj.quitarMateria("Materias Aprobadas ", materiaNotaID, this, "registro.json");
+                            rj.quitarMateria("materiasAprobadas", materiaNotaID, this, "registro.json");
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -311,8 +313,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                 for (MateriaNota materiaNotaR : selecionadasRepro) {
                     if (mostrarReprobadas.contains(materiaNotaR) && adapterReprobadas != null) {
                         mostrarReprobadas.remove(materiaNotaR);
-
-                        listaMaterias.remove(  mostrarReprobadas.indexOf(materiaNotaR));
+                        listaMaterias.remove(materiaNotaR);
                         estadisticaHA.calcularPromedioGeneral();
                         estadisticaHA.calcularPromedioMateriasA();
                         try {
@@ -321,7 +322,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             int idMat = new ParserMateriaID().getID(nombre);
                             String id =idMat+"";
                             MateriaNota materiaNotaID =new MateriaNota(id,materiaNotaR.getNota());
-                            rj.quitarMateria("Materias Aprobadas ", materiaNotaID, this, "registro.json");
+                            rj.quitarMateria("materiasReprobadas", materiaNotaID, this, "registro.json");
 
                         } catch (Exception e) {
                             e.printStackTrace();

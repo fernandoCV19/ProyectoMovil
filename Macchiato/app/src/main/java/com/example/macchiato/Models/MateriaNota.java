@@ -5,9 +5,11 @@ public class MateriaNota {
     private int nota;
     private boolean seleccionado;
 
+
     public MateriaNota(String materia, int nota){
         this.materiaId = materia;
         this.nota = nota;
+
 
     }
     public String getMateriaId(){return materiaId;}
