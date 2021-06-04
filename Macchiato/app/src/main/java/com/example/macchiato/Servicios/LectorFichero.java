@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Models.User;
 import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
@@ -43,32 +44,27 @@ public class LectorFichero {
 
 
     */
-    public void crearJson(Context context, String user, String nombreArchivo){
+    /*public void crearJson(Context context, String user, String nombreArchivo){
 
         Map<String, Object> jsonMap = new Gson().fromJson(user, new TypeToken<HashMap<String, Object>>() {}.getType());
         String myjson = new Gson().toJson(jsonMap);
         escribirFichero(nombreArchivo, myjson, context);
         jsonMap = devolverMapa(context, nombreArchivo);
-    }
+    }*/
 
 
     public void crearJson(Context context, User user, String nombreArchivo){
        // String aprob = new Gson().toJson(us);
         String myjson = new Gson().toJson(user);
-        Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+        jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         ArrayList<Double> aux = (ArrayList<Double>) jsonMap.get("materiasActuales");
         ArrayList<Integer> aux2= new ArrayList<>();
         for(Double d:aux){
             aux2.add(d.intValue());
         }
         jsonMap.put("materiasActuales",aux2);
-        Toast.makeText(context, jsonMap.get("materiasAprobadas").toString(), Toast.LENGTH_SHORT).show();
-        ArrayList<HashMap<String,Integer>> aprobAux = (ArrayList<HashMap<String,Integer>>) jsonMap.get("materiasAprobadas");
-        /*ArrayList<
-        for(HashMap<String,Object> mn:aprobAux){
-            aprobAux2.put(Integer.parseInt(mn.getMateriaId()), mn.getNota());
-        }*/
-        jsonMap.put("materiasAprobadas",aprobAux);
+        editMap("materiasAprobadas");
+        editMap("materiasReprobadas");
 
         myjson = new Gson().toJson(jsonMap);
         escribirFichero(nombreArchivo, myjson, context);
@@ -111,4 +107,15 @@ public class LectorFichero {
         }
         return new Gson().fromJson(res, new TypeToken<HashMap<String, Object>>() {}.getType());
     }
+
+    private void editMap(String nombreCampo){
+        ArrayList<LinkedTreeMap<String,Object>> arrayAux = (ArrayList<LinkedTreeMap<String,Object>>) jsonMap.get(nombreCampo);
+        for (LinkedTreeMap<String,Object> miniMap : arrayAux){
+            miniMap.put("materiaID",((Double)(miniMap.get("materiaID"))).intValue());
+            miniMap.put("nota",((Double)(miniMap.get("nota"))).intValue());
+        }
+        jsonMap.put(nombreCampo,arrayAux);
+    }
+
+
 }
