@@ -43,16 +43,17 @@ public class LectorFichero {
 
 
     */
-    public void crearJson(Context context, Map<String,Object> user, String nombreArchivo){
-        String myjson = new Gson().toJson(user);
-        Toast.makeText(context, myjson, Toast.LENGTH_SHORT).show();
-        //Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+    public void crearJson(Context context, String user, String nombreArchivo){
+
+        Map<String, Object> jsonMap = new Gson().fromJson(user, new TypeToken<HashMap<String, Object>>() {}.getType());
+        String myjson = new Gson().toJson(jsonMap);
         escribirFichero(nombreArchivo, myjson, context);
         jsonMap = devolverMapa(context, nombreArchivo);
     }
 
 
     public void crearJson(Context context, User user, String nombreArchivo){
+       // String aprob = new Gson().toJson(us);
         String myjson = new Gson().toJson(user);
         Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         ArrayList<Double> aux = (ArrayList<Double>) jsonMap.get("materiasActuales");
@@ -61,14 +62,13 @@ public class LectorFichero {
             aux2.add(d.intValue());
         }
         jsonMap.put("materiasActuales",aux2);
-
-        /*ArrayList<MateriaNota> aprobAux = (ArrayList<MateriaNota>) jsonMap.get("materiasAprobadas");
-        ArrayList<MateriaNota> aprobAux2= new ArrayList<>();
-        for(MateriaNota mn:aprobAux){
-            aprobAux2.add(mn);
-        }
-        jsonMap.put("materiasAprobadas",aprobAux2);*/
-
+        Toast.makeText(context, jsonMap.get("materiasAprobadas").toString(), Toast.LENGTH_SHORT).show();
+        ArrayList<HashMap<String,Integer>> aprobAux = (ArrayList<HashMap<String,Integer>>) jsonMap.get("materiasAprobadas");
+        /*ArrayList<
+        for(HashMap<String,Object> mn:aprobAux){
+            aprobAux2.put(Integer.parseInt(mn.getMateriaId()), mn.getNota());
+        }*/
+        jsonMap.put("materiasAprobadas",aprobAux);
 
         myjson = new Gson().toJson(jsonMap);
         escribirFichero(nombreArchivo, myjson, context);

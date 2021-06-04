@@ -146,6 +146,8 @@ public class LogInActivity extends AppCompatActivity {
                                         }catch (Exception e){}
 
                                     }*/
+
+
                                     User userProfile = snapshot.getValue(User.class);
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile, "registro.json");

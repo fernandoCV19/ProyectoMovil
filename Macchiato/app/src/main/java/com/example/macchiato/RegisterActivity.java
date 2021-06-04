@@ -25,7 +25,7 @@ import org.json.JSONException;
 
 import java.io.FileNotFoundException;
 
-public class RegisterActivity extends AppCompatActivity {
+public class  RegisterActivity extends AppCompatActivity {
 
     private EditText user_R,email_R,password_R,confirm_R;
     private DatabaseReference databaseReference;

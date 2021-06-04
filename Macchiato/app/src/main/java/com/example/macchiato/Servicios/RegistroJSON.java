@@ -89,7 +89,7 @@ public class RegistroJSON {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         try {
-            rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaNota(campo,context,"registro.json"));
+            rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaHash(campo,context,"registro.json"));
         }catch (Exception e){
             Toast.makeText(context, "error al sincronzar", Toast.LENGTH_SHORT).show();
         }
@@ -139,6 +139,25 @@ public class RegistroJSON {
         return notas;
     }
 
+    public ArrayList<HashMap<String,Integer>> getMateriaHash(String campo, Context context, String nombreArchivo) throws Exception{
+        ArrayList<HashMap<String,Integer>> notas = new ArrayList<>();
+        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
+
+        JSONObject jo = (JSONObject) obj;
+        JSONObject j = new JSONObject();
+        JSONArray notasJS = (JSONArray) jo.get(campo);
+        for(int i=0; i<notasJS.size(); i++){
+            HashMap auxMap = new HashMap<>();
+            j = (JSONObject)notasJS.get(i);
+            int m = ((Long)j.get("materiaID")).intValue();
+            int n = ((Long)j.get("nota")).intValue();
+            auxMap.put("materiaID",m);
+            auxMap.put("nota",n);
+            notas.add(auxMap);
+        }
+        return notas;
+    }
+
 
     /*
     Materias actuales
@@ -159,6 +178,7 @@ public class RegistroJSON {
         }
         return mats;
     }
+
 
     /*
     Anadir un grupo

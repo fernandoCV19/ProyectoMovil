@@ -13,10 +13,10 @@ public class User {
     private HashMap<String,Integer> materiasReprobadas;
     private HashMap<String,Integer> materiasPorTomar;
     public ArrayList<Integer> materiasActuales;*/
-    private ArrayList<Integer> materiasAprobadas;
-    private ArrayList<Integer> materiasReprobadas;
+    private ArrayList<HashMap<String,Object>> materiasAprobadas;
+    private ArrayList<HashMap<String,Object>> materiasReprobadas;
     private ArrayList<Integer> materiasPorTomar;
-    public ArrayList<Integer> materiasActuales;
+    private ArrayList<Integer> materiasActuales;
 
 
     public User(){
@@ -73,6 +73,19 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public ArrayList<HashMap<String,Object>> getMateriasAprobadas(){ return materiasAprobadas; }
+    public void setMateriasAprobadas(ArrayList<HashMap<String,Object>> materiasAprobadas){ this.materiasAprobadas=materiasAprobadas; }
+
+    public ArrayList<HashMap<String,Object>> getMateriasReprobadas(){ return materiasReprobadas; }
+    public void setMateriasReprobadas(ArrayList<HashMap<String,Object>> materiasReprobadas){ this.materiasReprobadas=materiasReprobadas; }
+
+    public ArrayList<Integer> getMateriasActuales(){ return materiasActuales; }
+    public void setMateriasActuales(ArrayList<Integer> materiasActuales){ this.materiasActuales=materiasActuales; }
+
+    public ArrayList<Integer> getMateriasPorTomar(){ return materiasPorTomar; }
+    public void setMateriasPorTomar(ArrayList<Integer> materiasPorTomar){ this.materiasPorTomar=materiasPorTomar; }
+
 
     @Override
     public String toString() {
