@@ -121,18 +121,6 @@ public class RegistroJSON {
         JSONObject jo = (JSONObject) obj;
         //JSONObject j = new JSONObject();
         JSONArray notasJS = (JSONArray) jo.get(campo);
-
-        /*for(int i=0; i<notasJS.size(); i++){
-            j = (JSONObject)notasJS.get(i);
-            //String m = ((Long)j.get("materiaID")).intValue()+"";
-            int n = ((Long)j.get("nota")).intValue();
-
-            if(m.contains(quitar.getMateriaId()) && n == quitar.getNota())
-                notasJS.remove(i);
-
-            break;
-        }*/
-
         for (int i=0; i<notasJS.size(); i++){
             int m = ((Long)notasJS.get(i)).intValue();
             //int m = (Integer) matsJS.get(i);

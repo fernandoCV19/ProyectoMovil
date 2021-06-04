@@ -14,7 +14,6 @@ public class User {
     private ArrayList<Integer> materiasPorTomar;
     private ArrayList<Integer> materiasActuales;
 
-
     public User(){
         materiasAprobadas = new ArrayList<>();
         materiasReprobadas = new ArrayList<>();
