@@ -1,16 +1,16 @@
 package com.example.macchiato.Models;
 
 public class MateriaNota {
-    private String materiaId;
+    private String materiaID;
     private int nota;
     private boolean seleccionado;
 
     public MateriaNota(String materia, int nota){
-        this.materiaId = materia;
+        this.materiaID = materia;
         this.nota = nota;
 
     }
-    public String getMateriaId(){return materiaId;}
+    public String getMateriaId(){return materiaID;}
     public int getNota(){return nota;}
     @Override
     public boolean equals(Object obj) {

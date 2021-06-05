@@ -46,12 +46,9 @@ public class LectorFichero {
         jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         ArrayList<Double> aux = (ArrayList<Double>) jsonMap.get("materiasActuales");
         ArrayList<Integer> aux2= new ArrayList<>();
-        for (int i=0;i<aux.size();i++){
-            if(aux.get(i)==1){
-                aux2.add(i);
-            }
+        for(Double d:aux){
+            aux2.add(d.intValue());
         }
-
         jsonMap.put("materiasActuales",aux2);
         editMap("materiasAprobadas");
         editMap("materiasReprobadas");
@@ -101,7 +98,7 @@ public class LectorFichero {
     private void editMap(String nombreCampo){
         ArrayList<LinkedTreeMap<String,Object>> arrayAux = (ArrayList<LinkedTreeMap<String,Object>>) jsonMap.get(nombreCampo);
         for (LinkedTreeMap<String,Object> miniMap : arrayAux){
-            miniMap.put("materiaId",(Integer.parseInt((String) miniMap.get("materiaId"))));
+            miniMap.put("materiaID",(Integer.parseInt((String) miniMap.get("materiaID"))));
 
             miniMap.put("nota",((Double)(miniMap.get("nota"))).intValue());
         }

@@ -211,6 +211,7 @@ public class RegistroJSON {
                 }
 
             }
+            
         }catch (Exception e){
             Toast.makeText(context, "error al sincronizar", Toast.LENGTH_SHORT).show();
         }
