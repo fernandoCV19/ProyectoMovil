@@ -4,9 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,6 +67,7 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.ViewHolder
 
         SwitchCompat aswitch;
         TextView diaAlarma,horaAlarma,nomMateria;
+        Spinner spinnerMinutosAntes;
         public ViewHolder(View itemView) {
             super(itemView);
             context=itemView.getContext();
@@ -71,6 +75,7 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.ViewHolder
             this.diaAlarma=itemView.findViewById(R.id.diaAlarma);
             this.horaAlarma=itemView.findViewById(R.id.horaAlarma);
             this.nomMateria=itemView.findViewById(R.id.nomMateriaAlarma);
+            this.spinnerMinutosAntes = (Spinner) itemView.findViewById(R.id.spinnerMinutos);
         }
 
         public void bindData(final Clase item){
@@ -78,6 +83,15 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.ViewHolder
            String hora=item.getHoraInicio()+"-"+item.getHoraFinal();
            horaAlarma.setText(hora);
            diaAlarma.setText(item.getDia().toString());
+            spinnerMinutosAntes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    String minutosAntes = parent.getItemAtPosition(position).toString();
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                }
+            });
         }
 
     }

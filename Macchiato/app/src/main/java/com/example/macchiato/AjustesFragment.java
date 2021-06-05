@@ -87,17 +87,6 @@ public class AjustesFragment extends Fragment {
         recyclerView.setAdapter(alarmaAdapter);
 
 
-        SpinnerMinutosAntes = (Spinner) viewAjustes.findViewById(R.id.spinnerMinutos);
-        SpinnerMinutosAntes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                String minutosAntes = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
         return viewAjustes;
     }
 }
