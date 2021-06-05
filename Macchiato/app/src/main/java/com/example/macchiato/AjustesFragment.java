@@ -88,13 +88,6 @@ public class AjustesFragment extends Fragment {
 
 
         return viewAjustes;
-        // Inflate the layout for this fragment
-        CreadorAlarma ca = new CreadorAlarma();
-        try {
-            ca.crear(getContext(), 1,1, true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return inflater.inflate(R.layout.fragment_ajustes, container, false);
+
     }
 }

@@ -36,7 +36,7 @@ public class Alarma {
     }
     public void cancelarAlarma(Context context){
         Intent alarmIntent = new Intent(AlarmClock.ACTION_DISMISS_ALARM);
-        alarmIntent.putExtra(AlarmClock.ALARM_SEARCH_MODE_LABEL,mensaje);
+        alarmIntent.putExtra(AlarmClock.ALARM_SEARCH_MODE_LABEL,mensaje).putExtra(AlarmClock.EXTRA_SKIP_UI,true);
         context.startActivity(alarmIntent);
     }
     private int getDia(String dia){
