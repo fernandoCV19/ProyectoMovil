@@ -98,7 +98,7 @@ public class LectorFichero {
     private void editMap(String nombreCampo){
         ArrayList<LinkedTreeMap<String,Object>> arrayAux = (ArrayList<LinkedTreeMap<String,Object>>) jsonMap.get(nombreCampo);
         for (LinkedTreeMap<String,Object> miniMap : arrayAux){
-            miniMap.put("materiaID",(Integer.parseInt((String) miniMap.get("materiaID"))));
+            miniMap.put("materiaID",(Integer.parseInt((String) miniMap.get("materiaId"))));
 
             miniMap.put("nota",((Double)(miniMap.get("nota"))).intValue());
         }
