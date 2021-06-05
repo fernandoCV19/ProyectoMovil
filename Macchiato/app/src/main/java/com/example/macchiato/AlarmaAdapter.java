@@ -92,6 +92,15 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.ViewHolder
                 public void onNothingSelected(AdapterView<?> parent) {
                 }
             });
+
+            aswitch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(){
+
+                    }
+                }
+            });
         }
 
     }
