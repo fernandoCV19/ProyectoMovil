@@ -46,9 +46,14 @@ public class LectorFichero {
         jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         ArrayList<Double> aux = (ArrayList<Double>) jsonMap.get("materiasActuales");
         ArrayList<Integer> aux2= new ArrayList<>();
-        for(Double d:aux){
-            aux2.add(d.intValue());
+        for (int i=0;i<aux.size();i++){
+            if(aux.get(i)==1){
+                aux2.add(i);
+            }
         }
+        /*for(Boolean d:aux){
+            aux2.add(d.intValue());
+        }*/
         jsonMap.put("materiasActuales",aux2);
         editMap("materiasAprobadas");
         editMap("materiasReprobadas");

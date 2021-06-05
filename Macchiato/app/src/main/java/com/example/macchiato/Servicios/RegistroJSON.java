@@ -205,9 +205,11 @@ public class RegistroJSON {
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         try {
             if(campo.equals("materiasActuales")){
-                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriasTomadas(context, "registro.json"));
-            }else {
-                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaNota(campo,context,"registro.json"));
+                ArrayList<Integer> auxList =getMateriasTomadas(context, "registro.json");
+                for (int i=0;i<auxList.size();i++){
+                    rootRef.child("Usuarios").child(uid).child(campo).child(i+"").setValue(1);
+                }
+
             }
         }catch (Exception e){
             Toast.makeText(context, "error al sincronizar", Toast.LENGTH_SHORT).show();

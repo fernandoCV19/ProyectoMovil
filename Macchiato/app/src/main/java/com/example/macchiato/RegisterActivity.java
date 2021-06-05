@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.json.JSONException;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class  RegisterActivity extends AppCompatActivity {
 
@@ -93,6 +94,11 @@ public class  RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(RegisterActivity.this, "exito", Toast.LENGTH_SHORT).show();
+                                        ArrayList<Integer> materiasActuales = new ArrayList<>();
+                                        for(int i=0;i<97;i++){
+                                            materiasActuales.add(0);
+                                        }
+                                        databaseReference.child("Usuarios").child(us.getUid()).child("materiasActuales").setValue(materiasActuales);
                                         startActivity(new Intent(RegisterActivity.this,Navigation_bottom.class));
                                         finishAffinity();
                                     }
