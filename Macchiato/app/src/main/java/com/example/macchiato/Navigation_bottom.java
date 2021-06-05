@@ -39,14 +39,7 @@ public class Navigation_bottom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_naivigation_bottom);
 
-        RegistroJSON registroJSON= new RegistroJSON();
-        ArrayList<Integer> tomadas= new ArrayList<>();
-        try {
-            tomadas= registroJSON.getMateriasTomadas(this,"registro.json");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        mostrarHorarioFragment=new MostrarHorarioFragment(tomadas);
+        leerMateriasTomadas();
         showSelectedFragment(mostrarHorarioFragment);
         try {
             materiaFragment= new MateriaFragment();
@@ -57,11 +50,12 @@ public class Navigation_bottom extends AppCompatActivity {
 
     }
 
+
+
     @Override
     protected void onStart() {
         super.onStart();
         auth=FirebaseAuth.getInstance();
-
 
         firebaseUser = auth.getCurrentUser();
         mBottomNavigation =(BottomNavigationView) findViewById(R.id.bottomNavigationView);
@@ -80,6 +74,7 @@ public class Navigation_bottom extends AppCompatActivity {
 
                 }
                 if(item.getItemId()==R.id.nav_horario){
+                    leerMateriasTomadas();
                     showSelectedFragment(mostrarHorarioFragment);
                 }
                 if(item.getItemId()==R.id.nav_materias){
@@ -99,6 +94,17 @@ public class Navigation_bottom extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
+    }
+
+    private void leerMateriasTomadas(){
+        RegistroJSON registroJSON= new RegistroJSON();
+        ArrayList<Integer> tomadas= new ArrayList<>();
+        try {
+            tomadas= registroJSON.getMateriasTomadas(this,"registro.json");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mostrarHorarioFragment=new MostrarHorarioFragment(tomadas);
     }
 
 }
