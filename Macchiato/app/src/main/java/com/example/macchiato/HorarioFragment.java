@@ -217,7 +217,7 @@ public class HorarioFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_SHORT).show();
-                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+                /*seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
                 Context context=getContext();
                 for(Integer integer: seleccionados){
                     if(integer>0) {
@@ -234,6 +234,13 @@ public class HorarioFragment extends Fragment {
                         }
                     }
                 }
+                Toast.makeText(context, seleccionados.size()+"", Toast.LENGTH_SHORT).show();
+                seleccionados.clear();
+                try {
+                    seleccionados.addAll(registroJSON.getMateriasTomadas(context,"registro.json"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }*/
             }
         });
 
@@ -260,9 +267,9 @@ public class HorarioFragment extends Fragment {
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
-                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+                /*seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
                 Context context=getContext();
-                for(Integer integer: seleccionados){
+                /*for(Integer integer: seleccionados){
                     if(integer>0) {
                         try {
                             registroJSON.aniadirMateriaTomada(integer, context, "registro.json");
@@ -276,10 +283,11 @@ public class HorarioFragment extends Fragment {
                             e.printStackTrace();
                         }
                     }
-                }
-                break;
+                }*/
+                //break;
             }
         }
+        //seleccionados.clear();
         materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Grupo;
+import com.example.macchiato.Servicios.RegistroJSON;
 
 
 import org.jetbrains.annotations.NotNull;
@@ -97,18 +98,31 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
             checkBoxGrupo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    RegistroJSON registroJSON= new RegistroJSON();
                     if (checkBoxGrupo.isChecked()) {
-                        if(!seleccionados.contains(item.getID()))
-                        seleccionados.add(item.getID());
-                        Toast.makeText(context, "añadido", Toast.LENGTH_SHORT).show();
-
+                        if(!selecs.contains(item.getID())) {
+                            selecs.add(item.getID());
+                            Toast.makeText(context, "añadido", Toast.LENGTH_SHORT).show();
+                            try {
+                                registroJSON.aniadirMateriaTomada(item.getID(), context, "registro.json");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                     else if (!checkBoxGrupo.isChecked()) {
+                        selecs.remove((Object)item.getID());
                         Toast.makeText(context, "eliminado", Toast.LENGTH_SHORT).show();
-                        int quitar =item.getID()*(-1);
-                       if(!seleccionados.contains(quitar)){
-                           seleccionados.add(quitar);
-                       }
+                        try {
+                            registroJSON.quitarMateria(item.getID(),"materiasActuales", context, "registro.json");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        //int quitar =item.getID()*(-1);
+                       //if(!seleccionados.contains(quitar)){
+                           //seleccionados.add(quitar);
+
+                       //}
                     }
 
                 }
