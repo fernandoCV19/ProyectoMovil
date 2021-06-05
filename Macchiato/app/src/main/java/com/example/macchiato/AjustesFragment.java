@@ -67,21 +67,19 @@ public class AjustesFragment extends Fragment {
                 for (Materia mat : materias) {
                     for (Grupo grup : mat.getGrupos()) {
                         if (grup.getID() == in) {
-                            grupos.add(grup);
+                            for(Clase clase : grup.getClases()){
+                                clase.setNomMateria(mat.getNombre());
+                                clases.add(clase);
+                            }
                         }
                     }
                 }
             }
         }
-        for(Grupo grupo: grupos){
-            clases.addAll(grupo.getClases());
-        }
-
-
-
-
-
-
+        AlarmaAdapter alarmaAdapter= new AlarmaAdapter(clases,getContext());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(alarmaAdapter);
         return viewAjustes;
     }
 
