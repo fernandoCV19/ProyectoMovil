@@ -19,7 +19,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.URLUtil;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.macchiato.Models.Clase;
@@ -38,6 +41,8 @@ import java.util.ArrayList;
 public class AjustesFragment extends Fragment {
     Button btn;
     RecyclerView recyclerView;
+    Spinner SpinnerMinutosAntes;
+
     public AjustesFragment() {
         // Required empty public constructor
     }
@@ -48,21 +53,21 @@ public class AjustesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View viewAjustes= inflater.inflate(R.layout.fragment_ajustes,container,false);
-        recyclerView= viewAjustes.findViewById(R.id.recyclerAlarmas);
-        Iniciador iniciador= new Iniciador();
-        ConsultorMaterias consultorMaterias= new ConsultorMaterias();
-        RegistroJSON registroJSON= new RegistroJSON();
-        ArrayList<Integer> tomadas= new ArrayList<>();
-        ArrayList<Materia> materias= ConsultorMaterias.getMaterias();
+        View viewAjustes = inflater.inflate(R.layout.fragment_ajustes, container, false);
+        recyclerView = viewAjustes.findViewById(R.id.recyclerAlarmas);
+        Iniciador iniciador = new Iniciador();
+        ConsultorMaterias consultorMaterias = new ConsultorMaterias();
+        RegistroJSON registroJSON = new RegistroJSON();
+        ArrayList<Integer> tomadas = new ArrayList<>();
+        ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         try {
-            tomadas= registroJSON.getMateriasTomadas(getContext(),"registro.json");
+            tomadas = registroJSON.getMateriasTomadas(getContext(), "registro.json");
         } catch (Exception e) {
             e.printStackTrace();
         }
         ArrayList<Grupo> grupos = new ArrayList<>();
-        ArrayList<Clase> clases= new ArrayList<>();
-        if(tomadas!=null) {
+        ArrayList<Clase> clases = new ArrayList<>();
+        if (tomadas != null) {
             for (Integer in : tomadas) {
                 for (Materia mat : materias) {
                     for (Grupo grup : mat.getGrupos()) {
@@ -80,17 +85,19 @@ public class AjustesFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(alarmaAdapter);
+
+
+        SpinnerMinutosAntes = (Spinner) viewAjustes.findViewById(R.id.spinnerMinutos);
+        SpinnerMinutosAntes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String minutosAntes = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
         return viewAjustes;
     }
-
-
-
-
-
-
-
-
-
-
-
 }
