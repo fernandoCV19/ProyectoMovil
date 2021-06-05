@@ -51,9 +51,7 @@ public class LectorFichero {
                 aux2.add(i);
             }
         }
-        /*for(Boolean d:aux){
-            aux2.add(d.intValue());
-        }*/
+
         jsonMap.put("materiasActuales",aux2);
         editMap("materiasAprobadas");
         editMap("materiasReprobadas");
