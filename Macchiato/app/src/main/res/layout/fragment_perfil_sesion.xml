@@ -41,11 +41,8 @@
 
         <TextView
             android:id="@+id/nombreActual_id"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="65dp"
-            android:layout_marginEnd="10dp"
             android:fontFamily="casual"
             android:text="@string/textUsuario"
             android:textSize="@dimen/tamaño_letras_normales"
@@ -56,11 +53,8 @@
 
         <TextView
             android:id="@+id/usuarioActual_id"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="10dp"
             android:fontFamily="casual"
             android:gravity="center"
             android:text="Usuario"
@@ -72,26 +66,20 @@
 
         <TextView
             android:id="@+id/textView17"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="10dp"
             android:fontFamily="casual"
             android:text="Correo Electrónico:"
             android:textSize="@dimen/tamaño_letras_normales"
-            app:layout_constraintBottom_toTopOf="@+id/buttonIniciarSesion"
+            app:layout_constraintBottom_toTopOf="@+id/correoActual_id"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usuarioActual_id" />
 
         <TextView
             android:id="@+id/correoActual_id"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="10dp"
             android:fontFamily="casual"
             android:gravity="center"
             android:text="Correo Electrónico"
@@ -103,9 +91,8 @@
 
         <Button
             android:id="@+id/buttonIniciarSesion"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="29dp"
             android:fontFamily="casual"
             android:gravity="center"
             android:text="CERRAR SESIÓN"
@@ -118,9 +105,8 @@
 
         <Button
             android:id="@+id/id_descargas"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
             android:fontFamily="casual"
             android:text="desc"
             android:textSize="@dimen/tamaño_letras_botones"
@@ -131,9 +117,8 @@
 
         <Button
             android:id="@+id/buttonEditar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
             android:fontFamily="casual"
             android:text="CAMBIAR CONTRASEÑA"
             android:textSize="@dimen/tamaño_letras_botones"
@@ -145,10 +130,9 @@
 
         <Button
             android:id="@+id/buttonHistorial"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="299dp"
+            android:layout_marginBottom="220dp"
             android:fontFamily="casual"
             android:text="historial academico"
             android:textSize="@dimen/tamaño_letras_botones"

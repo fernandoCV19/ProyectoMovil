@@ -103,18 +103,18 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         estadisticaHA.calcularPromedioMateriasA();
         recyclerViewApro = (RecyclerView) findViewById(R.id.lista_MateriasAprobadas);
         recyclerViewRepro = (RecyclerView) findViewById(R.id.list_materiasReprobadas);
-        if (!mostrarAprobadas.isEmpty() ) {
+      //  if (!mostrarAprobadas.isEmpty() ) {
             adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
             recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
             recyclerViewApro.setAdapter(adapter);
             recyclerViewApro.setHasFixedSize(true);
-        }
-        if (!mostrarReprobadas.isEmpty()) {
+      //  }
+       // if (!mostrarReprobadas.isEmpty()) {
             adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
             recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
             recyclerViewRepro.setAdapter(adapterReprobadas);
             recyclerViewRepro.setHasFixedSize(true);
-        }
+       // }
 
         FloatingActionButton fab = findViewById(R.id.añadir_floating);
         fab.setOnClickListener(view -> {
