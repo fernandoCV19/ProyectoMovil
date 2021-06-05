@@ -78,15 +78,15 @@ public class  RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        User user = new User(u,e,p);
-        firebaseAuth.createUserWithEmailAndPassword(user.getEmail(),user.getPassword())
+        User user = new User(u,e);
+        firebaseAuth.createUserWithEmailAndPassword(user.getEmail(),p)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
                             FirebaseUser us= FirebaseAuth.getInstance().getCurrentUser();
-                            user.setUid(us.getUid());
+                            //user.setUid(us.getUid());
                             LectorFichero lector = new LectorFichero();
                             lector.crearJson(getApplicationContext(),user,"registro.json");
                             databaseReference.child("Usuarios").child(us.getUid()).setValue(lector.devolverMapa(getApplicationContext(),"registro.json")).addOnCompleteListener(new OnCompleteListener<Void>() {

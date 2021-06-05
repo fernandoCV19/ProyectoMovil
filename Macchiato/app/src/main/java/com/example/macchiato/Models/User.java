@@ -7,8 +7,6 @@ import java.util.Map;
 public class User {
     private String userName="usuario vacio";
     private String email="email vacio";
-    private String uid="";
-    private String password="";
     private ArrayList<HashMap<String,Object>> materiasAprobadas;
     private ArrayList<HashMap<String,Object>> materiasReprobadas;
     private ArrayList<Integer> materiasPorTomar;
@@ -21,10 +19,9 @@ public class User {
         materiasActuales = new ArrayList<>();
 
     }
-    public User(String userName,String email,String password) {
+    public User(String userName,String email) {
         this.email = email;
         this.userName = userName;
-        this.password = password;
         materiasAprobadas = new ArrayList<>();
         materiasReprobadas = new ArrayList<>();
         materiasPorTomar = new ArrayList<>();
@@ -49,21 +46,6 @@ public class User {
         this.email = email;
     }
 
-    public String getUid(){
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public ArrayList<HashMap<String,Object>> getMateriasAprobadas(){ return materiasAprobadas; }
     public void setMateriasAprobadas(ArrayList<HashMap<String,Object>> materiasAprobadas){ this.materiasAprobadas=materiasAprobadas; }
