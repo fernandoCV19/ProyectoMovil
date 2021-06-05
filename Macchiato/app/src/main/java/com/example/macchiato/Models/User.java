@@ -11,18 +11,14 @@ public class User {
     private String password="";
     private ArrayList<HashMap<String,Object>> materiasAprobadas;
     private ArrayList<HashMap<String,Object>> materiasReprobadas;
-    //private ArrayList<Integer> materiasPorTomar;
+    private ArrayList<Integer> materiasPorTomar;
     private ArrayList<Integer> materiasActuales;
 
     public User(){
         materiasAprobadas = new ArrayList<>();
         materiasReprobadas = new ArrayList<>();
-        //materiasPorTomar = new ArrayList<>();
+        materiasPorTomar = new ArrayList<>();
         materiasActuales = new ArrayList<>();
-
-         for(int i=0;i<97;i++){
-             materiasActuales.add(0);
-         }
 
     }
     public User(String userName,String email,String password) {
@@ -31,11 +27,9 @@ public class User {
         this.password = password;
         materiasAprobadas = new ArrayList<>();
         materiasReprobadas = new ArrayList<>();
-        //materiasPorTomar = new ArrayList<>();
+        materiasPorTomar = new ArrayList<>();
         materiasActuales = new ArrayList<>();
-        for(int i=0;i<97;i++){
-            materiasActuales.add(0);
-        }
+
 
     }
 
@@ -80,8 +74,8 @@ public class User {
     public ArrayList<Integer> getMateriasActuales(){ return materiasActuales; }
     public void setMateriasActuales(ArrayList<Integer> materiasActuales){ this.materiasActuales=materiasActuales; }
 
-    //public ArrayList<Integer> getMateriasPorTomar(){ return materiasPorTomar; }
-    //public void setMateriasPorTomar(ArrayList<Integer> materiasPorTomar){ this.materiasPorTomar=materiasPorTomar; }
+    public ArrayList<Integer> getMateriasPorTomar(){ return materiasPorTomar; }
+    public void setMateriasPorTomar(ArrayList<Integer> materiasPorTomar){ this.materiasPorTomar=materiasPorTomar; }
 
 
     @Override
