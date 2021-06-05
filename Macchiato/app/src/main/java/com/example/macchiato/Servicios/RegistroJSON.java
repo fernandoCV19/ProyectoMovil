@@ -100,7 +100,6 @@ public class RegistroJSON {
 
             if(m.contains(quitar.getMateriaId()) && n == quitar.getNota())
                 notasJS.remove(i);
-
             break;
         }
         jo.put(campo, notasJS);
