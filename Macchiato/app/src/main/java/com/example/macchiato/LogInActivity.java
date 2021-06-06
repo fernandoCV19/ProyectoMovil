@@ -150,9 +150,9 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }
                             });
-                            Navigation_bottom navigation_bottom=new Navigation_bottom();
-                            navigation_bottom.leerMateriasTomadas();
-                            startActivity(new Intent(LogInActivity.this,navigation_bottom));
+                            //Navigation_bottom navigation_bottom=new Navigation_bottom();
+                            //navigation_bottom.leerMateriasTomadas();
+                            startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
                             finishAffinity();
                         } else {
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
