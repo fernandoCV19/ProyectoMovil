@@ -34,6 +34,11 @@ public class Navigation_bottom extends AppCompatActivity {
     MostrarHorarioFragment mostrarHorarioFragment;
     AjustesFragment ajustesFragment;
 
+    public Navigation_bottom(){
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +74,7 @@ public class Navigation_bottom extends AppCompatActivity {
                         showSelectedFragment(new PerfilFragment());
                     }else{
                         //Toast.makeText(Navigation_bottom.this, "ya esta loggeado", Toast.LENGTH_SHORT).show();
+                        leerMateriasTomadas();
                         showSelectedFragment(new PerfilSesionFragment());
                     }
 
@@ -94,7 +100,7 @@ public class Navigation_bottom extends AppCompatActivity {
                 .commit();
     }
 
-    private void leerMateriasTomadas(){
+    public void leerMateriasTomadas(){
         RegistroJSON registroJSON= new RegistroJSON();
         ArrayList<Integer> tomadas= new ArrayList<>();
         try {

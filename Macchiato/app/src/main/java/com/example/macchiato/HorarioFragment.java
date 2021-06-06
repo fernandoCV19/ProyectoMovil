@@ -96,7 +96,6 @@ public class HorarioFragment extends Fragment {
         grupos=new ArrayList<>();
         materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         View view = inflater.inflate(R.layout.fragment_horario, container, false);
-        guardar=view.findViewById(R.id.buttonGuardar);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
         spinnerNivel = view.findViewById(R.id.spinnerNivel);
         spinnerMateria = view.findViewById(R.id.spinnerMateria);
@@ -217,36 +216,6 @@ public class HorarioFragment extends Fragment {
 
             }
 
-        });
-        guardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_SHORT).show();
-                /*seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
-                Context context=getContext();
-                for(Integer integer: seleccionados){
-                    if(integer>0) {
-                        try {
-                            registroJSON.aniadirMateriaTomada(integer, context, "registro.json");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }else{
-                        try {
-                            registroJSON.quitarMateria(integer*(-1),"materiasActuales", context, "registro.json");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                Toast.makeText(context, seleccionados.size()+"", Toast.LENGTH_SHORT).show();
-                seleccionados.clear();
-                try {
-                    seleccionados.addAll(registroJSON.getMateriasTomadas(context,"registro.json"));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }*/
-            }
         });
 
 
