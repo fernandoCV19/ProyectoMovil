@@ -38,6 +38,8 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.security.auth.login.LoginException;
+
 public class LogInActivity extends AppCompatActivity {
 
     private EditText correo_L;
@@ -45,8 +47,6 @@ public class LogInActivity extends AppCompatActivity {
     private TextView olvide_contrasena;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,9 +140,7 @@ public class LogInActivity extends AppCompatActivity {
                                     lector.crearJson(getApplicationContext(),userProfile, "registro.json");
                                     try {
                                         lector.leerFichero(getApplicationContext(), "registro.json");
-                                    } catch (FileNotFoundException e) {
-                                        e.printStackTrace();
-                                    } catch (JSONException e) {
+                                    } catch (FileNotFoundException | JSONException e) {
                                         e.printStackTrace();
                                     }
 
@@ -150,9 +148,7 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }
                             });
-                            Navigation_bottom navigation_bottom=new Navigation_bottom();
-                            navigation_bottom.leerMateriasTomadas();
-                            //startActivity(new Intent(LogInActivity.this,navigation_bottom));
+                            startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
                             finishAffinity();
                         } else {
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
