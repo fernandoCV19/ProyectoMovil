@@ -152,7 +152,7 @@ public class LogInActivity extends AppCompatActivity {
                             });
                             Navigation_bottom navigation_bottom=new Navigation_bottom();
                             navigation_bottom.leerMateriasTomadas();
-                            startActivity(new Intent(LogInActivity.this,navigation_bottom));
+                            //startActivity(new Intent(LogInActivity.this,navigation_bottom));
                             finishAffinity();
                         } else {
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
