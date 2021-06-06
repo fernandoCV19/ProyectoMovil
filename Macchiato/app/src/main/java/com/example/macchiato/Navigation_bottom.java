@@ -100,6 +100,8 @@ public class Navigation_bottom extends AppCompatActivity {
                 .commit();
     }
 
+
+
     public void leerMateriasTomadas(){
         RegistroJSON registroJSON= new RegistroJSON();
         ArrayList<Integer> tomadas= new ArrayList<>();
