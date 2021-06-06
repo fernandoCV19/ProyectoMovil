@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PerfilFragment">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="@dimen/tamaño_appbar"
         android:background="#ff7043"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Theme.Macchiato">
@@ -21,59 +22,60 @@
             android:fontFamily="casual"
             android:gravity="center"
             android:text="Perfil"
-            android:textSize="20sp"
+            android:textSize="@dimen/tamaño_titulo_appbar"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_appbar">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView18"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="Para guardar sus datos, inicie sesion"
+            android:textSize="@dimen/tamaño_letras_normales"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
-                android:fontFamily="casual"
-                android:gravity="center"
-                android:text="Para guardar sus datos, inicie sesion"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/flecha_tamaño"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="108dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_flecha_hacia_abajo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="124dp"
-                android:layout_marginTop="80sp"
-                android:src="@drawable/ic_flecha_hacia_abajo" />
-
-            <Button
-                android:id="@+id/buttonIniciarSesion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="casual"
-                android:gravity="center"
-                android:text="@string/textIniciar_sesion"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/buttonIniciarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="@string/textIniciar_sesion"
+            android:textSize="@dimen/tamaño_letras_botones"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -104,11 +104,13 @@ public class RegistroJSON {
             String m = ((Long)j.get("materiaID")).intValue()+"";
             int n = ((Long)j.get("nota")).intValue();
 
-            if(m.contains(quitar.getMateriaId()) && n == quitar.getNota())
+            if(m.contains(quitar.getMateriaId()) && n == quitar.getNota()) {
                 notasJS.remove(i);
+                break;
+            }
 
-            break;
-        }
+            }
+
         jo.put(campo, notasJS);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);

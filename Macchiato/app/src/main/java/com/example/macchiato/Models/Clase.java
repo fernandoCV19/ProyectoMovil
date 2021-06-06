@@ -7,12 +7,21 @@ public class Clase {
     private String horaInicio;
     private String horaFinal;
     private String aula;
+    private String nomMateria;
 
     public Clase(Dia dia, String horaInicio, String horaFinal, String aula){
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFinal = horaFinal;
         this.aula = aula;
+    }
+
+    public String getNomMateria() {
+        return nomMateria;
+    }
+
+    public void setNomMateria(String nomMateria) {
+        this.nomMateria = nomMateria;
     }
 
     public Dia getDia(){

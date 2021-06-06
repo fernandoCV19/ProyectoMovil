@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tamaño_titulo_appbar">16sp</dimen>
+    <dimen name="tamaño_letras_normales">14sp</dimen>
+    <dimen name="tamaño_letras_botones">11sp</dimen>
+    <dimen name="tamaño_appbar">35dp</dimen>
+    <dimen name="margin_appbar">36dp</dimen>
+    <dimen name="texto_para_escribir">12sp</dimen>
+    <dimen name="texto_checkbox">10sp</dimen>
+    <dimen name="texto_materias_requeridas">15sp</dimen>
+    <dimen name="materias_requeridas">12sp</dimen>
+    <dimen name="codigo_materia">11sp</dimen>
+    <dimen name="texto_grupo">14sp</dimen>
+    <dimen name="nombre_docente">12sp</dimen>
+    <dimen name="texto_dia">12sp</dimen>
+    <dimen name="horas_aula">11sp</dimen>
+    <dimen name="texto_dialog">14sp</dimen>
+    <dimen name="flecha_tamaño">150dp</dimen>
+    <dimen name="margen_register">16dp</dimen>
+    <dimen name="tamaño_por_defecto">11sp</dimen>
+</resources>

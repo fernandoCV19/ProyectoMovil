@@ -112,7 +112,7 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
                     }
                     else if (!checkBoxGrupo.isChecked()) {
                         selecs.remove((Object)item.getID());
-                        Toast.makeText(context, "eliminado", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "eliminado", Toast.LENGTH_SHORT).show();
                         try {
                             registroJSON.quitarMateria(item.getID(),"materiasActuales", context, "registro.json");
                         } catch (Exception e) {

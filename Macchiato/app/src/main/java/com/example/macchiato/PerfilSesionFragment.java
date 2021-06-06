@@ -75,7 +75,10 @@ public class PerfilSesionFragment extends Fragment {
             usuarioShow.setText(map.get("userName").toString());
             correoShow.setText(map.get("email").toString());
         }
-
+/*
+=======
+        }
+>>>>>>> historialAcademicoNuevo*/
         Button btnDes = (Button) view.findViewById(R.id.id_descargas);
         btnDes.setOnClickListener(new View.OnClickListener() {
             @Override

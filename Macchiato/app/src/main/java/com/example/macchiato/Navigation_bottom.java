@@ -86,8 +86,6 @@ public class Navigation_bottom extends AppCompatActivity {
                 return true;
             }
         });
-
-
     }
 
     private void showSelectedFragment(Fragment fragment) {

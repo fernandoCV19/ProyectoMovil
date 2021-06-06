@@ -10,7 +10,6 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,35 +21,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="@dimen/margen_register"
             android:layout_marginEnd="64dp"
             android:fontFamily="casual"
             android:text="@string/textUsuario"
-            android:textSize="16sp"
+            android:textSize="@dimen/tamaño_letras_normales"
             android:textStyle="normal" />
 
         <EditText
             android:id="@+id/editTextTextPersonName"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginEnd="64dp"
             android:ems="10"
             android:fontFamily="casual"
             android:inputType="textPersonName"
             android:text=""
-            android:textSize="14sp" />
+            android:textSize="@dimen/texto_para_escribir" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:fontFamily="casual"
             android:text="@string/textContraseña"
-            android:textSize="16sp" />
+            android:textSize="@dimen/tamaño_letras_normales" />
 
         <EditText
             android:id="@+id/editTextTextPassword2"
@@ -61,18 +60,18 @@
             android:ems="10"
             android:fontFamily="casual"
             android:inputType="textPassword"
-            android:textSize="14sp" />
+            android:textSize="@dimen/texto_para_escribir" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:fontFamily="casual"
             android:text="@string/textRepetir_contrase_a"
-            android:textSize="16sp" />
+            android:textSize="@dimen/tamaño_letras_normales" />
 
         <EditText
             android:id="@+id/editTextTextPassword3"
@@ -90,11 +89,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="64dp"
             android:fontFamily="casual"
             android:text="@string/textEmailregister"
-            android:textSize="16sp" />
+            android:textSize="@dimen/tamaño_letras_normales" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress2"
@@ -105,7 +104,7 @@
             android:ems="10"
             android:fontFamily="casual"
             android:inputType="textEmailAddress"
-            android:textSize="14sp" />
+            android:textSize="@dimen/texto_para_escribir" />
 
         <Button
             android:id="@+id/register_btn"
@@ -118,7 +117,7 @@
             android:fontFamily="casual"
             android:onClick="registrar"
             android:text="@string/textListo"
-            android:textSize="16sp"
+            android:textSize="@dimen/tamaño_letras_botones"
             android:textStyle="bold" />
     </LinearLayout>
 
