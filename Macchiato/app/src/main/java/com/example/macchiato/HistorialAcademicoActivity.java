@@ -32,8 +32,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-/*=======
->>>>>>> historialAcademicoNuevo*/
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,10 +88,10 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
         RegistroJSON registroJSON = new RegistroJSON();
         try {
-//<<<<<<< HEAD
+
             mostrarAprobadas= registroJSON.getMateriaNota("materiasAprobadas",this, "registro.json");
             mostrarReprobadas = registroJSON.getMateriaNota("materiasReprobadas",this, "registro.json");
-/*=======
+
             listaAprobadasID = registroJSON.getMateriaNota("materiasAprobadas", this, "registro.json");
             listaRebrobadasID = registroJSON.getMateriaNota("materiasReprobadas", this, "registro.json");
            consultorMaterias = new ConsultorMaterias();
@@ -109,7 +108,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                 listaMaterias.add(materiaNota1);
             }
 
->>>>>>> historialAcademicoNuevo*/
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -251,11 +250,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
-
                                 String select = mSpinner.getSelectedItem().toString();
                                 editText.setError(null);
                                 String num = editText.getText().toString();
-//>>>>>>> historialAcademicoNuevo
 
                                 if ("".equals(num)) {
                                     editText.setError("Introduce un número");
@@ -273,6 +270,15 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                 }
                                 MateriaNota materiaNota = new MateriaNota(select, numero);
 
+                                int numero = Integer.parseInt(num);
+                                if (numero >= 0 && numero <= 100) {
+                                    dialog.dismiss();
+                                } else {
+                                    editText.setError("Número fuera de rango");
+                                    editText.requestFocus();
+                                    return;
+                                }
+                                MateriaNota materiaNota = new MateriaNota(select, numero);
 
                                 if (!mostrarAprobadas.contains(materiaNota)) {
                                     Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
