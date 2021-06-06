@@ -98,9 +98,16 @@ public class RegistroJSON {
             String m = ((Long)j.get("materiaID")).intValue()+"";
             int n = ((Long)j.get("nota")).intValue();
 
-            if(m.contains(quitar.getMateriaId()) && n == quitar.getNota())
+            if(m.contains(quitar.getMateriaId()) && n == quitar.getNota()) {
                 notasJS.remove(i);
+<<<<<<< Updated upstream
             break;
+=======
+                break;
+            }
+
+
+>>>>>>> Stashed changes
         }
         jo.put(campo, notasJS);
 

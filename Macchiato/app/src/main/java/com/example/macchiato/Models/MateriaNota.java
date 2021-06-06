@@ -18,13 +18,14 @@ public class MateriaNota {
     public boolean equals(Object obj) {
         MateriaNota p= (MateriaNota) obj;
 
-        return p.getMateriaId().equals(this.getMateriaId());
+        return p.getMateriaId().equals(this.getMateriaId()) ;
 
     }
     public boolean esSeleccionado (){
 
         return seleccionado;
     }
+
 
     public void setSeleccionado(boolean seleccionado) {
         this.seleccionado = seleccionado;

@@ -85,28 +85,13 @@
             android:layout_marginTop="80dp"
             android:ems="10"
             android:inputType="numberDecimal"
+
             android:textSize="@dimen/texto_dialog"
-            app:layout_constraintBottom_toTopOf="@+id/select_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/nota_vista"
             app:layout_constraintTop_toBottomOf="@+id/materia_vista" />
 
-        <Button
-            android:id="@+id/select_color"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:background="@color/white"
-            android:fontFamily="casual"
-            android:gravity="center_horizontal"
-            android:text="@string/txt_selectColor"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textSize="@dimen/tamaño_letras_botones"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

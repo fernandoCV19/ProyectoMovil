@@ -28,11 +28,10 @@ public class EstadisticaHA {
 
         }
         if (listaMaterias.size() != 0) {
-            double n=suma / listaMaterias.size();
-            promedioGeneral =(double)Math.round( n*100d )/ 100d;
-        } else {
-            promedioGeneral = suma;
+            double n = suma / listaMaterias.size();
+            promedioGeneral = (double) Math.round(n * 100d) / 100d;
         }
+
 
         return promedioGeneral;
 
@@ -47,12 +46,10 @@ public class EstadisticaHA {
 
         }
         if (mostrarAprobadas.size() != 0) {
-            double n=sumaMateriasA / mostrarAprobadas.size();
-            promedioMa = (double)Math.round( n*100d )/ 100d;
-        } else {
-            promedioMa = sumaMateriasA;
-
+            double n = sumaMateriasA / mostrarAprobadas.size();
+            promedioMa = (double) Math.round(n * 100d) / 100d;
         }
+
 
     return promedioMa;
     }
@@ -68,6 +65,7 @@ public class EstadisticaHA {
 
     }
     public  int getListaMaterias(){
+
         return listaMaterias.size();
     }
 
