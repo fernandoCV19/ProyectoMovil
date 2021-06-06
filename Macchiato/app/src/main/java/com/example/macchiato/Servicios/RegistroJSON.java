@@ -100,15 +100,11 @@ public class RegistroJSON {
 
             if(m.contains(quitar.getMateriaId()) && n == quitar.getNota()) {
                 notasJS.remove(i);
-<<<<<<< Updated upstream
-            break;
-=======
                 break;
             }
 
+            }
 
->>>>>>> Stashed changes
-        }
         jo.put(campo, notasJS);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
