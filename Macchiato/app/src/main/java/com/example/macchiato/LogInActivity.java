@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Models.User;
 import com.example.macchiato.Servicios.LectorFichero;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -136,16 +135,6 @@ public class LogInActivity extends AppCompatActivity {
                             databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                    /*Map<String, Object> map= new HashMap<>();
-                                    LectorFichero lector = new LectorFichero();
-                                    lector.crearJson(getApplicationContext(),map);*/
-                                    /*for(DataSnapshot postSnapshot :snapshot.getChildren()){
-                                        try {
-                                            map.put(snapshot.getKey(),(HashMap<String, Object>) postSnapshot.getValue());
-                                            Toast.makeText(LogInActivity.this, map.toString(), Toast.LENGTH_SHORT).show();
-                                        }catch (Exception e){}
-
-                                    }*/
                                     User userProfile = snapshot.getValue(User.class);
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile, "registro.json");
@@ -161,7 +150,9 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }
                             });
-                            startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
+                            Navigation_bottom navigation_bottom=new Navigation_bottom();
+                            navigation_bottom.leerMateriasTomadas();
+                            startActivity(new Intent(LogInActivity.this,navigation_bottom));
                             finishAffinity();
                         } else {
                             Toast.makeText(LogInActivity.this, "Authentication failed.",

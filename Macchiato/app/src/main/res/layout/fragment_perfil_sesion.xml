@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PerfilFragment">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="@dimen/tamaño_appbar"
         android:background="#ff7043"
+        android:fontFamily="casual"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Theme.Macchiato"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +25,7 @@
             android:fontFamily="casual"
             android:gravity="center"
             android:text="Perfil"
-            android:textSize="20sp"
+            android:textSize="@dimen/tamaño_titulo_appbar"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="8dp" />
@@ -37,92 +39,126 @@
         android:layout_marginTop="48dp"
         android:background="@drawable/fondos_fragments">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/nombreActual_id"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="@string/textUsuario"
+            android:textSize="@dimen/tamaño_letras_normales"
+            app:layout_constraintBottom_toTopOf="@+id/usuarioActual_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/usuarioActual_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="usuario"
+            android:textSize="@dimen/tamaño_letras_normales"
+            app:layout_constraintBottom_toTopOf="@+id/textView17"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombreActual_id" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="Correo Electrónico:"
+            android:textSize="@dimen/tamaño_letras_normales"
+            app:layout_constraintBottom_toTopOf="@+id/correoActual_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/usuarioActual_id" />
+
+        <TextView
+            android:id="@+id/correoActual_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="correo electronico"
+            android:textSize="@dimen/tamaño_letras_normales"
+            app:layout_constraintBottom_toTopOf="@+id/buttonIniciarSesion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        <Button
+            android:id="@+id/buttonIniciarSesion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="CERRAR SESIÓN"
+            android:textSize="@dimen/tamaño_letras_botones"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/id_descargas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/correoActual_id" />
+
+        <Button
+            android:id="@+id/id_descargas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="casual"
+            android:text="desc"
+            android:textSize="@dimen/tamaño_letras_botones"
+            app:layout_constraintBottom_toTopOf="@+id/buttonEditar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion" />
+
+        <Button
+            android:id="@+id/buttonEditar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="casual"
+            android:text="CAMBIAR CONTRASEÑA"
+            android:textSize="@dimen/tamaño_letras_botones"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/buttonHistorial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_descargas" />
+
+        <Button
+            android:id="@+id/buttonHistorial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="220dp"
+            android:fontFamily="casual"
+            android:text="historial academico"
+            android:textSize="@dimen/tamaño_letras_botones"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/nombreActual_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32sp"
-                android:fontFamily="casual"
-                android:text="@string/textUsuario"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/usuarioActual_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="casual"
-                android:gravity="center"
-                android:text="Usuario"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16sp"
-                android:fontFamily="casual"
-                android:text="Correo Electrónico:"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/correoActual_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16sp"
-                android:fontFamily="casual"
-                android:gravity="center"
-                android:text="Correo Electrónico"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/buttonIniciarSesion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="casual"
-                android:gravity="center"
-                android:text="CERRAR SESIÓN"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/id_descargas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="desc" />
-
-            <Button
-                android:id="@+id/buttonEditar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="casual"
-                android:text="CAMBIAR CONTRASEÑA"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/buttonHistorial"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="casual"
-                android:text="historial academico"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/buttonEditar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

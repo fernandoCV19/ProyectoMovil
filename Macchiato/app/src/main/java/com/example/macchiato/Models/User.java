@@ -7,35 +7,23 @@ import java.util.Map;
 public class User {
     private String userName="usuario vacio";
     private String email="email vacio";
-    private String uid="";
-    private String password="";
-    /*public HashMap<String,Integer> materiasAprobadas;
-    private HashMap<String,Integer> materiasReprobadas;
-    private HashMap<String,Integer> materiasPorTomar;
-    public ArrayList<Integer> materiasActuales;*/
-    private HashMap<String,Integer> materiasAprobadas;
-    private HashMap<String,Integer> materiasReprobadas;
+    private ArrayList<HashMap<String,Object>> materiasAprobadas;
+    private ArrayList<HashMap<String,Object>> materiasReprobadas;
     private ArrayList<Integer> materiasPorTomar;
-    public ArrayList<Integer> materiasActuales;
-
+    private ArrayList<Integer> materiasActuales;
 
     public User(){
-        materiasAprobadas = new HashMap<>();
-        materiasReprobadas = new HashMap<>();
+        materiasAprobadas = new ArrayList<>();
+        materiasReprobadas = new ArrayList<>();
         materiasPorTomar = new ArrayList<>();
         materiasActuales = new ArrayList<>();
 
     }
-    public User(String userName,String email,String password) {
+    public User(String userName,String email) {
         this.email = email;
         this.userName = userName;
-        this.password = password;
-        /*materiasActuales = new ArrayList<Integer>();
-        materiasAprobadas = new ArrayList<Integer>();
-        materiasPorTomar = new ArrayList<Integer>();
-        materiasReprobadas = new ArrayList<Integer>();*/
-        materiasAprobadas = new HashMap<>();
-        materiasReprobadas = new HashMap<>();
+        materiasAprobadas = new ArrayList<>();
+        materiasReprobadas = new ArrayList<>();
         materiasPorTomar = new ArrayList<>();
         materiasActuales = new ArrayList<>();
 
@@ -58,21 +46,19 @@ public class User {
         this.email = email;
     }
 
-    public String getUid(){
-        return uid;
-    }
 
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
+    public ArrayList<HashMap<String,Object>> getMateriasAprobadas(){ return materiasAprobadas; }
+    public void setMateriasAprobadas(ArrayList<HashMap<String,Object>> materiasAprobadas){ this.materiasAprobadas=materiasAprobadas; }
 
-    public String getPassword() {
-        return password;
-    }
+    public ArrayList<HashMap<String,Object>> getMateriasReprobadas(){ return materiasReprobadas; }
+    public void setMateriasReprobadas(ArrayList<HashMap<String,Object>> materiasReprobadas){ this.materiasReprobadas=materiasReprobadas; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public ArrayList<Integer> getMateriasActuales(){ return materiasActuales; }
+    public void setMateriasActuales(ArrayList<Integer> materiasActuales){ this.materiasActuales=materiasActuales; }
+
+    public ArrayList<Integer> getMateriasPorTomar(){ return materiasPorTomar; }
+    public void setMateriasPorTomar(ArrayList<Integer> materiasPorTomar){ this.materiasPorTomar=materiasPorTomar; }
+
 
     @Override
     public String toString() {

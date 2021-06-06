@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Models.User;
 import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
@@ -38,28 +40,19 @@ public class LectorFichero {
             return false;
         }
     }
-    /*
-
-
-    */
-    public void crearJson(Context context, Map<String,Object> user, String nombreArchivo){
-        String myjson = new Gson().toJson(user);
-        Toast.makeText(context, myjson, Toast.LENGTH_SHORT).show();
-        //Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
-        escribirFichero(nombreArchivo, myjson, context);
-        jsonMap = devolverMapa(context, nombreArchivo);
-    }
-
 
     public void crearJson(Context context, User user, String nombreArchivo){
         String myjson = new Gson().toJson(user);
-        Map<String, Object> jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
+        jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
         ArrayList<Double> aux = (ArrayList<Double>) jsonMap.get("materiasActuales");
         ArrayList<Integer> aux2= new ArrayList<>();
         for(Double d:aux){
             aux2.add(d.intValue());
         }
         jsonMap.put("materiasActuales",aux2);
+        editMap("materiasAprobadas");
+        editMap("materiasReprobadas");
+
         myjson = new Gson().toJson(jsonMap);
         escribirFichero(nombreArchivo, myjson, context);
     }
@@ -101,4 +94,16 @@ public class LectorFichero {
         }
         return new Gson().fromJson(res, new TypeToken<HashMap<String, Object>>() {}.getType());
     }
+
+    private void editMap(String nombreCampo){
+        ArrayList<LinkedTreeMap<String,Object>> arrayAux = (ArrayList<LinkedTreeMap<String,Object>>) jsonMap.get(nombreCampo);
+        for (LinkedTreeMap<String,Object> miniMap : arrayAux){
+            miniMap.put("materiaID",(Integer.parseInt((String) miniMap.get("materiaId"))));
+
+            miniMap.put("nota",((Double)(miniMap.get("nota"))).intValue());
+        }
+        jsonMap.put(nombreCampo,arrayAux);
+    }
+
+
 }

@@ -1,9 +1,14 @@
 package com.example.macchiato.Servicios;
 
 import android.content.Context;
+import android.widget.Toast;
 
+import com.example.macchiato.HistorialAcademicoActivity;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.simple.JSONArray;
 import org.json.JSONException;
@@ -37,7 +42,6 @@ public class RegistroJSON {
 
         lf.escribirFichero(nombre , jo.toString(), context);
     }
-
     /*
     Le das los atributos del usuario y te los escribe en el fichero.
     * */
@@ -54,7 +58,6 @@ public class RegistroJSON {
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
     }
-
     /*
     Anade una nota al json indicado por parametro
     * */
@@ -81,6 +84,9 @@ public class RegistroJSON {
         jo.put(campo, notas);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        actualizarFirebase(campo,context);
     }
 
     /*
@@ -98,14 +104,36 @@ public class RegistroJSON {
             String m = ((Long)j.get("materiaID")).intValue()+"";
             int n = ((Long)j.get("nota")).intValue();
 
-            if(m.contains(quitar.getMateriaId()) && n == quitar.getNota())
+            if(m.contains(quitar.getMateriaId()) && n == quitar.getNota()) {
                 notasJS.remove(i);
+                break;
+            }
 
-            break;
+            }
+
+        jo.put(campo, notasJS);
+
+        lf.escribirFichero(nombreArchivo, jo.toString(), context);
+        actualizarFirebase(campo,context);
+    }
+
+    public void quitarMateria(int id,String campo, Context context, String nombreArchivo)throws Exception{
+        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
+
+        JSONObject jo = (JSONObject) obj;
+        //JSONObject j = new JSONObject();
+        JSONArray notasJS = (JSONArray) jo.get(campo);
+        for (int i=0; i<notasJS.size(); i++){
+            int m = ((Long)notasJS.get(i)).intValue();
+            //int m = (Integer) matsJS.get(i);
+            if (id==m){
+                notasJS.remove(i);
+            }
         }
         jo.put(campo, notasJS);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
+        actualizarFirebase(campo,context);
     }
 
     /*
@@ -118,16 +146,6 @@ public class RegistroJSON {
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
         JSONArray notasJS = (JSONArray) jo.get(campo);
-
-/*<<<<<<< HEAD
-        if(notasJS!=null) {
-            for (int i = 0; i < notasJS.size(); i++) {
-                j = (JSONObject) notasJS.get(i);
-                String m = (String) j.get("materia");
-                int n = ((Long) j.get("nota")).intValue();
-                notas.add(new MateriaNota(m, n));
-            }
-=======*/
         for(int i=0; i<notasJS.size(); i++){
             j = (JSONObject)notasJS.get(i);
             String m = ((Long)j.get("materiaID")).intValue()+"";
@@ -136,7 +154,6 @@ public class RegistroJSON {
         }
         return notas;
     }
-
     /*
     Materias actuales
     * */
@@ -148,7 +165,6 @@ public class RegistroJSON {
         JSONObject j = new JSONObject();
         JSONArray matsJS = (JSONArray) jo.get("materiasActuales");
 
-
         for (int i=0; i<matsJS.size(); i++){
             int m = ((Long)matsJS.get(i)).intValue();
             //int m = (Integer) matsJS.get(i);
@@ -156,7 +172,6 @@ public class RegistroJSON {
         }
         return mats;
     }
-
     /*
     Anadir un grupo
     * */
@@ -166,7 +181,6 @@ public class RegistroJSON {
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
         JSONArray materias = (JSONArray) jo.get("materiasActuales");
-
 
         if(materias == null) materias = new JSONArray();
         boolean contiene = false;
@@ -184,5 +198,22 @@ public class RegistroJSON {
         jo.put("materiasActuales", materias);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
+        actualizarFirebase("materiasActuales",context);
+    }
+
+
+    private void actualizarFirebase(String campo,Context context){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        try {
+            if(campo.equals("materiasActuales")){
+                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriasTomadas(context, "registro.json"));
+            }else {
+                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaNota(campo,context,"registro.json"));
+            }
+            
+        }catch (Exception e){
+            Toast.makeText(context, "error al sincronizar", Toast.LENGTH_SHORT).show();
+        }
     }
 }

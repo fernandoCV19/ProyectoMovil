@@ -36,7 +36,7 @@
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Materia"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/tamaño_letras_normales"
                     android:textStyle="bold">
 
                 </TextView>
@@ -48,6 +48,7 @@
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Codigo de materia"
+                    android:textSize="@dimen/codigo_materia"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -58,22 +59,25 @@
                     <Button
                         android:id="@+id/botonDetalles"
                         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                        android:layout_width="200dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:fontFamily="casual"
                         android:gravity="center"
                         android:text="GRUPOS"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tamaño_letras_botones" />
 
                     <Button
                         android:id="@+id/requisitos"
                         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:fontFamily="casual"
                         android:text="requisitos"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tamaño_letras_botones" />
 
                 </LinearLayout>
 

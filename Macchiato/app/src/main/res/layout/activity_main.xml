@@ -13,7 +13,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="@dimen/tamaño_appbar"
         android:background="#ff7043"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Theme.Macchiato"
@@ -28,23 +28,21 @@
             android:fontFamily="casual"
             android:gravity="center"
             android:text="Bienvenido"
-            android:textSize="20sp"
+            android:textSize="@dimen/tamaño_titulo_appbar"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="8dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
-/*=======
->>>>>>> HistorialAcademicoNuevo*/
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/margin_appbar"
+        android:layout_marginEnd="8dp"
         android:orientation="vertical"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,6 +57,7 @@
             android:layout_marginTop="24dp"
             android:fontFamily="casual"
             android:text="@string/textUsuario"
+            android:textSize="@dimen/tamaño_letras_normales"
             android:textStyle="bold" />
 
         <EditText
@@ -68,7 +67,8 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:fontFamily="casual"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textSize="@dimen/texto_para_escribir" />
 
         <TextView
             android:id="@+id/textView2"
@@ -77,6 +77,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="casual"
             android:text="@string/textContraseña"
+            android:textSize="@dimen/tamaño_letras_normales"
             android:textStyle="bold" />
 
         <EditText
@@ -86,7 +87,8 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:fontFamily="casual"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textSize="@dimen/texto_para_escribir" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,6 +104,7 @@
                 android:fontFamily="casual"
                 android:onClick="session"
                 android:text="@string/textIniciar_sesion"
+                android:textSize="@dimen/tamaño_letras_botones"
                 android:textStyle="bold" />
 
             <Button
@@ -114,6 +117,7 @@
                 android:fontFamily="casual"
                 android:onClick="register"
                 android:text="@string/textRegistrarse"
+                android:textSize="@dimen/tamaño_letras_botones"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -122,9 +126,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="casual"
             android:text="Olvide mi contraseña"
-            android:textColor="#A84ED8"
+            android:textColor="@color/black"
             android:textColorHint="#000000"
+            android:textSize="@dimen/tamaño_letras_normales"
             android:textStyle="bold|italic" />
     </LinearLayout>
 

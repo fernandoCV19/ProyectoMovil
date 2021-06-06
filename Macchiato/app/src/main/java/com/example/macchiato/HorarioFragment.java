@@ -96,7 +96,6 @@ public class HorarioFragment extends Fragment {
         grupos=new ArrayList<>();
         materiaHorarioAdapter=new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         View view = inflater.inflate(R.layout.fragment_horario, container, false);
-        guardar=view.findViewById(R.id.buttonGuardar);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
         spinnerNivel = view.findViewById(R.id.spinnerNivel);
         spinnerMateria = view.findViewById(R.id.spinnerMateria);
@@ -178,6 +177,11 @@ public class HorarioFragment extends Fragment {
                                 R.layout.simple_spinner,
                                 getResources().getStringArray(R.array.nivelH)));
                         break;
+                    case "I":
+                        spinnerMateria.setAdapter(new ArrayAdapter<String>(getContext(),
+                                R.layout.simple_spinner,
+                                getResources().getStringArray(R.array.nivelI)
+                                ));
 
                 }
                 spinnerMateria.setVisibility(View.VISIBLE);
@@ -213,34 +217,6 @@ public class HorarioFragment extends Fragment {
             }
 
         });
-        guardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"Se guardo tu pinche lista de materias ",Toast.LENGTH_SHORT).show();
-                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
-                Context context=getContext();
-                for(Integer integer: seleccionados){
-                    try {
-                        registroJSON.aniadirMateriaTomada(integer,context,"registro.json");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                try {
-                    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    /*HashMap<String,Integer> map = new HashMap<>();
-                    ArrayList<Integer> l = registroJSON.getMateriasTomadas(context);
-                    for (Integer id: l){
-                        map.put("a"+id.toString(),id);
-                    }*/
-                    rootRef.child("Usuarios").child(uid).child("materiasActuales").setValue(registroJSON.getMateriasTomadas(context, "registro.json"));
-                } catch (Exception e) {
-                    Toast.makeText(context, "Error al sincronizar", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
 
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
@@ -265,18 +241,27 @@ public class HorarioFragment extends Fragment {
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
-                seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
+                /*seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
                 Context context=getContext();
-                for(Integer integer: seleccionados){
-                    try {
-                        registroJSON.aniadirMateriaTomada(integer,context, "registro.json");
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                /*for(Integer integer: seleccionados){
+                    if(integer>0) {
+                        try {
+                            registroJSON.aniadirMateriaTomada(integer, context, "registro.json");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        try {
+                            registroJSON.quitarMateria(integer*(-1),"materiasActuales", context, "registro.json");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-                break;
+                }*/
+                //break;
             }
         }
+        //seleccionados.clear();
         materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -291,30 +276,6 @@ public class HorarioFragment extends Fragment {
     }
 
 
-    private  void  startDownloading(){
-        FirebaseDatabase.getInstance().getReference().child("UMSS").child("cronograma")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                        String url = snapshot.getValue(String.class);
-                        DownloadManager.Request request= new DownloadManager.Request(Uri.parse(url));
-                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-                        request.setTitle("Download");
-                        request.setDescription("Descargando archivo");
-
-                        request.allowScanningByMediaScanner();
-                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+System.currentTimeMillis());
-                        DownloadManager downloadManager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
-                        downloadManager.enqueue(request);
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError error) { }
-                });
-
-    }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -328,13 +289,6 @@ public class HorarioFragment extends Fragment {
         switch(id) {
             case R.id.cambiar_a_generar:
                 MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(seleccionados);
-                /*ArrayList<Integer> aux = new ArrayList<>();
-                aux.add(1);
-                aux.add(2);
-                aux.add(3);
-                aux.add(5);
-                MostrarHorarioFragment mostrarHorarioFragment=new MostrarHorarioFragment(aux);*/
-
                 FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container,mostrarHorarioFragment);

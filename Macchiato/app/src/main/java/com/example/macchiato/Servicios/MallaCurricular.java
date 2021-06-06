@@ -1,7 +1,10 @@
 package com.example.macchiato.Servicios;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Collection;
@@ -119,7 +122,6 @@ public class MallaCurricular {
         hs.addAll((Collection)sig);
         sig.clear();
         sig.addAll((Collection)hs);
-
         return sig;
     }
 

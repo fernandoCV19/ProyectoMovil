@@ -24,8 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.json.JSONException;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
-public class RegisterActivity extends AppCompatActivity {
+public class  RegisterActivity extends AppCompatActivity {
 
     private EditText user_R,email_R,password_R,confirm_R;
     private DatabaseReference databaseReference;
@@ -72,29 +73,32 @@ public class RegisterActivity extends AppCompatActivity {
             mensajeError(confirm_R,"ingrese la contrasena de nuevo");
             return;
         }
-
         if (!pp.equals(p)){
             mensajeError(confirm_R,"la contrasena no coincide con la anterior");
             return;
         }
 
-        User user = new User(u,e,p);
-        firebaseAuth.createUserWithEmailAndPassword(user.getEmail(),user.getPassword())
+        User user = new User(u,e);
+        firebaseAuth.createUserWithEmailAndPassword(user.getEmail(),p)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
                             FirebaseUser us= FirebaseAuth.getInstance().getCurrentUser();
-                            user.setUid(us.getUid());
+                            //user.setUid(us.getUid());
                             LectorFichero lector = new LectorFichero();
                             lector.crearJson(getApplicationContext(),user,"registro.json");
                             databaseReference.child("Usuarios").child(us.getUid()).setValue(lector.devolverMapa(getApplicationContext(),"registro.json")).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
+                                        ArrayList<Integer> materiasPorTomar= new ArrayList<>();
+                                        for (int i=0;i<54;i++){
+                                            materiasPorTomar.add(i);
+                                        }
+                                        databaseReference.child("Usuarios").child(us.getUid()).child("materiasPorTomar").setValue(materiasPorTomar);
                                         Toast.makeText(RegisterActivity.this, "exito", Toast.LENGTH_SHORT).show();
-
                                         startActivity(new Intent(RegisterActivity.this,Navigation_bottom.class));
                                         finishAffinity();
                                     }
@@ -113,14 +117,11 @@ public class RegisterActivity extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         firebaseAuth = FirebaseAuth.getInstance();
-
     }
-
     private void mensajeError(EditText cont,String texto){
         cont.setError(texto);
         cont.requestFocus();
     }
-
     private void asignarId(){
         user_R= findViewById(R.id.editTextTextPersonName);
         email_R=findViewById(R.id.editTextTextEmailAddress2);

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardViewMateria"
+    android:id="@+id/cardViewClase"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="4dp"
+    app:cardCornerRadius="15dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
+        android:id="@+id/linearMateria"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
@@ -21,31 +21,20 @@
             android:orientation="horizontal"
             android:padding="6dp">
 
-            <ImageView
-                android:id="@+id/icono"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_gravity="center"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp"
-                app:srcCompat="@drawable/ic_libros" />
-
             <LinearLayout
                 android:id="@+id/linear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="2dp"
-                android:layout_toEndOf="@id/icono"
-                android:layout_toRightOf="@id/icono"
                 android:orientation="vertical">
 
+
                 <TextView
-                    android:id="@+id/nomMateriaHorario"
+                    android:id="@+id/nomMateriaAlarma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="Materia"
                     android:textSize="18dp">
@@ -53,18 +42,46 @@
                 </TextView>
 
                 <TextView
-                    android:id="@+id/horas"
+                    android:id="@+id/diaAlarma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Dia"
+                    android:textSize="18dp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/horaAlarma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="8:15-9:45" />
 
-                <TextView
-                    android:id="@+id/nomDocenteHorario"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="tatiana xd" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinnerMinutos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:entries="@array/horas"
+                        android:layout_marginBottom="12dp"
+                        android:layout_weight="1" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchAlarma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="3dp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
