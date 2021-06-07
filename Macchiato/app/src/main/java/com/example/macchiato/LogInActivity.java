@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.macchiato.Models.User;
 import com.example.macchiato.Servicios.LectorFichero;
+import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +49,7 @@ public class LogInActivity extends AppCompatActivity {
     private TextView olvide_contrasena;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
+    private ArrayList<Integer> tomadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,8 +136,7 @@ public class LogInActivity extends AppCompatActivity {
                             Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
                                     Toast.LENGTH_SHORT).show();
                             databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                public void onDataChange( DataSnapshot snapshot) {
                                     User userProfile = snapshot.getValue(User.class);
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile, "registro.json");
@@ -148,8 +150,11 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }
                             });
-                            startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
-                            finishAffinity();
+                            leerMateriasTomadas();
+                            Intent intent=new Intent(LogInActivity.this,Navigation_bottom.class);
+                            intent.putExtra("Materias tomadas",tomadas);
+                            startActivity(intent);
+                            finish();
                         } else {
                             Toast.makeText(LogInActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -167,6 +172,16 @@ public class LogInActivity extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         firebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    public void leerMateriasTomadas(){
+        RegistroJSON registroJSON= new RegistroJSON();
+        tomadas= new ArrayList<>();
+        try {
+            tomadas= registroJSON.getMateriasTomadas(this,"registro.json");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

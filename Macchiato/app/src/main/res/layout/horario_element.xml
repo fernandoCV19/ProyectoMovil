@@ -48,8 +48,7 @@
                     android:fontFamily="casual"
                     android:text="docente"
                     android:textStyle="bold" />
-                    android:fontFamily="casual"
-                    android:text="TextView" />
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/horariosInfo"

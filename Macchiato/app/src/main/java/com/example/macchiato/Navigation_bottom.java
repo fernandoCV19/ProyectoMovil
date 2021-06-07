@@ -36,11 +36,18 @@ public class Navigation_bottom extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        leerMateriasTomadas();
         super.onCreate(savedInstanceState);
+        ArrayList<Integer> materiasTomadas= new ArrayList<>();
+        Bundle parametros=this.getIntent().getExtras();
+        if(parametros!=null){
+           materiasTomadas=parametros.getIntegerArrayList("Materias tomadas");
+            showSelectedFragment(new MostrarHorarioFragment(materiasTomadas));
+        }else{
+           leerMateriasTomadas();
+            showSelectedFragment(mostrarHorarioFragment);
+        }
         setContentView(R.layout.activity_naivigation_bottom);
 
-        showSelectedFragment(mostrarHorarioFragment);
         try {
             materiaFragment= new MateriaFragment();
         } catch (JSONException e) {
