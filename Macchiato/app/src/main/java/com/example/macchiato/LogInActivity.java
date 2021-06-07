@@ -130,8 +130,8 @@ public class LogInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
-                                    Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
+                              //      Toast.LENGTH_SHORT).show();
                             databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -152,11 +152,11 @@ public class LogInActivity extends AppCompatActivity {
                             });
                             //Navigation_bottom navigation_bottom=new Navigation_bottom();
                             //navigation_bottom.leerMateriasTomadas();
-                            startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
+                            startActivity(new Intent(LogInActivity.this,splash.class));
                             finishAffinity();
                         } else {
-                            Toast.makeText(LogInActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(LogInActivity.this, "Authentication failed.",
+                            //        Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
