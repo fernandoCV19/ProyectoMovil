@@ -65,7 +65,6 @@ public class AjustesFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ArrayList<Grupo> grupos = new ArrayList<>();
         ArrayList<Clase> clases = new ArrayList<>();
         if (tomadas != null) {
             for (Integer in : tomadas) {

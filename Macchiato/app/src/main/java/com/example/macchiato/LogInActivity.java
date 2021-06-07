@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.macchiato.Models.User;
 import com.example.macchiato.Servicios.LectorFichero;
-import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,18 +28,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.security.auth.login.LoginException;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -150,9 +143,8 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }
                             });
-                            //Navigation_bottom navigation_bottom=new Navigation_bottom();
-                            //navigation_bottom.leerMateriasTomadas();
-                            startActivity(new Intent(LogInActivity.this,splash.class));
+
+                            startActivity(new Intent(LogInActivity.this, SplashScreenActivity.class));
                             finishAffinity();
 
                         } else {
@@ -172,16 +164,6 @@ public class LogInActivity extends AppCompatActivity {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         firebaseAuth = FirebaseAuth.getInstance();
-    }
-
-    public void leerMateriasTomadas(){
-        RegistroJSON registroJSON= new RegistroJSON();
-        tomadas= new ArrayList<>();
-        try {
-            tomadas= registroJSON.getMateriasTomadas(this,"registro.json");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 }
