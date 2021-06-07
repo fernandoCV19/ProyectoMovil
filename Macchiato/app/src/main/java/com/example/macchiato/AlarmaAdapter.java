@@ -28,6 +28,8 @@ import com.example.macchiato.Servicios.Alarma;
 import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.Iniciador;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -38,27 +40,36 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHold
     private Context mContext;
     private List<Alarma> alarmaList;
     private Calendar calendar;
+    private Context context;
     TinyDB tinyDB;
+    public AlarmaAdapter(List<Alarma> mData, Context context) {
+        this.alarmaList = mData;
+        this.context = context;
+
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView txtTitulo, txtHora, txtDias;
-        Switch activateAlarm;
-        CardView alarmasCard;
+        int minutos;
+        SwitchCompat aswitch;
+        TextView diaAlarma, horaAlarma, nomMateria;
+        Spinner spinnerMinutosAntes;
+        Context context;
 
 
-        MyViewHolder(View view) {
-            super(view);
-            txtTitulo = (TextView) view.findViewById(R.id.tituloAlarma);
-            txtDias = (TextView) view.findViewById(R.id.dias);
-            txtHora = (TextView) view.findViewById(R.id.horaAlarma);
-            alarmasCard = (CardView) view.findViewById(R.id.card_view);
-            activateAlarm = (Switch) view.findViewById(R.id.activateAlarmSwitch);
-           // btnEliminar = (ImageView) view.findViewById(R.id.btnEliminar);
-            view.setOnClickListener(v -> Toast.makeText(mContext, "Clic en ", Toast.LENGTH_SHORT).show());
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            context = itemView.getContext();
+            this.aswitch = itemView.findViewById(R.id.switchAlarma);
+            this.diaAlarma = itemView.findViewById(R.id.diaAlarma);
+            this.horaAlarma = itemView.findViewById(R.id.horaAlarma);
+            this.nomMateria = itemView.findViewById(R.id.nomMateriaAlarma);
+            this.spinnerMinutosAntes = (Spinner) itemView.findViewById(R.id.spinnerMinutos);
+
+
         }
     }
 
-    public AlarmaAdapter(Context mContext, List<Alarma> alarmaList) {
+    public AlarmaAdapter(ArrayList<Alarma> mContext, Context alarmaList) {
         this.mContext = mContext;
         this.alarmaList = alarmaList;
         calendar = Calendar.getInstance();
@@ -78,44 +89,33 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHold
         Alarma alarma = alarmaList.get(position);
         String horaFormateada = (alarma.getHora() < 10) ? String.valueOf("0" + alarma.getHora()) : String.valueOf(alarma.getHora());
         String minutoFormateado = (alarma.getMinuto() < 10) ? String.valueOf("0" + alarma.getMinuto()) : String.valueOf(alarma.getMinuto());
-        holder.txtTitulo.setText(alarma.getTitulo());
-        //holder.txtHora.setText(getHoraYmin(alarma.getHora(), alarma.getMinuto()));
-        holder.txtHora.setText(horaFormateada + ":" + minutoFormateado);
-        holder.txtDias.setText(showDiasFromList(alarma.getDias()));
-        holder.activateAlarm.setChecked(alarma.isActivado());
+
+      //  holder.horaAlarma.setText(getHoraYmin(alarma.getHora(), alarma.getMinuto()));
+        holder.horaAlarma.setText(horaFormateada + ":" + minutoFormateado);
+        holder.diaAlarma.setText(showDiasFromList(alarma.getDias()));
+        holder.aswitch.setChecked(alarma.isActivado());
         if (!alarma.isActivado()){
-            desPintarTxts(holder.txtDias);
-            desPintarTxts(holder.txtTitulo);
-            desPintarTxts(holder.txtHora);
+            desPintarTxts(holder.diaAlarma);
+
+            desPintarTxts(holder.horaAlarma);
         }
         // Cambiando el estilo cuando switch == true
-        holder.activateAlarm.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        holder.aswitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
             if (isChecked) {
                 setAlarm(alarma, alarma.getDiasNumeric(), position);
-                pintarTxts(holder.txtDias);
-                pintarTxts(holder.txtHora);
-                pintarTxts(holder.txtTitulo);
+                pintarTxts(holder.diaAlarma);
+                pintarTxts(holder.horaAlarma);
+
             }
             else {
                 cancelAlarm(alarma,false, position);
-                desPintarTxts(holder.txtDias);
-                desPintarTxts(holder.txtTitulo);
-                desPintarTxts(holder.txtHora);
+                desPintarTxts(holder.diaAlarma);
+
+                desPintarTxts(holder.horaAlarma);
             }
         });
-        holder.alarmasCard.setOnClickListener((v) -> {
-            //TODO: hacer actualización de datos de alarma
-//            Intent intent = new Intent(mContext, AggRecordatorio.class);
-//            intent.putExtra("isUpdate", true);
-//            intent.putExtra("alarmName", alarma.getTitulo());
-//            intent.putExtra("tonoName", alarma.getTono());
-//            intent.putExtra("horaAlarma", alarma.getHora());
-//            intent.putExtra("minAlarma", alarma.getMinuto());
-//            intent.putIntegerArrayListExtra("dias", (ArrayList<Integer>) alarma.getDiasNumeric());
-//            mContext.startActivity(intent);
-            Toast.makeText(mContext, alarma.getAlarmaId(), Toast.LENGTH_SHORT).show();
-        });
+
        // holder.btnEliminar.setOnClickListener((View v) -> {
            // cancelAlarm(alarma, true,position);
       //  });

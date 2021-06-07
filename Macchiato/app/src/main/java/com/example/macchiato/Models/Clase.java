@@ -8,13 +8,17 @@ public class Clase {
     private String horaFinal;
     private String aula;
     private String nomMateria;
+    private int hora;
+    private int minuto;
 
-    public Clase(Dia dia, String horaInicio, String horaFinal, String aula){
+    public Clase(Dia dia, String horaInicio, String horaFinal, String aula) {
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFinal = horaFinal;
         this.aula = aula;
     }
+
+
 
     public String getNomMateria() {
         return nomMateria;
@@ -24,19 +28,23 @@ public class Clase {
         this.nomMateria = nomMateria;
     }
 
-    public Dia getDia(){
+    public Dia getDia() {
         return dia;
     }
 
-    public String getHoraInicio(){
+    public String getHoraInicio() {
         return horaInicio;
     }
 
-    public String getHoraFinal(){
+    public String getHoraFinal() {
         return horaFinal;
     }
 
-    public String getAula(){
+    public String getAula() {
         return aula;
     }
+
 }
+
+
+

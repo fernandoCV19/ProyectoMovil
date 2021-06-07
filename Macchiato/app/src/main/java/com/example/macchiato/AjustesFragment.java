@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
+import com.example.macchiato.Servicios.Alarma;
 import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.CreadorAlarma;
 import com.example.macchiato.Servicios.Iniciador;
@@ -66,22 +67,24 @@ public class AjustesFragment extends Fragment {
             e.printStackTrace();
         }
         ArrayList<Grupo> grupos = new ArrayList<>();
-        ArrayList<Clase> clases = new ArrayList<>();
-        if (tomadas != null) {
+        ArrayList<Alarma> alarmas= new ArrayList<>();
+
+       if (tomadas != null) {
             for (Integer in : tomadas) {
                 for (Materia mat : materias) {
                     for (Grupo grup : mat.getGrupos()) {
                         if (grup.getID() == in) {
                             for(Clase clase : grup.getClases()){
+                                Alarma alarma=new Alarma()
                                 clase.setNomMateria(mat.getNombre());
-                                clases.add(clase);
+                                alarmas.add(clase);
                             }
                         }
                     }
                 }
             }
         }
-        AlarmaAdapter alarmaAdapter= new AlarmaAdapter(clases,getContext());
+        AlarmaAdapter alarmaAdapter= new AlarmaAdapter(alarmas,getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(alarmaAdapter);
