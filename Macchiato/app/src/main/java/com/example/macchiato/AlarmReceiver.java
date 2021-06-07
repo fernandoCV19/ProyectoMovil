@@ -1,10 +1,17 @@
 package com.example.macchiato;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AlarmReceiver {
     public class AlarmReceiver extends BroadcastReceiver {
@@ -17,7 +24,7 @@ public class AlarmReceiver {
             tonoUri = intent.getStringExtra("sonido");
             int notiID = ThreadLocalRandom.current().nextInt(0, 1000+ 1);
 
-            Intent home = new Intent(context, MainActivity.class);
+            Intent home = new Intent(context,Navigation_bottom);
             home.putExtra("notiId", notiID);
             home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                     Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
