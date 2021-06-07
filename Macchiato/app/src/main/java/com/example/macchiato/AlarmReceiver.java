@@ -13,7 +13,7 @@ import androidx.core.app.NotificationCompat;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class AlarmReceiver {
+
     public class AlarmReceiver extends BroadcastReceiver {
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
@@ -24,7 +24,7 @@ public class AlarmReceiver {
             tonoUri = intent.getStringExtra("sonido");
             int notiID = ThreadLocalRandom.current().nextInt(0, 1000+ 1);
 
-            Intent home = new Intent(context,Navigation_bottom);
+            Intent home = new Intent(context,Navigation_bottom.class);
             home.putExtra("notiId", notiID);
             home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                     Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -42,4 +42,3 @@ public class AlarmReceiver {
             Log.d("TONO2", tonoUri);
         }
     }
-}
