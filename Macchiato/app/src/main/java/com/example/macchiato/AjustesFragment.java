@@ -69,7 +69,7 @@ public class AjustesFragment extends Fragment {
         ArrayList<Grupo> grupos = new ArrayList<>();
         ArrayList<Alarma> alarmas= new ArrayList<>();
 
-       if (tomadas != null) {
+       /*if (tomadas != null) {
             for (Integer in : tomadas) {
                 for (Materia mat : materias) {
                     for (Grupo grup : mat.getGrupos()) {
@@ -81,6 +81,18 @@ public class AjustesFragment extends Fragment {
                             }
                         }
                     }
+                }
+            }
+        }*/
+        if(tomadas != null){
+            ArrayList<ConsultorMaterias.Par> pars = consultorMaterias.devolverGrupos(tomadas);
+            for(ConsultorMaterias.Par par : pars){
+                String nomMateria = par.getMateria();
+                Grupo grupo = par.getGrupo();
+                for(Clase clase: grupo.getClases()){
+                    Alarma alarma ;
+                    clase.setNomMateria(nomMateria);
+                    alarma = new Alarma(clase, "", "",true, "");
                 }
             }
         }

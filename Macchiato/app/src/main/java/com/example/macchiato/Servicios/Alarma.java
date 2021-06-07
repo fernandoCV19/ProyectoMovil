@@ -43,13 +43,20 @@ public class Alarma {
     public Alarma() {
     }
 
-    public Alarma(String titulo, int hora, int minuto, String tono, List<String> dias, String nota, boolean activado, String tonoPath) {
+   // public Alarma(String titulo, int hora, int minuto, String tono, List<String> dias, String nota, boolean activado, String tonoPath) {
+    public Alarma(Clase clase, String tono, String nota, boolean activado, String tonoPath){
         alarmaId = RandomStringUtils.randomNumeric(5);
-        this.titulo = titulo;
-        this.hora = hora;
-        this.minuto = minuto;
+        this.titulo = clase.getNomMateria();
+
+        String[] hora_minuto = clase.getHoraInicio().split(":");
+
+        this.hora = Integer.parseInt(hora_minuto[0]);;
+        this.minuto = Integer.parseInt(hora_minuto[1]);
         this.tono = tono;
-        this.dias = dias;
+
+        this.dias = new ArrayList<>();
+        dias.add(clase.getDia().toString());
+
         this.nota = nota;
         this.activado = activado;
         this.uriTonePath = tonoPath;
