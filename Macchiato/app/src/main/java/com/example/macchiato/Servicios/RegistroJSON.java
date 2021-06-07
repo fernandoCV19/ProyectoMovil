@@ -84,9 +84,11 @@ public class RegistroJSON {
         jo.put(campo, notas);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        actualizarFirebase(campo,context);
+        if(nombreArchivo.equals("registro.json")) {
+            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            actualizarFirebase(campo, context);
+        }
     }
 
     /*
@@ -114,7 +116,9 @@ public class RegistroJSON {
         jo.put(campo, notasJS);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
-        actualizarFirebase(campo,context);
+        if(nombreArchivo.equals("registro.json")) {
+            actualizarFirebase(campo, context);
+        }
     }
 
     public void quitarMateria(int id,String campo, Context context, String nombreArchivo)throws Exception{
@@ -133,7 +137,9 @@ public class RegistroJSON {
         jo.put(campo, notasJS);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
-        actualizarFirebase(campo,context);
+        if(nombreArchivo.equals("registro.json")) {
+            actualizarFirebase(campo, context);
+        }
     }
 
     /*
@@ -182,25 +188,26 @@ public class RegistroJSON {
         JSONObject j = new JSONObject();
         JSONArray materias = (JSONArray) jo.get("materiasActuales");
 
-        if(materias == null) materias = new JSONArray();
+        if (materias == null) materias = new JSONArray();
         boolean contiene = false;
-        for (int i=0; i<materias.size(); i++){
-            int m = (((Long)materias.get(i))).intValue();
+        for (int i = 0; i < materias.size(); i++) {
+            int m = (((Long) materias.get(i))).intValue();
             //int m = (Integer)materias.get(i);
-            if(m == matID) {
+            if (m == matID) {
                 contiene = true;
                 break;
             }
         }
-        if(!contiene)
+        if (!contiene)
             materias.add(matID);
 
         jo.put("materiasActuales", materias);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
-        actualizarFirebase("materiasActuales",context);
+        if (nombreArchivo.equals("registro.json")) {
+            actualizarFirebase("materiasActuales", context);
+        }
     }
-
 
     private void actualizarFirebase(String campo,Context context){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();

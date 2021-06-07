@@ -52,7 +52,7 @@ public class MostrarHorarioFragment extends Fragment {
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
         Iniciador iniciador=new Iniciador();
 
-        if(list.isEmpty()){
+        if(list==null||list.isEmpty()){
             Toast.makeText(getContext(), "vacia", Toast.LENGTH_SHORT).show();
         }
 

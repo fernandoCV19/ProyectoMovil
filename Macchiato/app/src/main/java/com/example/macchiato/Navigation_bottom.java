@@ -34,18 +34,20 @@ public class Navigation_bottom extends AppCompatActivity {
     MostrarHorarioFragment mostrarHorarioFragment;
     AjustesFragment ajustesFragment;
 
-    public Navigation_bottom(){
-
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ArrayList<Integer> materiasTomadas= new ArrayList<>();
+        Bundle parametros=this.getIntent().getExtras();
+        if(parametros!=null){
+           materiasTomadas=parametros.getIntegerArrayList("Materias tomadas");
+            showSelectedFragment(new MostrarHorarioFragment(materiasTomadas));
+        }else{
+           leerMateriasTomadas();
+            showSelectedFragment(mostrarHorarioFragment);
+        }
         setContentView(R.layout.activity_naivigation_bottom);
 
-        leerMateriasTomadas();
-        showSelectedFragment(mostrarHorarioFragment);
         try {
             materiaFragment= new MateriaFragment();
         } catch (JSONException e) {
@@ -55,16 +57,12 @@ public class Navigation_bottom extends AppCompatActivity {
 
     }
 
-
-
     @Override
     protected void onStart() {
         super.onStart();
         auth=FirebaseAuth.getInstance();
-
         firebaseUser = auth.getCurrentUser();
         mBottomNavigation =(BottomNavigationView) findViewById(R.id.bottomNavigationView);
-
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -74,7 +72,7 @@ public class Navigation_bottom extends AppCompatActivity {
                         showSelectedFragment(new PerfilFragment());
                     }else{
                         //Toast.makeText(Navigation_bottom.this, "ya esta loggeado", Toast.LENGTH_SHORT).show();
-                        leerMateriasTomadas();
+
                         showSelectedFragment(new PerfilSesionFragment());
                     }
 

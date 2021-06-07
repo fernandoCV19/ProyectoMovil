@@ -1,7 +1,5 @@
 package com.example.macchiato.Parser;
 
-import android.content.Context;
-
 import com.example.macchiato.Models.MateriaNivel;
 
 import org.json.simple.JSONArray;

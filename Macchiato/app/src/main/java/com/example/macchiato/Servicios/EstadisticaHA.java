@@ -6,11 +6,9 @@ import java.util.ArrayList;
 
 public class EstadisticaHA {
 
-
     private ArrayList<MateriaNota> listaMaterias;
     private ArrayList<MateriaNota> mostrarAprobadas;
     private ArrayList<MateriaNota> mostrarReprobadas;
-
 
     public EstadisticaHA(ArrayList<MateriaNota> listaMaterias, ArrayList<MateriaNota> mostrarAprobadas,ArrayList<MateriaNota> mostrarReprobadas) {
         this.listaMaterias = listaMaterias;

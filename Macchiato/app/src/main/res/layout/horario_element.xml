@@ -48,6 +48,10 @@
                     android:fontFamily="casual"
                     android:text="docente"
                     android:textStyle="bold" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 40fe83e9143d94ca12d0f911907a8248d961210d
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/horariosInfo"

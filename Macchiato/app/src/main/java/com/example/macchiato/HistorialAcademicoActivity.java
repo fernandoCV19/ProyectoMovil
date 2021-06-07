@@ -346,6 +346,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                         MateriaNota materiaNotaID =new MateriaNota(id,materiaNotaR.getNota());
                         rj.quitarMateria("materiasReprobadas", materiaNotaID, this, "registro.json");
 
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

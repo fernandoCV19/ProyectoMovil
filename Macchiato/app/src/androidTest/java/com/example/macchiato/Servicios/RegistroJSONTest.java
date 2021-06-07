@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.*;
 
 @RunWith(AndroidJUnit4.class)
 public class RegistroJSONTest {
@@ -177,8 +176,6 @@ public class RegistroJSONTest {
 
     @Test
     public void dadoElCampoAprobadoCuandoGetMateriaNotaEntoncesDevuelveTodasLasMateriasAprobadas() throws Exception {
-        Iniciador iniciador = new Iniciador();
-        iniciador.iniciar(context);
         registroJSON.aniadirNota(1, 80, context, nombreArchivo);
         registroJSON.aniadirNota(2, 70, context, nombreArchivo);
         registroJSON.aniadirNota(3, 85, context, nombreArchivo);
@@ -187,5 +184,60 @@ public class RegistroJSONTest {
         assertThat(materias.get(0).getNota()).isEqualTo(80);
         assertThat(materias.get(1).getNota()).isEqualTo(70);
         assertThat(materias.get(2).getNota()).isEqualTo(85);
+        assertThat(materias.get(0).getMateriaId()).isEqualTo("1");
+        assertThat(materias.get(1).getMateriaId()).isEqualTo("2");
+        assertThat(materias.get(2).getMateriaId()).isEqualTo("3");
+    }
+
+    @Test
+    public void dadoElCampoReprobadoCuandoGetMateriaNotaEntoncesDevuelveTodasLasMateriasAprobadas() throws Exception {
+        registroJSON.aniadirNota(1, 20, context, nombreArchivo);
+        registroJSON.aniadirNota(2, 30, context, nombreArchivo);
+        registroJSON.aniadirNota(3, 45, context, nombreArchivo);
+        ArrayList<MateriaNota> materias = registroJSON.getMateriaNota("materiasReprobadas", context, nombreArchivo);
+
+        assertThat(materias.get(0).getNota()).isEqualTo(20);
+        assertThat(materias.get(1).getNota()).isEqualTo(30);
+        assertThat(materias.get(2).getNota()).isEqualTo(45);
+        assertThat(materias.get(0).getMateriaId()).isEqualTo("1");
+        assertThat(materias.get(1).getMateriaId()).isEqualTo("2");
+        assertThat(materias.get(2).getMateriaId()).isEqualTo("3");
+    }
+
+    @Test
+    public void dadoUnIDCuandoAnadirMateriaTomadaEntoncesAnadeElIdAlJsonIndicado() throws Exception {
+        registroJSON.aniadirMateriaTomada(1, context, nombreArchivo);
+        String contenido = (new LectorFichero()).leerFichero(context,nombreArchivo);
+        assertThat(contenido).contains("\"materiasActuales\":[1]");
+    }
+
+    @Test
+    public void dadoUnIDCuandoAnadirMateriaYaConMateriasPreviasRegistradasEntoncesAnadeElIdAlJsonIndicadoSinEliminarLosAnteriores() throws Exception {
+        registroJSON.aniadirMateriaTomada(1, context, nombreArchivo);
+        registroJSON.aniadirMateriaTomada(2, context, nombreArchivo);
+        String contenido = (new LectorFichero()).leerFichero(context,nombreArchivo);
+        assertThat(contenido).contains("\"materiasActuales\":[1,2]");
+    }
+
+    @Test
+    public void cuandoGetMateriasTomadasEntoncesDevuelveUnaListaConLosIdsDeLasMateriasRegistradasPreviamente() throws Exception {
+        registroJSON.aniadirMateriaTomada(1, context, nombreArchivo);
+        registroJSON.aniadirMateriaTomada(2, context, nombreArchivo);
+        registroJSON.aniadirMateriaTomada(3, context, nombreArchivo);
+        registroJSON.aniadirMateriaTomada(4, context, nombreArchivo);
+
+        ArrayList<Integer> ids = registroJSON.getMateriasTomadas(context, nombreArchivo);
+
+        assertThat(ids).contains(1);
+        assertThat(ids).contains(2);
+        assertThat(ids).contains(3);
+        assertThat(ids).contains(4);
+    }
+
+    @Test
+    public void cuandoGetMateriasTomadasSinHaberRegistradoMateriasAntesEntoncesDevuelveUnaListaVacia() throws Exception {
+        ArrayList<Integer> ids = registroJSON.getMateriasTomadas(context, nombreArchivo);
+
+        assertThat(ids).isEmpty();
     }
 }
