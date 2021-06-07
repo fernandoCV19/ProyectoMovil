@@ -1,4 +1,4 @@
-package com.example.macchiato;
+package com.example.macchiato.Servicios.Alarma;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.macchiato.Servicios.Alarma;
+import com.example.macchiato.Servicios.Alarma.Alarma;
 import com.google.gson.Gson;
 
 import java.io.File;

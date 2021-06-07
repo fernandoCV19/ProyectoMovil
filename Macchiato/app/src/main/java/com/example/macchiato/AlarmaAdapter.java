@@ -7,30 +7,21 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.macchiato.Models.Clase;
-import com.example.macchiato.Models.Clase;
-import com.example.macchiato.Models.Materia;
-import com.example.macchiato.Servicios.Alarma;
-import com.example.macchiato.Servicios.ConsultorMaterias;
-import com.example.macchiato.Servicios.Iniciador;
+
+import com.example.macchiato.Servicios.Alarma.AlarmReceiver;
+import com.example.macchiato.Servicios.Alarma.Alarma;
+import com.example.macchiato.Servicios.Alarma.TinyDB;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -69,11 +60,11 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHold
         }
     }
 
-    public AlarmaAdapter(ArrayList<Alarma> mContext, Context alarmaList) {
+    public AlarmaAdapter(ArrayList<Alarma> alarmaList, Context mContext) {
         this.mContext = mContext;
         this.alarmaList = alarmaList;
         calendar = Calendar.getInstance();
-      //  tinyDB = new TinyDB(mContext);
+        tinyDB = new TinyDB(mContext);
     }
 
     @NonNull
@@ -101,7 +92,6 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHold
         }
         // Cambiando el estilo cuando switch == true
         holder.aswitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
             if (isChecked) {
                 setAlarm(alarma, alarma.getDiasNumeric(), position);
                 pintarTxts(holder.diaAlarma);

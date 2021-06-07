@@ -1,4 +1,4 @@
-package com.example.macchiato.Servicios;
+package com.example.macchiato.Servicios.Alarma;
 
 import android.content.Context;
 import android.content.Intent;
@@ -48,7 +48,8 @@ public class Alarma {
         alarmaId = RandomStringUtils.randomNumeric(5);
         this.titulo = clase.getNomMateria();
 
-        String[] hora_minuto = clase.getHoraInicio().split(":");
+        String horaInicio = clase.getHoraInicio().replaceAll(" ","");
+        String[] hora_minuto = horaInicio.split(":");
 
         this.hora = Integer.parseInt(hora_minuto[0]);;
         this.minuto = Integer.parseInt(hora_minuto[1]);
@@ -60,6 +61,7 @@ public class Alarma {
         this.nota = nota;
         this.activado = activado;
         this.uriTonePath = tonoPath;
+        setDiasNumeric();
     }
 
     public void setAlarmaId(String alarmaId) {
@@ -70,10 +72,18 @@ public class Alarma {
         return diasNumeric;
     }
 
-    public void setDiasNumeric(List<Integer> diasNumeric) {
-        this.diasNumeric = diasNumeric;
+    private void setDiasNumeric() {
+        diasNumeric = new ArrayList<>();
+        for(String d: dias)
+            diasNumeric.add(getDiaNumeric(d));
     }
-
+    private int getDiaNumeric(String dia){
+        if(dia.contains("LUNES")) return 2;
+        else if(dia.contains("MARTES")) return 3;
+        else if(dia.contains("MIERCOLES")) return 4;
+        else if(dia.contains("JUEVES")) return 5;
+        else return 6;
+    }
     public String getUriTonePath() {
         return uriTonePath;
     }
