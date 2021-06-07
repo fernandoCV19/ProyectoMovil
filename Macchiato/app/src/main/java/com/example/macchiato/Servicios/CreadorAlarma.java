@@ -19,6 +19,7 @@ public class CreadorAlarma {
             ConsultorMaterias consultorMaterias = new ConsultorMaterias();
             ArrayList<Integer> id = new ArrayList<>();
             id.add(idGrupo);
+
             ConsultorMaterias.Par par = consultorMaterias.devolverGrupos(id).get(0);
             Grupo g = par.getGrupo();
 
