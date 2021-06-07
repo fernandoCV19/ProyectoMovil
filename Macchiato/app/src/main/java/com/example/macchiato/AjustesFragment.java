@@ -31,9 +31,9 @@ public class AjustesFragment extends Fragment {
     RecyclerView recyclerView;
     Spinner SpinnerMinutosAntes;
     TinyDB tinydb;
-
+    ArrayList<Alarma> alarmas;
     public AjustesFragment() {
-        // Required empty public constructor
+        alarmas= new ArrayList<>();
     }
 
 
@@ -55,7 +55,6 @@ public class AjustesFragment extends Fragment {
             e.printStackTrace();
         }
         ArrayList<Grupo> grupos = new ArrayList<>();
-        ArrayList<Alarma> alarmas= new ArrayList<>();
 
        /*if (tomadas != null) {
             for (Integer in : tomadas) {
@@ -81,9 +80,11 @@ public class AjustesFragment extends Fragment {
                     Alarma alarma ;
                     clase.setNomMateria(nomMateria);
                     alarma = new Alarma(clase, "", "",true, "");
-                    CreadorAlarma creadorAlarma = new CreadorAlarma();
-                    creadorAlarma.crearAlarma(alarma,getContext(),tinydb);
                     alarmas.add(alarma);
+                    if(!alarmas.contains(alarma)){
+                      CreadorAlarma creadorAlarma = new CreadorAlarma();
+                      creadorAlarma.crearAlarma(alarma,getContext(),tinydb);
+                    }
                 }
             }
         }
