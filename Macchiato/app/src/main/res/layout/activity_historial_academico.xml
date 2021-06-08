@@ -56,7 +56,7 @@
         android:text="Materias Reprobadas"
         android:textColor="#090909"
         android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/list_materiasReprobadas"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lista_MateriasAprobadas" />
@@ -74,62 +74,64 @@
         app:layout_constraintTop_toBottomOf="@+id/list_materiasReprobadas" />
 
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/floating"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginEnd="16dp"
-        android:clickable="false"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ver_Estadisticas"
-        app:srcCompat="@drawable/addn">
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/añadir_floating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="?attr/colorAccent"
-            app:fab_icon="@drawable/addn"
-            app:fab_size="mini"
-            app:fab_title="Favorito" />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_eliminar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="?attr/colorAccent"
-            app:fab_icon="@drawable/substract"
-            app:fab_size="mini"
-            app:fab_title="Favorito" />
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_materiasReprobadas"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/floating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_MateriasAprobadas"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:flow_horizontalAlign="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lista_MateriasAprobadas">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_materiasReprobadas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/floating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:foregroundGravity="right"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/addn">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/añadir_floating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="?attr/colorAccent"
+                app:fab_icon="@drawable/addn"
+                app:fab_size="mini"
+                app:fab_title="Favorito" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floating_eliminar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="?attr/colorAccent"
+                app:fab_icon="@drawable/substract"
+                app:fab_size="mini"
+                app:fab_title="Favorito" />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
