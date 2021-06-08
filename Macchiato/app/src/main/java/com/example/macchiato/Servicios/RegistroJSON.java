@@ -74,7 +74,7 @@ public class RegistroJSON {
         String campo = "";
         if(nota >50) {
             campo = "materiasAprobadas";
-            quitarMateria(materiaID,"materiasPorTomar",context,nombreArchivo);
+
         }
         else {
             campo = "materiasReprobadas";
@@ -86,9 +86,12 @@ public class RegistroJSON {
         jo.put(campo, notas);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
+        if(campo.equals("materiasAprobadas")){
+            quitarMateria(materiaID,"materiasPorTomar",context,nombreArchivo);
+        }
         if(nombreArchivo.equals("registro.json")) {
             actualizarFirebase(campo, context);
-            actualizarFirebase("materiasPorTomar",context);
+            //actualizarFirebase("materiasPorTomar",context);
 
         }
     }
