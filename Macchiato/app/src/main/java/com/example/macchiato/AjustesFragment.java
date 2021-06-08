@@ -1,11 +1,5 @@
 package com.example.macchiato;
 
-import android.Manifest;
-import android.app.DownloadManager;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -14,37 +8,32 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.URLUtil;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
+import com.example.macchiato.Servicios.Alarma.Alarma;
+import com.example.macchiato.Servicios.Alarma.CreadorAlarma;
+import com.example.macchiato.Servicios.Alarma.TinyDB;
 import com.example.macchiato.Servicios.ConsultorMaterias;
-import com.example.macchiato.Servicios.CreadorAlarma;
 import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
 
-import org.json.JSONException;
-
-import java.net.CookieManager;
 import java.util.ArrayList;
 
 public class AjustesFragment extends Fragment {
     Button btn;
     RecyclerView recyclerView;
     Spinner SpinnerMinutosAntes;
-
+    TinyDB tinydb;
+    ArrayList<Alarma> alarmas;
     public AjustesFragment() {
-        // Required empty public constructor
+        alarmas= new ArrayList<>();
     }
 
 
@@ -52,7 +41,7 @@ public class AjustesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        tinydb = new TinyDB(getActivity().getApplicationContext());
         View viewAjustes = inflater.inflate(R.layout.fragment_ajustes, container, false);
         recyclerView = viewAjustes.findViewById(R.id.recyclerAlarmas);
         Iniciador iniciador = new Iniciador();
@@ -66,22 +55,40 @@ public class AjustesFragment extends Fragment {
             e.printStackTrace();
         }
         ArrayList<Grupo> grupos = new ArrayList<>();
-        ArrayList<Clase> clases = new ArrayList<>();
-        if (tomadas != null) {
+
+       /*if (tomadas != null) {
             for (Integer in : tomadas) {
                 for (Materia mat : materias) {
                     for (Grupo grup : mat.getGrupos()) {
                         if (grup.getID() == in) {
                             for(Clase clase : grup.getClases()){
+                                Alarma alarma=new Alarma()
                                 clase.setNomMateria(mat.getNombre());
-                                clases.add(clase);
+                                alarmas.add(clase);
                             }
                         }
                     }
                 }
             }
+        }*/
+        if(tomadas != null){
+            ArrayList<ConsultorMaterias.Par> pars = consultorMaterias.devolverGrupos(tomadas);
+            for(ConsultorMaterias.Par par : pars){
+                String nomMateria = par.getMateria();
+                Grupo grupo = par.getGrupo();
+                for(Clase clase: grupo.getClases()){
+                    Alarma alarma ;
+                    clase.setNomMateria(nomMateria);
+                    alarma = new Alarma(clase, "", "",true, "");
+                    alarmas.add(alarma);
+                    if(!alarmas.contains(alarma)){
+                      CreadorAlarma creadorAlarma = new CreadorAlarma();
+                      creadorAlarma.crearAlarma(alarma,getContext(),tinydb);
+                    }
+                }
+            }
         }
-        AlarmaAdapter alarmaAdapter= new AlarmaAdapter(clases,getContext());
+        AlarmaAdapter alarmaAdapter= new AlarmaAdapter(alarmas,getContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(alarmaAdapter);
