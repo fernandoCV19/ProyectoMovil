@@ -71,6 +71,11 @@ public class HistorialAcademicoActivityTest {
     }
 
     @Test
+    public void menuFloatinActionButtonSePuedeVer(){
+        onView(withId(R.id.floatingHistorialAcademico)).check(matches(isDisplayed()));
+    }
+
+    @Test
     public void botonesSePuedenClicar(){
         onView(withId(R.id.ver_Estadisticas)).check(matches(isClickable()));
         onView(withId(R.id.floating_eliminar)).check(matches(isClickable()));

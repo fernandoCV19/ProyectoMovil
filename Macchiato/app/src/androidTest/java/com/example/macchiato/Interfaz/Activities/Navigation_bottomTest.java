@@ -17,10 +17,10 @@ import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 
-//@RunWith(AndroidJUnit4ClassRunner.class)
+@RunWith(AndroidJUnit4ClassRunner.class)
 public class Navigation_bottomTest {
 
-/*
+
     @Rule
     public ActivityScenarioRule activityScenarioRule = new ActivityScenarioRule(Navigation_bottom.class);
 
@@ -65,5 +65,5 @@ public class Navigation_bottomTest {
         onView(withId(R.id.nav_perfil)).check(matches(isClickable()));
         onView(withId(R.id.nav_ajustes)).check(matches(isClickable()));
         onView(withId(R.id.nav_materias)).check(matches(isClickable()));
-    }*/
+    }
 }
