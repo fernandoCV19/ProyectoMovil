@@ -17,6 +17,9 @@ public class User {
         materiasReprobadas = new ArrayList<>();
         materiasPorTomar = new ArrayList<>();
         materiasActuales = new ArrayList<>();
+        for (int i=0;i<54;i++){
+            materiasPorTomar.add(i);
+        }
 
     }
     public User(String userName,String email) {
@@ -26,6 +29,9 @@ public class User {
         materiasReprobadas = new ArrayList<>();
         materiasPorTomar = new ArrayList<>();
         materiasActuales = new ArrayList<>();
+        for (int i=0;i<54;i++){
+            materiasPorTomar.add(i);
+        }
 
 
     }
