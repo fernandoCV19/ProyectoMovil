@@ -124,5 +124,5 @@ public class AjustesFragment extends Fragment {
     public void onResume() {
         super.onResume();
     }
-    
+
 }
