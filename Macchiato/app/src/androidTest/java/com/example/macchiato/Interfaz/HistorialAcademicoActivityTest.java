@@ -71,7 +71,7 @@ public class HistorialAcademicoActivityTest {
     }
 
     @Test
-    public void botonesSonClicables(){
+    public void botonesSePuedenClicar(){
         onView(withId(R.id.ver_Estadisticas)).check(matches(isClickable()));
         onView(withId(R.id.floating_eliminar)).check(matches(isClickable()));
         onView(withId(R.id.añadir_floating)).check(matches(isClickable()));

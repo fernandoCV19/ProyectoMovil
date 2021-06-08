@@ -1,12 +1,9 @@
 package com.example.macchiato.Interfaz;
 
-import androidx.test.espresso.ViewAction;
-import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
 import com.example.macchiato.CambiarPerfilActivity;
-import com.example.macchiato.HistorialAcademicoActivity;
 import com.example.macchiato.R;
 
 import org.junit.Rule;
@@ -17,8 +14,6 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
-
-import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class CambiarPerfilActivityTest {
@@ -83,7 +78,7 @@ public class CambiarPerfilActivityTest {
     }
 
     @Test
-    public void botonEsClicable(){
+    public void botonSePuedeClicar(){
         onView(withId(R.id.button2)).check(matches(isClickable()));
     }
 }
