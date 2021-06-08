@@ -16,11 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Grupo;
+import com.example.macchiato.Servicios.Alarma.Alarma;
+import com.example.macchiato.Servicios.Alarma.TinyDB;
+import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.RegistroJSON;
 
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +118,7 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
                         selecs.remove((Object)item.getID());
                         //Toast.makeText(context, "eliminado", Toast.LENGTH_SHORT).show();
                         try {
+                            cancelAlarm(item.getID());
                             registroJSON.quitarMateria(item.getID(),"materiasActuales", context, "registro.json");
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -132,5 +137,37 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
 
         }
 
+    }
+    private void cancelAlarm(int id){
+        ConsultorMaterias consultorMaterias = new ConsultorMaterias();
+        TinyDB tinyDB = new TinyDB(context.getApplicationContext());
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(id);
+        ArrayList<ConsultorMaterias.Par> par = consultorMaterias.devolverGrupos(list);
+
+        String nomMateria =par.get(0).getMateria();
+        Grupo g = par.get(0).getGrupo();
+
+        ArrayList<String> dias = new ArrayList<>();
+        for(Clase c: g.getClases()){
+            dias.add(c.getDia().toString());
+        }
+        ArrayList<Alarma> alarmas = new ArrayList<>();
+
+        alarmas.addAll(tinyDB.getListAlarm("allAlarmas", Alarma.class));
+        for(Clase c: g.getClases()){
+            for(Alarma a: alarmas){
+                if(a.getTitulo().contains(nomMateria))
+                if(c.getDia().toString().contains(a.getDias().get(0))){
+                    String hora_minuto = a.getHora() + ":" + a.getMinuto();
+                    String comp = c.getHoraInicio().replaceAll(" ", "");
+                    if(hora_minuto.contains(comp)){
+                        alarmas.remove(a);
+                        break;
+                    }
+                }
+            }
+        }
+        tinyDB.putListAlarm("allAlarmas", alarmas);
     }
 }

@@ -41,6 +41,7 @@ public class AjustesFragment extends Fragment {
     AlarmaAdapter alarmaAdapter;
     ArrayList<Integer> tomadas;
     SwitchCompat activarNotificaciones;
+    boolean activado;
     public AjustesFragment() {
         alarmasList= new ArrayList<>();
         tomadas = new ArrayList<>();
@@ -59,20 +60,33 @@ public class AjustesFragment extends Fragment {
 
         Iniciador iniciador = new Iniciador();
         RegistroJSON registroJSON = new RegistroJSON();
+        activado = tinydb.getBoolean("activado");
+        activarNotificaciones.setChecked(activado);
+
 
         try {
             tomadas = registroJSON.getMateriasTomadas(getContext(), "registro.json");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        if(activado) {
+            getAllAlarmas();
+            setAllAlarms();
+        }
+        else alarmasList.clear();
         activarNotificaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(activarNotificaciones.isChecked()){
+                    tinydb.putBoolean("activado", true);
                     setAllAlarms();
+                    alarmaAdapter= new AlarmaAdapter(alarmasList,getContext());
+                    recyclerView.setHasFixedSize(true);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    recyclerView.setAdapter(alarmaAdapter);
                 }else{
-
+                    tinydb.putBoolean("activado", false);
+                    cancelAllAlarms();
                 }
             }
         });
@@ -82,7 +96,8 @@ public class AjustesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(alarmaAdapter);
 
-        getAllAlarmas();
+
+        alarmaAdapter.notifyDataSetChanged();
 
         return viewAjustes;
 
@@ -109,27 +124,31 @@ public class AjustesFragment extends Fragment {
             }
         }
     }
-    public void cancelAllAlarms(){
+    public boolean cancelOneAlarm(int pos){
         if(tomadas != null && tomadas.size()!= 0){
-            for(int i=0; i<alarmasList.size(); i++){
-                alarmaAdapter.cancelAlarm(alarmasList.get(i),true,i);
-            }
+            alarmaAdapter.cancelAlarm(alarmasList.get(pos),true,pos);
+            return true;
         }
+        else return false;
+    }
+    public boolean cancelAllAlarms(){
+        if(tomadas != null && tomadas.size()!= 0){
+            while(alarmasList.size()!=0){
+                alarmaAdapter.cancelAlarm(alarmasList.get(0),true,0);
+            }
+            return true;
+        }
+        else return false;
     }
     public void getAllAlarmas() {
         alarmasList.clear();
         alarmasList.addAll(tinydb.getListAlarm("allAlarmas", Alarma.class));
-        alarmaAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        getAllAlarmas();
     }
 
 }
