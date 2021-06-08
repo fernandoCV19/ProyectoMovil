@@ -14,9 +14,5 @@
         <item name="windowActionBar">false</item>
         <item name="android:textSize">@dimen/tamaño_por_defecto</item>
     </style>
-    <style name="SplashScreen" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">
-            @drawable/logonuevo
-        </item>
-    </style>
+
 </resources>

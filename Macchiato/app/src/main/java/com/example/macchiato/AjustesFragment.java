@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.Grupo;
@@ -31,9 +32,13 @@ public class AjustesFragment extends Fragment {
     RecyclerView recyclerView;
     Spinner SpinnerMinutosAntes;
     TinyDB tinydb;
-    ArrayList<Alarma> alarmas;
+    ArrayList<Alarma> alarmasList;
+    AlarmaAdapter alarmaAdapter;
+    ArrayList<Integer> tomadas;
+    Switch activarNotificaciones;
     public AjustesFragment() {
-        alarmas= new ArrayList<>();
+        alarmasList= new ArrayList<>();
+        tomadas = new ArrayList<>();
     }
 
 
@@ -43,35 +48,34 @@ public class AjustesFragment extends Fragment {
                              Bundle savedInstanceState) {
         tinydb = new TinyDB(getActivity().getApplicationContext());
         View viewAjustes = inflater.inflate(R.layout.fragment_ajustes, container, false);
+
         recyclerView = viewAjustes.findViewById(R.id.recyclerAlarmas);
+        activarNotificaciones =(Switch)viewAjustes.findViewById(R.id.switch2);
+
         Iniciador iniciador = new Iniciador();
-        ConsultorMaterias consultorMaterias = new ConsultorMaterias();
         RegistroJSON registroJSON = new RegistroJSON();
-        ArrayList<Integer> tomadas = new ArrayList<>();
-        ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
+
         try {
             tomadas = registroJSON.getMaterias("materiasActuales",getContext(), "registro.json");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ArrayList<Grupo> grupos = new ArrayList<>();
 
-       /*if (tomadas != null) {
-            for (Integer in : tomadas) {
-                for (Materia mat : materias) {
-                    for (Grupo grup : mat.getGrupos()) {
-                        if (grup.getID() == in) {
-                            for(Clase clase : grup.getClases()){
-                                Alarma alarma=new Alarma()
-                                clase.setNomMateria(mat.getNombre());
-                                alarmas.add(clase);
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
+
+        alarmaAdapter= new AlarmaAdapter(alarmasList,getContext());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(alarmaAdapter);
+
+        getAllAlarmas();
+
+        return viewAjustes;
+
+    }
+
+    private void setAllAlarms(){
         if(tomadas != null){
+            ConsultorMaterias consultorMaterias = new ConsultorMaterias();
             ArrayList<ConsultorMaterias.Par> pars = consultorMaterias.devolverGrupos(tomadas);
             for(ConsultorMaterias.Par par : pars){
                 String nomMateria = par.getMateria();
@@ -80,21 +84,24 @@ public class AjustesFragment extends Fragment {
                     Alarma alarma ;
                     clase.setNomMateria(nomMateria);
                     alarma = new Alarma(clase, "", "",true, "");
-                    alarmas.add(alarma);
-                    if(!alarmas.contains(alarma)){
-                      CreadorAlarma creadorAlarma = new CreadorAlarma();
-                      creadorAlarma.crearAlarma(alarma,getContext(),tinydb);
+
+                    if(!alarmasList.contains(alarma)){
+                        CreadorAlarma creadorAlarma = new CreadorAlarma();
+                        creadorAlarma.crearAlarma(alarma,getContext(),tinydb);
+                        alarmasList.add(alarma);
                     }
                 }
             }
         }
-        AlarmaAdapter alarmaAdapter= new AlarmaAdapter(alarmas,getContext());
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(alarmaAdapter);
-
-
-        return viewAjustes;
-
+    }
+    public void getAllAlarmas() {
+        alarmasList.clear();
+        alarmasList.addAll(tinydb.getListAlarm("allAlarmas", Alarma.class));
+        alarmaAdapter.notifyDataSetChanged();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        getAllAlarmas();
     }
 }
