@@ -72,11 +72,13 @@ public class RegistroJSON {
 
         JSONArray notas;
         String campo = "";
-        if(nota >50)
+        if(nota >50) {
             campo = "materiasAprobadas";
-        else
-            campo = "materiasReprobadas";
 
+        }
+        else {
+            campo = "materiasReprobadas";
+        }
         notas = (JSONArray) jo.get(campo);
         if(notas == null) notas = new JSONArray();
         notas.add(j);
@@ -84,10 +86,13 @@ public class RegistroJSON {
         jo.put(campo, notas);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
+        if(campo.equals("materiasAprobadas")){
+            quitarMateria(materiaID,"materiasPorTomar",context,nombreArchivo);
+        }
         if(nombreArchivo.equals("registro.json")) {
-            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             actualizarFirebase(campo, context);
+            //actualizarFirebase("materiasPorTomar",context);
+
         }
     }
 
@@ -108,6 +113,7 @@ public class RegistroJSON {
 
             if(m.contains(quitar.getMateriaId()) && n == quitar.getNota()) {
                 notasJS.remove(i);
+                aniadirMateria(Integer.parseInt(quitar.getMateriaId()),"materiasPorTomar",context,nombreArchivo);
                 break;
             }
 
@@ -118,6 +124,7 @@ public class RegistroJSON {
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
         if(nombreArchivo.equals("registro.json")) {
             actualizarFirebase(campo, context);
+
         }
     }
 
@@ -163,13 +170,13 @@ public class RegistroJSON {
     /*
     Materias actuales
     * */
-    public ArrayList<Integer> getMateriasTomadas(Context context, String nombreArchivo) throws Exception{
+    public ArrayList<Integer> getMaterias(String campo,Context context, String nombreArchivo) throws Exception{
         ArrayList<Integer> mats = new ArrayList<>();
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
-        JSONArray matsJS = (JSONArray) jo.get("materiasActuales");
+        JSONArray matsJS = (JSONArray) jo.get(campo);
 
         for (int i=0; i<matsJS.size(); i++){
             int m = ((Long)matsJS.get(i)).intValue();
@@ -181,12 +188,12 @@ public class RegistroJSON {
     /*
     Anadir un grupo
     * */
-    public void aniadirMateriaTomada(int matID, Context context, String nombreArchivo) throws Exception {
+    public void aniadirMateria(int matID,String campo, Context context, String nombreArchivo) throws Exception {
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
         JSONObject jo = (JSONObject) obj;
         JSONObject j = new JSONObject();
-        JSONArray materias = (JSONArray) jo.get("materiasActuales");
+        JSONArray materias = (JSONArray) jo.get(campo);
 
         if (materias == null) materias = new JSONArray();
         boolean contiene = false;
@@ -201,11 +208,11 @@ public class RegistroJSON {
         if (!contiene)
             materias.add(matID);
 
-        jo.put("materiasActuales", materias);
+        jo.put(campo, materias);
 
         lf.escribirFichero(nombreArchivo, jo.toString(), context);
         if (nombreArchivo.equals("registro.json")) {
-            actualizarFirebase("materiasActuales", context);
+            actualizarFirebase(campo, context);
         }
     }
 
@@ -213,8 +220,8 @@ public class RegistroJSON {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         try {
-            if(campo.equals("materiasActuales")){
-                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriasTomadas(context, "registro.json"));
+            if(campo.equals("materiasActuales") || campo.equals("materiasPorTomar") ){
+                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMaterias(campo,context, "registro.json"));
             }else {
                 rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaNota(campo,context,"registro.json"));
             }

@@ -56,7 +56,7 @@ public class AjustesFragment extends Fragment {
         RegistroJSON registroJSON = new RegistroJSON();
 
         try {
-            tomadas = registroJSON.getMateriasTomadas(getContext(), "registro.json");
+            tomadas = registroJSON.getMaterias("materiasActuales",getContext(), "registro.json");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -93,11 +93,8 @@ public class  RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        ArrayList<Integer> materiasPorTomar= new ArrayList<>();
-                                        for (int i=0;i<54;i++){
-                                            materiasPorTomar.add(i);
-                                        }
-                                        databaseReference.child("Usuarios").child(us.getUid()).child("materiasPorTomar").setValue(materiasPorTomar);
+
+                                        databaseReference.child("Usuarios").child(us.getUid()).child("materiasPorTomar").setValue(user.getMateriasPorTomar());
                                         Toast.makeText(RegisterActivity.this, "exito", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(RegisterActivity.this,Navigation_bottom.class));
                                         finishAffinity();
