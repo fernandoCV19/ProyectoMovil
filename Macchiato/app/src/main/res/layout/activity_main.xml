@@ -7,11 +7,12 @@
 
     android:layout_height="match_parent"
     android:background="@drawable/logo_nuevo"
-    tools:context=".LogInActivity">
+    tools:context=".LogInActivity"
+    android:id="@+id/logInActivity">
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarLogInActivity"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tamaño_appbar"
         android:background="#ff7043"
@@ -37,7 +38,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayoutLogInActivity"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
