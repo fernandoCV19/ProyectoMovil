@@ -28,17 +28,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.security.auth.login.LoginException;
+import java.util.ArrayList;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -47,6 +42,7 @@ public class LogInActivity extends AppCompatActivity {
     private TextView olvide_contrasena;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
+    private ArrayList<Integer> tomadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,11 +126,10 @@ public class LogInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
-                                    Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(LogInActivity.this, "accedio a la cuenta con exito",
+                              //      Toast.LENGTH_SHORT).show();
                             databaseReference.child("Usuarios").child(firebaseAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                public void onDataChange( DataSnapshot snapshot) {
                                     User userProfile = snapshot.getValue(User.class);
                                     LectorFichero lector = new LectorFichero();
                                     lector.crearJson(getApplicationContext(),userProfile, "registro.json");
@@ -148,11 +143,13 @@ public class LogInActivity extends AppCompatActivity {
                                 @Override
                                 public void onCancelled(@NonNull @NotNull DatabaseError error) { }
                             });
-                            startActivity(new Intent(LogInActivity.this,Navigation_bottom.class));
+
+                            startActivity(new Intent(LogInActivity.this, SplashScreenActivity.class));
                             finishAffinity();
+
                         } else {
-                            Toast.makeText(LogInActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(LogInActivity.this, "Authentication failed.",
+                            //        Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

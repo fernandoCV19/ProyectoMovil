@@ -12,7 +12,6 @@
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="android:fontFamily">casual</item>
-        <item name="android:textSize">@dimen/tamaño_por_defecto</item>
+        <item name="android:textSize">@dimen/tamaño_letras_botones</item>
     </style>
 </resources>
