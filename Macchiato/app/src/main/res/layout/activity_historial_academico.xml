@@ -82,6 +82,8 @@
         android:layout_marginEnd="16dp"
         android:clickable="false"
         app:fabSize="mini"
+        app:fab_addButtonColorNormal="?attr/colorAccent"
+        app:fab_addButtonColorPressed="?attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ver_Estadisticas"
@@ -92,6 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="?attr/colorAccent"
+            app:fab_colorPressed="?attr/colorAccent"
             app:fab_icon="@drawable/addn"
             app:fab_size="mini"
             app:fab_title="Favorito" />
@@ -101,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="?attr/colorAccent"
+            app:fab_colorPressed="?attr/colorAccent"
             app:fab_icon="@drawable/substract"
             app:fab_size="mini"
             app:fab_title="Favorito" />
