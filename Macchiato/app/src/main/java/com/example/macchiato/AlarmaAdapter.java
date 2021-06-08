@@ -139,7 +139,7 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHold
         }
     }
     //Cancela las larmas programadas en el AlarmReceiver
-    private void cancelAlarm(Alarma alarma, boolean vaAeliminar, int pos) {
+    public void cancelAlarm(Alarma alarma, boolean vaAeliminar, int pos) {
         try {
             AlarmManager alarmManager = (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(mContext, AlarmReceiver.class);
