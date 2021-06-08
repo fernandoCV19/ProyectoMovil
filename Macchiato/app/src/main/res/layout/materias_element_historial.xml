@@ -43,11 +43,11 @@
                     android:id="@+id/nomMateriaX"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".5"
+                    android:layout_weight=".8"
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="Materia"
-                    android:textSize="@dimen/tamaño_letras_normales"
+                    android:textSize="20sp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -60,7 +60,7 @@
                     android:fontFamily="casual"
                     android:gravity="center"
                     android:text="@string/txt_nota"
-                    android:textSize="@dimen/tamaño_letras_normales" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
         </RelativeLayout>

@@ -34,8 +34,6 @@ public class Navigation_bottom extends AppCompatActivity {
     MostrarHorarioFragment mostrarHorarioFragment;
     AjustesFragment ajustesFragment;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
