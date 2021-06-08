@@ -16,9 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Macchiato">
-        <activity android:name=".splash"></activity>
         <activity
-            android:name=".Descargas_Externas"
+            android:name=".splash"
+            android:screenOrientation="portrait">
+            </activity>
+            <activity
+                android:name=".Descargas_Externas"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".CambiarPerfilActivity"
