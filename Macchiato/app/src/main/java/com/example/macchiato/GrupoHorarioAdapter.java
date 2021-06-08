@@ -104,7 +104,7 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
                             selecs.add(item.getID());
                             Toast.makeText(context.getApplicationContext(), "añadido", Toast.LENGTH_SHORT).show();
                             try {
-                                registroJSON.aniadirMateriaTomada(item.getID(), context, "registro.json");
+                                registroJSON.aniadirMateria(item.getID(),"materiasActuales", context, "registro.json");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

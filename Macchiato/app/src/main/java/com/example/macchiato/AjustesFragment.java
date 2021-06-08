@@ -50,7 +50,7 @@ public class AjustesFragment extends Fragment {
         ArrayList<Integer> tomadas = new ArrayList<>();
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         try {
-            tomadas = registroJSON.getMateriasTomadas(getContext(), "registro.json");
+            tomadas = registroJSON.getMaterias("materiasActuales",getContext(), "registro.json");
         } catch (Exception e) {
             e.printStackTrace();
         }
