@@ -26,8 +26,9 @@ import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.EstadisticaHA;
 import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -305,7 +306,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             });
             dialog.show();
         });
-        FloatingActionButton remove = findViewById(R.id.floating_eliminar);
+      FloatingActionButton remove = findViewById(R.id.floating_eliminar);
         remove.setOnClickListener(vie -> {
             if (adapter.getSelect() != null) {
                 ArrayList<MateriaNota> selecionadas = adapter.getSelect();

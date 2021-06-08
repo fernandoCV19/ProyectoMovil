@@ -73,38 +73,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_materiasReprobadas" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/añadir_floating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_marginEnd="5dp"
-        android:clickable="true"
-        app:backgroundTint="#ff7043"
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/floating"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="false"
         app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/ver_Estadisticas"
-        app:layout_constraintEnd_toStartOf="@+id/floating_eliminar"
-        app:layout_constraintTop_toBottomOf="@+id/list_materiasReprobadas"
-        app:srcCompat="@drawable/addn" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_eliminar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:clickable="true"
-        app:backgroundTint="#ff7043"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/ver_Estadisticas"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_materiasReprobadas"
-        app:srcCompat="@drawable/substract" />
+        app:layout_constraintStart_toEndOf="@+id/ver_Estadisticas"
+        app:srcCompat="@drawable/addn">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/añadir_floating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="?attr/colorAccent"
+            app:fab_icon="@drawable/addn"
+            app:fab_size="mini"
+            app:fab_title="Favorito" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_eliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="?attr/colorAccent"
+            app:fab_icon="@drawable/substract"
+            app:fab_size="mini"
+            app:fab_title="Favorito" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_materiasReprobadas"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/añadir_floating"
+        app:layout_constraintBottom_toTopOf="@+id/floating"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"

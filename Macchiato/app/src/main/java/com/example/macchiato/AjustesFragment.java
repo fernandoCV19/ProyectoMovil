@@ -100,7 +100,7 @@ public class AjustesFragment extends Fragment {
         alarmaAdapter.notifyDataSetChanged();
     }
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         getAllAlarmas();
     }
