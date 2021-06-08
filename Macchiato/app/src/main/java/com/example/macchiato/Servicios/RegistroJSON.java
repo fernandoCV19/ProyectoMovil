@@ -26,9 +26,6 @@ public class RegistroJSON {
         lf = new LectorFichero();
     }
 
-    /*
-    Genera un archivo vacio con los parametros en vacio
-    * */
     public void genararVacio(Context context, String nombre) throws FileNotFoundException, JSONException {
         JSONObject jo = new JSONObject();
         jo.put("email", "");
@@ -42,24 +39,12 @@ public class RegistroJSON {
 
         lf.escribirFichero(nombre , jo.toString(), context);
     }
+
     /*
-    Le das los atributos del usuario y te los escribe en el fichero.
-    * */
-    public void registrarUsuario(String email, String password, String uid, String userName, Context context, String nombreArchivo)throws Exception{
-
-
-        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
-        JSONObject jo = (JSONObject) obj;
-
-        jo.put("email", email);
-        jo.put("password", password);
-        jo.put("uid", uid);
-        jo.put("userName", userName);
-
-        lf.escribirFichero(nombreArchivo, jo.toString(), context);
-    }
-    /*
-    Anade una nota al json indicado por parametro
+    * Recibe un id de materia, una nota, nombrearchivo
+    * Si es aprobada lo registra en aprobados (Si la materia estaba reprobada se elimina de ahi)
+    * Si es reprobada lo registra en reprobados
+    * Si es aprobada lo elimina de materias por tomar
     * */
     public void aniadirNota(int materiaID, int nota, Context context, String nombreArchivo) throws Exception {
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
@@ -89,6 +74,7 @@ public class RegistroJSON {
         if(campo.equals("materiasAprobadas")){
             quitarMateria(materiaID,"materiasPorTomar",context,nombreArchivo);
         }
+
         if(nombreArchivo.equals("registro.json")) {
             actualizarFirebase(campo, context);
             //actualizarFirebase("materiasPorTomar",context);
@@ -97,7 +83,7 @@ public class RegistroJSON {
     }
 
     /*
-        Indicar el campo e indicar la materia a quitar
+    * Recibe un materia nota y lo elimina del campo ingresado
     * */
     public void quitarMateria(String campo, MateriaNota quitar, Context context, String nombreArchivo)throws Exception{
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
@@ -128,6 +114,9 @@ public class RegistroJSON {
         }
     }
 
+    /*
+    * Borra la materia del campo que recibe por materia
+    * */
     public void quitarMateria(int id,String campo, Context context, String nombreArchivo)throws Exception{
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
 
@@ -150,7 +139,7 @@ public class RegistroJSON {
     }
 
     /*
-    Indicas el campo y te devuelve todas las notas
+    * Devuelve un array de las materias segun el campo
     * */
     public ArrayList<MateriaNota> getMateriaNota(String campo, Context context, String nombreArchivo) throws Exception{
         ArrayList<MateriaNota> notas = new ArrayList<>();
@@ -167,8 +156,9 @@ public class RegistroJSON {
         }
         return notas;
     }
+
     /*
-    Materias actuales
+    * Devuelve las materias actuales o por tomar segun el campo
     * */
     public ArrayList<Integer> getMaterias(String campo,Context context, String nombreArchivo) throws Exception{
         ArrayList<Integer> mats = new ArrayList<>();
@@ -185,8 +175,9 @@ public class RegistroJSON {
         }
         return mats;
     }
+
     /*
-    Anadir un grupo
+    * Anade a materias actuales o por tomar
     * */
     public void aniadirMateria(int matID,String campo, Context context, String nombreArchivo) throws Exception {
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
@@ -216,6 +207,9 @@ public class RegistroJSON {
         }
     }
 
+    /*
+    * Firebase
+    * */
     private void actualizarFirebase(String campo,Context context){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
