@@ -109,6 +109,13 @@ public class AjustesFragment extends Fragment {
             }
         }
     }
+    public void cancelAllAlarms(){
+        if(tomadas != null && tomadas.size()!= 0){
+            for(int i=0; i<alarmasList.size(); i++){
+                alarmaAdapter.cancelAlarm(alarmasList.get(i),true,i);
+            }
+        }
+    }
     public void getAllAlarmas() {
         alarmasList.clear();
         alarmasList.addAll(tinydb.getListAlarm("allAlarmas", Alarma.class));
