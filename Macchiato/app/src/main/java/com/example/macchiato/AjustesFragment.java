@@ -3,8 +3,11 @@ package com.example.macchiato;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +28,8 @@ import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class AjustesFragment extends Fragment {
@@ -35,7 +40,7 @@ public class AjustesFragment extends Fragment {
     ArrayList<Alarma> alarmasList;
     AlarmaAdapter alarmaAdapter;
     ArrayList<Integer> tomadas;
-    Switch activarNotificaciones;
+    SwitchCompat activarNotificaciones;
     public AjustesFragment() {
         alarmasList= new ArrayList<>();
         tomadas = new ArrayList<>();
@@ -50,7 +55,7 @@ public class AjustesFragment extends Fragment {
         View viewAjustes = inflater.inflate(R.layout.fragment_ajustes, container, false);
 
         recyclerView = viewAjustes.findViewById(R.id.recyclerAlarmas);
-        activarNotificaciones =(Switch)viewAjustes.findViewById(R.id.switch2);
+        activarNotificaciones = viewAjustes.findViewById(R.id.switch2);
 
         Iniciador iniciador = new Iniciador();
         RegistroJSON registroJSON = new RegistroJSON();
@@ -61,6 +66,16 @@ public class AjustesFragment extends Fragment {
             e.printStackTrace();
         }
 
+        activarNotificaciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(activarNotificaciones.isChecked()){
+                    setAllAlarms();
+                }else{
+
+                }
+            }
+        });
 
         alarmaAdapter= new AlarmaAdapter(alarmasList,getContext());
         recyclerView.setHasFixedSize(true);
@@ -99,9 +114,15 @@ public class AjustesFragment extends Fragment {
         alarmasList.addAll(tinydb.getListAlarm("allAlarmas", Alarma.class));
         alarmaAdapter.notifyDataSetChanged();
     }
+
     @Override
-    protected void onResume() {
-        super.onResume();
-        getAllAlarmas();
+    public void onPause() {
+        super.onPause();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    
 }
