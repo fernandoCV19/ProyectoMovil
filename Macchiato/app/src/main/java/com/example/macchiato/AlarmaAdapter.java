@@ -87,7 +87,6 @@ public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHold
         holder.aswitch.setChecked(alarma.isActivado());
         if (!alarma.isActivado()){
             desPintarTxts(holder.diaAlarma);
-
             desPintarTxts(holder.horaAlarma);
         }
         // Cambiando el estilo cuando switch == true

@@ -79,20 +79,20 @@ public class AjustesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(activarNotificaciones.isChecked()){
-
-                    Calendar alarmCalendar = Calendar.getInstance();
+                    setAllAlarms();
+                    tinydb.putBoolean("activado", true);
+                    /*Calendar alarmCalendar = Calendar.getInstance();
                     alarmCalendar.set(Calendar.DAY_OF_WEEK, 2);
                     alarmCalendar.set(Calendar.HOUR_OF_DAY, 9);
                     alarmCalendar.set(Calendar.MINUTE, 15);
-                    /*
+
                     if (alarmCalendar.before(Calendar.getInstance())) {
                         alarmCalendar.add(Calendar.DATE, 7);
-                    }*/
+                    }
                     int alarmaId = Integer.parseInt("2");
                     CreadorAlarma.setAlarm(alarmaId, alarmCalendar.getTimeInMillis(), getContext(), "alarma");
 
 
-                    /*
                     tinydb.putBoolean("activado", true);
                     setAllAlarms();
                     alarmaAdapter= new AlarmaAdapter(alarmasList,getContext());
@@ -118,11 +118,12 @@ public class AjustesFragment extends Fragment {
 
     }
 
-    private void setAllAlarms(){
-
+    private boolean setAllAlarms(){
         if(tomadas != null){
             ConsultorMaterias consultorMaterias = new ConsultorMaterias();
             ArrayList<ConsultorMaterias.Par> pars = consultorMaterias.devolverGrupos(tomadas);
+            ArrayList<Integer> alarmsId = new ArrayList<>();
+
             for(ConsultorMaterias.Par par : pars){
                 String nomMateria = par.getMateria();
                 Grupo grupo = par.getGrupo();
@@ -131,13 +132,17 @@ public class AjustesFragment extends Fragment {
                     clase.setNomMateria(nomMateria);
                     alarma = new Alarma(clase, "", "",true, "");
 
-
-                    if(!alarmasList.contains(alarma))
+                    if(!alarmasList.contains(alarma)) {
                         alarmasList.add(alarma);
+                    }
                 }
             }
+            tinydb.putListAlarm("allAlarmas", alarmasList);
+            CreadorAlarma.setAllAlarms(getContext());
+            return true;
         }
-        for(Alarma a : alarmasList) {
+
+        /*for(Alarma a : alarmasList) {
             Calendar alarmCalendar = Calendar.getInstance();
             alarmCalendar.set(Calendar.DAY_OF_WEEK, a.getDiasNumeric().get(0));
             alarmCalendar.set(Calendar.HOUR_OF_DAY, a.getHora());
@@ -147,21 +152,15 @@ public class AjustesFragment extends Fragment {
                 alarmCalendar.add(Calendar.DATE, 7);
             }
             int alarmaId = Integer.parseInt(a.getAlarmaId());
-            CreadorAlarma.setAlarm(alarmaId, alarmCalendar.getTimeInMillis(), getContext(), a.getTitulo());
-        }
-    }
-    public boolean cancelOneAlarm(int pos){
-        if(tomadas != null && tomadas.size()!= 0){
-            alarmaAdapter.cancelAlarm(alarmasList.get(pos),true,pos);
-            return true;
-        }
+            CreadorAlarma.setAlarm(alarmaId, alarmCalendar.getTimeInMillis(), getContext(), a.getTitulo(),
+                    a.getHora(), a.getMinuto(), a.getDiasNumeric().get(0));
+        }*/
         else return false;
     }
     public boolean cancelAllAlarms(){
         if(tomadas != null && tomadas.size()!= 0){
-            while(alarmasList.size()!=0){
-                alarmaAdapter.cancelAlarm(alarmasList.get(0),true,0);
-            }
+            CreadorAlarma.cancelAllAlarm(getContext());
+            getAllAlarmas();
             return true;
         }
         else return false;
