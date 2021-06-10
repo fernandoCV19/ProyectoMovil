@@ -2,8 +2,6 @@ package com.example.macchiato.Models;
 
 import android.app.Application;
 import android.content.Context;
-
-import com.example.macchiato.EditJson;
 import com.example.macchiato.Servicios.LectorFichero;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
