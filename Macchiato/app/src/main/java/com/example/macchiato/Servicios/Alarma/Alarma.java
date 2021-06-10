@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.provider.AlarmClock;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.example.macchiato.Models.Clase;
@@ -77,6 +78,19 @@ public class Alarma {
         for(String d: dias)
             diasNumeric.add(getDiaNumeric(d));
     }
+
+    @Override
+    public boolean equals(@Nullable @org.jetbrains.annotations.Nullable Object obj) {
+        Alarma a = (Alarma)obj;
+        if(a.getTitulo().contains(titulo))
+            if (a.getHora() == hora && a.getMinuto() == minuto)
+                if(a.getDias().get(0).contains(dias.get(0)))
+                    return true;
+                else return false;
+            else return false;
+        else return false;
+    }
+
     private int getDiaNumeric(String dia){
         if(dia.contains("LUNES")) return 2;
         else if(dia.contains("MARTES")) return 3;
