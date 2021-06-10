@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondos_fragments"
-    tools:context=".PerfilFragment">
+    tools:context=".PerfilFragment"
+    android:id="@+id/fragmentSesionIniciada">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
