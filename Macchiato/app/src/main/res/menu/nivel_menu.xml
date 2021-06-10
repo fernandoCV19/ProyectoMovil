@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/menuOpcionNiveles"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menu_nivelA"
-        android:title="Nivel A">
+        android:title="Nivel A"
+        >
 
     </item>
 
@@ -13,10 +14,12 @@
     </item>
 
     <item android:id="@+id/menu_nivelC"
+
         android:title="Nivel C">
     </item>
 
     <item android:id="@+id/menu_nivelD"
+
         android:title="Nivel D">
     </item>
 

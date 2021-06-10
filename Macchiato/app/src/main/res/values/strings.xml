@@ -30,6 +30,7 @@
     </string-array>
 
     <string-array name="niveles">
+        <item>Seleccionar nivel</item>
         <item>A</item>
         <item>B</item>
         <item>C</item>
@@ -43,6 +44,7 @@
     </string-array>
 
     <string-array name="nivelA">
+        <item>Seleccionar materia</item>
         <item>INGLES I</item>
         <item>FISICA GENERAL</item>
         <item>ALGEBRA I</item>
@@ -51,6 +53,7 @@
     </string-array>
 
     <string-array name="nivelB">
+        <item>Seleccionar materia</item>
         <item>INGLES II</item>
         <item>ALGEBRA II</item>
         <item>CALCULO II</item>
@@ -60,6 +63,7 @@
     </string-array>
 
     <string-array name="nivelC">
+        <item>Seleccionar materia</item>
         <item>CALCULO NUMERICO</item>
         <item>LOGICA</item>
         <item>ARQUITECTURA DE COMPUTADORAS II</item>
@@ -69,6 +73,7 @@
     </string-array>
 
     <string-array name="nivelD">
+        <item>Seleccionar materia</item>
         <item>PROBABILIDAD Y ESTADISTICA</item>
         <item>TALLER DE PROGRAMACION EN BAJO NIVEL</item>
         <item>BASE DE DATOS I</item>
@@ -78,6 +83,7 @@
     </string-array>
 
     <string-array name="nivelE">
+        <item>Seleccionar materia</item>
         <item>BASE DE DATOS II</item>
         <item>TALLER DE SISTEMAS OPERATIVOS</item>
         <item>SISTEMAS DE INFORMACION II</item>
@@ -86,6 +92,7 @@
         <item>INTELIGENCIA ARTIFICIAL I</item>
     </string-array>
     <string-array name="nivelF">
+        <item>Seleccionar materia</item>
         <item>INGENIERIA DE SOFTWARE</item>
         <item>REDES DE COMPUTADORAS</item>
         <item>ESTRUCTURA Y SEMANTICA DE LENGUAJES DE</item>
@@ -94,6 +101,7 @@
         <item>PROGRAMACION WEB</item>
     </string-array>
     <string-array name="nivelG">
+        <item>Seleccionar materia</item>
         <item>SIMULACION DE SISTEMAS</item>
         <item>TALLER DE INGENIERIA DE SOFTWARE</item>
         <item>ARQUITECTURA DE SOFTWARE</item>
@@ -102,11 +110,13 @@
         <item>TECNOLOGIA REDES AVANZADAS</item>
     </string-array>
     <string-array name="nivelH">
+        <item>Seleccionar materia</item>
         <item>APLICACION DE SISTEMAS OPERATIVOS</item>
         <item>EVALUACION Y AUDITORIA DE SISTEMAS</item>
         <item>TALLER DE GRADO I</item>
     </string-array>
     <string-array name="nivelI">
+        <item>Seleccionar materia</item>
         <item>DATA WAREHOUSE</item>
         <item>DISEÑO DE COMPILADORES</item>
         <item>ROBOTICA</item>
