@@ -237,7 +237,7 @@ public class HorarioFragment extends Fragment {
     void cambiarRecycler() throws Exception {
         ArrayList<Materia> materias = ConsultorMaterias.getMaterias();
         ArrayList<Grupo>   grupos = new ArrayList<>();
-        ArrayList<Integer> selecs=registroJSON.getMateriasTomadas(getContext(), "registro.json");
+        ArrayList<Integer> selecs=registroJSON.getMaterias("materiasActuales",getContext(), "registro.json");
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
