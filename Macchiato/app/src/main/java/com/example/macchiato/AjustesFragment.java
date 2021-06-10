@@ -31,6 +31,7 @@ import com.example.macchiato.Servicios.RegistroJSON;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AjustesFragment extends Fragment {
     Button btn;
@@ -78,12 +79,26 @@ public class AjustesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(activarNotificaciones.isChecked()){
+
+                    Calendar alarmCalendar = Calendar.getInstance();
+                    alarmCalendar.set(Calendar.DAY_OF_WEEK, 2);
+                    alarmCalendar.set(Calendar.HOUR_OF_DAY, 9);
+                    alarmCalendar.set(Calendar.MINUTE, 15);
+                    /*
+                    if (alarmCalendar.before(Calendar.getInstance())) {
+                        alarmCalendar.add(Calendar.DATE, 7);
+                    }*/
+                    int alarmaId = Integer.parseInt("2");
+                    CreadorAlarma.setAlarm(alarmaId, alarmCalendar.getTimeInMillis(), getContext(), "alarma");
+
+
+                    /*
                     tinydb.putBoolean("activado", true);
                     setAllAlarms();
                     alarmaAdapter= new AlarmaAdapter(alarmasList,getContext());
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    recyclerView.setAdapter(alarmaAdapter);
+                    recyclerView.setAdapter(alarmaAdapter);*/
                 }else{
                     tinydb.putBoolean("activado", false);
                     cancelAllAlarms();
@@ -104,6 +119,7 @@ public class AjustesFragment extends Fragment {
     }
 
     private void setAllAlarms(){
+
         if(tomadas != null){
             ConsultorMaterias consultorMaterias = new ConsultorMaterias();
             ArrayList<ConsultorMaterias.Par> pars = consultorMaterias.devolverGrupos(tomadas);
@@ -115,13 +131,23 @@ public class AjustesFragment extends Fragment {
                     clase.setNomMateria(nomMateria);
                     alarma = new Alarma(clase, "", "",true, "");
 
-                    if(!alarmasList.contains(alarma)){
-                        CreadorAlarma creadorAlarma = new CreadorAlarma();
-                        creadorAlarma.crearAlarma(alarma,getContext(),tinydb);
+
+                    if(!alarmasList.contains(alarma))
                         alarmasList.add(alarma);
-                    }
                 }
             }
+        }
+        for(Alarma a : alarmasList) {
+            Calendar alarmCalendar = Calendar.getInstance();
+            alarmCalendar.set(Calendar.DAY_OF_WEEK, a.getDiasNumeric().get(0));
+            alarmCalendar.set(Calendar.HOUR_OF_DAY, a.getHora());
+            alarmCalendar.set(Calendar.MINUTE, a.getMinuto());
+
+            if (alarmCalendar.before(Calendar.getInstance())) {
+                alarmCalendar.add(Calendar.DATE, 7);
+            }
+            int alarmaId = Integer.parseInt(a.getAlarmaId());
+            CreadorAlarma.setAlarm(alarmaId, alarmCalendar.getTimeInMillis(), getContext(), a.getTitulo());
         }
     }
     public boolean cancelOneAlarm(int pos){

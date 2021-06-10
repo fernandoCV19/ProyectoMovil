@@ -6,15 +6,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class CreadorAlarma {
+public class CreadorAlarma  {
     public CreadorAlarma(){}
 
+    public static void setAlarm(int i, Long timestamp, Context ctx, String nombre){
+
+        AlarmManager alarmManager = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
+        Intent alarmIntent = new Intent(ctx, AlarmReceiver.class);
+        alarmIntent.putExtra("nombre", nombre);
+
+        PendingIntent pendingIntent;
+        pendingIntent = PendingIntent.getBroadcast(ctx, i, alarmIntent, PendingIntent.FLAG_ONE_SHOT);
+        //alarmIntent.setData((Uri.parse("custom://" + System.currentTimeMillis())));
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, timestamp, pendingIntent);
+    }
+}
+    /*
     List<Integer> diasNumericList;
     private String alarmName="", tonoName="";
     private static final String CERO = "0";
@@ -31,16 +46,18 @@ public class CreadorAlarma {
             try {
                 setAlarm(alarma, context);
 
-                List<Alarma> alarmaList = new ArrayList<>(tinyDB.getListAlarm("allAlarmas", Alarma.class));
-                alarmaList.add(alarma);
-                tinyDB.putListAlarm("allAlarmas", alarmaList);
-                Toast.makeText(context, "Alarma Creada", Toast.LENGTH_LONG).show();
+
             }
             catch (Exception ex){
                 Toast.makeText(context, "Error creando la alarma" + ex.getMessage(),
                         Toast.LENGTH_LONG).show();
                 return;
             }
+        List<Alarma> alarmaList = new ArrayList<>(tinyDB.getListAlarm("allAlarmas", Alarma.class));
+        alarmaList.add(alarma);
+        tinyDB.putListAlarm("allAlarmas", alarmaList);
+        Toast.makeText(context, "Alarma Creada", Toast.LENGTH_LONG).show();
+        finish();
     }
     private void setAlarm(Alarma alarma, Context context){
 
@@ -61,7 +78,7 @@ public class CreadorAlarma {
             Intent intent = new Intent(context, AlarmReceiver.class);
             intent.putExtra("nombre", alarma.getTitulo());
             intent.putExtra("mensaje", alarma.getNota());
-
+            intent.putExtra("sonido", "/external_primary/audio/media/33");
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarmaId,
                     intent, PendingIntent.FLAG_UPDATE_CURRENT);
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
