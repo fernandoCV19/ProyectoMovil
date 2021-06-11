@@ -108,7 +108,6 @@ public class PerfilSesionFragment extends Fragment {
             public void onClick(View v) {
                 if(auth!=null){
                     auth.signOut();
-                    //GlobalApplication.editJson.crearJson();
                     Intent intent = new Intent(getActivity(),Navigation_bottom.class);
                     /*LectorFichero lector = new LectorFichero();
                     lector.crearJson(getApplicationContext(),userProfile);

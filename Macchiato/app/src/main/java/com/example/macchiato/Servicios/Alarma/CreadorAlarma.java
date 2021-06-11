@@ -4,17 +4,85 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class CreadorAlarma {
+public class CreadorAlarma  {
     public CreadorAlarma(){}
 
+    public static void setAlarm(int i, Long timestamp, Context ctx, String nombre, int hora, int minuto, int dia, boolean activado){
+
+        AlarmManager alarmManager = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
+        Intent alarmIntent = new Intent(ctx, AlarmReceiver.class);
+        alarmIntent.putExtra("nombre", nombre);
+        alarmIntent.putExtra("hora", hora);
+        alarmIntent.putExtra("minuto", minuto);
+        alarmIntent.putExtra("dia", dia);
+        alarmIntent.putExtra("id", i);
+        alarmIntent.putExtra("activado", activado);
+
+        PendingIntent pendingIntent;
+        pendingIntent = PendingIntent.getBroadcast(ctx, i, alarmIntent, PendingIntent.FLAG_ONE_SHOT);
+        alarmIntent.setData((Uri.parse("custom://" + System.currentTimeMillis())));
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, timestamp, pendingIntent);
+    }
+    public static void setAllAlarms(Context context){
+        TinyDB tinyDB = new TinyDB(context);
+        List<Alarma> alarmasList = new ArrayList<>(tinyDB.getListAlarm("allAlarmas",Alarma.class));
+        for(Alarma a : alarmasList) {
+            a.setActivado(true);
+            Calendar alarmCalendar = Calendar.getInstance();
+            alarmCalendar.set(Calendar.DAY_OF_WEEK, a.getDiasNumeric().get(0));
+            alarmCalendar.set(Calendar.HOUR_OF_DAY, a.getHora());
+            alarmCalendar.set(Calendar.MINUTE, a.getMinuto());
+
+            if (alarmCalendar.before(Calendar.getInstance())) {
+                alarmCalendar.add(Calendar.DATE, 7);
+            }
+            int alarmaId = Integer.parseInt(a.getAlarmaId());
+            setAlarm(alarmaId, alarmCalendar.getTimeInMillis(), context, a.getTitulo(),
+                     a.getHora(), a.getMinuto(), a.getDiasNumeric().get(0), a.isActivado());
+        }
+    }
+    public static boolean cancelAllAlarm(Context context){
+        try {
+            TinyDB tinyDB = new TinyDB(context);
+            ArrayList<Alarma> alarmas = new ArrayList<>(tinyDB.getListAlarm("allAlarmas", Alarma.class));
+            for (Alarma a : alarmas){
+                cancelOneAlarm(context, Integer.parseInt(a.getAlarmaId()));
+                a.setActivado(false);
+            }
+            tinyDB.putListAlarm("allAlarmas", alarmas);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
+    }
+    public static boolean cancelOneAlarm(Context context, int id){
+        try{
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(context, AlarmReceiver.class);
+
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, id,
+                    intent, 0);
+            alarmManager.cancel(pendingIntent);
+        return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+}
+    /*
     List<Integer> diasNumericList;
     private String alarmName="", tonoName="";
     private static final String CERO = "0";
@@ -31,16 +99,18 @@ public class CreadorAlarma {
             try {
                 setAlarm(alarma, context);
 
-                List<Alarma> alarmaList = new ArrayList<>(tinyDB.getListAlarm("allAlarmas", Alarma.class));
-                alarmaList.add(alarma);
-                tinyDB.putListAlarm("allAlarmas", alarmaList);
-                Toast.makeText(context, "Alarma Creada", Toast.LENGTH_LONG).show();
+
             }
             catch (Exception ex){
                 Toast.makeText(context, "Error creando la alarma" + ex.getMessage(),
                         Toast.LENGTH_LONG).show();
                 return;
             }
+        List<Alarma> alarmaList = new ArrayList<>(tinyDB.getListAlarm("allAlarmas", Alarma.class));
+        alarmaList.add(alarma);
+        tinyDB.putListAlarm("allAlarmas", alarmaList);
+        Toast.makeText(context, "Alarma Creada", Toast.LENGTH_LONG).show();
+        finish();
     }
     private void setAlarm(Alarma alarma, Context context){
 
@@ -61,7 +131,7 @@ public class CreadorAlarma {
             Intent intent = new Intent(context, AlarmReceiver.class);
             intent.putExtra("nombre", alarma.getTitulo());
             intent.putExtra("mensaje", alarma.getNota());
-
+            intent.putExtra("sonido", "/external_primary/audio/media/33");
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context, alarmaId,
                     intent, PendingIntent.FLAG_UPDATE_CURRENT);
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

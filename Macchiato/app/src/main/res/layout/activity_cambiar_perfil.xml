@@ -7,9 +7,11 @@
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:background="@drawable/fondos_fragments"
-    tools:context=".CambiarPerfilActivity">
+    tools:context=".CambiarPerfilActivity"
+    android:id="@+id/cambiarDePerfilActivity">
 
     <LinearLayout
+        android:id="@+id/linear_layout_cambiar_perfil"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -49,7 +51,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:fontFamily="casual"
-            android:text="Repetir Contraseña Nueva: "
+            android:text="Repetir Contraseña Nueva:"
             android:textSize="@dimen/tamaño_letras_normales"
             android:textStyle="bold" />
 

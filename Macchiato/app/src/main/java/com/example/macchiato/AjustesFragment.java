@@ -3,8 +3,11 @@ package com.example.macchiato;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +28,10 @@ import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AjustesFragment extends Fragment {
     Button btn;
@@ -35,7 +41,8 @@ public class AjustesFragment extends Fragment {
     ArrayList<Alarma> alarmasList;
     AlarmaAdapter alarmaAdapter;
     ArrayList<Integer> tomadas;
-    Switch activarNotificaciones;
+    SwitchCompat activarNotificaciones;
+    boolean activado;
     public AjustesFragment() {
         alarmasList= new ArrayList<>();
         tomadas = new ArrayList<>();
@@ -50,33 +57,59 @@ public class AjustesFragment extends Fragment {
         View viewAjustes = inflater.inflate(R.layout.fragment_ajustes, container, false);
 
         recyclerView = viewAjustes.findViewById(R.id.recyclerAlarmas);
-        activarNotificaciones =(Switch)viewAjustes.findViewById(R.id.switch2);
+        activarNotificaciones = viewAjustes.findViewById(R.id.switch2);
 
         Iniciador iniciador = new Iniciador();
         RegistroJSON registroJSON = new RegistroJSON();
+        activado = tinydb.getBoolean("activado");
+        activarNotificaciones.setChecked(activado);
+
 
         try {
             tomadas = registroJSON.getMaterias("materiasActuales",getContext(), "registro.json");
         } catch (Exception e) {
             e.printStackTrace();
         }
+        if(activado) {
+            getAllAlarmas();
+            setAllAlarms();
+        }
+        else alarmasList.clear();
+        activarNotificaciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(activarNotificaciones.isChecked()){
+                    setAllAlarms();
+                    tinydb.putBoolean("activado", true);
 
+                    tinydb.putBoolean("activado", true);
+                    setAllAlarms();
+                }else{
+                    tinydb.putBoolean("activado", false);
+                    cancelAllAlarms();
+                    alarmasList.clear();
+                }
+                alarmaAdapter.notifyDataSetChanged();
+            }
+        });
 
-        alarmaAdapter= new AlarmaAdapter(alarmasList,getContext());
+        alarmaAdapter= new AlarmaAdapter(alarmasList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(alarmaAdapter);
 
-        getAllAlarmas();
+        alarmaAdapter.notifyDataSetChanged();
 
         return viewAjustes;
 
     }
 
-    private void setAllAlarms(){
+    private boolean setAllAlarms(){
         if(tomadas != null){
             ConsultorMaterias consultorMaterias = new ConsultorMaterias();
             ArrayList<ConsultorMaterias.Par> pars = consultorMaterias.devolverGrupos(tomadas);
+            ArrayList<Integer> alarmsId = new ArrayList<>();
+
             for(ConsultorMaterias.Par par : pars){
                 String nomMateria = par.getMateria();
                 Grupo grupo = par.getGrupo();
@@ -85,23 +118,34 @@ public class AjustesFragment extends Fragment {
                     clase.setNomMateria(nomMateria);
                     alarma = new Alarma(clase, "", "",true, "");
 
-                    if(!alarmasList.contains(alarma)){
-                        CreadorAlarma creadorAlarma = new CreadorAlarma();
-                        creadorAlarma.crearAlarma(alarma,getContext(),tinydb);
+                    if(!alarmasList.contains(alarma)) {
                         alarmasList.add(alarma);
                     }
                 }
             }
+            tinydb.putListAlarm("allAlarmas", alarmasList);
+            CreadorAlarma.setAllAlarms(getContext());
+            return true;
         }
+        else return false;
+    }
+    public boolean cancelAllAlarms(){
+        if(tomadas != null && tomadas.size()!= 0){
+            CreadorAlarma.cancelAllAlarm(getContext());
+            getAllAlarmas();
+            return true;
+        }
+        else return false;
     }
     public void getAllAlarmas() {
         alarmasList.clear();
         alarmasList.addAll(tinydb.getListAlarm("allAlarmas", Alarma.class));
-        alarmaAdapter.notifyDataSetChanged();
     }
+
     @Override
     public void onResume() {
         super.onResume();
-        getAllAlarmas();
+        if(tinydb.getBoolean("activado"))
+            getAllAlarmas();
     }
 }

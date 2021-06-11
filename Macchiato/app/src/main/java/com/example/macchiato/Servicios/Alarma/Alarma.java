@@ -1,14 +1,7 @@
 package com.example.macchiato.Servicios.Alarma;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.provider.AlarmClock;
-
-import androidx.annotation.RequiresApi;
-
+import androidx.annotation.Nullable;
 import com.example.macchiato.Models.Clase;
-import com.example.macchiato.Models.Grupo;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -77,6 +70,19 @@ public class Alarma {
         for(String d: dias)
             diasNumeric.add(getDiaNumeric(d));
     }
+
+    @Override
+    public boolean equals(@Nullable @org.jetbrains.annotations.Nullable Object obj) {
+        Alarma a = (Alarma)obj;
+        if(a.getTitulo().contains(titulo))
+            if (a.getHora() == hora && a.getMinuto() == minuto)
+                if(a.getDias().get(0).contains(dias.get(0)))
+                    return true;
+                else return false;
+            else return false;
+        else return false;
+    }
+
     private int getDiaNumeric(String dia){
         if(dia.contains("LUNES")) return 2;
         else if(dia.contains("MARTES")) return 3;
@@ -140,41 +146,3 @@ public class Alarma {
         this.nota = nota;
     }
 }
-/*{
-
-    private String mensaje;
-    private int hora;
-    private int minutos;
-    private ArrayList<Integer> dias;
-
-    public Alarma(String mensaje, int hora, int minutos, String dia){
-        this.mensaje = mensaje;
-        this.hora = hora;
-        this.minutos = minutos;
-        dias = new ArrayList<Integer>();
-        dias.add(getDia(dia));
-    }
-    public void establerAlarma(Context context) {
-        Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM)
-                .putExtra(AlarmClock.EXTRA_MESSAGE, mensaje)
-                .putExtra(AlarmClock.EXTRA_HOUR, hora)
-                .putExtra(AlarmClock.EXTRA_MINUTES, minutos)
-                .putExtra(AlarmClock.EXTRA_DAYS, dias)
-                .putExtra(AlarmClock.EXTRA_SKIP_UI,true);
-        context.startActivity(intent);
-    }
-    public void cancelarAlarma(Context context){
-        Intent alarmIntent = new Intent(AlarmClock.ACTION_DISMISS_ALARM);
-        alarmIntent.putExtra(AlarmClock.ALARM_SEARCH_MODE_LABEL,mensaje)
-                   .putExtra(AlarmClock.EXTRA_SKIP_UI,true);
-        context.startActivity(alarmIntent);
-    }
-    private int getDia(String dia){
-        if(dia.contains("LUNES")) return 2;
-        else if(dia.contains("MARTES")) return 3;
-        else if(dia.contains("MIERCOLES")) return 4;
-        else if(dia.contains("JUEVES")) return 5;
-        else return 6;
-    }
-}
-*/
