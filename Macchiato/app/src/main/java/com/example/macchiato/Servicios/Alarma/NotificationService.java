@@ -70,7 +70,7 @@ public class NotificationService extends IntentService {
             mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             pendingIntent = PendingIntent.getActivity(context, 0, mIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             builder.setContentTitle(getString(R.string.app_name)).setCategory(Notification.CATEGORY_SERVICE)
-                    .setSmallIcon(R.drawable.ic_baseline_calendar_today_24)   // required
+                    .setSmallIcon(R.drawable.logonuevo)   // required
                     .setContentText(message)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_flecha_hacia_abajo))
                     .setDefaults(Notification.DEFAULT_ALL)
