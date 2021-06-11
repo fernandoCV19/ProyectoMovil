@@ -94,5 +94,4 @@ public class MostrarHorarioAdapterTest {
         onView(withId(R.id.recyclerMostrar)).check(matches(hasChildCount(2)));
 
     }
-
 }
