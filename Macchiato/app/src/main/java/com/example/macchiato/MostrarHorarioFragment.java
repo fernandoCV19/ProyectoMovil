@@ -18,12 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Toast;
 
 
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Servicios.ConsultorMaterias;
+import com.example.macchiato.Servicios.HorarioAutomatico;
 import com.example.macchiato.Servicios.Iniciador;
 
 import java.util.ArrayList;
@@ -49,6 +51,7 @@ public class MostrarHorarioFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_mostrar_horario, container, false);
         toolbar = view.findViewById(R.id.toolbar);
+
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
         Iniciador iniciador=new Iniciador();
 
@@ -79,9 +82,6 @@ public class MostrarHorarioFragment extends Fragment {
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView.setAdapter(mostrarHorarioAdapter);
         }
-
-
-
         return view;
     }
     @Override

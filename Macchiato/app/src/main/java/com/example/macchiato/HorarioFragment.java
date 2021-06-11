@@ -44,6 +44,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.macchiato.Models.GlobalApplication;
+import com.example.macchiato.Servicios.HorarioAutomatico;
 import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -78,6 +79,7 @@ public class HorarioFragment extends Fragment {
     ArrayList<Grupo>   grupos;
 
     Button guardar;
+    Button automatico;
     RegistroJSON registroJSON;
     public HorarioFragment() {
         seleccionados= new ArrayList<>();
@@ -99,7 +101,7 @@ public class HorarioFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerCheckbox);
         spinnerNivel = view.findViewById(R.id.spinnerNivel);
         spinnerMateria = view.findViewById(R.id.spinnerMateria);
-
+        automatico = view.findViewById(R.id.idHorarioAutomatico);
 
         toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
@@ -232,6 +234,18 @@ public class HorarioFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(materiaHorarioAdapter);
 
+        automatico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HorarioAutomatico horarioAutomatico = new HorarioAutomatico(getContext());
+                try {
+                    seleccionados.clear();
+                    seleccionados = horarioAutomatico.generarAutomatico();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         return view;
     }
     void cambiarRecycler() throws Exception {

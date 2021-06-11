@@ -14,6 +14,7 @@ import org.json.simple.JSONArray;
 import org.json.JSONException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -225,10 +226,15 @@ public class RegistroJSON {
         }
     }
 
-    public void limpiarCampo(String campo, Context context, String nombreFichero){
-        JSONObject j = new JSONObject();
-        j.put(campo, new ArrayList<>());
-        lf.escribirFichero(nombreFichero, j.toString(), context);
+    public void limpiarCampo(String campo, Context context, String nombreFichero) throws FileNotFoundException, JSONException, ParseException {
+        Object obj = new JSONParser().parse(lf.leerFichero(context, nombreFichero));
+
+        JSONObject jo = (JSONObject) obj;
+        jo.put(campo, new ArrayList<>());
+
+        lf.escribirFichero(nombreFichero, jo.toString(), context);
+
+
         if(nombreFichero.equals("registro.json")) {
             actualizarFirebase(campo, context);
             //actualizarFirebase("materiasPorTomar",context);

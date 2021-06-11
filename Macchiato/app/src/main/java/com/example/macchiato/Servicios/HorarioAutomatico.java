@@ -14,7 +14,7 @@ public class HorarioAutomatico {
     public HorarioAutomatico(Context context){
         this.context = context;
     }
-    public void generarAutomatico() throws Exception {
+    public ArrayList<Integer> generarAutomatico() throws Exception {
         RegistroJSON registroJSON = new RegistroJSON();
         registroJSON.limpiarCampo("materiasActuales", context, "registro.json");
 
@@ -22,8 +22,9 @@ public class HorarioAutomatico {
         for(Integer mat: horario) {
             registroJSON.aniadirMateria(mat, "materiasActuales", context, "registro.json");
         }
+        return horario;
     }
-    public ArrayList<Integer> getAutomatica() throws Exception {
+    private ArrayList<Integer> getAutomatica() throws Exception {
         ArrayList<Integer> lista;
         MallaCurricular mallaCurricular = new MallaCurricular();
         CreadorHorarios creadorHorarios = new CreadorHorarios();
@@ -34,7 +35,7 @@ public class HorarioAutomatico {
         ArrayList<Materia> materias = consultorMaterias.getListaMaterias(lista);
         
         ArrayList<Grupo> gruposAutomaticos = new ArrayList<>(creadorHorarios.crearHorario(materias));
-
+        lista.clear();
         for(Grupo g: gruposAutomaticos){
             lista.add(g.getID());
         }
@@ -47,6 +48,7 @@ public class HorarioAutomatico {
 
         ArrayList<MateriaNota> listaAprobados = new ArrayList<>(registroJSON.getMateriaNota(
                 "materiasAprobadas",context,"registro.json"));
+        if (listaAprobados == null) listaAprobados = new ArrayList<>();
         for (MateriaNota mat: listaAprobados) {
             String id  = mat.getMateriaId();
             id.replaceAll(" ", "");

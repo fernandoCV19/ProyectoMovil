@@ -88,6 +88,16 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
+            <Button
+                android:id="@+id/idHorarioAutomatico"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Automatico"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerCheckbox" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
