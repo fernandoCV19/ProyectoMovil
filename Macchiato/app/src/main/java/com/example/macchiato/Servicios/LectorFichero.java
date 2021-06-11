@@ -44,12 +44,9 @@ public class LectorFichero {
     public void crearJson(Context context, User user, String nombreArchivo){
         String myjson = new Gson().toJson(user);
         jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
-        ArrayList<Double> aux = (ArrayList<Double>) jsonMap.get("materiasActuales");
-        ArrayList<Integer> aux2= new ArrayList<>();
-        for(Double d:aux){
-            aux2.add(d.intValue());
-        }
-        jsonMap.put("materiasActuales",aux2);
+
+        editArray("materiasActuales");
+        editArray("materiasPorTomar");
         editMap("materiasAprobadas");
         editMap("materiasReprobadas");
 
@@ -103,6 +100,15 @@ public class LectorFichero {
             miniMap.put("nota",((Double)(miniMap.get("nota"))).intValue());
         }
         jsonMap.put(nombreCampo,arrayAux);
+    }
+
+    private void editArray(String campo){
+        ArrayList<Double> aux = (ArrayList<Double>) jsonMap.get(campo);
+        ArrayList<Integer> aux2= new ArrayList<>();
+        for(Double d:aux){
+            aux2.add(d.intValue());
+        }
+        jsonMap.put(campo,aux2);
     }
 
 

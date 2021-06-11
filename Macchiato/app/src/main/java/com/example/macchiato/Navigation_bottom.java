@@ -104,7 +104,7 @@ public class Navigation_bottom extends AppCompatActivity {
         RegistroJSON registroJSON= new RegistroJSON();
         ArrayList<Integer> tomadas= new ArrayList<>();
         try {
-            tomadas= registroJSON.getMateriasTomadas(this,"registro.json");
+            tomadas= registroJSON.getMaterias("materiasActuales",this,"registro.json");
         } catch (Exception e) {
             e.printStackTrace();
         }

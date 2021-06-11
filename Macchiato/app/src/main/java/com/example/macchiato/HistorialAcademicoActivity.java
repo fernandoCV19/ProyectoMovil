@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,13 +29,15 @@ import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.EstadisticaHA;
 import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -126,10 +131,23 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             recyclerViewRepro.setHasFixedSize(true);
         }
 
+        Typeface face = Typeface.createFromAsset(getAssets(),"Casual-Regular2.ttf");
+
+
+
+
         FloatingActionButton fab = findViewById(R.id.añadir_floating);
         fab.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
             View view1 = getLayoutInflater().inflate(R.layout.layout_dialog, null);
+            TextView title_of_dialog = new TextView(getApplicationContext());
+           title_of_dialog.setHeight(80);
+
+            title_of_dialog.setText("Añadir materia");
+            title_of_dialog.setTextColor(Color.BLACK);
+            title_of_dialog.setGravity(Gravity.CENTER);
+            title_of_dialog.setTypeface(face);
+
             //spinners
             mSpinner = (Spinner) view1.findViewById(R.id.materia);
             nSpinner = (Spinner) view1.findViewById(R.id.nivel);
@@ -146,71 +164,74 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
             ConsultorMaterias cs =new ConsultorMaterias();
             HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
-            Character [] nomNiveles =new Character[9];
+            String [] nomNiveles =new String[10];
+            nomNiveles[0]="Seleccionar nivel";
 
-            int j = 0;
+            int j = 1;
             for (Character nivel : list.keySet()) {
 
-                nomNiveles[j] = nivel;
+                nomNiveles[j] = nivel+"";
                 j++;
             }
 
-            ArrayAdapter<Character> adapter2 = new ArrayAdapter<Character>(this, R.layout.simple_spinner, nomNiveles);
+            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.simple_spinner, nomNiveles);
             nSpinner.setAdapter(adapter2);
 
             nSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    if (!parent.getItemAtPosition(position).toString().equals("Seleccionar nivel")) {
+                        String selectedClass = parent.getItemAtPosition(position).toString();
+                        switch (selectedClass) {
+                            case "A":
 
-                    String selectedClass = parent.getItemAtPosition(position).toString();
-                    switch (selectedClass) {
-                        case "A":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelA)));
+                                break;
 
-                            mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    R.layout.simple_spinner,
-                                    getResources().getStringArray(R.array.nivelA)));
-                            break;
+                            case "B":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelB)));
+                                break;
 
-                        case "B":
-                            mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    R.layout.simple_spinner,
-                                    getResources().getStringArray(R.array.nivelB)));
-                            break;
+                            case "C":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelC)));
+                                break;
 
-                        case "C":
-                            mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    R.layout.simple_spinner,
-                                    getResources().getStringArray(R.array.nivelC)));
-                            break;
+                            case "D":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelD)));
+                                break;
+                            case "E":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelE)));
+                                break;
+                            case "F":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelF)));
+                                break;
+                            case "G":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelG)));
+                                break;
+                            case "H":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelH)));
+                                break;
 
-                        case "D":
-                            mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    R.layout.simple_spinner,
-                                    getResources().getStringArray(R.array.nivelD)));
-                            break;
-                        case "E":
-                            mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    R.layout.simple_spinner,
-                                    getResources().getStringArray(R.array.nivelE)));
-                            break;
-                        case "F":
-                            mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    R.layout.simple_spinner,
-                                    getResources().getStringArray(R.array.nivelF)));
-                            break;
-                        case "G":
-                            mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    R.layout.simple_spinner,
-                                    getResources().getStringArray(R.array.nivelG)));
-                            break;
-                        case "H":
-                            mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
-                                    R.layout.simple_spinner,
-                                    getResources().getStringArray(R.array.nivelH)));
-                            break;
+                        }
 
+                        mSpinner.setVisibility(View.VISIBLE);
                     }
-                    mSpinner.setVisibility(View.VISIBLE);
                 }
 
                 @Override
@@ -218,7 +239,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
                 }
             });
-            builder.setTitle("Añadir materia")
+           // builder.setTitle((CharSequence) title_of_dialog)
+            builder.setCustomTitle(title_of_dialog)
                     .setPositiveButton("añadir", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int i) {

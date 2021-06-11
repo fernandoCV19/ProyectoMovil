@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HorarioFragment">
+    tools:context=".HorarioFragment"
+    android:id="@+id/fragmentHorario"
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -34,7 +36,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/margin_appbar"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="20dp"
+        android:id="@+id/linearLayoutFragmentHorario">
 
         <TextView
             android:id="@+id/textView10"

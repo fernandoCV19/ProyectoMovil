@@ -12,12 +12,7 @@
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="android:fontFamily">casual</item>
         <item name="android:textSize">@dimen/tamaño_por_defecto</item>
     </style>
-    <style name="SplashScreen" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">
-            @drawable/logonuevo
-        </item>
-    </style>
+
 </resources>
