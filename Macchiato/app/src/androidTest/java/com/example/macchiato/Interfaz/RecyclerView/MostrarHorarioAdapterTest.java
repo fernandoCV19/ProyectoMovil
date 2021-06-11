@@ -22,7 +22,6 @@ import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
-
 public class MostrarHorarioAdapterTest {
     @Before
     public void setUp(){
@@ -46,9 +45,26 @@ public class MostrarHorarioAdapterTest {
 
     }
 
+    @AfterClass
+    public static void tearDownClass(){
+        ActivityScenario.launch(Navigation_bottom.class);
+        onView(withId(R.id.nav_horario)).perform(click());
+        onView(withId(R.id.cambiar_a_generar)).perform(click());
+        onView(withId(R.id.spinnerNivel)).perform(click());
+        onView(withText("A")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withText("INGLES I")).perform(click());
+        onView(withText("1 - CESPEDES GUIZADA MARIA BENITA")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withText("INTRODUCCION A LA PROGRAMACION")).perform(click());
+        onView(withText("1 - SALAZAR SERRUDO CARLA")).perform(click());
+        onView(withId(R.id.cambiar_a_generar)).perform(click());
+
+    }
+
     @Test
     public void primeraMateriaNombreSeCreaYseVe(){
-        onView(withText("INGLES")).check(matches(isDisplayed()));
+        onView(withText("INGLES I")).check(matches(isDisplayed()));
 
     }
     @Test
@@ -67,36 +83,16 @@ public class MostrarHorarioAdapterTest {
     @Test
     public void prrimerMateriaTieneLaCantidadDeClasesCorrecta(){
         onView(allOf(withId(R.id.horariosInfo),hasSibling(withText("CESPEDES GUIZADA MARIA BENITA")))).check(matches(hasChildCount(2)));
-
     }
     @Test
     public void segundaMateriaTieneLaCantidadDeClasesCorrecta(){
         onView(withId(R.id.mostrarHorarioFragment)).perform(swipeUp());
         onView(allOf(withId(R.id.horariosInfo),hasSibling(withText("SALAZAR SERRUDO CARLA")))).check(matches(hasChildCount(3)));
-
     }
     @Test
     public void recyclerViewMateriasContieneDosElementos(){
         onView(withId(R.id.recyclerMostrar)).check(matches(hasChildCount(2)));
 
     }
-    @AfterClass
-    public static void tearDownClass(){
-        ActivityScenario.launch(Navigation_bottom.class);
-        onView(withId(R.id.nav_horario)).perform(click());
-        onView(withId(R.id.cambiar_a_generar)).perform(click());
-        onView(withId(R.id.spinnerNivel)).perform(click());
-        onView(withText("A")).perform(click());
-        onView(withId(R.id.spinnerMateria)).perform(click());
-        onView(withText("INGLES I")).perform(click());
-        onView(withText("1 - CESPEDES GUIZADA MARIA BENITA")).perform(click());
-        onView(withId(R.id.spinnerMateria)).perform(click());
-        onView(withText("INTRODUCCION A LA PROGRAMACION")).perform(click());
-        onView(withText("1 - SALAZAR SERRUDO CARLA")).perform(click());
-        onView(withId(R.id.cambiar_a_generar)).perform(click());
-
-    }
-
-
 
 }
