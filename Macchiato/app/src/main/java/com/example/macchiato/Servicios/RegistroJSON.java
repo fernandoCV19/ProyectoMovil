@@ -58,7 +58,7 @@ public class RegistroJSON {
         JSONArray notas;
         String campo = "";
         if(nota >50) {
-            campo = "materiasAprobadas";
+                campo = "materiasAprobadas";
 
         }
         else {
@@ -222,6 +222,17 @@ public class RegistroJSON {
             
         }catch (Exception e){
             Toast.makeText(context, "error al sincronizar", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void limpiarCampo(String campo, Context context, String nombreFichero){
+        JSONObject j = new JSONObject();
+        j.put(campo, new ArrayList<>());
+        lf.escribirFichero(nombreFichero, j.toString(), context);
+        if(nombreFichero.equals("registro.json")) {
+            actualizarFirebase(campo, context);
+            //actualizarFirebase("materiasPorTomar",context);
+
         }
     }
 }
