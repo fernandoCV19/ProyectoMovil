@@ -2,11 +2,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentSesionIniciada"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondos_fragments"
-    tools:context=".PerfilFragment"
-    android:id="@+id/fragmentSesionIniciada">
+    tools:context=".PerfilFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -37,7 +36,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="48dp">
 
         <TextView
@@ -66,6 +65,7 @@
             android:textSize="@dimen/tamaño_letras_normales"
             app:layout_constraintBottom_toTopOf="@+id/textView17"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nombreActual_id" />
 
@@ -103,7 +103,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/shape"
             android:fontFamily="casual"
             android:gravity="center"
             android:text="CERRAR SESIÓN"
@@ -120,8 +122,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/shape"
             android:fontFamily="casual"
-            android:text="desc"
+            android:text="descargar cronograma"
             android:textSize="@dimen/tamaño_letras_botones"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/buttonEditar"
@@ -135,6 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/shape"
             android:fontFamily="casual"
             android:text="CAMBIAR CONTRASEÑA"
             android:textSize="@dimen/tamaño_letras_botones"
@@ -150,6 +155,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/shape"
             android:fontFamily="casual"
             android:text="historial academico"
             android:textSize="@dimen/tamaño_letras_botones"

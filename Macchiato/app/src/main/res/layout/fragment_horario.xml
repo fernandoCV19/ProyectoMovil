@@ -32,12 +32,12 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
+        android:id="@+id/linearLayoutFragmentHorario"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/margin_appbar"
         android:orientation="vertical"
-        android:padding="20dp"
-        android:id="@+id/linearLayoutFragmentHorario">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/textView10"
@@ -88,15 +88,41 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <Button
-                android:id="@+id/idHorarioAutomatico"
+
+            <com.getbase.floatingactionbutton.FloatingActionsMenu
+                android:id="@+id/floatingHistorialAcademico"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="Automatico"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:foregroundGravity="right"
+                app:fabSize="mini"
+                app:fab_addButtonColorNormal="?attr/colorAccent"
+                app:fab_addButtonColorPressed="?attr/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerCheckbox" />
+                app:srcCompat="@drawable/addn">
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/idHorarioAutomatico"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_colorNormal="?attr/colorAccent"
+                    app:fab_colorPressed="?attr/colorAccent"
+                    app:fab_icon="@drawable/ic_piloto_automatico"
+                    app:fab_size="mini"
+                    app:fab_title="Favorito" />
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/eliminar_materias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_colorNormal="?attr/colorAccent"
+                    app:fab_colorPressed="?attr/colorAccent"
+                    app:fab_icon="@drawable/ic_eliminar"
+                    app:fab_size="mini"
+                    app:fab_title="Favorito" />
+
+            </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

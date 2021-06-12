@@ -3,8 +3,11 @@ package com.example.macchiato;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -25,6 +28,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,6 +39,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import android.widget.TextClock;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -46,6 +52,7 @@ import android.widget.Toast;
 import com.example.macchiato.Models.GlobalApplication;
 import com.example.macchiato.Servicios.HorarioAutomatico;
 import com.example.macchiato.Servicios.RegistroJSON;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -55,6 +62,13 @@ import com.google.firebase.database.ValueEventListener;
 //import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
+import org.w3c.dom.UserDataHandler;
 
 
 import com.example.macchiato.Models.Materia;
@@ -64,6 +78,7 @@ import com.example.macchiato.Servicios.Iniciador;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class HorarioFragment extends Fragment {
@@ -79,7 +94,8 @@ public class HorarioFragment extends Fragment {
     ArrayList<Grupo>   grupos;
 
     Button guardar;
-    Button automatico;
+    FloatingActionButton automatico;
+    FloatingActionButton eliminarSeleccionadas;
     RegistroJSON registroJSON;
     public HorarioFragment() {
         seleccionados= new ArrayList<>();
@@ -235,17 +251,72 @@ public class HorarioFragment extends Fragment {
         recyclerView.setAdapter(materiaHorarioAdapter);
 
         automatico.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
+                String adAutomatico="Esto eliminará todo lo seleccionado y creará un horario respecto al Historial Académico";
                 HorarioAutomatico horarioAutomatico = new HorarioAutomatico(getContext());
-                try {
-                    seleccionados.clear();
-                    seleccionados = horarioAutomatico.generarAutomatico();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                View view = inflater.inflate(R.layout.automatico_dialog, null);
+                TextView contenido = view.findViewById(R.id.contenido_texto);
+                contenido.setText(adAutomatico);
+                builder.setNegativeButton("cancelar ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.setPositiveButton("aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        try {
+                            seleccionados.clear();
+                            seleccionados = horarioAutomatico.generarAutomatico();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
+        eliminarSeleccionadas=view.findViewById(R.id.eliminar_materias);
+        eliminarSeleccionadas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String adEliminar="Esto eliminará todas las materias seleccionadas";
+                HorarioAutomatico horarioAutomatico = new HorarioAutomatico(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                View view = inflater.inflate(R.layout.automatico_dialog, null);
+                TextView contenido = view.findViewById(R.id.contenido_texto);
+                contenido.setText(adEliminar);
+                builder.setNegativeButton("cancelar ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.setPositiveButton("aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        try {
+                            seleccionados.clear();
+                            registroJSON.limpiarCampo("materiasActuales",getContext(),"registro.json");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
         return view;
     }
     void cambiarRecycler() throws Exception {

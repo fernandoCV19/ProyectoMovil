@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHolder> {
+public class  AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHolder> {
     private List<Alarma> alarmaList;
 
     public AlarmaAdapter(ArrayList<Alarma> alarmaList) {
