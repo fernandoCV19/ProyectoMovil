@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.fonts.FontFamily;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -54,7 +55,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     ArrayList<MateriaNota> listaRebrobadasID;
     RecyclerView recyclerViewApro;
     RecyclerView recyclerViewRepro;
-    Button button;
+    FloatingActionButton button;
     ArrayList<MateriaNota> listaMaterias;
     TextView promedioGen;
     TextView promedioMateriasApr;
@@ -141,7 +142,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
             View view1 = getLayoutInflater().inflate(R.layout.layout_dialog, null);
             TextView title_of_dialog = new TextView(getApplicationContext());
-           title_of_dialog.setHeight(80);
+            title_of_dialog.setHeight(80);
 
             title_of_dialog.setText("Añadir materia");
             title_of_dialog.setTextColor(Color.BLACK);

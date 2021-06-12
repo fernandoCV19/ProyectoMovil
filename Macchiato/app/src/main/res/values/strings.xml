@@ -23,6 +23,7 @@
     <string name="txt_nota">Nota:</string>
     <string name="txt_nivel">Nivel:</string>
     <string name="txt_selectColor">SELECCIONAR COLOR</string>
+    <string name="contenido_advertencia">Esto eliminará las materias seleccionadas y creará un horario respecto a su Historial Académico</string>
     <string-array name="horas">
         <item>5 minutos antes</item>
         <item>10 minutos antes</item>
