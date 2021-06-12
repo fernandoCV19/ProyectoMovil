@@ -21,7 +21,7 @@ import static com.google.common.truth.Truth.assertThat;
 
 //@RunWith(AndroidJUnit4.class)
 public class RegistroJSONTest {
-/*
+
     private RegistroJSON registroJSON;
     private Context context;
     private String nombreArchivo = "registroPrueba.json";
@@ -59,36 +59,6 @@ public class RegistroJSONTest {
         registroJSON.genararVacio(context,nombreArchivo);
         String contenido = (new LectorFichero()).leerFichero(context,nombreArchivo);
         assertThat(contenido).isEqualTo("{\"password\":\"\",\"materiasActuales\":[],\"materiasPorTomar\":[],\"materiasAprobadas\":[],\"email\":\"\",\"materiasReprobadas\":[],\"uid\":\"\",\"userName\":\"\"}");
-    }
-
-    @Test
-    public void dadoLosDatosDeUnUsuarioYUnArchivoQueNoExisteCuandoRegistrarUsuarioEntoncesGuardaLosDatosDelUsuarioEnElArchivo() throws Exception {
-        String email = "algo@gmail.com";
-        String password = "algo123";
-        String uid = "123";
-        String userName = "algo";
-
-        registroJSON.registrarUsuario(email, password, uid, userName, context, nombreArchivo);
-        String contenido = (new LectorFichero()).leerFichero(context,nombreArchivo);
-        assertThat(contenido).contains("\"email\":\"algo@gmail.com\"");
-        assertThat(contenido).contains("\"password\":\"algo123\"");
-        assertThat(contenido).contains("\"uid\":\"123\"");
-        assertThat(contenido).contains("\"userName\":\"algo\"");
-    }
-    @Test
-    public void dadoLosDatosDeUnUsuarioCuandoRegistrarUsuarioEntoncesGuardaLosDatosDelUsuarioEnElArchivo() throws Exception {
-        registroJSON.genararVacio(context, nombreArchivo);
-        String email = "algo@gmail.com";
-        String password = "algo123";
-        String uid = "123";
-        String userName = "algo";
-
-        registroJSON.registrarUsuario(email, password, uid, userName, context, nombreArchivo);
-        String contenido = (new LectorFichero()).leerFichero(context,nombreArchivo);
-        assertThat(contenido).contains("\"email\":\"algo@gmail.com\"");
-        assertThat(contenido).contains("\"password\":\"algo123\"");
-        assertThat(contenido).contains("\"uid\":\"123\"");
-        assertThat(contenido).contains("\"userName\":\"algo\"");
     }
 
     @Test
@@ -205,28 +175,28 @@ public class RegistroJSONTest {
     }
 
     @Test
-    public void dadoUnIDCuandoAnadirMateriaTomadaEntoncesAnadeElIdAlJsonIndicado() throws Exception {
-        registroJSON.aniadirMateriaTomada(1, context, nombreArchivo);
+    public void dadoUnIDCuandoAnadirMateriaEntoncesAnadeElIdAlJsonIndicado() throws Exception {
+        registroJSON.aniadirMateria(1,"materiasActuales", context, nombreArchivo);
         String contenido = (new LectorFichero()).leerFichero(context,nombreArchivo);
         assertThat(contenido).contains("\"materiasActuales\":[1]");
     }
 
     @Test
     public void dadoUnIDCuandoAnadirMateriaYaConMateriasPreviasRegistradasEntoncesAnadeElIdAlJsonIndicadoSinEliminarLosAnteriores() throws Exception {
-        registroJSON.aniadirMateriaTomada(1, context, nombreArchivo);
-        registroJSON.aniadirMateriaTomada(2, context, nombreArchivo);
+        registroJSON.aniadirMateria(1, "materiasActuales",context, nombreArchivo);
+        registroJSON.aniadirMateria(2, "materiasActuales",context, nombreArchivo);
         String contenido = (new LectorFichero()).leerFichero(context,nombreArchivo);
         assertThat(contenido).contains("\"materiasActuales\":[1,2]");
     }
 
     @Test
     public void cuandoGetMateriasTomadasEntoncesDevuelveUnaListaConLosIdsDeLasMateriasRegistradasPreviamente() throws Exception {
-        registroJSON.aniadirMateriaTomada(1, context, nombreArchivo);
-        registroJSON.aniadirMateriaTomada(2, context, nombreArchivo);
-        registroJSON.aniadirMateriaTomada(3, context, nombreArchivo);
-        registroJSON.aniadirMateriaTomada(4, context, nombreArchivo);
+        registroJSON.aniadirMateria(1, "materiasActuales",context, nombreArchivo);
+        registroJSON.aniadirMateria(2, "materiasActuales",context, nombreArchivo);
+        registroJSON.aniadirMateria(3, "materiasActuales",context, nombreArchivo);
+        registroJSON.aniadirMateria(4, "materiasActuales",context, nombreArchivo);
 
-        ArrayList<Integer> ids = registroJSON.getMateriasTomadas(context, nombreArchivo);
+        ArrayList<Integer> ids = registroJSON.getMaterias("materiasActuales", context, nombreArchivo);
 
         assertThat(ids).contains(1);
         assertThat(ids).contains(2);
@@ -236,8 +206,8 @@ public class RegistroJSONTest {
 
     @Test
     public void cuandoGetMateriasTomadasSinHaberRegistradoMateriasAntesEntoncesDevuelveUnaListaVacia() throws Exception {
-        ArrayList<Integer> ids = registroJSON.getMateriasTomadas(context, nombreArchivo);
+        ArrayList<Integer> ids = registroJSON.getMaterias("materiasActuales", context, nombreArchivo);
 
         assertThat(ids).isEmpty();
-    }*/
+    }
 }
