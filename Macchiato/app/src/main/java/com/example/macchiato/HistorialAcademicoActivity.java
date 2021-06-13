@@ -249,7 +249,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
                         }
                     });
-            builder.setNegativeButton("cancelar ", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
                     dialog.dismiss();
