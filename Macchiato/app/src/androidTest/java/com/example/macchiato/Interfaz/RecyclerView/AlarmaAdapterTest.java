@@ -16,6 +16,7 @@ import static androidx.test.espresso.Espresso.*;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
+import static org.hamcrest.Matchers.allOf;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class AlarmaAdapterTest {
@@ -27,6 +28,8 @@ public class AlarmaAdapterTest {
         onView(withId(R.id.cambiar_a_generar)).perform(click());
         onView(withId(R.id.spinnerNivel)).perform(click());
         onView(withText("A")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withText("INGLES I")).perform(click());
         onView(withText("1 - CESPEDES GUIZADA MARIA BENITA")).perform(click());
         onView(withId(R.id.cambiar_a_generar)).perform(click());
         onView(withId(R.id.nav_ajustes)).perform(click());
@@ -40,9 +43,12 @@ public class AlarmaAdapterTest {
         onView(withId(R.id.cambiar_a_generar)).perform(click());
         onView(withId(R.id.spinnerNivel)).perform(click());
         onView(withText("A")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withText("INGLES I")).perform(click());
         onView(withText("1 - CESPEDES GUIZADA MARIA BENITA")).perform(click());
         onView(withId(R.id.cambiar_a_generar)).perform(click());
         onView(withId(R.id.nav_ajustes)).perform(click());
+        onView(withId(R.id.switch2)).perform(click());
     }
 
     @Before
@@ -52,17 +58,37 @@ public class AlarmaAdapterTest {
     }
 
     @Test
-    public void recyclerViewSeCreaYSeVe(){
-        onView(withId(R.id.recyclerAlarmas)).check(matches(isDisplayed()));
+    public void nombreMateriaPrimeraClaseSeCreaYSeVe(){
+        onView(allOf(withText("INGLES I"), hasSibling(withText("MARTES")))).check(matches(isDisplayed()));
     }
 
     @Test
-    public void cardViewSeVe(){
-        onView(withId(R.id.cardViewClase)).check(matches(isDisplayed()));
+    public void diaPrimeraClaseSeCreaYSeVe(){
+        onView(withText("MARTES")).check(matches(isDisplayed()));
     }
 
     @Test
-    public void nombreMateriaSeMuestra(){
-        onView(withText("INGLES I")).check(matches(isDisplayed()));
+    public void horaPrimeraClaseSeCreaYSeVe(){
+        onView(allOf(withText("08:15"), hasSibling(withText("MARTES")))).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void nombreMateriaSegundaClaseSeCreaYSeVe(){
+        onView(allOf(withText("INGLES I"), hasSibling(withText("VIERNES")))).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void diaSegundaClaseSeCreaYSeVe(){
+        onView(withText("VIERNES")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void horaSegundaClaseSeCreaYSeVe(){
+        onView(allOf(withText("08:15"), hasSibling(withText("VIERNES")))).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void recyclerViewTieneLaCantidadDeAlarmasCorrecta(){
+        onView(withId(R.id.recyclerAlarmas)).check(matches(hasChildCount(2)));
     }
 }
