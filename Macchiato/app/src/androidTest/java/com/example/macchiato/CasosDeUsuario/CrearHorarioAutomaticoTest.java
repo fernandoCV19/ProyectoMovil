@@ -136,6 +136,12 @@ public class CrearHorarioAutomaticoTest{
         onView(withId(R.id.buttonIniciarSesion)).perform(click());
         onView(withId(R.id.nav_horario)).perform(click());
         onView(withId(R.id.recyclerMostrar)).check(matches(hasMinimumChildCount(2)));
+        onView(withId(R.id.nav_perfil)).perform(click());
+        onView(withId(R.id.buttonIniciarSesion)).perform(click());
+        onView(withId(R.id.editTextTextEmailAddress)).perform(typeText("test@gmail.com"));
+        onView(withId(R.id.editTextTextPassword)).perform(typeText("12345678"));
+        onView(withId(R.id.button)).perform(click());
+        Thread.sleep(4000);
         sesionIniciada = true;
     }
 

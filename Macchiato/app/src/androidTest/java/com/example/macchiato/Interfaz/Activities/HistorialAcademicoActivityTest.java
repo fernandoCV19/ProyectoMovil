@@ -96,9 +96,4 @@ public class HistorialAcademicoActivityTest {
     public void textViewParaMateriasReprobadasTieneElTextoCorrecto(){
         onView(withId(R.id.textView14)).check(matches(withText("Materias Reprobadas")));
     }
-
-    @Test
-    public void botonParaVerEstadisticasTieneElTextoCorrecto(){
-        onView(withId(R.id.ver_Estadisticas)).check(matches(withText("VER ESTADISTICAS")));
-    }
 }

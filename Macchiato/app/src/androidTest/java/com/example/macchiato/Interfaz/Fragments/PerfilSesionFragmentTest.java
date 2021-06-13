@@ -137,7 +137,7 @@ public class PerfilSesionFragmentTest {
 
     @Test
     public void buttonDescargarTieneElTextoCorrecto(){
-        onView(withId(R.id.id_descargas)).check(matches(withText("DESC")));
+        onView(withId(R.id.id_descargas)).check(matches(withText("DESCARGAR CRONOGRAMA")));
     }
 
     @Test
