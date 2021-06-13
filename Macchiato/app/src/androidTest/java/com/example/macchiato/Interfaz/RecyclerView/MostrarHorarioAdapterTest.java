@@ -48,7 +48,7 @@ public class MostrarHorarioAdapterTest {
 
     @Test
     public void primeraMateriaNombreSeCreaYseVe(){
-        onView(withText("INGLES")).check(matches(isDisplayed()));
+        onView(withText("INGLES I")).check(matches(isDisplayed()));
 
     }
     @Test
@@ -65,7 +65,7 @@ public class MostrarHorarioAdapterTest {
         onView(withText("SALAZAR SERRUDO CARLA")).check(matches(isDisplayed()));
     }
     @Test
-    public void prrimerMateriaTieneLaCantidadDeClasesCorrecta(){
+    public void primerMateriaTieneLaCantidadDeClasesCorrecta(){
         onView(allOf(withId(R.id.horariosInfo),hasSibling(withText("CESPEDES GUIZADA MARIA BENITA")))).check(matches(hasChildCount(2)));
 
     }
@@ -81,7 +81,7 @@ public class MostrarHorarioAdapterTest {
 
     }
     @AfterClass
-    public static void tearDownClass(){
+    public static  void tearDownClass() {
         ActivityScenario.launch(Navigation_bottom.class);
         onView(withId(R.id.nav_horario)).perform(click());
         onView(withId(R.id.cambiar_a_generar)).perform(click());
