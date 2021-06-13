@@ -31,7 +31,6 @@ public class Iniciador {
         String json = lectorJson.loadJSONFromAsset("materiasID.json",context);
         ParserMateriaID parserMateriaID = new ParserMateriaID();
         parserMateriaID.iniciarIDs(json);
-
     }
 
     private void iniciarObjetosMateria(Context context) throws Exception {

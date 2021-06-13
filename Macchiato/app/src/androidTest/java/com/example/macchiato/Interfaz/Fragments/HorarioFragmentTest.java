@@ -71,6 +71,10 @@ public class HorarioFragmentTest {
 
     @Test
     public void recyclerViewDeMateriasSePuedeVer(){
+        onView(withId(R.id.spinnerNivel)).perform(click());
+        onView(withText("A")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withText("INGLES I")).perform(click());
         onView(withId(R.id.recyclerCheckbox)).check(matches(isDisplayed()));
     }
 

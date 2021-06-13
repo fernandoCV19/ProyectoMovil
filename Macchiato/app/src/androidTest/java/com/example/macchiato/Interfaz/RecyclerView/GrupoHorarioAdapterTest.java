@@ -29,6 +29,8 @@ public class GrupoHorarioAdapterTest {
         onView(withId(R.id.cambiar_a_generar)).perform(click());
         onView(withId(R.id.spinnerNivel)).perform(click());
         onView(withText("A")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withText("INGLES I")).perform(click());
     }
 
     @Test

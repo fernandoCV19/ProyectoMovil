@@ -66,7 +66,8 @@
         android:id="@+id/list_materiasReprobadas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/ver_Estadisticas"
+        android:layout_marginBottom="92dp"
+        app:layout_constraintBottom_toBottomOf="@+id/floatingHistorialAcademico"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14">
@@ -89,22 +90,23 @@
         android:id="@+id/floatingHistorialAcademico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
         android:clickable="false"
         android:foregroundGravity="right"
         app:fabSize="mini"
         app:fab_addButtonColorNormal="?attr/colorAccent"
         app:fab_addButtonColorPressed="?attr/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ver_Estadisticas"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/addn">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/añadir_floating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorPressed="?attr/colorAccent"
             app:fab_colorNormal="?attr/colorAccent"
+            app:fab_colorPressed="?attr/colorAccent"
             app:fab_icon="@drawable/addn"
             app:fab_size="mini"
             app:fab_title="Favorito" />
@@ -113,25 +115,24 @@
             android:id="@+id/floating_eliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorPressed="?attr/colorAccent"
             app:fab_colorNormal="?attr/colorAccent"
+            app:fab_colorPressed="?attr/colorAccent"
             app:fab_icon="@drawable/substract"
             app:fab_size="mini"
             app:fab_title="Favorito" />
 
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/ver_Estadisticas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="?attr/colorAccent"
+            app:fab_colorPressed="?attr/colorAccent"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/ic_analitica"
+            app:fab_title="Favorito" />
+
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
-    <Button
-        android:id="@+id/ver_Estadisticas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:gravity="center"
-        android:text="ver estadisticas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_materiasReprobadas" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
