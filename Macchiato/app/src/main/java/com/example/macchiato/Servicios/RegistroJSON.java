@@ -7,6 +7,7 @@ import com.example.macchiato.HistorialAcademicoActivity;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -212,17 +213,21 @@ public class RegistroJSON {
     * Firebase
     * */
     private void actualizarFirebase(String campo,Context context){
+        FirebaseUser us= FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        try {
-            if(campo.equals("materiasActuales") || campo.equals("materiasPorTomar") ){
-                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMaterias(campo,context, "registro.json"));
-            }else {
-                rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaNota(campo,context,"registro.json"));
+
+        if(us != null) {
+            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            try {
+                if (campo.equals("materiasActuales") || campo.equals("materiasPorTomar")) {
+                    rootRef.child("Usuarios").child(uid).child(campo).setValue(getMaterias(campo, context, "registro.json"));
+                } else {
+                    rootRef.child("Usuarios").child(uid).child(campo).setValue(getMateriaNota(campo, context, "registro.json"));
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(context, "error al sincronizar", Toast.LENGTH_SHORT).show();
             }
-            
-        }catch (Exception e){
-            Toast.makeText(context, "error al sincronizar", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -235,10 +240,11 @@ public class RegistroJSON {
         lf.escribirFichero(nombreFichero, jo.toString(), context);
 
 
-        if(nombreFichero.equals("registro.json")) {
+
+        if (nombreFichero.equals("registro.json")) {
             actualizarFirebase(campo, context);
             //actualizarFirebase("materiasPorTomar",context);
-
         }
+
     }
 }
