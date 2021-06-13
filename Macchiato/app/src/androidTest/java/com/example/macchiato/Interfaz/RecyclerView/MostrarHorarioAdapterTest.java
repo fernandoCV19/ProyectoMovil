@@ -81,7 +81,7 @@ public class MostrarHorarioAdapterTest {
         onView(withText("SALAZAR SERRUDO CARLA")).check(matches(isDisplayed()));
     }
     @Test
-    public void prrimerMateriaTieneLaCantidadDeClasesCorrecta(){
+    public void primerMateriaTieneLaCantidadDeClasesCorrecta(){
         onView(allOf(withId(R.id.horariosInfo),hasSibling(withText("CESPEDES GUIZADA MARIA BENITA")))).check(matches(hasChildCount(2)));
     }
     @Test
