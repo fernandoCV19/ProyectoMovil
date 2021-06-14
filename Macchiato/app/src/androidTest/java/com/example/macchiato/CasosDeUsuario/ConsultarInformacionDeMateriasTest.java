@@ -22,6 +22,7 @@ import static androidx.test.espresso.Espresso.*;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
+import static net.bytebuddy.matcher.ElementMatchers.hasChild;
 import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.instanceOf;
@@ -90,5 +91,19 @@ public class ConsultarInformacionDeMateriasTest {
     public void consultarMateriasDeNivelI(){
         onView(withText("Nivel I")).perform(click());
         onView(withId(R.id.listRecyclerview)).check(matches(hasMinimumChildCount(1)));
+    }
+
+    @Test
+    public void consultarGruposQueExistenEnUnaMateria(){
+        onView(withText("Nivel A")).perform(click());
+        onView(allOf(withId(R.id.botonDetalles), withParent(withParent(withChild(withText("INGLES I")))))).perform(click());
+        onView(withId(R.id.recyclerGrupos)).check(matches(hasMinimumChildCount(1)));
+    }
+
+    @Test
+    public void consultarRequisitosDeUnaMateria(){
+        onView(withText("Nivel A")).perform(click());
+        onView(allOf(withId(R.id.requisitos), withParent(withParent(withChild(withText("INGLES I")))))).perform(click());
+        onView(withId(R.id.relativeRequisitos)).check(matches(isDisplayed()));
     }
 }
