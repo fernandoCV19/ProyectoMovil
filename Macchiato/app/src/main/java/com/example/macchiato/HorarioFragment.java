@@ -117,16 +117,21 @@ public class HorarioFragment extends Fragment {
 
         ConsultorMaterias cs =new ConsultorMaterias();
         HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
-        Character [] nomNiveles =new Character[9];
+        String [] nomNiveles =new String[10];
+        nomNiveles[0]="Seleccionar nivel";
 
-        int j = 0;
+        int j = 1;
         for (Character nivel : list.keySet()) {
 
-            nomNiveles[j] = nivel;
+            nomNiveles[j] = nivel+"";
             j++;
         }
 
-        ArrayAdapter<Character> adapter2 = new ArrayAdapter<Character>(getContext(), R.layout.simple_spinner, nomNiveles);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(), R.layout.simple_spinner, nomNiveles);
+
+       
+
+
         spinnerNivel.setAdapter(adapter2);
 
 
