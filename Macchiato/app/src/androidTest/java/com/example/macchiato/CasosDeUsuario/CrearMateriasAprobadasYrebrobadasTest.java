@@ -25,22 +25,23 @@ import static org.hamcrest.Matchers.allOf;
 public class CrearMateriasAprobadasYrebrobadasTest {
     @Before
     public void setUp() {
-        ActivityScenario.launch(HistorialAcademicoActivity.class);
+        ActivityScenario.launch(Navigation_bottom.class);
+        onView(withId(R.id.nav_perfil)).perform(click());
+        onView(withId(R.id.buttonHistorial)).perform(click());
         onView(withId(R.id.añadir_floating)).perform(click());
         onView(withId(R.id.añadir_floating)).perform(click());
     }
 
    @BeforeClass
    public static void setupClass() throws InterruptedException {
-       ActivityScenario.launch(HistorialAcademicoActivity.class);
-        onView(withId(R.id.añadir_floating)).perform(click());
-       onView(withId(R.id.añadir_floating)).perform(click());
+       ActivityScenario.launch(Navigation_bottom.class);
+       onView(withId(R.id.nav_perfil)).perform(click());
+       onView(withId(R.id.buttonHistorial)).perform(click());
+
    }
 
     @Test
     public void crearMateriaAprobadas() {
-
-
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("A")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.materia)).perform(click());
@@ -64,8 +65,6 @@ public class CrearMateriasAprobadasYrebrobadasTest {
 
     @Test
     public void crearMateriasReprobadas() {
-
-
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("B")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.materia)).perform(click());
@@ -87,11 +86,8 @@ public class CrearMateriasAprobadasYrebrobadasTest {
 
     }
 
-
     @Test
     public void verificarMateriaAprobadaNoSeRepiteEnReprobadas() {
-
-
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("A")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.materia)).perform(click());
@@ -149,6 +145,48 @@ public class CrearMateriasAprobadasYrebrobadasTest {
         onView(allOf(withId(R.id.eliminar), hasSibling(withText("CALCULO NUMERICO")))).perform(click());
         onView(withId(R.id.floating_eliminar)).perform(click());
 
+    }
+    @Test
+    public void dialogEstadisticaConDosMaterias(){
+        onView(withId(R.id.nivel)).perform(click());
+        onView(withText("C")).inRoot(isPlatformPopup()).perform(click());
+        onView(withId(R.id.materia)).perform(click());
+        onView(withText("CALCULO NUMERICO")).inRoot(isPlatformPopup()).perform(click());
+        onView(withId(R.id.editText)).perform(ViewActions.typeText("10"));
+        onView(withText("AÑADIR")).perform(click());
+        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.nivel)).perform(click());
+        onView(withText("C")).inRoot(isPlatformPopup()).perform(click());
+        onView(withId(R.id.materia)).perform(click());
+        onView(withText("LOGICA")).inRoot(isPlatformPopup()).perform(click());
+        onView(withId(R.id.editText)).perform(ViewActions.typeText("100"));
+        onView(withText("AÑADIR")).perform(click());
+        onView(withId(R.id.ver_Estadisticas)).perform(click());
+        onView(withId(R.id.promedio_nota)).check(matches(withText("55.0")));
+        onView(isRoot()).perform(ViewActions.pressBack());
+        onView(allOf(withId(R.id.eliminar), hasSibling(withText("CALCULO NUMERICO")))).perform(click());
+        onView(withId(R.id.floating_eliminar)).perform(click());
+        onView(allOf(withId(R.id.eliminar), hasSibling(withText("LOGICA")))).perform(click());
+        onView(withId(R.id.floating_eliminar)).perform(click());
+    }
+    @Test
+    public void despuesDePresionarbotonAtras() {
+
+        onView(withId(R.id.nivel)).perform(click());
+        onView(withText("C")).inRoot(isPlatformPopup()).perform(click());
+        onView(withId(R.id.materia)).perform(click());
+        onView(withText("LOGICA")).inRoot(isPlatformPopup()).perform(click());
+        onView(withId(R.id.editText)).perform(ViewActions.typeText("100"));
+        onView(withText("AÑADIR")).perform(click());
+        onView(isRoot()).perform(ViewActions.pressBack());
+        onView(withId(R.id.buttonHistorial)).perform(click());
+        onView(withText("LOGICA")).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.eliminar), hasSibling(withText("LOGICA")))).perform(click());
+        onView(withId(R.id.floating_eliminar)).perform(click());
+        onView(withId(R.id.floating_eliminar)).perform(click());
+
 
     }
+
 }
+

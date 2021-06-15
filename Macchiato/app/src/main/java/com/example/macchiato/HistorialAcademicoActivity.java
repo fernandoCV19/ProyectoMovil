@@ -228,6 +228,11 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                         R.layout.simple_spinner,
                                         getResources().getStringArray(R.array.nivelH)));
                                 break;
+                            case "I":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelI)));
+                                break;
 
                         }
 
