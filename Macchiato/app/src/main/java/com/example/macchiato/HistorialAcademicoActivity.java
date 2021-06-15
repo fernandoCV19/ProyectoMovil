@@ -228,6 +228,11 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                         R.layout.simple_spinner,
                                         getResources().getStringArray(R.array.nivelH)));
                                 break;
+                            case "I":
+                                mSpinner.setAdapter(new ArrayAdapter<>(HistorialAcademicoActivity.this,
+                                        R.layout.simple_spinner,
+                                        getResources().getStringArray(R.array.nivelI)));
+                                break;
 
                         }
 
@@ -289,37 +294,38 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             MateriaNota materiaNota = new MateriaNota(select, numero);
 
 
-                            if (!mostrarAprobadas.contains(materiaNota)) {
-                                Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
-                                listaMaterias.add(materiaNota);
+                                if (!mostrarAprobadas.contains(materiaNota)) {
+                                    Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
+                                    listaMaterias.add(materiaNota);
 
-                                try {
+                                    try {
 
-                                    int idMat = new ParserMateriaID().getID(select);
-                                    rj.aniadirNota(idMat, numero, getApplicationContext(), "registro.json");
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                                recyclerViewApro = (RecyclerView) findViewById(R.id.lista_MateriasAprobadas);
-                                recyclerViewRepro = (RecyclerView) findViewById(R.id.list_materiasReprobadas);
+                                        int idMat = new ParserMateriaID().getID(select);
+                                        rj.aniadirNota(idMat, numero, getApplicationContext(), "registro.json");
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    recyclerViewApro = (RecyclerView) findViewById(R.id.lista_MateriasAprobadas);
+                                    recyclerViewRepro = (RecyclerView) findViewById(R.id.list_materiasReprobadas);
 
-                                if (numero >= 51) {
-                                    recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-                                    recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
-                                    recyclerViewApro.setAdapter(adapter);
-                                    recyclerViewApro.setHasFixedSize(true);
-                                    mostrarAprobadas.add(materiaNota);
-                                } else {
-                                    recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
-                                    adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
-                                    recyclerViewRepro.setItemAnimator(new DefaultItemAnimator());
-                                    recyclerViewRepro.setAdapter(adapterReprobadas);
-                                    recyclerViewRepro.setHasFixedSize(true);
-                                    mostrarReprobadas.add(materiaNota);
+                                    if (numero >= 51) {
+                                        recyclerViewApro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
+                                        recyclerViewApro.setItemAnimator(new DefaultItemAnimator());
+                                        recyclerViewApro.setAdapter(adapter);
+                                        recyclerViewApro.setHasFixedSize(true);
+                                        mostrarAprobadas.add(materiaNota);
+                                    } else {
+                                        recyclerViewRepro.setLayoutManager(new LinearLayoutManager(HistorialAcademicoActivity.this));//getContext()
+                                        adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
+                                        recyclerViewRepro.setItemAnimator(new DefaultItemAnimator());
+                                        recyclerViewRepro.setAdapter(adapterReprobadas);
+                                        recyclerViewRepro.setHasFixedSize(true);
+                                        mostrarReprobadas.add(materiaNota);
 
+                                    }
                                 }
                             }
-                        }
+
 
 
 

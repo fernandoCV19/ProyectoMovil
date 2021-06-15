@@ -179,7 +179,7 @@ public class CrearHorarioAutomaticoTest{
         onView(withId(R.id.recyclerMostrar)).check(matches(hasMinimumChildCount(2)));
         sesionIniciada = true;
     }
-
+@Test
     public void botonParaEliminarElHorarioCreadoFunciona(){
         onView(withId(R.id.nav_horario)).perform(click());
         onView(withId(R.id.cambiar_a_generar)).perform(click());
@@ -195,4 +195,5 @@ public class CrearHorarioAutomaticoTest{
         onView(withText("ACEPTAR")).perform(click());
         onView(withId(R.id.recyclerMostrar)).check(matches(hasMinimumChildCount(0)));
     }
+
 }
