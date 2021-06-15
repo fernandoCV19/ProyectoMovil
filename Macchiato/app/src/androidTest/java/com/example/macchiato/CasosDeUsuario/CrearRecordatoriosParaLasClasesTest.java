@@ -17,7 +17,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
-public class CrearRecordatoriosParaLasClases {
+public class CrearRecordatoriosParaLasClasesTest {
 
     @Rule
     public ActivityScenarioRule activityScenarioRule = new ActivityScenarioRule(Navigation_bottom.class);

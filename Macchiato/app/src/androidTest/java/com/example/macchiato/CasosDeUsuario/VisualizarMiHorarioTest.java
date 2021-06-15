@@ -65,6 +65,54 @@ public class VisualizarMiHorarioTest{
         onView(withSubstring("ALGEBRA")).perform(click());
         onView(withSubstring("10")).perform(click());
         onView(withId(R.id.cambiar_a_generar)).perform(click());
-        onView(withId(R.id.recyclerMostrar)).check(matches(hasChildCount(2)));
+        onView(withId(R.id.recyclerMostrar)).check(matches(hasMinimumChildCount(2)));
+    }
+
+    @Test
+    public void visualizarLasClasesDeUnaMateriaConDosClases(){
+        onView(withId(R.id.spinnerNivel)).perform(click());
+        onView(withText("A")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withSubstring("INGLES")).perform(click());
+        onView(withSubstring("1")).perform(click());
+        onView(withId(R.id.cambiar_a_generar)).perform(click());
+        onView(withId(R.id.horariosInfo)).check(matches(hasChildCount(2)));
+    }
+
+    @Test
+    public void visualizarLasClasesDeUnaMateriaConTresClases(){
+        onView(withId(R.id.spinnerNivel)).perform(click());
+        onView(withText("A")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withSubstring("ALGEBRA")).perform(click());
+        onView(withSubstring("10")).perform(click());
+        onView(withId(R.id.cambiar_a_generar)).perform(click());
+        onView(withId(R.id.horariosInfo)).check(matches(hasChildCount(3)));
+    }
+
+    @Test
+    public void verificarQueSeAnadeCorrectamenteUnGrupo(){
+        onView(withId(R.id.spinnerNivel)).perform(click());
+        onView(withText("A")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withSubstring("ALGEBRA")).perform(click());
+        onView(withSubstring("10 - RODRIGUEZ")).perform(click());
+        onView(withId(R.id.cambiar_a_generar)).perform(click());
+        onView(withSubstring("RODRIGUEZ")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void verificarQueSeAnadeCorrectamenteMasDeUnaMateria(){
+        onView(withId(R.id.spinnerNivel)).perform(click());
+        onView(withText("A")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withSubstring("INGLES")).perform(click());
+        onView(withSubstring("1")).perform(click());
+        onView(withId(R.id.spinnerMateria)).perform(click());
+        onView(withSubstring("ALGEBRA")).perform(click());
+        onView(withSubstring("10")).perform(click());
+        onView(withId(R.id.cambiar_a_generar)).perform(click());
+        onView(withSubstring("RODRIGUEZ")).check(matches(isDisplayed()));
+        onView(withSubstring("CESPEDES")).check(matches(isDisplayed()));
     }
 }
