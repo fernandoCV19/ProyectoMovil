@@ -193,6 +193,7 @@ public class CrearHorarioAutomaticoTest{
         onView(withId(R.id.idHorarioAutomatico)).perform(click());
         onView(withId(R.id.eliminar_materias)).perform(click());
         onView(withText("ACEPTAR")).perform(click());
+        onView(withId(R.id.cambiar_a_generar)).perform(click());
         onView(withId(R.id.recyclerMostrar)).check(matches(hasMinimumChildCount(0)));
     }
 
