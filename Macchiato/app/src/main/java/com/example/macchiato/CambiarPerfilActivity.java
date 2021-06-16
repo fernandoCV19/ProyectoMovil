@@ -19,7 +19,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+/**
+ * Activity de cambio de perfil
+ * */
 public class CambiarPerfilActivity extends AppCompatActivity {
     EditText contAct,contNueva,contConfir;
 
@@ -30,7 +32,9 @@ public class CambiarPerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cambiar_perfil);
         asignarId();
     }
-
+    /**
+     * Guarda los cambios en la base de datos
+     * */
     public void guardarCambios(View view){
         String contNuevaText=contNueva.getText().toString().trim();
         String contConfirText=contConfir.getText().toString().trim();
