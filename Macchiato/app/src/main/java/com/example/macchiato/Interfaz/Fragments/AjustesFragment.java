@@ -1,13 +1,11 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Fragments;
 
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,11 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Switch;
 
+import com.example.macchiato.Interfaz.Adapters.AlarmaAdapter;
 import com.example.macchiato.Models.Clase;
 import com.example.macchiato.Models.Grupo;
-import com.example.macchiato.Models.Materia;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.Alarma.Alarma;
 import com.example.macchiato.Servicios.Alarma.CreadorAlarma;
 import com.example.macchiato.Servicios.Alarma.TinyDB;
@@ -28,10 +26,7 @@ import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class AjustesFragment extends Fragment {
     Button btn;

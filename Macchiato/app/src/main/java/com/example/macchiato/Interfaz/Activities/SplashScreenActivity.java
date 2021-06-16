@@ -1,4 +1,4 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SystemClock.sleep(1800);
-        startActivity(new Intent(SplashScreenActivity.this,Navigation_bottom.class));
+        startActivity(new Intent(SplashScreenActivity.this, Navigation_bottom.class));
         finishAffinity();
     }
 }

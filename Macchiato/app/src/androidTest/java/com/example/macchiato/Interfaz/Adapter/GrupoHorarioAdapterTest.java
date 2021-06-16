@@ -1,16 +1,12 @@
-package com.example.macchiato.Interfaz.RecyclerView;
+package com.example.macchiato.Interfaz.Adapter;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
-import static org.junit.Assert.*;
-
-import com.example.macchiato.Navigation_bottom;
+import com.example.macchiato.Interfaz.Activities.Navigation_bottom;
 import com.example.macchiato.R;
 
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

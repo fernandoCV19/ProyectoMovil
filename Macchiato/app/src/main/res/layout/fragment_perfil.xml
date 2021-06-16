@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PerfilFragment"
+    tools:context=".Interfaz.Fragments.PerfilFragment"
     android:id="@+id/perfilSinIniciarFragment">
 
     <androidx.appcompat.widget.Toolbar

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activityNavigationBottom"
-    tools:context=".Navigation_bottom"
+    tools:context=".Interfaz.Activities.Navigation_bottom"
     app:itemIconTint="@drawable/bottom_navigation_selector"
     >
 

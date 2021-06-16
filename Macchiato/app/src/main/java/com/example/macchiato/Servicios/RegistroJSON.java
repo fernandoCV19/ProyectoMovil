@@ -3,8 +3,6 @@ package com.example.macchiato.Servicios;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.macchiato.HistorialAcademicoActivity;
-import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,7 +17,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class RegistroJSON {
     public LectorFichero lf;

@@ -16,7 +16,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.macchiato.AjustesFragment;
+import com.example.macchiato.Interfaz.Fragments.AjustesFragment;
 import com.example.macchiato.R;
 
 public class NotificationService extends IntentService {

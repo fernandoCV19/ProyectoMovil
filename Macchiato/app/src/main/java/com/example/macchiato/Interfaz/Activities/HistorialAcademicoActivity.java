@@ -1,4 +1,4 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.fonts.FontFamily;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -23,22 +22,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.macchiato.Interfaz.Adapters.MateriaNotaAdapter;
 import com.example.macchiato.Models.Materia;
 import com.example.macchiato.Models.MateriaNota;
 import com.example.macchiato.Parser.ParserMateriaID;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.EstadisticaHA;
 import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;

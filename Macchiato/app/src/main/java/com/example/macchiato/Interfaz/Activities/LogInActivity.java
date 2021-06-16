@@ -1,4 +1,4 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.macchiato.Models.User;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.LectorFichero;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -97,7 +98,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void register(View view){
-        Intent register=new Intent(this,RegisterActivity.class);
+        Intent register=new Intent(this, RegisterActivity.class);
         startActivity(register);
     }
 

@@ -1,10 +1,9 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -12,6 +11,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.macchiato.Models.MateriaNota;
+import com.example.macchiato.R;
 
 import org.jetbrains.annotations.NotNull;
 

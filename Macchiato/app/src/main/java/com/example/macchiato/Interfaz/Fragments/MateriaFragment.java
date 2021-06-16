@@ -1,9 +1,8 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -19,20 +18,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.macchiato.Interfaz.Adapters.MateriaAdapter;
 import com.example.macchiato.Models.Materia;
-import com.example.macchiato.Models.MateriaNivel;
-import com.example.macchiato.Parser.MateriaNivelParser;
-import com.example.macchiato.Parser.ParserMateriaGrupo;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.Iniciador;
 
 import org.json.JSONException;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 
 public class MateriaFragment extends Fragment {

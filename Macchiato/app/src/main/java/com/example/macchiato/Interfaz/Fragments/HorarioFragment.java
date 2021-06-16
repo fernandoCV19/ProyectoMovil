@@ -1,25 +1,13 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Fragments;
 
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.Manifest;
-import android.app.DownloadManager;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -27,8 +15,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Environment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,36 +25,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
+import com.example.macchiato.Interfaz.Adapters.GrupoHorarioAdapter;
 import com.example.macchiato.Models.Grupo;
 
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.macchiato.Models.GlobalApplication;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.HorarioAutomatico;
 import com.example.macchiato.Servicios.RegistroJSON;
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 //import com.google.gson.Gson;
-
-import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.DOMException;
-import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
-import org.w3c.dom.UserDataHandler;
 
 
 import com.example.macchiato.Models.Materia;
@@ -77,8 +46,6 @@ import com.example.macchiato.Servicios.Iniciador;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 
 public class HorarioFragment extends Fragment {

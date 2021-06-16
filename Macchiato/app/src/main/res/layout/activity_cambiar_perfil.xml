@@ -7,7 +7,7 @@
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:background="@drawable/fondos_fragments"
-    tools:context=".CambiarPerfilActivity"
+    tools:context=".Interfaz.Activities.CambiarPerfilActivity"
     android:id="@+id/cambiarDePerfilActivity">
 
     <LinearLayout

@@ -1,7 +1,6 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Fragments;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
@@ -11,25 +10,21 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.macchiato.Interfaz.Activities.CambiarPerfilActivity;
+import com.example.macchiato.Interfaz.Activities.HistorialAcademicoActivity;
+import com.example.macchiato.Interfaz.Activities.Navigation_bottom;
 import com.example.macchiato.Models.User;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.LectorFichero;
-import com.example.macchiato.Servicios.RegistroJSON;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,11 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.Map;
 
 public class PerfilSesionFragment extends Fragment {
@@ -108,7 +99,7 @@ public class PerfilSesionFragment extends Fragment {
             public void onClick(View v) {
                 if(auth!=null){
                     auth.signOut();
-                    Intent intent = new Intent(getActivity(),Navigation_bottom.class);
+                    Intent intent = new Intent(getActivity(), Navigation_bottom.class);
                     /*LectorFichero lector = new LectorFichero();
                     lector.crearJson(getApplicationContext(),userProfile);
                     try {
@@ -129,7 +120,7 @@ public class PerfilSesionFragment extends Fragment {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),CambiarPerfilActivity.class);
+                Intent intent = new Intent(getActivity(), CambiarPerfilActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,4 +1,4 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,10 +10,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.Alarma.Alarma;
 import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class  AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHolder> {

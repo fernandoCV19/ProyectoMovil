@@ -1,20 +1,19 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.Toast;
 
+import com.example.macchiato.Interfaz.Fragments.AjustesFragment;
+import com.example.macchiato.Interfaz.Fragments.MateriaFragment;
+import com.example.macchiato.Interfaz.Fragments.MostrarHorarioFragment;
+import com.example.macchiato.Interfaz.Fragments.PerfilFragment;
+import com.example.macchiato.Interfaz.Fragments.PerfilSesionFragment;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.RegistroJSON;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;

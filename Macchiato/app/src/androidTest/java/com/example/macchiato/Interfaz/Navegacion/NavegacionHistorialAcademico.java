@@ -1,18 +1,14 @@
 package com.example.macchiato.Interfaz.Navegacion;
 import androidx.test.core.app.ActivityScenario;
-import androidx.test.espresso.Root;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
-import com.example.macchiato.Navigation_bottom;
+import com.example.macchiato.Interfaz.Activities.Navigation_bottom;
 import com.example.macchiato.R;
-import com.google.firebase.storage.internal.SmartHandler;
 
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

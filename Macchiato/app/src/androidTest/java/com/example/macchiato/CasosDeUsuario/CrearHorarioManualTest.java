@@ -1,35 +1,25 @@
 package com.example.macchiato.CasosDeUsuario;
-import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
-import com.example.macchiato.Navigation_bottom;
+import com.example.macchiato.Interfaz.Activities.Navigation_bottom;
 import com.example.macchiato.R;
 
-import net.bytebuddy.matcher.ElementMatcher;
-
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.util.Map;
 
 import static androidx.test.espresso.Espresso.*;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
-import static net.bytebuddy.matcher.ElementMatchers.hasChild;
 import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.iterableWithSize;
 
 @RunWith(AndroidJUnit4ClassRunner.class)

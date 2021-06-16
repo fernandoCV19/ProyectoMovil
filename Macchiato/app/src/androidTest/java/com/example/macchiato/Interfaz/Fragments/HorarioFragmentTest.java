@@ -1,10 +1,9 @@
 package com.example.macchiato.Interfaz.Fragments;
 
-import androidx.core.location.GnssStatusCompat;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
-import com.example.macchiato.Navigation_bottom;
+import com.example.macchiato.Interfaz.Activities.Navigation_bottom;
 import com.example.macchiato.R;
 
 import org.junit.Before;

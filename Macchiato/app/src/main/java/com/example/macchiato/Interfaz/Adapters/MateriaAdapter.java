@@ -1,4 +1,4 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.ConsultorMaterias;
 import com.example.macchiato.Servicios.Iniciador;
 

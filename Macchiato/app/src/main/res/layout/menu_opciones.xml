@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Navigation_bottom">
+    tools:context=".Interfaz.Activities.Navigation_bottom">
 
     <include
         android:id="@+id/toolbar"

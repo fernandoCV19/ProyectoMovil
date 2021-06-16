@@ -1,4 +1,4 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,15 +17,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Toast;
 
 
+import com.example.macchiato.Interfaz.Adapters.MostrarHorarioAdapter;
+import com.example.macchiato.Interfaz.Fragments.HorarioFragment;
 import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.ConsultorMaterias;
-import com.example.macchiato.Servicios.HorarioAutomatico;
 import com.example.macchiato.Servicios.Iniciador;
 
 import java.util.ArrayList;

@@ -1,13 +1,11 @@
 package com.example.macchiato.Interfaz.Navegacion;
-import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
-import com.example.macchiato.Navigation_bottom;
+import com.example.macchiato.Interfaz.Activities.Navigation_bottom;
 import com.example.macchiato.R;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,25 +1,19 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Clase;
-import com.example.macchiato.Servicios.Iniciador;
+import com.example.macchiato.R;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClaseAdapter extends RecyclerView.Adapter<ClaseAdapter.ViewHolder> {

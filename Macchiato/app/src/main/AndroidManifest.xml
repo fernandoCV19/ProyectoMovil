@@ -22,30 +22,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Macchiato">
 
-        <activity android:name=".Navigation_bottom"
+        <activity android:name=".Interfaz.Activities.Navigation_bottom"
             android:screenOrientation="portrait"
             >
         </activity>
 
-        <activity android:name=".Descargas_Externas"
+        <activity android:name=".Interfaz.Activities.Descargas_Externas"
             android:screenOrientation="portrait"
             >
         </activity>
-        <activity android:name=".CambiarPerfilActivity"
+        <activity android:name=".Interfaz.Activities.CambiarPerfilActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".HistorialAcademicoActivity"
+        <activity android:name=".Interfaz.Activities.HistorialAcademicoActivity"
             android:screenOrientation="portrait"
             >
         </activity>
 
-        <activity android:name=".RegisterActivity"
+        <activity android:name=".Interfaz.Activities.RegisterActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".LogInActivity"
+        <activity android:name=".Interfaz.Activities.LogInActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".SplashScreenActivity"
+        <activity android:name=".Interfaz.Activities.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:allowBackup="true"
             android:theme="@style/SplashScreen">

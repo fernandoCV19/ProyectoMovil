@@ -7,7 +7,7 @@
 
     android:layout_height="match_parent"
     android:background="@drawable/logo_nuevo"
-    tools:context=".LogInActivity"
+    tools:context=".Interfaz.Activities.LogInActivity"
     android:id="@+id/logInActivity">
 
 

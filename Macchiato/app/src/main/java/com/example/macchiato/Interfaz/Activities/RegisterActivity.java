@@ -1,4 +1,4 @@
-package com.example.macchiato;
+package com.example.macchiato.Interfaz.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.macchiato.Models.User;
+import com.example.macchiato.R;
 import com.example.macchiato.Servicios.LectorFichero;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,11 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.json.JSONException;
-
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 public class  RegisterActivity extends AppCompatActivity {
 
@@ -96,7 +92,7 @@ public class  RegisterActivity extends AppCompatActivity {
 
                                         databaseReference.child("Usuarios").child(us.getUid()).child("materiasPorTomar").setValue(user.getMateriasPorTomar());
                                         Toast.makeText(RegisterActivity.this, "exito", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(RegisterActivity.this,Navigation_bottom.class));
+                                        startActivity(new Intent(RegisterActivity.this, Navigation_bottom.class));
                                         finishAffinity();
                                     }
                                     else{

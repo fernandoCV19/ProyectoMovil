@@ -1,11 +1,8 @@
 package com.example.macchiato.Interfaz.Activities;
 
-import androidx.fragment.app.FragmentActivity;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
-import com.example.macchiato.CambiarPerfilActivity;
-import com.example.macchiato.Navigation_bottom;
 import com.example.macchiato.R;
 
 import org.junit.Rule;
@@ -13,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.*;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 

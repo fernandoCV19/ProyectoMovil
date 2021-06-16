@@ -1,23 +1,16 @@
-package com.example.macchiato.Interfaz.RecyclerView;
+package com.example.macchiato.Interfaz.Adapter;
 
 import androidx.test.core.app.ActivityScenario;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.ViewActions;
-import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import org.junit.After;
-import org.junit.runner.RunWith;
-
-import com.example.macchiato.Navigation_bottom;
+import com.example.macchiato.Interfaz.Activities.Navigation_bottom;
 import com.example.macchiato.R;
 
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.internal.configuration.injection.filter.NameBasedCandidateFilter;
 
 import static androidx.test.espresso.Espresso.*;
 import static androidx.test.espresso.action.ViewActions.*;
