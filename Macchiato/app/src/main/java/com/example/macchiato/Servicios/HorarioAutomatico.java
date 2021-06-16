@@ -8,12 +8,17 @@ import com.example.macchiato.Models.MateriaNota;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
+/**
+ * Clase dedicada a la creacion de horarios automaticamente segun las materias aprobadas del usuario
+ * */
 public class HorarioAutomatico {
     private Context context;
     public HorarioAutomatico(Context context){
         this.context = context;
     }
+    /**
+     * Actualiza la informacion en el horario actual
+     * */
     public ArrayList<Integer> generarAutomatico() throws Exception {
         RegistroJSON registroJSON = new RegistroJSON();
         registroJSON.limpiarCampo("materiasActuales", context, "registro.json");
@@ -24,6 +29,9 @@ public class HorarioAutomatico {
         }
         return horario;
     }
+    /**
+     * Devuelve una lista de id's de grupos de materias resultantes del algoritmo automatico
+     * */
     private ArrayList<Integer> getAutomatica() throws Exception {
         ArrayList<Integer> lista;
         MallaCurricular mallaCurricular = new MallaCurricular();
@@ -41,7 +49,9 @@ public class HorarioAutomatico {
         }
         return lista;
     }
-
+    /**
+     * Obtienen la lista de id's de las materias aprobadas
+     * */
     private ArrayList<Integer> getAprobados() throws Exception {
         ArrayList<Integer> aprobadosID = new ArrayList<>();
         RegistroJSON registroJSON = new RegistroJSON();
