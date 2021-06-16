@@ -8,7 +8,9 @@ import java.util.Set;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Collection;
-
+/**
+ * Clase dedicada al calculo de las materias que se deben tomar una vez aprobada otra materia
+ * */
 public class MallaCurricular {
 
     private ArrayList<Integer> cola1;
@@ -20,9 +22,12 @@ public class MallaCurricular {
     private ArrayList<Integer> cola7;
     private int requisitos_ia1;
     private int requisitos_TG2;
-    public MallaCurricular(){
+    /**
+     * Se crean siete listas con los id's de materias, algunas de estas materias estan repetidas
+     * */
+    public MallaCurricular() {
 
-        cola1=new ArrayList<>();
+        cola1 = new ArrayList<>();
         cola1.add(1);
         cola1.add(6);
         cola1.add(16);
@@ -32,7 +37,7 @@ public class MallaCurricular {
         cola1.add(37);
         cola1.add(44);
         cola1.add(53);
-        cola2=new ArrayList<>();
+        cola2 = new ArrayList<>();
         cola2.add(3);
         cola2.add(7);
         cola2.add(13);
@@ -40,7 +45,7 @@ public class MallaCurricular {
         cola2.add(29);
         cola2.add(34);
         cola2.add(40);
-        cola3=new ArrayList<>();
+        cola3 = new ArrayList<>();
         cola3.add(4);
         cola3.add(8);
         cola3.add(12);
@@ -49,7 +54,7 @@ public class MallaCurricular {
         cola3.add(34);
         cola3.add(40);
 
-        cola4=new ArrayList<>();
+        cola4 = new ArrayList<>();
         cola4.add(5);
         cola4.add(9);
         cola4.add(17);
@@ -59,7 +64,7 @@ public class MallaCurricular {
         cola4.add(37);
         cola4.add(44);
         cola4.add(53);
-        cola5=new ArrayList<>();
+        cola5 = new ArrayList<>();
         cola5.add(5);
         cola5.add(11);
         cola5.add(15);
@@ -68,7 +73,7 @@ public class MallaCurricular {
         cola5.add(35);
         cola5.add(38);
         cola5.add(53);
-        cola6=new ArrayList<>();
+        cola6 = new ArrayList<>();
         cola6.add(2);
         cola6.add(10);
         cola6.add(14);
@@ -77,7 +82,7 @@ public class MallaCurricular {
         cola6.add(31);
         cola6.add(41);
 
-        cola7=new  ArrayList<>();
+        cola7 = new ArrayList<>();
         cola7.add(2);
         cola7.add(10);
         cola7.add(14);
@@ -87,7 +92,9 @@ public class MallaCurricular {
 
         requisitos_ia1 = requisitos_TG2 = 2;
     }
-
+    /**
+     * Segun las colas creadas se obtiene las siguientes materias
+     * */
     public ArrayList<Integer> getSiguientes(){
         ArrayList<Integer> sig = new ArrayList<>();
 
@@ -124,7 +131,9 @@ public class MallaCurricular {
         sig.addAll((Collection)hs);
         return sig;
     }
-
+    /**
+     *  Añade una materia a la lista de siguientes
+     * */
     private void aniadir(int a, int b, ArrayList<Integer> sig){
         int aux = 0;
         if(a == 0) a = b;
@@ -139,6 +148,9 @@ public class MallaCurricular {
         else if(b == 53 && requisitos_TG2 == 0) sig.add(b);
         else sig.add(a);
     }
+    /**
+     * Quita una lista de materias resientemente tomadas
+     * */
     public void quitar(ArrayList<Integer> q){
         if(q.contains(22) || q.contains(18)) requisitos_ia1--;
         if(q.contains(44) || q.contains(43)) requisitos_TG2--;
@@ -151,6 +163,9 @@ public class MallaCurricular {
         if(q.contains(cola6.get(0))) cola6.remove(0);
         if(q.contains(cola7.get(0))) cola7.remove(0);
     }
+    /**
+     * Obtiene la lista de materias que aun no se han aprobado
+     * */
     public ArrayList<Integer> getSinTomar(){
         ArrayList<Integer> sinTomar = new ArrayList<>();
         sinTomar.addAll(cola1);
@@ -171,7 +186,9 @@ public class MallaCurricular {
         sinTomar.addAll((Collection)hs);
         return sinTomar;
     }
-
+    /**
+     * Quita una lista de id's de materias aprobadas de las listas generadas
+     * */
     public void quitarVarios(ArrayList<Integer> varios){
         if(varios.contains(22) || varios.contains(18)) requisitos_ia1--;
         if(varios.contains(44) || varios.contains(43)) requisitos_TG2--;

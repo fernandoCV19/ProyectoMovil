@@ -4,9 +4,13 @@ import com.example.macchiato.Models.Grupo;
 import com.example.macchiato.Models.Materia;
 
 import java.util.ArrayList;
-
+/**
+ * Clase dedicada a la creacion automatica de horario segun las materias ya aprobadas
+ * */
 public class CreadorHorarios {
-
+    /**
+     * Dada una lista de materias te devuelve un horario que no tenga choques
+     * */
     public ArrayList<Grupo> crearHorario(ArrayList<Materia> materias){
         ArrayList<Grupo> elegido = new ArrayList<>();
         boolean primero = true;
