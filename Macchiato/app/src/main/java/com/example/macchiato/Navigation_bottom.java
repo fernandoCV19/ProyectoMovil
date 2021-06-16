@@ -34,6 +34,7 @@ public class Navigation_bottom extends AppCompatActivity {
     MostrarHorarioFragment mostrarHorarioFragment;
     AjustesFragment ajustesFragment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,8 +99,12 @@ public class Navigation_bottom extends AppCompatActivity {
                 .commit();
     }
 
-
-
+    /**
+     * crea un RegistroJSON para obtener las materias tomadas del usuario actual
+     * en caso de no lograrlo genera un exception
+     * manda esta lista de materias al MostrarHorarioAdapter
+     *
+     */
     public void leerMateriasTomadas(){
         RegistroJSON registroJSON= new RegistroJSON();
         ArrayList<Integer> tomadas= new ArrayList<>();

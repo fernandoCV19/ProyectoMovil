@@ -23,6 +23,10 @@ import com.google.firebase.database.ValueEventListener;
 public class CambiarPerfilActivity extends AppCompatActivity {
     EditText contAct,contNueva,contConfir;
 
+    /**
+     * llama al metodo asignarId
+     * aplica el contenido del layout activity_cambiar_perfil
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,12 @@ public class CambiarPerfilActivity extends AppCompatActivity {
         asignarId();
     }
 
+    /**
+     * verifica los campos de texto para cambiar la contrasena desde la interfaz
+     * verifica que ambos campos no sean nulos
+     * veirfica que la nueva contrasena sea mayor a 6 caracteres
+     * verifica que haya repetido la contrasena correctamente
+     */
     public void guardarCambios(View view){
         String contNuevaText=contNueva.getText().toString().trim();
         String contConfirText=contConfir.getText().toString().trim();
@@ -62,10 +72,16 @@ public class CambiarPerfilActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * nos permite obtener los elementos del layout y manejarlos desde codigo
+     */
     private void asignarId(){
         contNueva = findViewById(R.id.cc_contrNueva_id);
         contConfir = findViewById(R.id.cc_repetir_contrNueva_id);
     }
+    /**
+     *nos ayudara a mostrar los mensajes de error cuando la validacion de los campos de texto falle
+     */
     private void mensajeError(EditText cont,String texto){
         cont.setError(texto);
         cont.requestFocus();

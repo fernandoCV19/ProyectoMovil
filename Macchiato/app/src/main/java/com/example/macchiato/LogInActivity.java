@@ -44,6 +44,13 @@ public class LogInActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ArrayList<Integer> tomadas;
 
+    /**
+     * asigna el layout activity_main
+     *obtiene los elementos del layout y los guarda para poder manejarlos desde codigo
+     * llama al metodo inicializarFirebase()
+     * le asigna la funcion de recuperar la contrasena al texto "Olvide mi Contrasena"
+     *      esta manda un correo a tu email donde puedes actualizar la contrasena
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,11 +103,24 @@ public class LogInActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * crea un intent del activity RegisterActivity y lo inicia
+     */
     public void register(View view){
         Intent register=new Intent(this,RegisterActivity.class);
         startActivity(register);
     }
 
+    /**
+     * valida los campos de texto para poder iniciar sesion
+     * verifica que estos campos no esten vacios
+     * verifica que el email sea un email valido (que tenga @ y un . despues del dominio)
+     * verifica que la contrasena sea mas de 6 digitos
+     * una vez validados los campos, llama a la Firebase para obtener el usuario respectivo
+     * en el caso de que lo logre correctamente creara un User a partir del snapshot de ese usuario en la Firebase
+     * con ese User sobreescribiremos los datos del json con los que tenemos en la Firebase
+     * una vez completado eso crea un intent de SplashScreenActivity y lo incia
+     */
     public void session(View view){
         String email_txt= correo_L.getText().toString();
         String password_txt =contrasena_L.getText().toString();
@@ -155,10 +175,18 @@ public class LogInActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     *nos ayudara a mostrar los mensajes de errpr cuando la validacion de los campos de texto falle
+     */
     private void mensajeError(EditText cont,String texto){
         cont.setError(texto);
         cont.requestFocus();
     }
+
+    /**
+     *inicializamos la Firebase, creando una instancia, y obteniendo una referencia
+     * del estado actual de la Firebase
+     */
     private void inicializarFirebase(){
         FirebaseApp.initializeApp(this);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
