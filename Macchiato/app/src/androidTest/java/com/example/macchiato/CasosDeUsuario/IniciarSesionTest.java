@@ -28,13 +28,6 @@ public class IniciarSesionTest {
         onView(withId(R.id.nav_perfil)).perform(click());
     }
 
-    @BeforeClass
-    public static void setupClass() throws InterruptedException {
-        ActivityScenario.launch(Navigation_bottom.class);
-        onView(withId(R.id.nav_perfil)).perform(click());
-
-    }
-
     @Test
     public void IniciarSesionCrearHorario () throws InterruptedException {
         onView(withId(R.id.buttonIniciarSesion)).perform(click());
@@ -58,16 +51,22 @@ public class IniciarSesionTest {
         onView(withText("INGLES I")).check(matches(isDisplayed()));
         onView(withText("INTRODUCCION A LA PROGRAMACION")).check(matches(isDisplayed()));
         onView(withId(R.id.cambiar_a_generar)).perform(click());
-        onView(withId(R.id.spinnerNivel)).perform(click());
-        onView(withText("A")).perform(click());
-        onView(withId(R.id.spinnerMateria)).perform(click());
-        onView(withText("INGLES I")).perform(click());
-        onView(withText("1 - CESPEDES GUIZADA MARIA BENITA")).perform(click());
-        onView(withId(R.id.spinnerMateria)).perform(click());
-        onView(withText("INTRODUCCION A LA PROGRAMACION")).perform(click());
-        onView(withText("1 - SALAZAR SERRUDO CARLA")).perform(click());
-
-
+        onView(withId(R.id.idHorarioAutomatico)).perform(click());
+        onView(withId(R.id.eliminar_materias)).perform(click());
+        onView(withText("ACEPTAR")).perform(click());
+        onView(withId(R.id.nav_perfil)).perform(click());
+        onView(withId(R.id.buttonIniciarSesion)).perform(click());
+        onView(withId(R.id.editTextTextEmailAddress)).perform(typeText("test@gmail.com"));
+        onView(withId(R.id.editTextTextPassword)).perform(typeText("12345678"));
+        onView(withId(R.id.button)).perform(click());
+        Thread.sleep(4000);
+        onView(withId(R.id.nav_horario)).perform(click());
+        onView(withId(R.id.cambiar_a_generar)).perform(click());
+        onView(withId(R.id.idHorarioAutomatico)).perform(click());
+        onView(withId(R.id.eliminar_materias)).perform(click());
+        onView(withText("ACEPTAR")).perform(click());
+        onView(withId(R.id.nav_perfil)).perform(click());
+        onView(withId(R.id.buttonIniciarSesion)).perform(click());
     }
     @Test
     public void IniciarSecionHistorialAcademico() throws InterruptedException {
@@ -98,6 +97,7 @@ public class IniciarSesionTest {
         onView(withId(R.id.buttonHistorial)).perform(click());
         onView(withText("INGLES I")).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.eliminar),hasSibling(withText("INGLES I")))).perform(click());
+        onView(withId(R.id.floating_eliminar)).perform(click());
         onView(withId(R.id.floating_eliminar)).perform(click());
         onView(isRoot()).perform(ViewActions.pressBack());
         onView(withId(R.id.buttonIniciarSesion)).perform(click());
