@@ -18,7 +18,9 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.macchiato.AjustesFragment;
 import com.example.macchiato.R;
-
+/**
+ * Clase destinada a la muestra de la notificacion
+ * */
 public class NotificationService extends IntentService {
 
     private NotificationManager notificationManager;

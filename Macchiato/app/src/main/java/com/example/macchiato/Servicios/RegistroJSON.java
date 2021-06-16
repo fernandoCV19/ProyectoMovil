@@ -117,7 +117,7 @@ public class RegistroJSON {
     }
 
     /**
-    * Borra la materia del campo que recibe por materia
+    * Borra el id de la materia del campo que recibe, metodo especifico para materias tomadas
     * */
     public void quitarMateria(int id,String campo, Context context, String nombreArchivo)throws Exception{
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
@@ -141,7 +141,7 @@ public class RegistroJSON {
     }
 
     /**
-    * Devuelve un array de las materias segun el campo
+    * Devuelve un array de las materias segun el campo (materias aprobadas o reprobadas)
     * */
     public ArrayList<MateriaNota> getMateriaNota(String campo, Context context, String nombreArchivo) throws Exception{
         ArrayList<MateriaNota> notas = new ArrayList<>();
@@ -210,7 +210,7 @@ public class RegistroJSON {
     }
 
     /**
-    * Firebase
+    * Actualizacion de firebase si no se ha iniciado sesion no se actualiza
     * */
     private void actualizarFirebase(String campo,Context context){
         FirebaseUser us= FirebaseAuth.getInstance().getCurrentUser();
@@ -230,7 +230,9 @@ public class RegistroJSON {
             }
         }
     }
-
+    /**
+     * Vacia un campo dado
+     * */
     public void limpiarCampo(String campo, Context context, String nombreFichero) throws FileNotFoundException, JSONException, ParseException {
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreFichero));
 

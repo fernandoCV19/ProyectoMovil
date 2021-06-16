@@ -17,7 +17,9 @@ import com.example.macchiato.AjustesFragment;
 
 import java.util.Calendar;
 import java.util.concurrent.ThreadLocalRandom;
-
+/**
+ * Receptor de la alarma del sistema que informa que la hora programada ha llegado
+ * */
 public class AlarmReceiver extends BroadcastReceiver {
 
     @Override

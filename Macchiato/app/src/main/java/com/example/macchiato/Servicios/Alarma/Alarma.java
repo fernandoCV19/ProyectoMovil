@@ -7,7 +7,9 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Modelo de lo que contiene una alarma
+ * */
 public class Alarma {
 
     private String alarmaId;
@@ -36,7 +38,9 @@ public class Alarma {
     public Alarma() {
     }
 
-   // public Alarma(String titulo, int hora, int minuto, String tono, List<String> dias, String nota, boolean activado, String tonoPath) {
+   /**
+    * Constructor de la clase alarma, el id se genera automaticamente mediante un metodo randomico
+    * */
     public Alarma(Clase clase, String tono, String nota, boolean activado, String tonoPath){
         alarmaId = RandomStringUtils.randomNumeric(5);
         this.titulo = clase.getNomMateria();

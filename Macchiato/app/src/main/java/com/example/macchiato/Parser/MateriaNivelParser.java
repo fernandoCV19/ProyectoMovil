@@ -8,7 +8,9 @@ import org.json.simple.parser.JSONParser;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
+/**
+ * Parser de el archivo materiasNivel.json, utiliza el modelo MateriaNivel
+ * */
 public class MateriaNivelParser {
     public MateriaNivelParser(){
 

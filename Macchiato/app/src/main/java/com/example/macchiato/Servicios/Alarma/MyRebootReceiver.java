@@ -4,7 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-
+/**
+ * Recibe la señal de que el dispositivo se esta reiniciando y que se deben re-enviar las notificaciones
+ * */
 public class MyRebootReceiver extends BroadcastReceiver {
 
     @Override
