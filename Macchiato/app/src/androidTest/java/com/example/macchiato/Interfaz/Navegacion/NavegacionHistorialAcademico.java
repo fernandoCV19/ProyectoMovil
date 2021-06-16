@@ -58,16 +58,16 @@ public class NavegacionHistorialAcademico {
     @Test
     public void desdeHistorialAcademicoHaciaDialogParaAnadirMaterias(){
         onView(withId(R.id.buttonHistorial)).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.dialogAnadirMateria)).check(matches(isDisplayed()));
     }
 
     @Test
     public void desdeDialogParaAnadirMateriaHaciaVentanaHistorialAcademico(){
         onView(withId(R.id.buttonHistorial)).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(isRoot()).perform(ViewActions.pressBack());
         onView(withId(R.id.historialAcademicoActivity)).check(matches(isDisplayed()));
     }

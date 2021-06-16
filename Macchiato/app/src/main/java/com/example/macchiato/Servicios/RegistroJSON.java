@@ -42,7 +42,7 @@ public class RegistroJSON {
         lf.escribirFichero(nombre , jo.toString(), context);
     }
 
-    /*
+    /**
     * Recibe un id de materia, una nota, nombrearchivo
     * Si es aprobada lo registra en aprobados (Si la materia estaba reprobada se elimina de ahi)
     * Si es reprobada lo registra en reprobados
@@ -84,7 +84,7 @@ public class RegistroJSON {
         }
     }
 
-    /*
+    /**
     * Recibe un materia nota y lo elimina del campo ingresado
     * */
     public void quitarMateria(String campo, MateriaNota quitar, Context context, String nombreArchivo)throws Exception{
@@ -116,7 +116,7 @@ public class RegistroJSON {
         }
     }
 
-    /*
+    /**
     * Borra la materia del campo que recibe por materia
     * */
     public void quitarMateria(int id,String campo, Context context, String nombreArchivo)throws Exception{
@@ -140,7 +140,7 @@ public class RegistroJSON {
         }
     }
 
-    /*
+    /**
     * Devuelve un array de las materias segun el campo
     * */
     public ArrayList<MateriaNota> getMateriaNota(String campo, Context context, String nombreArchivo) throws Exception{
@@ -159,7 +159,7 @@ public class RegistroJSON {
         return notas;
     }
 
-    /*
+    /**
     * Devuelve las materias actuales o por tomar segun el campo
     * */
     public ArrayList<Integer> getMaterias(String campo,Context context, String nombreArchivo) throws Exception{
@@ -178,7 +178,7 @@ public class RegistroJSON {
         return mats;
     }
 
-    /*
+    /**
     * Anade a materias actuales o por tomar
     * */
     public void aniadirMateria(int matID,String campo, Context context, String nombreArchivo) throws Exception {
@@ -209,7 +209,7 @@ public class RegistroJSON {
         }
     }
 
-    /*
+    /**
     * Firebase
     * */
     private void actualizarFirebase(String campo,Context context){

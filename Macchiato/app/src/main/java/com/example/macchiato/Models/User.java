@@ -3,7 +3,9 @@ package com.example.macchiato.Models;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * Modelo del usuario que se guarda en la base de datos
+ * */
 public class User {
     private String userName="usuario vacio";
     private String email="email vacio";

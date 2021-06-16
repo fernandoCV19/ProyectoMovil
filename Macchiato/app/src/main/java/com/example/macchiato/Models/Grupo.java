@@ -2,7 +2,9 @@ package com.example.macchiato.Models;
 import com.example.macchiato.Models.Clase;
 
 import java.util.ArrayList;
-
+/**
+ * Clase grupo que modela el formato de un grupo
+ * */
 public class Grupo {
     private int id;
     private String grupo;

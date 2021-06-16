@@ -1,5 +1,7 @@
 package com.example.macchiato.Models;
-
+/**
+ * Modelo para el parser materia nota que se usa al momento de registrar notas en el registro academico
+ * */
 public class MateriaNota {
     private String materiaId;
     private int nota;
