@@ -81,6 +81,7 @@ public class CambiarPerfilActivity extends AppCompatActivity {
     }
     /**
      *nos ayudara a mostrar los mensajes de error cuando la validacion de los campos de texto falle
+     * recibe como parametro un EditText que es el cual contendra el error y un String que es el mensaje de error
      */
     private void mensajeError(EditText cont,String texto){
         cont.setError(texto);

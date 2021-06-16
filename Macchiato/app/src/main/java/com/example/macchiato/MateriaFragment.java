@@ -48,6 +48,9 @@ public class MateriaFragment extends Fragment {
 
     }
 
+    /**
+     * recibe una lista de materias y actualiza la que tiene como atributo a partir de esta
+     */
     public void setMostrar(ArrayList<Materia> mostrar) {
         this.mostrar = mostrar;
     }
