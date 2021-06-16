@@ -36,6 +36,9 @@ public class MostrarHorarioFragment extends Fragment {
     ArrayList<Integer> list;
     RecyclerView recyclerView;
 
+    /**
+     * constructores
+     */
     public MostrarHorarioFragment(){
         list = new ArrayList<>();
     }
@@ -45,7 +48,9 @@ public class MostrarHorarioFragment extends Fragment {
 
 
 
-
+    /**
+     *
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
