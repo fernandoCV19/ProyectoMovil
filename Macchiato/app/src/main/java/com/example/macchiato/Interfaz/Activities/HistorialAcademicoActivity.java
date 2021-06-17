@@ -130,23 +130,11 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             recyclerViewRepro.setHasFixedSize(true);
         }
 
-
-
-
-
-
         FloatingActionButton fab = findViewById(R.id.añadir_floating);
         fab.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
             View view1 = getLayoutInflater().inflate(R.layout.layout_dialog, null);
-            TextView title_of_dialog = new TextView(getApplicationContext());
-            title_of_dialog.setHeight(80);
-
-            title_of_dialog.setText("Añadir materia");
-            title_of_dialog.setTextColor(Color.BLACK);
-            title_of_dialog.setGravity(Gravity.CENTER);
-
-
+           
             //spinners
             mSpinner = (Spinner) view1.findViewById(R.id.materia);
             nSpinner = (Spinner) view1.findViewById(R.id.nivel);
@@ -243,8 +231,8 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
 
                 }
             });
-           // builder.setTitle((CharSequence) title_of_dialog)
-            builder.setCustomTitle(title_of_dialog)
+           builder.setTitle("Añadir materia")
+
                     .setPositiveButton("añadir", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int i) {
