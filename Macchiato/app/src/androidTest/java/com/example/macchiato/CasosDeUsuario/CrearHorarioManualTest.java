@@ -45,6 +45,8 @@ public class CrearHorarioManualTest {
 
     @Test
     public void anadirUnaMateria(){
+        onView(withId(R.id.spinnerNivel)).perform(click());
+        onView(withSubstring("D")).perform(click());
         onView(withId(R.id.spinnerMateria)).perform(click());
         onView(withSubstring("PROBABILIDAD")).perform(click());
         onView(withSubstring("3")).perform(click());
@@ -55,6 +57,8 @@ public class CrearHorarioManualTest {
 
     @Test
     public void anadirDosGruposDeLaMismaMateria(){
+        onView(withId(R.id.spinnerNivel)).perform(click());
+        onView(withSubstring("D")).perform(click());
         onView(withId(R.id.spinnerMateria)).perform(click());
         onView(withSubstring("PROBABILIDAD")).perform(click());
         onView(withSubstring("3")).perform(click());
@@ -67,6 +71,8 @@ public class CrearHorarioManualTest {
 
     @Test
     public void anadirDosGruposDeDiferentesMaterias(){
+        onView(withId(R.id.spinnerNivel)).perform(click());
+        onView(withSubstring("D")).perform(click());
         onView(withId(R.id.spinnerMateria)).perform(click());
         onView(withSubstring("PROBABILIDAD")).perform(click());
         onView(withSubstring("3")).perform(click());

@@ -53,11 +53,6 @@ public class AjustesFragmentTest {
     }
 
     @Test
-    public void textViewAlarmaseSeVe(){
-        onView(withId(R.id.textView6)).check(matches(isDisplayed()));
-    }
-
-    @Test
     public void recyclerViewSePuedeVer(){
         onView(withId(R.id.recyclerAlarmas)).check(matches(isDisplayed()));
     }
@@ -70,11 +65,6 @@ public class AjustesFragmentTest {
     @Test
     public void textViewNotificacionesTieneElTextoCorrecto(){
         onView(withId(R.id.textView8)).check(matches(withText("Notificaciones")));
-    }
-
-    @Test
-    public void textViewAlarmasTieneElTextoCorrecto(){
-        onView(withId(R.id.textView6)).check(matches(withText("Alarmas")));
     }
 
     @Test

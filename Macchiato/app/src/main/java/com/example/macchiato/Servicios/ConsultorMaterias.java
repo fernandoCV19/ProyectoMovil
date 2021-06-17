@@ -101,31 +101,31 @@ public class ConsultorMaterias {
         String respuesta = "";
         switch(nivel) {
             case 'B':
-                respuesta = "#6bed28";
+                respuesta = "#ff92a6";
                 break;
             case 'A':
                 respuesta = "#ff92a6";
                 break;
             case 'C':
-                respuesta = "#7d97ff";
+                respuesta = "#ff92a6";
                 break;
             case 'D':
-                respuesta = "#c2ed28";
+                respuesta = "#ff92a6";
                 break;
             case 'E':
-                respuesta = "#ede328";
+                respuesta = "#ff92a6";
                 break;
             case 'F':
-                respuesta = "#edbb28";
+                respuesta = "#ff92a6";
                 break;
             case 'G':
-                respuesta = "#ed8f28";
+                respuesta = "#ff92a6";
                 break;
             case 'H':
-                respuesta = "#ed5728";
+                respuesta = "#ff92a6";
                 break;
             case 'I':
-                respuesta = "#ed2828";
+                respuesta = "#ff92a6";
                 break;
             default:
                 respuesta = "#ffffff";
