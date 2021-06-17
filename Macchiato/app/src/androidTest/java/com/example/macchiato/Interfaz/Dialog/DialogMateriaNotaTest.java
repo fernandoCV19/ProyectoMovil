@@ -9,8 +9,8 @@ import static androidx.test.espresso.matcher.RootMatchers.isPlatformPopup;
 import static org.hamcrest.Matchers.allOf;
 import static org.junit.Assert.*;
 
-import com.example.macchiato.HistorialAcademicoActivity;
-import com.example.macchiato.Navigation_bottom;
+import com.example.macchiato.Interfaz.Activities.HistorialAcademicoActivity;
+import com.example.macchiato.Interfaz.Activities.Navigation_bottom;
 import com.example.macchiato.R;
 
 import org.junit.AfterClass;
