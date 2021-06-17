@@ -19,6 +19,11 @@ public class PerfilFragment extends Fragment {
     public PerfilFragment() {
     }
 
+    /**
+     * asigna el layout fragment_perfil
+     * asigna la funcion de crear un Intent con el activity "LogInActivity" al boton iniciar sesion
+     *
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

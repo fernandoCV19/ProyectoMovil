@@ -2,7 +2,9 @@ package com.example.macchiato.Models;
 import com.example.macchiato.Models.Grupo;
 
 import java.util.ArrayList;
-
+/**
+ * Modelo de una materia para el manejo de informacion de los archivos .json
+ * */
 public class Materia {
 
     private int id;

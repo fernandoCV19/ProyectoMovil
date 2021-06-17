@@ -16,7 +16,9 @@ import com.example.macchiato.Servicios.Alarma.Alarma;
 import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Vista de las CardView
+ * */
 public class  AlarmaAdapter extends RecyclerView.Adapter<AlarmaAdapter.MyViewHolder> {
     private List<Alarma> alarmaList;
 

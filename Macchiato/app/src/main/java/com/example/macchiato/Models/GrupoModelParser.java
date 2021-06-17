@@ -1,7 +1,9 @@
 package com.example.macchiato.Models;
 
 import java.util.ArrayList;
-
+/**
+ * Modelo para parseo de un grupo de materia.json
+ * */
 public class GrupoModelParser {
     private int id;
     private String nombre;

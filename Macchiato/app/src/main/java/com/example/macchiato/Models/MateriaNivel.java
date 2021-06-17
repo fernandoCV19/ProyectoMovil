@@ -1,5 +1,7 @@
 package com.example.macchiato.Models;
-
+/**
+ * Modelo para el parser de meteria nivel
+ * */
 public class MateriaNivel {
     private int codMateria;
     private char nivel;

@@ -39,7 +39,7 @@ public class RegistroJSON {
         lf.escribirFichero(nombre , jo.toString(), context);
     }
 
-    /*
+    /**
     * Recibe un id de materia, una nota, nombrearchivo
     * Si es aprobada lo registra en aprobados (Si la materia estaba reprobada se elimina de ahi)
     * Si es reprobada lo registra en reprobados
@@ -81,7 +81,7 @@ public class RegistroJSON {
         }
     }
 
-    /*
+    /**
     * Recibe un materia nota y lo elimina del campo ingresado
     * */
     public void quitarMateria(String campo, MateriaNota quitar, Context context, String nombreArchivo)throws Exception{
@@ -113,8 +113,8 @@ public class RegistroJSON {
         }
     }
 
-    /*
-    * Borra la materia del campo que recibe por materia
+    /**
+    * Borra el id de la materia del campo que recibe, metodo especifico para materias tomadas
     * */
     public void quitarMateria(int id,String campo, Context context, String nombreArchivo)throws Exception{
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreArchivo));
@@ -137,8 +137,8 @@ public class RegistroJSON {
         }
     }
 
-    /*
-    * Devuelve un array de las materias segun el campo
+    /**
+    * Devuelve un array de las materias segun el campo (materias aprobadas o reprobadas)
     * */
     public ArrayList<MateriaNota> getMateriaNota(String campo, Context context, String nombreArchivo) throws Exception{
         ArrayList<MateriaNota> notas = new ArrayList<>();
@@ -156,7 +156,7 @@ public class RegistroJSON {
         return notas;
     }
 
-    /*
+    /**
     * Devuelve las materias actuales o por tomar segun el campo
     * */
     public ArrayList<Integer> getMaterias(String campo,Context context, String nombreArchivo) throws Exception{
@@ -175,7 +175,7 @@ public class RegistroJSON {
         return mats;
     }
 
-    /*
+    /**
     * Anade a materias actuales o por tomar
     * */
     public void aniadirMateria(int matID,String campo, Context context, String nombreArchivo) throws Exception {
@@ -206,8 +206,8 @@ public class RegistroJSON {
         }
     }
 
-    /*
-    * Firebase
+    /**
+    * Actualizacion de firebase si no se ha iniciado sesion no se actualiza
     * */
     private void actualizarFirebase(String campo,Context context){
         FirebaseUser us= FirebaseAuth.getInstance().getCurrentUser();
@@ -227,7 +227,9 @@ public class RegistroJSON {
             }
         }
     }
-
+    /**
+     * Vacia un campo dado
+     * */
     public void limpiarCampo(String campo, Context context, String nombreFichero) throws FileNotFoundException, JSONException, ParseException {
         Object obj = new JSONParser().parse(lf.leerFichero(context, nombreFichero));
 

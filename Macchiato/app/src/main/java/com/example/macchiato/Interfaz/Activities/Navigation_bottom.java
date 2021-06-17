@@ -33,6 +33,14 @@ public class Navigation_bottom extends AppCompatActivity {
     MostrarHorarioFragment mostrarHorarioFragment;
     AjustesFragment ajustesFragment;
 
+    /**
+     *crea un fragment por defecto al crearse
+     * crea un Arraylist de materias tomadas
+     * crea un Bundle llamado parametros
+     *     si este es diferente de nulo llena materiasTomadas a partir de parametros
+     *     llama a showSelectedFragment y le manda un HorarioFragment con la lista de materias
+     *     si es nulo llama a leerMateriasTomadas y showSelectedFragment enviandole un mostrarHorarioFragment
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +64,13 @@ public class Navigation_bottom extends AppCompatActivity {
 
     }
 
+    /**
+     * se encarga de asignar el fragment respectivo que debe mostrarse segun la eleccion del usuario
+     * obtiene el id de los botones de navegacion y en base a eso elige el fragment
+     * obtiene una instancia del Firebase y el usuario actual
+     *      si este es nulo, se mostrara el PerfilFragment
+     *      si no, mostrara el PerfilSesionFragment
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -91,14 +106,21 @@ public class Navigation_bottom extends AppCompatActivity {
         });
     }
 
+    /**
+     * mostrara el fragment seleccionado por el usuario, el cual recibe como parametro
+     */
     private void showSelectedFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
 
-
-
+    /**
+     * crea un RegistroJSON para obtener las materias tomadas del usuario actual
+     * en caso de no lograrlo genera un exception
+     * manda esta lista de materias al MostrarHorarioAdapter
+     *
+     */
     public void leerMateriasTomadas(){
         RegistroJSON registroJSON= new RegistroJSON();
         ArrayList<Integer> tomadas= new ArrayList<>();

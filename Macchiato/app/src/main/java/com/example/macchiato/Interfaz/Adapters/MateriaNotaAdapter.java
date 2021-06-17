@@ -18,6 +18,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * contiene la nota, materia
+ * crea las cardview dentro el recyclerview
+ */
 public class MateriaNotaAdapter extends RecyclerView.Adapter<MateriaNotaAdapter.ViewHolder> {
     private List<MateriaNota> mData;
     private LayoutInflater mInflater;

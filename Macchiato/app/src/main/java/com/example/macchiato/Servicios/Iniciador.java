@@ -8,7 +8,10 @@ import com.example.macchiato.Parser.ParserMateriaGrupo;
 import com.example.macchiato.Parser.ParserMateriaID;
 
 import java.util.ArrayList;
-
+/**
+ * Clase de inicio, crea las clases estaticas y genera informacion necesaria para el correcto
+ * funcionamiento de la aplicacion
+ * */
 public class Iniciador {
 
     private LectorJson lectorJson;

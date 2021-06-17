@@ -22,12 +22,22 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONException;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+
 public class  RegisterActivity extends AppCompatActivity {
 
     private EditText user_R,email_R,password_R,confirm_R;
     private DatabaseReference databaseReference;
     private FirebaseAuth firebaseAuth;
 
+    /**
+     *llama a los metodos "asignarId" e "InicializarFirebase" al crearse
+     * aplica el contenido del layout activity_register
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +48,14 @@ public class  RegisterActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *se encarga de guardar los datos obtenidos en los campos de texto
+     * verifica que estos no sean vacios
+     * verifica que el email sea un correo valido (que tenga @ y un . despues del dominio)
+     * una vez verificados los datos, crea un User con estos
+     * haremos uso de este User para guardarlo en el json
+     * haremos uso de este User para mandarlo a la Firebase y guardarlo
+     */
     public void registrar(View view) {
 
         String u = user_R.getText().toString().trim();
@@ -105,16 +123,29 @@ public class  RegisterActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     *inicializamos la Firebase, creando una instancia, y obteniendo una referencia
+     * del estado actual de la Firebase
+     */
     private void inicializarFirebase(){
         FirebaseApp.initializeApp(this);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         firebaseAuth = FirebaseAuth.getInstance();
     }
+
+    /**
+     *nos ayudara a mostrar los mensajes de error cuando la validacion de los campos de texto falle
+     * recibe como parametro un EditText que es el cual contendra el error y un String que es el mensaje de error
+     */
     private void mensajeError(EditText cont,String texto){
         cont.setError(texto);
         cont.requestFocus();
     }
+
+    /**
+     * nos permite obtener los elementos del layout y manejarlos desde codigo
+     */
     private void asignarId(){
         user_R= findViewById(R.id.editTextTextPersonName);
         email_R=findViewById(R.id.editTextTextEmailAddress2);

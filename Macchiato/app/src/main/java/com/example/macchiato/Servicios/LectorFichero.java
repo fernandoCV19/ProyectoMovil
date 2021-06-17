@@ -25,8 +25,9 @@ import java.util.Map;
 public class LectorFichero {
     public Map<String,Object> jsonMap;
 
-    /*
-    * Recibe un String y lo escribe el fichero indicado, reescribe lo que estaba antes
+    /**
+    * Recibe un String y lo escribe el fichero indicado, si ya hay un archivo existente
+    * lo reescribe
     * */
     public boolean escribirFichero(String fichero, String contenido, Context context){
         try {
@@ -40,7 +41,9 @@ public class LectorFichero {
             return false;
         }
     }
-
+    /**
+     * Crea un archivo con el nombre registro.json con los campos vacios
+     * */
     public void crearJson(Context context, User user, String nombreArchivo){
         String myjson = new Gson().toJson(user);
         jsonMap = new Gson().fromJson(myjson, new TypeToken<HashMap<String, Object>>() {}.getType());
@@ -55,8 +58,9 @@ public class LectorFichero {
     }
 
 
-    /*
-    Recibe un nombre y devuelve en un String -> Si no existe el fichero crea -> Al crear iniciar todos los campos en vacio
+    /**
+     * Recibe un nombre de archivo a abrir, si no existe lo crea vacio
+    * @return Retorna el contenido del archivo
     * */
     public String leerFichero(Context context, String nombreArchivo) throws FileNotFoundException, JSONException {
         FileInputStream fileInputStream = null;

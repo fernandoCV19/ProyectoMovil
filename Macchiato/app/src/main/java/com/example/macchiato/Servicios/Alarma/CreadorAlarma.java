@@ -15,7 +15,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
+/**
+ * Clase destinada especificamente para la creacion de notificaciones
+ * */
 public class CreadorAlarma  {
     public CreadorAlarma(){}
 

@@ -48,6 +48,17 @@ public class PerfilSesionFragment extends Fragment {
     public PerfilSesionFragment() {
     }
 
+    /**
+     *inicializa las variables y asigna las funciones a los botones al crearse
+     * asigna el contenido del layout fragmet_perfil_sesion
+     * obtiene los elementos del layout y los guarda para poder trabajar con ellos desde codigo
+     * inicializa la Firebase, obteniendo una instancia y una referencia de su estado actual
+     * crea un lectorFichero para obtener los datos del usuario actual que mostrara en este fragment
+     * verifica que el email y username del usuario no sean nulos
+     * asigna la funcion de descargar cronograma al boton descargar
+     * solicitara permiso de acceder a la carpeta de descargas en caso que aun no lo tenga autorizado
+     * asigna la funcion de cerrar cuenta al boton de cerrar sesion
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,10 +77,6 @@ public class PerfilSesionFragment extends Fragment {
             usuarioShow.setText(map.get("userName").toString());
             correoShow.setText(map.get("email").toString());
         }
-/*
-=======
-        }
->>>>>>> historialAcademicoNuevo*/
         Button btnDes = (Button) view.findViewById(R.id.id_descargas);
         btnDes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,16 +106,7 @@ public class PerfilSesionFragment extends Fragment {
             public void onClick(View v) {
                 if(auth!=null){
                     auth.signOut();
-                    Intent intent = new Intent(getActivity(), Navigation_bottom.class);
-                    /*LectorFichero lector = new LectorFichero();
-                    lector.crearJson(getApplicationContext(),userProfile);
-                    try {
-                        lector.leerFichero(getApplicationContext());
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }*/
+                    Intent intent = new Intent(getActivity(),Navigation_bottom.class);
                     startActivity(intent);
                     getActivity().finishAffinity();
                 }
@@ -136,6 +134,11 @@ public class PerfilSesionFragment extends Fragment {
         return view;
     }
 
+    /**
+     * obtiene el link del cronograma universitario desde la Firebase
+     * en caso de obtenerlo correctamente empieza a descargarlo y lo guarda en la carpeta de "Descargas"
+     * permite realizar la descarga ya sea con senal WIFI o con datos moviles
+     */
     private  void  startDownloading(){
         reference.child("UMSS").child("cronograma").addValueEventListener(new ValueEventListener() {
             @Override

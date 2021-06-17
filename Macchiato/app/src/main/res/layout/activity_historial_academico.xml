@@ -103,7 +103,7 @@
         app:srcCompat="@drawable/addn">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/añadir_floating"
+            android:id="@+id/aniadir_floating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="?attr/colorAccent"

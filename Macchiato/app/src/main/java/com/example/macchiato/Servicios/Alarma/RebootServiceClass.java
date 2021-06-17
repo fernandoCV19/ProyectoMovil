@@ -11,8 +11,7 @@ import com.example.macchiato.R;
 public class RebootServiceClass extends IntentService {
 
     /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
+     * Re-envia las notificaciones al sistema
      * @param name Used to name the worker thread, important only for debugging.
      */
     public RebootServiceClass(String name) {

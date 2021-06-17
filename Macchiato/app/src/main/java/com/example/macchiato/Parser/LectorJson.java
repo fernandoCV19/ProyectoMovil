@@ -3,7 +3,9 @@ package com.example.macchiato.Parser;
 import android.content.Context;
 import java.io.IOException;
 import java.io.InputStream;
-
+/**
+ * Lee un archivo json desde los assets
+ * */
 public class LectorJson {
 
     public String loadJSONFromAsset(String archivo, Context context) {

@@ -7,13 +7,17 @@ import com.example.macchiato.Parser.ParserMateriaID;
 
 import java.util.HashMap;
 import java.util.ArrayList;
-
+/**
+ * Clase que selecciona y ordena lo obtenido del ParserMateriaGrupo
+ * */
 public class ConsultorMaterias {
 
     private static HashMap <Character, ArrayList<Materia>> lisClasificada;
 
     private static ArrayList<Materia> materias;
-
+    /**
+     * Dada una lista de id's devuelve una lista tipo Par
+     * */
     public   ArrayList<Par> devolverGrupos(ArrayList<Integer>ides){
         ArrayList<Par>res=new ArrayList<>();
         for (Integer i : ides){
@@ -32,7 +36,9 @@ public class ConsultorMaterias {
         }
         return res;
     }
-
+    /**
+     * Dada una lista de GrupoModelParser la ordena en un HashMap
+     * */
     public void clasificarMaterias (ArrayList<GrupoModelParser>listaGrupos){
         iniciarHashMap();
         String materiaActual = "";
@@ -81,7 +87,9 @@ public class ConsultorMaterias {
         lisClasificada.put('H',new ArrayList<>());
         lisClasificada.put('I',new ArrayList<>());
     }
-
+    /**
+     * Dada una lista de id's devuelve una lista de tipo Materia
+     * */
     public ArrayList<Materia> getListaMaterias(ArrayList<Integer> ids){
         ArrayList<Materia>materiasElegidas = new ArrayList<>();
 
@@ -164,7 +172,9 @@ public class ConsultorMaterias {
         }
         return respuesta;
     }
-
+    /**
+     * Clase que contiene un grupo y el nombre de la materia a la que pertenece
+     * */
     public class Par{
         private Grupo grupo;
         private String materia;

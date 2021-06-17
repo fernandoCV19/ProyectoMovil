@@ -47,7 +47,10 @@ import com.example.macchiato.Servicios.Iniciador;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+/**
+ *muestra la pantalla donde se puede generar y eliminar los horarios
+ *
+ */
 public class HorarioFragment extends Fragment {
     Spinner spinnerNivel;
     Spinner spinnerMateria;
@@ -298,27 +301,9 @@ public class HorarioFragment extends Fragment {
         for(Materia materia: materias){
             if(materia.getNombre().equals(select)){
                 grupos = materia.getGrupos();
-                /*seleccionados.addAll(materiaHorarioAdapter.getSeleccionados());
-                Context context=getContext();
-                /*for(Integer integer: seleccionados){
-                    if(integer>0) {
-                        try {
-                            registroJSON.aniadirMateriaTomada(integer, context, "registro.json");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }else{
-                        try {
-                            registroJSON.quitarMateria(integer*(-1),"materiasActuales", context, "registro.json");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }*/
-                //break;
+
             }
         }
-        //seleccionados.clear();
         materiaHorarioAdapter= new GrupoHorarioAdapter(grupos,getContext(),seleccionados);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

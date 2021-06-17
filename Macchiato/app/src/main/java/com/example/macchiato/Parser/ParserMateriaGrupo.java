@@ -12,7 +12,9 @@ import org.json.simple.parser.ParseException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
+/**
+ * Parser del archivo materias.json, utiliza como modelo  GrupoModelParser
+ * */
 public class ParserMateriaGrupo {
 
     public ArrayList<GrupoModelParser> parserMateriaGrupo(String json)

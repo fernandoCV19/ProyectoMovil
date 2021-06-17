@@ -30,6 +30,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
+/**
+ * genera la pantalla donde se ve la informacion sobre las materias
+ * como ser el nombre, codigo de materia, grupos disponibles y materias requeridas
+ * para poder cursarla
+ */
 public class MateriaFragment extends Fragment {
     ArrayList<Materia> mv;
     ArrayList<Materia> mostrar;
@@ -43,9 +48,13 @@ public class MateriaFragment extends Fragment {
 
     }
 
+    /**
+     * recibe una lista de materias y actualiza la que tiene como atributo a partir de esta
+     */
     public void setMostrar(ArrayList<Materia> mostrar) {
         this.mostrar = mostrar;
     }
+
 
 
     @Override
@@ -138,6 +147,9 @@ public class MateriaFragment extends Fragment {
     }
 
 
+    /**
+     * nos ayuda a cambiar las materias con el menu de nivel
+     */
     private void moverFragment(ArrayList<Materia> lista){
         MateriaFragment mt=null;
         try {

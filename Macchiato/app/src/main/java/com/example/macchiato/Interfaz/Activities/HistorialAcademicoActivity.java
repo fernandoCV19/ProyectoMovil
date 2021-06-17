@@ -38,6 +38,9 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ *
+ */
 public class HistorialAcademicoActivity extends AppCompatActivity {
 
 
@@ -63,6 +66,11 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     ConsultorMaterias consultorMaterias;
 
 
+    /**
+     * constructores
+     * el segundo constructor recibe un array de materias aprobadas y otro de repr0badas
+     * inicializa los array que tiene de atributos
+     */
     public HistorialAcademicoActivity() {
 
         mostrarAprobadas = new ArrayList<>();
@@ -89,7 +97,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         adapterReprobadas = new MateriaNotaAdapter(mostrarReprobadas, HistorialAcademicoActivity.this);
         adapter = new MateriaNotaAdapter(mostrarAprobadas, HistorialAcademicoActivity.this);
         RegistroJSON rj = new RegistroJSON();
-
+        /**
+         * accedemos al json de cada materia aprobaba y reprobada y lo mostramos
+         */
         RegistroJSON registroJSON = new RegistroJSON();
         try {
             listaAprobadasID = registroJSON.getMateriaNota("materiasAprobadas", this, "registro.json");
@@ -148,7 +158,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            /**
+             * llenamos los spinners nivel y los spinners materia
+             */
             ConsultorMaterias cs =new ConsultorMaterias();
             HashMap<Character, ArrayList<Materia>> list=cs.getLisClasificada();
             String [] nomNiveles =new String[10];
@@ -250,10 +262,11 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             builder.setView(view1);
             AlertDialog dialog = builder.create();
             dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-
+                /**
+                 * controlamos que no se introduscan notas mayores a 100 y notas menores a 0
+                 */
                 @Override
                 public void onShow(DialogInterface dialogInterface) {
-
                     Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -317,6 +330,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             });
             dialog.show();
         });
+        /**
+         * eliminamos las materias aprobadas y reprobadas
+         */
         FloatingActionButton remove = findViewById(R.id.floating_eliminar);
         remove.setOnClickListener(vie -> {
             if (adapter.getSelect() != null) {
@@ -373,7 +389,10 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         });
 
         button = findViewById(R.id.ver_Estadisticas);
-
+        /**
+         * consultamos al arreglo de materias para obtener las estadisticas tanto de materias aprobadas como
+         * de reprobadas
+         */
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

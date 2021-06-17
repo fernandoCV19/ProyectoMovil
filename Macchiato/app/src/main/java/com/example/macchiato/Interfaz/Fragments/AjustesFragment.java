@@ -27,7 +27,10 @@ import com.example.macchiato.Servicios.Iniciador;
 import com.example.macchiato.Servicios.RegistroJSON;
 
 import java.util.ArrayList;
-
+import java.util.Calendar;
+/**
+ * Fragment de los ajustes, controla el activado/desactivado de las notificaciones
+ * */
 public class AjustesFragment extends Fragment {
     Button btn;
     RecyclerView recyclerView;
@@ -98,7 +101,9 @@ public class AjustesFragment extends Fragment {
         return viewAjustes;
 
     }
-
+    /**
+     * Activa todas las notificaciones
+     * */
     private boolean setAllAlarms(){
         if(tomadas != null){
             ConsultorMaterias consultorMaterias = new ConsultorMaterias();
@@ -132,6 +137,9 @@ public class AjustesFragment extends Fragment {
         }
         else return false;
     }
+    /**
+     * Actualiza la lista de notifiaciones que se deben activar
+     * */
     public void getAllAlarmas() {
         alarmasList.clear();
         alarmasList.addAll(tinydb.getListAlarm("allAlarmas", Alarma.class));

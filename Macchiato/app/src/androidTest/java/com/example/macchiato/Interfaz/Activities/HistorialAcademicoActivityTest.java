@@ -51,7 +51,7 @@ public class HistorialAcademicoActivityTest {
 
     @Test
     public void botonParaAnadirMateriasSePuedeVer(){
-        onView(withId(R.id.añadir_floating)).check(matches(isDisplayed()));
+        onView(withId(R.id.aniadir_floating)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -78,7 +78,7 @@ public class HistorialAcademicoActivityTest {
     public void botonesSePuedenClicar(){
         onView(withId(R.id.ver_Estadisticas)).check(matches(isClickable()));
         onView(withId(R.id.floating_eliminar)).check(matches(isClickable()));
-        onView(withId(R.id.añadir_floating)).check(matches(isClickable()));
+        onView(withId(R.id.aniadir_floating)).check(matches(isClickable()));
     }
 
     @Test

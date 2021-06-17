@@ -3,7 +3,9 @@ package com.example.macchiato.Servicios;
 import com.example.macchiato.Models.MateriaNota;
 
 import java.util.ArrayList;
-
+/**
+ * Clase dedicada al calculo de las estadisticas disponibles en el Historial Academico
+ * */
 public class EstadisticaHA {
 
     private ArrayList<MateriaNota> listaMaterias;
