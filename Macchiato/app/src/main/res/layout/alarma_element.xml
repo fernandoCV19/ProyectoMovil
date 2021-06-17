@@ -35,10 +35,11 @@
                     android:id="@+id/nomMateriaAlarma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/roboto"
                     android:gravity="center"
                     android:text="Materia"
-                    android:textSize="18dp">
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/tamaño_letras_normales">
 
                 </TextView>
 
@@ -46,9 +47,11 @@
                     android:id="@+id/diaAlarma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
                     android:gravity="center"
                     android:text="Dia"
-                    android:textSize="18dp">
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/tamaño_letras_normales">
 
                 </TextView>
 
@@ -56,13 +59,11 @@
                     android:id="@+id/horaAlarma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
                     android:gravity="center"
-                    android:text="8:15-9:45" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal" />
+                    android:text="8:15-9:45"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/tamaño_letras_normales" />
 
 
             </LinearLayout>

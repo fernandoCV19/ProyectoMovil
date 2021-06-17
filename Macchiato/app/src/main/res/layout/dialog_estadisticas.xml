@@ -4,197 +4,186 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
     android:background="@drawable/fondo_materia">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical"
-        android:padding="20dp"
+    <TextView
+        android:id="@+id/textNum_materiasRep"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_weight=".6"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:text="Número de Materias Reprobadas: "
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/text_materiasCursadas"
+        app:layout_constraintEnd_toStartOf="@+id/materiasRep"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Textnum_materiasApro" />
+
+    <TextView
+        android:id="@+id/materiasRep"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
+        app:layout_constraintBottom_toTopOf="@+id/num_materiasCursadas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textNum_materiasRep"
+        app:layout_constraintTop_toBottomOf="@+id/num_materiasApro" />
+
+    <TextView
+        android:id="@+id/Textnum_materiasApro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight=".6"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:text="Número de Materias Aprobadas:"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textNum_materiasRep"
+        app:layout_constraintEnd_toStartOf="@+id/num_materiasApro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/promedio_materiasApro" />
+
+    <TextView
+        android:id="@+id/promedio_nota"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
+        app:layout_constraintBottom_toTopOf="@+id/promedio_notamateriasApro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/promedioGen_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/num_materiasApro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
+        app:layout_constraintBottom_toTopOf="@+id/materiasRep"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Textnum_materiasApro"
+        app:layout_constraintTop_toBottomOf="@+id/promedio_notamateriasApro" />
+
+    <TextView
+        android:id="@+id/text_materiasCursadas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight=".6"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:text="Número de Materias Cursadas:"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/num_materiasCursadas"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNum_materiasRep" />
+
+    <TextView
+        android:id="@+id/num_materiasCursadas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_materiasCursadas"
+        app:layout_constraintTop_toBottomOf="@+id/materiasRep" />
+
+    <TextView
+        android:id="@+id/promedioGen_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight=".6"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:text="Promedio General:"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/promedio_materiasApro"
+        app:layout_constraintEnd_toStartOf="@+id/promedio_nota"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/promedio_materiasApro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight=".6"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:text="Promedio de Materias Aprobadas:"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Textnum_materiasApro"
+        app:layout_constraintEnd_toStartOf="@+id/promedio_notamateriasApro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/promedioGen_text" />
 
-            <TextView
-                android:id="@+id/promedioGen_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".6"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:text="Promedio General:"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/promedio_nota"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/añadir"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/promedio_materiasApro"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".6"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:text="Promedio de Materias Aprobadas:"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/promedio_notamateriasApro"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/Textnum_materiasApro"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".6"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:text="Número de Materias Aprobadas:"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/num_materiasApro"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textNum_materiasRep"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".6"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:text="Número de Materias Reprobadas: "
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/materiasRep"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/text_materiasCursadas"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".6"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:text="Número de Materias Cursadas:"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/num_materiasCursadas"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:fontFamily="casual"
-                android:gravity="start"
-                android:textAlignment="textStart"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/promedio_notamateriasApro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="start"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/texto_dialog"
+        app:layout_constraintBottom_toTopOf="@+id/num_materiasApro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/promedio_materiasApro"
+        app:layout_constraintTop_toBottomOf="@+id/promedio_nota" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
