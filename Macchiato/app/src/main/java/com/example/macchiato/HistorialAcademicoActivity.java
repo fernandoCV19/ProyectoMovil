@@ -80,6 +80,9 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         this.mostrarReprobadas = mostrarReprobadas;
         listaMaterias = new ArrayList<>();
     }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,7 +135,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             recyclerViewRepro.setHasFixedSize(true);
         }
 
-        Typeface face = Typeface.createFromAsset(getAssets(),"Casual-Regular2.ttf");
+
 
 
 
@@ -147,7 +150,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             title_of_dialog.setText("Añadir materia");
             title_of_dialog.setTextColor(Color.BLACK);
             title_of_dialog.setGravity(Gravity.CENTER);
-            title_of_dialog.setTypeface(face);
+
 
             //spinners
             mSpinner = (Spinner) view1.findViewById(R.id.materia);

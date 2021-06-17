@@ -62,6 +62,9 @@
         <service
             android:name="com.example.macchiato.Servicios.Alarma.NotificationService"
             android:enabled="true" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:textSize="@dimen/nombre_docente"
     android:padding="5sp"
-    android:fontFamily="casual"
+    android:fontFamily="@font/roboto"
     android:textColor="@color/black"
     android:textStyle="bold"
     xmlns:android="http://schemas.android.com/apk/res/android" />

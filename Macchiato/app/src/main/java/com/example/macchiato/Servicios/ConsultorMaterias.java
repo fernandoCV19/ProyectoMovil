@@ -15,7 +15,7 @@ public class ConsultorMaterias {
     private static ArrayList<Materia> materias;
 
     public   ArrayList<Par> devolverGrupos(ArrayList<Integer>ides){
-        ArrayList<Par>res=new ArrayList();
+        ArrayList<Par>res=new ArrayList<>();
         for (Integer i : ides){
 
             for(Materia materia: materias) {
@@ -104,10 +104,10 @@ public class ConsultorMaterias {
                 respuesta = "#48a259";
                 break;
             case 'A':
-                respuesta = "#00e25f";
+                respuesta = "#ff92a6";
                 break;
             case 'C':
-                respuesta = "#99e801";
+                respuesta = "#7d97ff";
                 break;
             case 'D':
                 respuesta = "#48a259";

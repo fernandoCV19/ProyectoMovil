@@ -2,18 +2,44 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cambiarDePerfilActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
     android:background="@drawable/fondos_fragments"
-    tools:context=".CambiarPerfilActivity"
-    android:id="@+id/cambiarDePerfilActivity">
+    tools:context=".CambiarPerfilActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/tamaño_appbar"
+        android:background="#ff7043"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Theme.Macchiato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="Cambiar Contraseña"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tamaño_titulo_appbar"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/linear_layout_cambiar_perfil"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/tamaño_appbar"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,8 +53,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:fontFamily="casual"
+            android:fontFamily="@font/roboto"
             android:text="Contraseña Nueva:"
+            android:textColor="@color/black"
             android:textSize="@dimen/tamaño_letras_normales"
             android:textStyle="bold" />
 
@@ -40,7 +67,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
-            android:fontFamily="casual"
+            android:fontFamily="@font/roboto"
             android:inputType="textPassword"
             android:textSize="@dimen/texto_para_escribir" />
 
@@ -50,8 +77,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:fontFamily="casual"
+            android:fontFamily="@font/roboto"
             android:text="Repetir Contraseña Nueva:"
+            android:textColor="@color/black"
             android:textSize="@dimen/tamaño_letras_normales"
             android:textStyle="bold" />
 
@@ -63,7 +91,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
-            android:fontFamily="casual"
+            android:fontFamily="@font/roboto"
             android:inputType="textPassword"
             android:textSize="@dimen/texto_para_escribir" />
 
@@ -76,7 +104,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="64dp"
             android:background="@drawable/shape"
-            android:fontFamily="casual"
+            android:fontFamily="@font/roboto"
             android:onClick="guardarCambios"
             android:text="@string/textListo"
             android:textSize="@dimen/tamaño_letras_botones"
