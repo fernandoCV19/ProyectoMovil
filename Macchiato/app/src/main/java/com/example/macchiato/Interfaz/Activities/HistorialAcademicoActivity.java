@@ -288,7 +288,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                             }
                             MateriaNota materiaNota = new MateriaNota(select, numero);
 
-
+                            if (!mSpinner.getSelectedItem().toString().equals("Seleccionar materia")) {
                                 if (!mostrarAprobadas.contains(materiaNota)) {
                                     Toast.makeText(HistorialAcademicoActivity.this, "Añadido", Toast.LENGTH_SHORT).show();
                                     listaMaterias.add(materiaNota);
