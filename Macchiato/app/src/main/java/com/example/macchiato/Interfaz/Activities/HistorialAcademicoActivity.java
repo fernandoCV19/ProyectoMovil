@@ -134,7 +134,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
         fab.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
             View view1 = getLayoutInflater().inflate(R.layout.layout_dialog, null);
-           
+
             //spinners
             mSpinner = (Spinner) view1.findViewById(R.id.materia);
             nSpinner = (Spinner) view1.findViewById(R.id.nivel);
