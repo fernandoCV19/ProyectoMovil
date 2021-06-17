@@ -22,6 +22,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * esta clase ayuda a adaptar datos recibidos en una lista de clases
+ * hacia un recyclerview para poder visualizarlas
+ */
 public class ClaseAdapter extends RecyclerView.Adapter<ClaseAdapter.ViewHolder> {
     private List<Clase> mData;
     private LayoutInflater mInflater;

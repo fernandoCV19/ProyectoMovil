@@ -30,7 +30,9 @@ import com.example.macchiato.Servicios.Iniciador;
 
 import java.util.ArrayList;
 
-
+/**
+ *es el fragment donde se muestra el horario generado en horario fragment
+ */
 public class MostrarHorarioFragment extends Fragment {
     Toolbar toolbar;
     ArrayList<Integer> list;
@@ -46,11 +48,6 @@ public class MostrarHorarioFragment extends Fragment {
         this.list=list;
     }
 
-
-
-    /**
-     *
-     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

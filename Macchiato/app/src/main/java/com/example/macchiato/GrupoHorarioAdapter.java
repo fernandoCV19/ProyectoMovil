@@ -28,6 +28,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *permite adaptar las materias recibidas en un array de enteros y ayuda al usuario a
+ * crear un horario de forma manual
+ */
 public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapter.ViewHolder>{
     private List<Grupo> mData;
     private ArrayList<Integer> seleccionados;
@@ -138,6 +142,9 @@ public class GrupoHorarioAdapter extends RecyclerView.Adapter<GrupoHorarioAdapte
         }
 
     }
+    /**
+     *cancela las alarmas respectivas a los grupos seleccionados
+     */
     private void cancelAlarm(int id){
         ConsultorMaterias consultorMaterias = new ConsultorMaterias();
         TinyDB tinyDB = new TinyDB(context.getApplicationContext());

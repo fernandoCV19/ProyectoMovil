@@ -20,6 +20,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *sirve para adaptar los datos de una materia y sus clases dentro de mostrar horario fragment
+ */
 public class  MostrarHorarioAdapter extends RecyclerView.Adapter<MostrarHorarioAdapter.ViewHolder> {
     private List<Grupo> mData;
     private ArrayList<Integer> seleccionados;

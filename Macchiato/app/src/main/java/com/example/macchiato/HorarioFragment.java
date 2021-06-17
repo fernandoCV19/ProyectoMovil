@@ -80,7 +80,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-
+/**
+ *muestra la pantalla donde se puede generar y eliminar los horarios
+ *
+ */
 public class HorarioFragment extends Fragment {
     Spinner spinnerNivel;
     Spinner spinnerMateria;

@@ -23,6 +23,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *sirve para generar los cardviews dentro de materia fragment
+ */
 public class MateriaAdapter extends RecyclerView.Adapter<MateriaAdapter.ViewHolder> implements View.OnClickListener{
 
     private List<Materia> mData;

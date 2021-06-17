@@ -21,6 +21,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *ayuda a adaptar los datos a una vista para tener informacion sobre un grupo
+ * en la pantalla de materia fragment
+ */
 public class InfoGrupoAdapter extends RecyclerView.Adapter<InfoGrupoAdapter.ViewHolder>{
     private List<Grupo> mData;
     private LayoutInflater mInflater;

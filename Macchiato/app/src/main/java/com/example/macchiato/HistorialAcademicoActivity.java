@@ -68,6 +68,11 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
     ConsultorMaterias consultorMaterias;
 
 
+    /**
+     * constructores
+     * el segundo constructor recibe un array de materias aprobadas y otro de repr0badas
+     * inicializa los array que tiene de atributos
+     */
     public HistorialAcademicoActivity() {
 
         mostrarAprobadas = new ArrayList<>();

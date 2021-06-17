@@ -16,6 +16,10 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.macchiato.Models.MateriaNota;
 
+/**
+ *esta clase nos permite elegir el nivel y las materias de las cuales queremos
+ * registrar sus notas de aprobacion o reprobacion
+ */
 public class DialogMateriaNota extends AppCompatDialogFragment {
 
     Spinner mSpinner;
