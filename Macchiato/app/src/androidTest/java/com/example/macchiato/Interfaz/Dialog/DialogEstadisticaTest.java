@@ -22,7 +22,7 @@ public class DialogEstadisticaTest {
     @Before
     public void setUp() {
         ActivityScenario.launch(HistorialAcademicoActivity.class);
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.ver_Estadisticas)).perform(click());
 
     }
@@ -30,7 +30,7 @@ public class DialogEstadisticaTest {
     @BeforeClass
     public static void setupClass() throws InterruptedException {
         ActivityScenario.launch(HistorialAcademicoActivity.class);
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.ver_Estadisticas)).perform(click());
 
     }

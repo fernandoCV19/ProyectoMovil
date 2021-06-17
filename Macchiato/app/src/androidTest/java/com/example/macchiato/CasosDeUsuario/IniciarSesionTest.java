@@ -75,8 +75,8 @@ public class IniciarSesionTest {
         Thread.sleep(4000);
         onView(withId(R.id.nav_perfil)).perform(click());
         onView(withId(R.id.buttonHistorial)).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("A")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.materia)).perform(click());

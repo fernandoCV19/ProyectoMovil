@@ -140,7 +140,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
             recyclerViewRepro.setHasFixedSize(true);
         }
 
-        FloatingActionButton fab = findViewById(R.id.añadir_floating);
+        FloatingActionButton fab = findViewById(R.id.aniadir_floating);
         fab.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(HistorialAcademicoActivity.this);
             View view1 = getLayoutInflater().inflate(R.layout.layout_dialog, null);

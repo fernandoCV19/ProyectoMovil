@@ -26,8 +26,8 @@ public class CrearMateriasAprobadasYrebrobadasTest {
         ActivityScenario.launch(Navigation_bottom.class);
         onView(withId(R.id.nav_perfil)).perform(click());
         onView(withId(R.id.buttonHistorial)).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
     }
 
    @BeforeClass
@@ -46,7 +46,7 @@ public class CrearMateriasAprobadasYrebrobadasTest {
         onView(withText("INGLES I")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.editText)).perform(ViewActions.typeText("100"));
         onView(withText("AÑADIR")).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("A")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.materia)).perform(click());
@@ -69,7 +69,7 @@ public class CrearMateriasAprobadasYrebrobadasTest {
         onView(withText("INGLES II")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.editText)).perform(ViewActions.typeText("20"));
         onView(withText("AÑADIR")).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("B")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.materia)).perform(click());
@@ -92,7 +92,7 @@ public class CrearMateriasAprobadasYrebrobadasTest {
         onView(withText("FISICA GENERAL")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.editText)).perform(ViewActions.typeText("100"));
         onView(withText("AÑADIR")).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("A")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.materia)).perform(click());
@@ -117,7 +117,7 @@ public class CrearMateriasAprobadasYrebrobadasTest {
         onView(withText("AÑADIR")).perform(click());
         onView(allOf(withId(R.id.eliminar), hasSibling(withText("CALCULO NUMERICO")))).perform(click());
         onView(withId(R.id.floating_eliminar)).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("C")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.materia)).perform(click());
@@ -152,7 +152,7 @@ public class CrearMateriasAprobadasYrebrobadasTest {
         onView(withText("CALCULO NUMERICO")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.editText)).perform(ViewActions.typeText("10"));
         onView(withText("AÑADIR")).perform(click());
-        onView(withId(R.id.añadir_floating)).perform(click());
+        onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("C")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.materia)).perform(click());

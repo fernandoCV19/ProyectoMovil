@@ -24,6 +24,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.*;
 @RunWith(AndroidJUnit4ClassRunner.class)
 
 public class MateriaNotaAdapterTest {
+
     @Before
     public void setUp(){
         ActivityScenario.launch(Navigation_bottom.class);
@@ -48,7 +49,7 @@ public class MateriaNotaAdapterTest {
         onView(withId(R.id.materia)).perform(click());
         onView(withText("INGLES I")).inRoot(isPlatformPopup()).perform(click());
         onView(withId(R.id.editText)).perform(ViewActions.typeText("100"));
-        onView(withText("AniADIR")).perform(click());
+        onView(withText("AÑADIR")).perform(click());
         onView(withId(R.id.aniadir_floating)).perform(click());
         onView(withId(R.id.nivel)).perform(click());
         onView(withText("A")).inRoot(isPlatformPopup()).perform(click());
