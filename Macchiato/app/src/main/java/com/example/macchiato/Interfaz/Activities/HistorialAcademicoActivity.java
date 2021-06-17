@@ -320,10 +320,7 @@ public class HistorialAcademicoActivity extends AppCompatActivity {
                                     }
                                 }
                             }
-
-
-
-
+                        }
                     });
                 }
             });
