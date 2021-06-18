@@ -925,7 +925,7 @@
       "codigo":"2008060",
       "docente":"ZABALAGA MONTANO OSCAR A.",
       "nivel":"C",
-      "grupo":"2",
+      "grupo":"3",
       "clases":[
         {
           "dia":"LUNES",
@@ -935,15 +935,15 @@
         },
         {
           "dia":"MARTES",
-          "horaInicio":"11:15",
-          "horaFinal":"12:45",
-          "aula":"693A"
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"692H"
         },
         {
-          "dia":"JUEVES",
-          "horaInicio":"6:45",
-          "horaFinal":"8:15",
-          "aula":"693D"
+          "dia":"MIERCOLES",
+          "horaInicio":"15:45",
+          "horaFinal":"17:15",
+          "aula":"690D"
         }
       ]
     },
