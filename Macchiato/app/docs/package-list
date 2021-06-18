@@ -1,11 +1,11 @@
-com.example.macchiato
 com.example.macchiato.CasosDeUsuario
 com.example.macchiato.Enums
 com.example.macchiato.Interfaz.Activities
+com.example.macchiato.Interfaz.Adapter
+com.example.macchiato.Interfaz.Adapters
 com.example.macchiato.Interfaz.Dialog
 com.example.macchiato.Interfaz.Fragments
 com.example.macchiato.Interfaz.Navegacion
-com.example.macchiato.Interfaz.RecyclerView
 com.example.macchiato.Models
 com.example.macchiato.Parser
 com.example.macchiato.Servicios

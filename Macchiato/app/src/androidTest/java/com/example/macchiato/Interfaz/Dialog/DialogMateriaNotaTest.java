@@ -70,7 +70,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.*;
             onView(withId(R.id.materia)).check(matches(isClickable()));
         }
         @Test
-        public void botonAñadirSeVe() {
+        public void botonAniadirSeVe() {
             onView(withText("AÑADIR")).check(matches(isDisplayed()));
         }
         @Test
@@ -78,7 +78,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.*;
             onView(withText("CANCELAR")).check(matches(isDisplayed()));
         }
         @Test
-        public void botonAñadirPuedenClicar() {
+        public void botonAniadirPuedenClicar() {
             onView(withText("AÑADIR")).check(matches(isClickable()));
         }
         @Test
